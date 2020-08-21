@@ -1,10 +1,7 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.entity.creatures.misc.Entity33Elk;
-import com.deeplake.idealland.util.AchvDef;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -15,7 +12,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 import static com.deeplake.idealland.util.CommonFunctions.CopyNormalAttr;
-import static com.deeplake.idealland.util.CommonFunctions.TryGrantAchv;
 
 public class ItemSkillSheepTransform extends ItemSkillBase {
     public ItemSkillSheepTransform(String name) {

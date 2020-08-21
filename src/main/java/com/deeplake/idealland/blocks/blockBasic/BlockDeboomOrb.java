@@ -25,7 +25,7 @@ public class BlockDeboomOrb extends BlockBase implements ITileEntityProvider {
 		setResistance(1500.0F);
 		setHarvestLevel("pickaxe", 3);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_BUILDING);
+		setCreativeTab(ModCreativeTab.IDL_MISC);
 	}
 
 	//optional

@@ -1,6 +1,5 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.item.fading.ItemFadingArmor;
 import com.deeplake.idealland.util.CommonFunctions;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;

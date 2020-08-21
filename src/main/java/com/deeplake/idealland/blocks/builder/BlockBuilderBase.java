@@ -16,7 +16,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
     public BlockBuilderBase(String name, Material material, Class<? extends TileEntityBuilderBase> tileEntity) {
         super(name, material);
         this.tileEntity = tileEntity;
-        setCreativeTab(ModCreativeTab.IDL_BUILDER);
+        setCreativeTab(ModCreativeTab.IDL_MISC);
         setSoundType(SoundType.METAL);
         setHardness(5.0F);
         setResistance(15.0F);

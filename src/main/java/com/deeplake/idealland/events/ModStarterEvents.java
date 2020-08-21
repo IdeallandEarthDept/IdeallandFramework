@@ -8,6 +8,7 @@ import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
@@ -33,45 +34,14 @@ public class ModStarterEvents {
 		  if(lastStarterVer < CUR_STARTER_KIT_VERSION) {
 			  IDLNBT.setPlayerIdeallandTagSafe(player, STARTER_KIT_VERSION_TAG, CUR_STARTER_KIT_VERSION);
 
-			  ItemStack scry = new ItemStack(ModItems.skillScry);
-			  ItemStack guaPalm = new ItemStack(ModItems.skillGuaPalm);
-			  IDLSkillNBT.SetGuaEnhanceFree(guaPalm, 3);
+			  ItemStack scry = new ItemStack(Items.QUARTZ);
 			  player.addItemStackToInventory(scry);
-			  player.addItemStackToInventory(guaPalm);
-
-			  if (player.getItemStackFromSlot(EntityEquipmentSlot.FEET).isEmpty())
-			  {
-				  ItemStack geta = new ItemStack(ModItems.ITEM_ARMOR_UNDERFOOT_GETA);
-				  IDLSkillNBT.SetGuaEnhanceFree(geta, 1);
-				  player.setItemStackToSlot(EntityEquipmentSlot.FEET, geta);
-			  }
 
 			  if (player instanceof EntityPlayerMP) {
-				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idealland.msg.starter_kit_given", TextFormatting.AQUA);
-
+				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idlframework.msg.starter_kit_given", TextFormatting.AQUA);
 			  }
 			  IdlFramework.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
 		  }
-//
-//		  //do sth here
-//
-//		  data.setTag(IDEALLAND, idl_data);
-//		  playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-
-//		  if(data.getInteger(KILL_COUNT)) {
-//			  //ItemHandlerHelper.giveItemToPlayer(event.player, new ItemStack(TinkerCommons.book));
-//			  data.setBoolean(TAG_PLAYER_HAS_BOOK, true);
-//			  playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-//
-//			  EntityPlayer player = event.player;
-//
-//			  ItemStack heirloom = new ItemStack(ModItems.HEIRLOOM);
-//			  DWeaponSwordBase.SetOwner(heirloom, player.getDisplayNameString());
-//
-//			  event.player.addItemStackToInventory(heirloom);
-//			  event.player.addItemStackToInventory(CreateManual(player));
-//			  DWeapons.Log(String.format("Given starter items to player %s", player.getDisplayNameString()));
-//		  }
 	  }
 	
 }

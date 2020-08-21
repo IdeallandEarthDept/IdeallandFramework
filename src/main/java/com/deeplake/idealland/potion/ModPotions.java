@@ -111,24 +111,10 @@ public class ModPotions {
             //blood paper(not potion related)
             ItemStack stackInHand = sourceCreature.getHeldItemMainhand();
 
-            if (sourceCreature instanceof EntityPlayer &&
-                    stackInHand.getItem() == Items.PAPER)
-            {
-                EntityPlayer player = (EntityPlayer) sourceCreature;
-                stackInHand.shrink(1);
-
-                player.addItemStackToInventory(new ItemStack(ModItems.PAPER_BLOOD));
-            }
-
             //Critical Judgement
             if (!(trueSource instanceof EntityPlayer)) {//Players have their own critical judgement system. Now we add the non-player system.
                 float critRate = 0.1f;
                 boolean isCritical = false;
-
-                if (ItemHelmSniper.checkCertainCritical(evt))
-                {
-                    critRate += 1.0f;
-                }
 
                 //Critical chance buff
                 activePotionEffects = ((EntityLivingBase) trueSource).getActivePotionEffects();

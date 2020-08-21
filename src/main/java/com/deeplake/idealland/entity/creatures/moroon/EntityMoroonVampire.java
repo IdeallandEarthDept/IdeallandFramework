@@ -69,16 +69,16 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        if (wasRecentlyHit) {
-            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
-        }
+//        if (wasRecentlyHit) {
+//            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
+//        }
     }
 
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 1d));
+        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 1d));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));

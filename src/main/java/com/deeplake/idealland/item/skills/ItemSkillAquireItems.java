@@ -3,6 +3,7 @@ package com.deeplake.idealland.item.skills;
 import com.deeplake.idealland.item.ModItems;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,7 @@ import java.util.List;
 import static com.deeplake.idealland.util.CommonDef.GUA_TYPES;
 
 public class ItemSkillAquireItems extends ItemSkillBase {
-    public Item[] validItems = new Item[]{ModItems.YANG_SIGN, ModItems.YIN_SIGN};
+    public Item[] validItems = new Item[]{Items.PAPER};
 
     public ItemSkillAquireItems(String name, Item[] validItems) {
         super(name);

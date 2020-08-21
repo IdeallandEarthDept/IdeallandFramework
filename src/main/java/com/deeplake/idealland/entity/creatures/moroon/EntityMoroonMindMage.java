@@ -1,8 +1,5 @@
 package com.deeplake.idealland.entity.creatures.moroon;
 
-import com.deeplake.idealland.item.ModItems;
-import com.deeplake.idealland.item.misc.armor.masks.ItemHelmSanity;
-import com.deeplake.idealland.potion.ModPotions;
 import com.deeplake.idealland.util.EntityUtil;
 import com.deeplake.idealland.util.IDLGeneral;
 import net.minecraft.entity.EntityLiving;
@@ -11,7 +8,8 @@ import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.Path;
@@ -19,8 +17,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import java.util.List;
-
-import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRangedAttackMob {
 
@@ -34,7 +30,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
         //this.tasks.addTask(2, new EntityAIAttackRanged((IRangedAttackMob) this, 1.0D, 60, 10.0F));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1.0D));
+       // this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1.0D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -52,15 +48,15 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-        if (rand.nextFloat() < 0.1f * getLevel())
-        {
-            dropItem(ModItems.ITEM_HELM_SANITY, 1 + rand.nextInt(2 + lootingModifier));
-        }
-
-        if (rand.nextFloat() < 0.01f * getLevel() * (1+lootingModifier))
-        {
-            dropItem(ModItems.ITEM_EL_PSY_CONGROO, 1);
-        }
+//        if (rand.nextFloat() < 0.1f * getLevel())
+//        {
+//            dropItem(ModItems.ITEM_HELM_SANITY, 1 + rand.nextInt(2 + lootingModifier));
+//        }
+//
+//        if (rand.nextFloat() < 0.01f * getLevel() * (1+lootingModifier))
+//        {
+//            dropItem(ModItems.ITEM_EL_PSY_CONGROO, 1);
+//        }
     }
 
     protected void applyEntityAttributes()
@@ -75,7 +71,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
         //IdlFramework.Log("Tick");
         if (!this.world.isRemote)
         {
-            if (world.getWorldTime() % TICK_PER_SECOND == 1 && getActivePotionEffect(ModPotions.INTERFERENCE) == null)
+            //if (world.getWorldTime() % TICK_PER_SECOND == 1 && getActivePotionEffect(ModPotions.INTERFERENCE) == null)
             {
                 float range = (float) getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getAttributeValue();
 
@@ -143,10 +139,10 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
     public void ApplyMindControlToEnemy(EntityLivingBase livingBase)
     {
-        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
-        {
-            return;
-        }
+//        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
+//        {
+//            return;
+//        }
 
         if (getAttackTarget() == null)
         {
@@ -165,7 +161,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
         EntityUtil.TryRemoveGivenBuff(livingBase, MobEffects.INVISIBILITY);
         EntityUtil.TryRemoveGivenBuff(livingBase, MobEffects.NIGHT_VISION);
 
-        EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_MINUS, getBuffLevel(), getSeconds());
+        //EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_MINUS, getBuffLevel(), getSeconds());
         EntityUtil.ApplyBuff(livingBase, MobEffects.GLOWING, 0, getLevel());
         if (rank >= 2)
         {
@@ -183,10 +179,10 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
     public void ApplyMindControlToFriend(EntityLivingBase livingBase)
     {
-        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
-        {
-            return;
-        }
+//        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
+//        {
+//            return;
+//        }
 
         int level = getLevel();
         int rank = getRank();
@@ -198,7 +194,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
         if (rank >= 2)
         {
-            EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_PLUS, getBuffLevel(), getSeconds());
+            //EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_PLUS, getBuffLevel(), getSeconds());
             if (rank >= 3)
             {
                 EntityUtil.ApplyBuff(livingBase, MobEffects.HASTE, getBuffLevel(), getSeconds());

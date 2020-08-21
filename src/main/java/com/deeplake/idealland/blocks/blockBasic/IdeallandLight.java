@@ -20,7 +20,7 @@ public class IdeallandLight extends BlockBase {
 		setHarvestLevel("pickaxe", 1);
 		setLightLevel(1f);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_BUILDING);
+		setCreativeTab(ModCreativeTab.IDL_MISC);
 	}
 
 	//optional

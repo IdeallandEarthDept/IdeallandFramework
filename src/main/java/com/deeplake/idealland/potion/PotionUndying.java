@@ -27,11 +27,11 @@ public class PotionUndying extends BasePotion {
             return;
         }
 
-        PotionEffect effect = hurtOne.getActivePotionEffect(ModPotions.UNDYING);
-        if (effect != null)
-        {
-            evt.setCanceled(true);
-            hurtOne.setHealth(hurtOne.getMaxHealth() / (ModPotions.UNDYING.resistancePerLevel * (effect.getAmplifier() + 1)));
-        }
+//        PotionEffect effect = hurtOne.getActivePotionEffect(ModPotions.UNDYING);
+//        if (effect != null)
+//        {
+//            evt.setCanceled(true);
+//            hurtOne.setHealth(hurtOne.getMaxHealth() / (ModPotions.UNDYING.resistancePerLevel * (effect.getAmplifier() + 1)));
+//        }
     }
 }

@@ -53,7 +53,7 @@ public class GuiContainerDemo extends GuiContainer {
         String title = I18n.format("container.fmltutor.demo");
         this.fontRenderer.drawString(title, (this.xSize - this.fontRenderer.getStringWidth(title)) / 2, 6, 0x404040);
 
-        ItemStack item = new ItemStack(ModItems.P_2_W_GOBLET);
+        ItemStack item = new ItemStack(Items.QUARTZ);
         this.itemRender.renderItemAndEffectIntoGUI(item, 8, 20);
     }
 

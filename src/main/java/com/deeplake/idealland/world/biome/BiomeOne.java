@@ -18,7 +18,7 @@ public class BiomeOne extends Biome {
     public BiomeOne() {
         super(new BiomeProperties("biome_one").setBaseHeight(-1.5f).setHeightVariation(1.2f).setTemperature(0.5f).setWaterColor(0xff3333));
 
-        topBlock = ModBlocks.MORON_BLOCK.getDefaultState();
+        topBlock = Blocks.BOOKSHELF.getDefaultState();
         fillerBlock = Blocks.BRICK_BLOCK.getDefaultState();
 
         decorator.coalGen = new WorldGenMinable(Blocks.PLANKS.getDefaultState(), 10);

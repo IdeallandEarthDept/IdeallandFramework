@@ -5,7 +5,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static com.deeplake.idealland.item.ModItems.skillThunderFall;
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraft.util.DamageSource.causePlayerDamage;
 

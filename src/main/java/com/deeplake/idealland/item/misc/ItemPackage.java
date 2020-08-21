@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class ItemPackage extends ItemBase {
-    public Item[] validItems = new Item[]{ModItems.YANG_SIGN, ModItems.YIN_SIGN};
+    public Item[] validItems = new Item[]{};
     int pick = 1;
 
     public ItemPackage(String name, Item[] validItems) {

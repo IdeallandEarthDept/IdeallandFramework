@@ -28,7 +28,7 @@ import static com.deeplake.idealland.init.RegistryHandler.initRegistries;
 
 @Mod(modid = IdlFramework.MODID, name = IdlFramework.NAME, version = IdlFramework.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
 public class IdlFramework {
-    public static final String MODID = "idealland";
+    public static final String MODID = "untitled";
     public static final String NAME = "IdlFramework";
     public static final String VERSION = "0.1.020";
 
@@ -45,6 +45,13 @@ public class IdlFramework {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
+
+        if (MODID.equals("untitled"))
+        {
+            logger.error("Please change your mod id in the main class.");
+            logger.error("请在IdlFramework中修改你的MODID");
+        }
+
         RegistryHandler.preInitRegistries(event);
 
     }
@@ -55,7 +62,7 @@ public class IdlFramework {
         RegisterTileEntity();
         initRegistries(event);
         new ModGuiElementLoader();
-        IdlFramework.LogWarning("Init IdlFramework");
+        IdlFramework.LogWarning("Init " + MODID);
     }
 
     @EventHandler
@@ -93,47 +100,10 @@ public class IdlFramework {
         } else {
             //IdlFramework.Log("No Item Renderer found.");
         }
-
-        if (MetaUtil.isLoaded_TiC) {
-            IdlFramework.Log("Oh hi TiC.");
-        }
-
-        if (MetaUtil.isLoaded_Slashblade) {
-            IdlFramework.Log("Oh, SlashB. Do you want a cup of customized nano mender?");
-        }
-
-        if (MetaUtil.isLoaded_Botania) {
-            IdlFramework.Log("If that isn't Vazkii!");
-        }
-
-        if (MetaUtil.isLoaded_Taoism) {
-            IdlFramework.Log("Hi Taoism, this is Taoism Deeplake speaking.");
-        }
-
-        if (MetaUtil.isLoaded_GOG || MetaUtil.isLoaded_AOA3) {
-            IdlFramework.Log("Tons of monsters detected.");
-        }
-
-        if (MetaUtil.isLoaded_AOA3) {
-            IdlFramework.Log("Gods from AOA3 detected.");
-        }
-
-        if (MetaUtil.isLoaded_DWeapon) {
-            IdlFramework.Log("Hi my other creation, Nice to see you here.");
-        }
-
-        if (MetaUtil.isLoaded_GC) {
-            IdlFramework.Log("With our help, this Galacti Craft will be easier... Hopefully.");
-        }
     }
 
     private static void RegisterTileEntity() {
-        GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(MODID, "deboom_orb_basic"));
-        GameRegistry.registerTileEntity(TileEntityNullifyOrb.class, new ResourceLocation(MODID, "nullify_orb_basic"));
-        GameRegistry.registerTileEntity(TileEntityNullifyOrbMor.class, new ResourceLocation(MODID, "nullify_orb_mor"));
-        GameRegistry.registerTileEntity(TileEntityEarthMender.class, new ResourceLocation(MODID, "earth_mender_basic"));
-        GameRegistry.registerTileEntity(TileEntityDeArrowOrb.class, new ResourceLocation(MODID, "de_arrow_orb"));
-        GameRegistry.registerTileEntity(TileEntityDeWaterOrb.class, new ResourceLocation(MODID, "de_water_orb"));
+//        GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(MODID, "deboom_orb_basic"));
 
         //GameRegistry.registerTileEntity(TileEntityBuilderFarm.class, new ResourceLocation(MODID, "builder_farm_basic"));
         //GameRegistry.registerTileEntity(TileEntityBuilderOne.class, new ResourceLocation(MODID, "builder.builder_one"));

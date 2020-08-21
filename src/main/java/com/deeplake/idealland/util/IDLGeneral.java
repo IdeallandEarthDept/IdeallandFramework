@@ -38,13 +38,13 @@ public class IDLGeneral {
     public static int returnGuaIndex(ItemStack stack)
     {
         Item item = stack.getItem();
-        for (int i = 0; i < GUA_TYPES; i++)
-        {
-            if (item == ModItems.GUA[i])
-            {
-                return i;
-            }
-        }
+//        for (int i = 0; i < GUA_TYPES; i++)
+//        {
+//            if (item == ModItems.GUA[i])
+//            {
+//                return i;
+//            }
+//        }
         return -1;
     }
 }

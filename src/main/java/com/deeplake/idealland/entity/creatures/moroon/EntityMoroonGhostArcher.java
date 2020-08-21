@@ -40,7 +40,7 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
         MinecraftForge.EVENT_BUS.register(this);
         experienceValue = 15;
         setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.helmetSniper));
+        //setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.helmetSniper));
         setSneaking(true);
         inflictBerserkBuff = false;
     }
@@ -55,15 +55,15 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
         if (wasRecentlyHit) {
-            if (lootingModifier >= rand.nextInt(10))
-            {
-                dropItem(ModItems.skill_hate_detect_sniper, 1);
-            }
-
-            if (lootingModifier >= rand.nextInt(10))
-            {
-                dropItem(ModItems.helmetSniper, 1);
-            }
+            //if (lootingModifier >= rand.nextInt(10))
+//            {
+//                dropItem(ModItems.skill_hate_detect_sniper, 1);
+//            }
+//
+//            if (lootingModifier >= rand.nextInt(10))
+//            {
+//                dropItem(ModItems.helmetSniper, 1);
+//            }
 
             //dropItem(ModItems.skillFireBall, rand.nextInt(1 + lootingModifier));
         }
@@ -74,7 +74,7 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAttackRanged(this, 0.3f, TICK_PER_SECOND * 2, 32.0F));
         //this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1D));
+        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1D));
 //        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
 //        this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
 //        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -103,23 +103,23 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
             //if (this.getMoveHelper().isUpdating()) {
                 //double d0 = this.getMoveHelper().getSpeed();
 
-                if ((getAttackTarget() != null) || (this.getActivePotionEffect(ModPotions.INTERFERENCE) != null))
-                {
-                    stationaryCounter=0;
-                    if (this.getActivePotionEffect(MobEffects.INVISIBILITY) != null)
-                    {
-                        EntityUtil.TryRemoveGivenBuff(this, MobEffects.INVISIBILITY);
-                    }
-
-                }else {
-                    stationaryCounter++;
-                    if (stationaryCounter > stationaryToInvisible) {
-                        stationaryCounter = stationaryToInvisible;
-                        if (world.getWorldTime() % TICK_PER_SECOND == 0) {
-                            addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, TICK_PER_SECOND * 2, 0));
-                        }
-                    }
-                }
+               // if ((getAttackTarget() != null) || (this.getActivePotionEffect(ModPotions.INTERFERENCE) != null))
+//                {
+//                    stationaryCounter=0;
+//                    if (this.getActivePotionEffect(MobEffects.INVISIBILITY) != null)
+//                    {
+//                        EntityUtil.TryRemoveGivenBuff(this, MobEffects.INVISIBILITY);
+//                    }
+//
+//                }else {
+//                    stationaryCounter++;
+//                    if (stationaryCounter > stationaryToInvisible) {
+//                        stationaryCounter = stationaryToInvisible;
+//                        if (world.getWorldTime() % TICK_PER_SECOND == 0) {
+//                            addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, TICK_PER_SECOND * 2, 0));
+//                        }
+//                    }
+//                }
             //}
         }
     }

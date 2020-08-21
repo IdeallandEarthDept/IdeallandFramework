@@ -40,7 +40,7 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         if (wasRecentlyHit) {
             if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
             {
-                dropItem (ModItems.MOROON_RIFLE, 1);
+                //dropItem (ModItems.MOROON_RIFLE, 1);
             }
         }
     }
@@ -82,7 +82,7 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
        // this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
+        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityTNTPrimed.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -110,7 +110,7 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
     {
         super.setEquipmentBasedOnDifficulty(difficulty);
-        this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
+        //this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
     }
 
     public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)
@@ -163,14 +163,14 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         float dist =  MathHelper.sqrt(MathHelper.sqrt(d0));
         float estimateHitTime = MathHelper.sqrt(2 * bulletAccel * dist);
 
-        EntityMoroonBullet entityIdlProjectile = new EntityMoroonBullet(this.world, new ProjectileArgs((float) EntityUtil.getAttack(this)), this,
-                d1 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionX,
-                d2 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionY,
-                d3 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionZ,
-                bulletAccel);
-
-        playSound(SoundEvents.BLOCK_PISTON_EXTEND, 1f, 2f);
-        world.spawnEntity(entityIdlProjectile);
+//        EntityMoroonBullet entityIdlProjectile = new EntityMoroonBullet(this.world, new ProjectileArgs((float) EntityUtil.getAttack(this)), this,
+//                d1 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionX,
+//                d2 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionY,
+//                d3 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionZ,
+//                bulletAccel);
+//
+//        playSound(SoundEvents.BLOCK_PISTON_EXTEND, 1f, 2f);
+//        world.spawnEntity(entityIdlProjectile);
     }
 
     @Override

@@ -1,18 +1,12 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.entity.creatures.misc.Entity33Elk;
-import com.deeplake.idealland.util.AchvDef;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-
-import static com.deeplake.idealland.util.CommonFunctions.TryGrantAchv;
 
 public class ItemSkillExperienceStrike extends ItemSkillBase {
     public ItemSkillExperienceStrike(String name) {

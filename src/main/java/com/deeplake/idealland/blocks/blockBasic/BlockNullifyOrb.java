@@ -25,7 +25,7 @@ public class BlockNullifyOrb extends BlockBase implements ITileEntityProvider {
 		setResistance(15.0F);
 		setHarvestLevel("pickaxe", 3);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_BUILDING);
+		setCreativeTab(ModCreativeTab.IDL_MISC);
 	}
 
 	public BlockNullifyOrb setAdvanced(boolean val)

@@ -13,8 +13,6 @@ import javax.annotation.Nonnull;
 
 public class BasicGua8 extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
-	//private String pearlName = ModItems.SKY_CHARM.getUnlocalizedName();
-
 	@Override
 	public boolean isDynamic() {
 		return true;
@@ -76,9 +74,9 @@ public class BasicGua8 extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
 			}
 		}
 
-		if (guaValue >= 0 && guaValue <= ModItems.GUA.length) {
-			return new ItemStack(ModItems.GUA[guaValue]);
-		}
+//		if (guaValue >= 0 && guaValue <= ModItems.GUA.length) {
+//			return new ItemStack(ModItems.GUA[guaValue]);
+//		}
 
 		return ItemStack.EMPTY;
 	}

@@ -3,8 +3,6 @@ package com.deeplake.idealland.gui;
 import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.gui.expOne.ContainerDemo;
 import com.deeplake.idealland.gui.expOne.GuiContainerDemo;
-import com.deeplake.idealland.gui.research.ContainerResearch;
-import com.deeplake.idealland.gui.research.GuiContainerResearch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -31,8 +29,6 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new ContainerDemo(player);
-            case GUI_RESEARCH:
-                return new ContainerResearch(player);
             default:
                 return null;
         }
@@ -45,8 +41,6 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new GuiContainerDemo(new ContainerDemo(player));
-            case GUI_RESEARCH:
-                return new GuiContainerResearch(new ContainerResearch(player));
             default:
                 return null;
         }

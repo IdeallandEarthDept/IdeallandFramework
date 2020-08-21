@@ -11,7 +11,7 @@ import net.minecraft.world.gen.IChunkGenerator;
 public class DimensionOne extends WorldProvider {
 
     public DimensionOne() {
-        this.biomeProvider = new BiomeProviderSingle(InitBiome.BIOME_FOR_DIM_ONE);
+        this.biomeProvider = new BiomeProviderSingle(InitBiome.BIOME_ONE);
         hasSkyLight = false;
     }
 
