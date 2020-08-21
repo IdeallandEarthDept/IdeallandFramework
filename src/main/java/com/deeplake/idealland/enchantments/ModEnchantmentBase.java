@@ -1,17 +1,13 @@
 package com.deeplake.idealland.enchantments;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentVanishingCurse;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.init.Enchantments;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 
 public class ModEnchantmentBase extends Enchantment {
     private int maxLevel = 1;
@@ -86,7 +82,7 @@ public class ModEnchantmentBase extends Enchantment {
     public ModEnchantmentBase(String name, Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot[] slots)
     {
         super(rarityIn, typeIn, slots);
-        setRegistryName(Idealland.MODID, name);
+        setRegistryName(IdlFramework.MODID, name);
         setName(name);
         ModEnchantmentInit.ENCHANTMENT_LIST.add(this);
 

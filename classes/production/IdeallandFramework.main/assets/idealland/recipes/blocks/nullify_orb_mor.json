@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "FFF",
+        "FOF",
+        "FFF"
+    ],
+    
+    "key":
+    {
+        "O":
+        {
+            "item": "idealland:nullify_orb"
+        },
+        "F":
+        {
+            "item": "idealland:moroon_fragment"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:nullify_orb_mor",
+        "count": 1
+    }
+}

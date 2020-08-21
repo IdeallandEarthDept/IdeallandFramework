@@ -1,19 +1,15 @@
 package com.deeplake.idealland.item.food;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.item.ModItems;
 import com.deeplake.idealland.util.IHasModel;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -38,7 +34,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
     @Override
     public void registerModels()
     {
-        Idealland.proxy.registerItemRenderer(this, 0, "inventory");
+        IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
     }
 
     public ItemFoodBase(String name, int amount, float saturation, boolean isWolfFood) {
@@ -54,7 +50,7 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
     {
-        //Idealland.Log("%s:on Food Eaten", getUnlocalizedName());
+        //IdlFramework.Log("%s:on Food Eaten", getUnlocalizedName());
         super.onFoodEaten(stack, worldIn, player);
         if (addXP > 0)
         {

@@ -1,15 +1,13 @@
 package com.deeplake.idealland.gui.expOne;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +18,7 @@ import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiContainerDemo extends GuiContainer {
-    private static final String TEXTURE_PATH = Idealland.MODID + ":" + "textures/gui/container/gui_demo.png";
+    private static final String TEXTURE_PATH = IdlFramework.MODID + ":" + "textures/gui/container/gui_demo.png";
     private static final ResourceLocation TEXTURE = new ResourceLocation(TEXTURE_PATH);
 
     private static final int BUTTON_UP = 0;

@@ -110,7 +110,7 @@ public class EntityUtil {
             return false;
         }
         String modid = er.getContainer().getModId();
-        //Idealland.Log("Atk ER.modid is %s, name is %s", modid, er.getRegistryName());
+        //IdlFramework.Log("Atk ER.modid is %s, name is %s", modid, er.getRegistryName());
 
         return !modid.equals("minecraft");
     }
@@ -147,37 +147,37 @@ public class EntityUtil {
         }
         return getModName(creature).equals(CommonDef.MOD_NAME_AOA3);
     }
-
-    public static EntityLivingBase FindLover(EntityLivingBase source, float range, ModEnchantmentLover enchant)
-    {
-        if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, source) == 0)
-        {
-            return null;
-        }
-
-        EntityLivingBase result = null;
-        Vec3d sourcePos = source.getPositionEyes(0f);
-        source.playSound(SoundEvents.ENTITY_LIGHTNING_IMPACT, 1f, 1f);
-        //Damage nearby entities
-        List<EntityLivingBase> list = source.world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(sourcePos.addVector(-range, -range, -range), sourcePos.addVector(range, range, range)));
-        for (EntityLivingBase creature : list) {
-            if (creature != source) {
-                if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, creature) > 0)
-                {
-                    if (result != null)
-                    {
-                        //more than one lover found
-                        return null;
-                    }
-                    else {
-                        result = creature;
-                    }
-                }
-            }
-        }
-
-        return result;
-    }
+//
+//    public static EntityLivingBase FindLover(EntityLivingBase source, float range, ModEnchantmentLover enchant)
+//    {
+//        if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, source) == 0)
+//        {
+//            return null;
+//        }
+//
+//        EntityLivingBase result = null;
+//        Vec3d sourcePos = source.getPositionEyes(0f);
+//        source.playSound(SoundEvents.ENTITY_LIGHTNING_IMPACT, 1f, 1f);
+//        //Damage nearby entities
+//        List<EntityLivingBase> list = source.world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(sourcePos.addVector(-range, -range, -range), sourcePos.addVector(range, range, range)));
+//        for (EntityLivingBase creature : list) {
+//            if (creature != source) {
+//                if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, creature) > 0)
+//                {
+//                    if (result != null)
+//                    {
+//                        //more than one lover found
+//                        return null;
+//                    }
+//                    else {
+//                        result = creature;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return result;
+//    }
 
     public static Vec3d GetRandomAroundUnderfoot(EntityLivingBase entity, float radius)
     {
@@ -428,7 +428,7 @@ public class EntityUtil {
             modifier = attribute.getModifier(uuid);
         }
 
-        //Idealland.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
+        //IdlFramework.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
         return true;
     }
 
@@ -462,7 +462,7 @@ public class EntityUtil {
             modifier = attribute.getModifier(uuid);
         }
 
-        //Idealland.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
+        //IdlFramework.Log("Value:%s: %.2f->%.2f", modifier.getName(), valueBefore, valueAfter);
         return true;
     }
 

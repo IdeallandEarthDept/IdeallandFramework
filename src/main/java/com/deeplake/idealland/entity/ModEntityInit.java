@@ -1,23 +1,12 @@
 package com.deeplake.idealland.entity;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.entity.creatures.buildings.EntityIdlBuildingBase;
-import com.deeplake.idealland.entity.creatures.buildings.EntityIdlBuildingRoom;
-import com.deeplake.idealland.entity.creatures.buildings.EntityIdlBuildingWhiteTower;
-import com.deeplake.idealland.entity.creatures.buildings.EntityIdlBuildingXPWell;
-import com.deeplake.idealland.entity.creatures.ideallandTeam.*;
-import com.deeplake.idealland.entity.creatures.misc.*;
-import com.deeplake.idealland.entity.creatures.moroon.*;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.entity.projectiles.EntityIdlProjectile;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.datafix.DataFixer;
-import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-
-import static com.deeplake.idealland.util.CommonDef.STANDARD_DUNGEON_MOB_RARITY;
 
 public class ModEntityInit {
     private static int ENTITY_NEXT_ID = 1;
@@ -52,7 +41,7 @@ public class ModEntityInit {
                 entity,
                 name,
                 id,
-                Idealland.instance,
+                IdlFramework.instance,
                 range,
                 1,
                 true,

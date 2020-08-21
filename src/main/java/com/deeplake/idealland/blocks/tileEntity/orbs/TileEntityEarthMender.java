@@ -1,9 +1,7 @@
 package com.deeplake.idealland.blocks.tileEntity.orbs;
 
-import com.deeplake.idealland.Idealland;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -94,14 +92,14 @@ public class TileEntityEarthMender extends TileEntityOrbBase implements ITickabl
 //	//No Use
 //	@SubscribeEvent
 //	public void onSpawn(LivingSpawnEvent.CheckSpawn event) {
-//		Idealland.Log("Spawning:"+event.getEntityLiving().getName());
+//		IdlFramework.Log("Spawning:"+event.getEntityLiving().getName());
 //		int range = NULLIFY_DISTANCE;
 //		if(event.getResult() != Event.Result.ALLOW && event.getEntityLiving() instanceof IMob) {
 //			AxisAlignedBB aabb = new AxisAlignedBB(event.getX() - NULLIFY_DISTANCE, event.getY() - NULLIFY_DISTANCE, event.getZ() - NULLIFY_DISTANCE, event.getX() + NULLIFY_DISTANCE, event.getY() + NULLIFY_DISTANCE, event.getZ() + NULLIFY_DISTANCE);
 //			if (aabb.contains(new Vec3d(this.pos.getX(), this.pos.getY(), this.pos.getZ())))
 //			{
 //				event.setResult(Event.Result.DENY);
-//				Idealland.Log("Stopped spawning:"+event.getEntityLiving().getName());
+//				IdlFramework.Log("Stopped spawning:"+event.getEntityLiving().getName());
 //				return;
 //			}
 //		}

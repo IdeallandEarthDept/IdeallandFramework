@@ -66,7 +66,7 @@ public class ItemSkillBase extends ItemBase {
         super(name);
         setMaxStackSize(1);
         setNoRepair();
-        setCreativeTab(ModCreativeTab.IDL_SKILL);
+        setCreativeTab(ModCreativeTab.IDL_MISC);
     }
 
     @Override

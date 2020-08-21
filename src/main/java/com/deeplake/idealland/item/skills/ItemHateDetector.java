@@ -1,32 +1,15 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.item.ItemBase;
-import com.deeplake.idealland.item.ModItems;
-import com.deeplake.idealland.item.skills.ItemSkillBase;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLGeneral;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItemFrame;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -74,7 +57,7 @@ public class ItemHateDetector extends ItemSkillBase {
 //                        worldIn = entityIn.world;
 //                    }
 //                    int state = GetInt(stack, STATE);
-                    //Idealland.Log("State = " + state);
+                    //IdlFramework.Log("State = " + state);
                     return (float)GetInt(stack, STATE);
                 }
             }
@@ -97,11 +80,11 @@ public class ItemHateDetector extends ItemSkillBase {
                     IDLGeneral.ServerAABB(pos.addVector(-XZRangeRadius, -YRangeRadius, -XZRangeRadius), pos.addVector(XZRangeRadius, YRangeRadius, XZRangeRadius)));
             for (EntityLiving entity : entities)
             {
-                //Idealland.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
+                //IdlFramework.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
                 if (entity.getAttackTarget() == entityIn)
                 {
                     detection++;
-                    //Idealland.Log("[Active]Detected!");
+                    //IdlFramework.Log("[Active]Detected!");
                 }
             }
 

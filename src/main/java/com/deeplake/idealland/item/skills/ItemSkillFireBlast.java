@@ -1,15 +1,10 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLGeneral;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -29,7 +24,7 @@ public class ItemSkillFireBlast extends ItemSkillBase {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (isStackReady(playerIn, stack))//mostly always ready
         {
-            //Idealland.Log("Trigg'd:" + worldIn.getWorldTime());
+            //IdlFramework.Log("Trigg'd:" + worldIn.getWorldTime());
             if (!worldIn.isRemote)
             {
                 ItemSkillFireBlast skillThunderFall = ((ItemSkillFireBlast)stack.getItem());
@@ -56,10 +51,10 @@ public class ItemSkillFireBlast extends ItemSkillBase {
 //            if (playerIn instanceof EntityPlayerMP)
 //            {
 //                notifyCoolingDown((EntityPlayerMP)playerIn);
-//                Idealland.Log("notified");
+//                IdlFramework.Log("notified");
 //            }
 //            else {
-//                Idealland.Log("wrong type");
+//                IdlFramework.Log("wrong type");
 //            }
 //            return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
 //        }

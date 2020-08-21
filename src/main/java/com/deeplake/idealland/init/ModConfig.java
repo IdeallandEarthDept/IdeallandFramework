@@ -25,7 +25,7 @@ public class ModConfig {
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.GeneralConf")
-    @Config.Comment("Idealland general config.")
+    @Config.Comment("IdlFramework general config.")
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {

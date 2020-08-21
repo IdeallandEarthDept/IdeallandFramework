@@ -1,6 +1,6 @@
 package com.deeplake.idealland.item;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
@@ -84,7 +84,7 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 		//Particle;
 		super.onUsingTick(stack, living, count);
-		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
+		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
 
 		if (living.world.isRemote)
 		{
@@ -109,7 +109,7 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
+		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 	protected static boolean isShiftPressed()

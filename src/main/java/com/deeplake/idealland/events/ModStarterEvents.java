@@ -1,28 +1,19 @@
 package com.deeplake.idealland.events;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.item.ModItems;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLNBT;
 import com.deeplake.idealland.util.IDLSkillNBT;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.idealland.util.Reference;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-
-import java.lang.reflect.Modifier;
 
 import static com.deeplake.idealland.util.IDLNBT.*;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.*;
@@ -37,7 +28,7 @@ public class ModStarterEvents {
 	  @SubscribeEvent
 	  public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		  EntityPlayer player = event.player;
-		  //Idealland.Log(getPlyrIdlTagSafe(player).toString());
+		  //IdlFramework.Log(getPlyrIdlTagSafe(player).toString());
 		  int lastStarterVer = getPlayerIdeallandIntSafe(player, STARTER_KIT_VERSION_TAG);
 		  if(lastStarterVer < CUR_STARTER_KIT_VERSION) {
 			  IDLNBT.setPlayerIdeallandTagSafe(player, STARTER_KIT_VERSION_TAG, CUR_STARTER_KIT_VERSION);
@@ -59,7 +50,7 @@ public class ModStarterEvents {
 				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idealland.msg.starter_kit_given", TextFormatting.AQUA);
 
 			  }
-			  Idealland.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
+			  IdlFramework.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
 		  }
 //
 //		  //do sth here

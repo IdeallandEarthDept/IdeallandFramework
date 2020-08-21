@@ -1,6 +1,6 @@
 package com.deeplake.idealland.entity.creatures.ideallandTeam;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.blocks.ModBlocks;
 import com.deeplake.idealland.util.EntityUtil;
 import com.deeplake.idealland.util.IDLGeneral;
@@ -66,13 +66,13 @@ public class EntityIDLWhiteTowerCore extends EntityIdeallandUnitBase {
     @SubscribeEvent
     public void onExplode(ExplosionEvent.Start event) {
         Vec3d pos = event.getExplosion().getPosition();
-        //Idealland.Log(String.format("onExplode:(%s,%s,%s)", pos.x, pos.y, pos.z));
+        //IdlFramework.Log(String.format("onExplode:(%s,%s,%s)", pos.x, pos.y, pos.z));
         if (!event.isCanceled() && aabb != null && aabb.contains(pos))
         {
             event.setCanceled(true);
             PlaySoundHere();
             damageEntity(DamageSource.causeExplosionDamage(event.getExplosion()), 4f);
-            Idealland.Log("Core Stopped an explosion");
+            IdlFramework.Log("Core Stopped an explosion");
         }
     }
 
@@ -91,7 +91,7 @@ public class EntityIDLWhiteTowerCore extends EntityIdeallandUnitBase {
             {
                 event.setResult(Event.Result.DENY);
                 //TakeDamage(event.getEntityLiving().getMaxHealth() / 10f);
-                //Idealland.Log("Stopped spawning:"+event.getEntityLiving().getName());
+                //IdlFramework.Log("Stopped spawning:"+event.getEntityLiving().getName());
                 return;
             }
         }
@@ -159,7 +159,7 @@ public class EntityIDLWhiteTowerCore extends EntityIdeallandUnitBase {
                                 type == Blocks.FLOWING_LAVA)
                         {
                             TakeDamage(0.1f);
-                            worldIn.setBlockState(target, ModBlocks.CONSTRUCTION_SITE.getDefaultState());
+                            worldIn.setBlockState(target, Blocks.GOLD_BLOCK.getDefaultState());
                             //otherwise the tower will be soon destroyed
                         }
                         else {

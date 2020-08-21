@@ -1,15 +1,12 @@
 package com.deeplake.idealland.potion;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.item.ModItems;
-import com.deeplake.idealland.item.misc.armor.masks.ItemHelmSniper;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -25,46 +22,12 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nullable;
 import java.util.Collection;
 
-import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraftforge.fml.common.eventhandler.Event.Result.*;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModPotions {
     public static Potion DEADLY;
-    public static Potion RIP;
-    public static PotionInsidiousDisease VIRUS_ONE;
     public static PotionZenHeart ZEN_HEART;
-
-    //FGO
-    public static PotionUndying UNDYING;
-
-    //combat
-    public static PotionMagicResist MAGIC_RESIST;
-    public static PotionBlastResist BLAST_RESIST;
-    public static BaseSimplePotion KB_RESIST;
-    public static BaseSimplePotion INVINCIBLE;
-
-    //other
-    public static PotionErosion EROSION;
-    public static BaseSimplePotion INTERFERENCE;
-    public static final BaseSimplePotion NOTICED_BY_MOR = new BaseSimplePotion(true, 0x662266, "noticed_by_mor", 11);
-
-    //critical
-    public static BasePotion CRIT_CHANCE_PLUS;
-    public static BasePotion CRIT_CHANCE_MINUS;
-
-    public static BasePotion CRIT_DMG_PLUS;
-    public static BasePotion CRIT_DMG_MINUS;
-
-    public static BasePotion BERSERK;
-
-    public static BaseSimplePotion HOT;
-    public static BaseSimplePotion COLD;
-
-    //todo:follow range bonus
-
-    //todo: next gen. Can allow multi buff to exist together
-    static BasePotion[] CRIT_INCREASE_GROUP;
 
     @Nullable
     private static Potion getRegisteredMobEffect(String id)
@@ -84,85 +47,24 @@ public class ModPotions {
     @SubscribeEvent
     public static void registerPotions(RegistryEvent.Register<Potion> evt)
     {
-        Idealland.LogWarning("registering potion");
-        DEADLY = new PotionDeadly(false, 0x333333, "deadly", 0);
-        ZEN_HEART = new PotionZenHeart(false, 0xcccc00, "zen_heart", 1);
-
-        VIRUS_ONE = new PotionInsidiousDisease(true, 0xffffff, "virus_one", 2);
-        VIRUS_ONE.tuples.add(new EffectTuple(0.2f, MobEffects.NAUSEA, 100));
-
-        UNDYING = new PotionUndying(false, 0xffff00, "undying", 3);
-
-        MAGIC_RESIST = new PotionMagicResist(false, 0x0000ff, "magic_resist", 4);
-        BLAST_RESIST = new PotionBlastResist(false, 0x440000, "blast_resist", 5);
-        KB_RESIST = new BasePotion(false, 0x99ff99, "knockback_resist", 6).setKBResistance(0.25f, 0.25f);
-        RIP = new BasePotion(false, 0xffffff, "rest_in_peace", 7);
-
-        EROSION = new PotionErosion(true, 0x22ff33, "erosion", 8);
-        INVINCIBLE = new BasePotion(false, 0xffffbb, "invincible", 9);
-
-        INTERFERENCE = new BaseSimplePotion(true, 0x2266ff, "interference", 10);
-
-        CRIT_CHANCE_PLUS = new BasePotion(true, 0xff3333, "crit_chance_plus", 12).setCritRateRatio(0.25f, 0.25f);
-        CRIT_CHANCE_MINUS = new BasePotion(true, 0xffffff, "crit_chance_minus", 13).setCritRateRatio(-0.25f, -0.25f);
-
-        CRIT_DMG_PLUS = new BasePotion(true, 0xff3333, "crit_dmg_plus", 14).setCritDamageRatio(0.25f, 0.25f);
-        CRIT_DMG_MINUS = new BasePotion(true, 0xffffff, "crit_dmg_minus", 15).setCritDamageRatio(-0.25f, -0.25f);
-
-        BERSERK = new BasePotion(true, 0xffffff, "berserk", 16).setAttackRatio(0.25f, 0.25f).setProtectionRatio(-0.25f, -0.25f);
-
-        HOT = new BaseSimplePotion(true, 0x3333ff, "hot", 17);
-        COLD = new BaseSimplePotion(true, 0xff6622, "cold", 18);
+        IdlFramework.LogWarning("registering potion");
+//        DEADLY = new PotionDeadly(false, 0x333333, "deadly", 0);
+//        ZEN_HEART = new PotionZenHeart(false, 0xcccc00, "zen_heart", 1);
 
         evt.getRegistry().register(DEADLY);
         evt.getRegistry().register(ZEN_HEART);
-        evt.getRegistry().register(VIRUS_ONE);
-
-        evt.getRegistry().register(UNDYING);
-
-        evt.getRegistry().register(MAGIC_RESIST);
-        evt.getRegistry().register(BLAST_RESIST);
-        evt.getRegistry().register(KB_RESIST);
-        evt.getRegistry().register(INVINCIBLE);
-
-        evt.getRegistry().register(RIP);
-
-        evt.getRegistry().register(EROSION);
-        evt.getRegistry().register(INTERFERENCE);
-
-        evt.getRegistry().register(NOTICED_BY_MOR);
-
-        evt.getRegistry().register(CRIT_CHANCE_PLUS);
-        evt.getRegistry().register(CRIT_CHANCE_MINUS);
-
-        evt.getRegistry().register(CRIT_DMG_PLUS);
-        evt.getRegistry().register(CRIT_DMG_MINUS);
-
-        evt.getRegistry().register(BERSERK);
-
-        evt.getRegistry().register(HOT);
-        evt.getRegistry().register(COLD);
-        //REGISTRY.registerSpawnList(1, new ResourceLocation("speed"), (new Potion(false, 8171462))
-        // .setPotionName("effect.moveSpeed")
-        // .setIconIndex(0, 0)
-        // .registerPotionAttributeModifier(SharedMonsterAttributes.MOVEMENT_SPEED, "91AEAA56-376B-4498-935B-2F7F68070635", 0.20000000298023224D, 2).setBeneficial());
     }
-
-//    @SubscribeEvent
-//    public static void onCreatureAttack(LivingAttackEvent evt) {
-//
-//    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onCreatureHurt(LivingHurtEvent evt) {
         World world = evt.getEntity().getEntityWorld();
         EntityLivingBase hurtOne = evt.getEntityLiving();
 
-        if (hurtOne.getActivePotionEffect(INVINCIBLE) != null)
-        {
-            evt.setCanceled(true);
-            return;
-        }
+//        if (hurtOne.getActivePotionEffect(INVINCIBLE) != null)
+//        {
+//            evt.setCanceled(true);
+//            return;
+//        }
 
         //Base Damage Reduction
         Collection<PotionEffect> activePotionEffects = hurtOne.getActivePotionEffects();
@@ -258,9 +160,9 @@ public class ModPotions {
                     }
 
                     evt.setAmount((critDmg) * evt.getAmount());
-                    //Idealland.Log(String.format("%s:isCrit = %s, x%s =%s, ", trueSource.getName(), isCritical, critDmg, evt.getAmount()));
+                    //IdlFramework.Log(String.format("%s:isCrit = %s, x%s =%s, ", trueSource.getName(), isCritical, critDmg, evt.getAmount()));
                 }
-                //Idealland.Log(String.format("%s:isCrit = %s, x1f =%s, ", trueSource.getName(), isCritical, evt.getAmount()));
+                //IdlFramework.Log(String.format("%s:isCrit = %s, x1f =%s, ", trueSource.getName(), isCritical, evt.getAmount()));
             }
         }
 
@@ -270,13 +172,13 @@ public class ModPotions {
         }
 
         //slime erosion
-        if (trueSource instanceof EntitySlime)
-        {
-            if (!world.isRemote)
-            {
-                hurtOne.addPotionEffect(new PotionEffect(ModPotions.EROSION, (int)(TICK_PER_SECOND * (evt.getAmount() + 1f)), (int)(evt.getAmount() / 10)));
-            }
-        }
+//        if (trueSource instanceof EntitySlime)
+//        {
+//            if (!world.isRemote)
+//            {
+//                hurtOne.addPotionEffect(new PotionEffect(ModPotions.EROSION, (int)(TICK_PER_SECOND * (evt.getAmount() + 1f)), (int)(evt.getAmount() / 10)));
+//            }
+//        }
 
         //onHit effect
         for (int i = 0; i < activePotionEffects.size(); i++) {
@@ -415,17 +317,4 @@ public class ModPotions {
             evt.setDamageModifier(originalModifier + critDmg);
         }
     }
-
-
-//    @SubscribeEvent
-//    public static void onCreatureDie(LivingDeathEvent evt) {
-//        //Idealland.Log(evt.getEntityLiving().getDisplayName() + " died @" + evt.getEntityLiving().getPositionVector().toString());
-//    }
-
-    //ProjectileImpactEvent
-    //EntityItemPickupEvent   cannot pickup item
-    //ClientChatEvent  cannot chat
-    //ClientChatReceivedEvent
-
-    //PotionBrewEvent todo brew book
 }

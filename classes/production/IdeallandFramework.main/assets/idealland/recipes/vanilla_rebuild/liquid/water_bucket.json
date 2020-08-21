@@ -1,0 +1,35 @@
+{
+    "result": {
+        "item": "minecraft:water_bucket"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:bucket" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ],
+        [
+            { "item": "idealland:gua_2" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

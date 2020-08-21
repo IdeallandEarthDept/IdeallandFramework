@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "SSS",
+        "SOS",
+        "SSS"
+    ],
+    
+    "key":
+    {
+        "S":
+        { "item": "minecraft:stone" ,
+            "data" :  0},
+        "O":
+        {
+            "item": "idealland:matter_original"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "idealland:skill_base",
+        "count": 1
+    }
+}

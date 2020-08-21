@@ -1,0 +1,6 @@
+{
+    "parent": "idealland:item/p2w_goblet",
+    "textures": {
+        "layer0":"idealland:items/misc/goblet"
+    }
+}

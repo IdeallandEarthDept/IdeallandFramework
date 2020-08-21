@@ -64,7 +64,7 @@ public class BuildingCore {
                 list.add(reserved_first_tasks_count, new BuilderActionBlock(newState, pos));
                 reserved_first_tasks_count++;
             }else {
-                list.add(reserved_first_tasks_count, new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, pos));
+                list.add(reserved_first_tasks_count, new BuilderActionBlock(Blocks.BRICK_BLOCK, pos));
                 list.add(new BuilderActionBlockSafe(newState, pos));
             }
         } else {
@@ -109,7 +109,7 @@ public class BuildingCore {
     public void update(BlockPos basePos) {
         boolean remote = world.isRemote;
 
-        if (finished || (ModConfig.PerformanceConf.SIMPLE_BUILDER && remote)) {
+        if (finished || remote) {
             return;
         }
 

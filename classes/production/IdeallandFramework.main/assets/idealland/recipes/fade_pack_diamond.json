@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "idealland:package_fade_armor_diamond"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:diamond" }
+        ],
+        [
+            { "item": "idealland:gua_6" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

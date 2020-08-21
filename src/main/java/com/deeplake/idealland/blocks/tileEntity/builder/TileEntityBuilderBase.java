@@ -194,7 +194,7 @@ public class TileEntityBuilderBase extends TileEntity implements ITickable {
 				list.add(reserved_first_tasks_count, new BuilderActionBlock(newState, pos));
 				reserved_first_tasks_count++;
 			}else {
-				list.add(reserved_first_tasks_count, new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, pos));
+				list.add(reserved_first_tasks_count, new BuilderActionBlock(Blocks.BRICK_BLOCK, pos));
 				list.add(new BuilderActionBlockSafe(newState, pos));
 			}
 		} else {

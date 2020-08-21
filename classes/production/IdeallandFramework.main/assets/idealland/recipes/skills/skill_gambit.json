@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        " O ",
+        "III"
+    ],
+    
+    "key":
+    {
+        "O":
+    {
+        "item": "idealland:skill_base"
+    },
+        "I":
+        {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:skill_gambit",
+        "count": 1
+    }
+}

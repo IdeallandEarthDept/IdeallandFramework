@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "6O6",
+        "III"
+    ],
+    
+    "key":
+    {
+        "I":
+    {
+        "item": "idealland:package_fade_armor_diamond"
+    },
+        "6":
+        {
+            "item": "idealland:gua_6"
+        },
+        "O":
+        {
+            "item": "idealland:skill_base"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "idealland:skill_fade_armor_diamond",
+        "count": 1
+    }
+}

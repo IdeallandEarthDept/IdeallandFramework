@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "I",
+        "I",
+        "S"
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "idealland:blood_iron_ingot"
+        },
+        "S":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:kinship_sword",
+        "count": 1
+    }
+}

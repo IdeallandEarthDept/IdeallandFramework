@@ -1,7 +1,5 @@
 package com.deeplake.idealland.world.dimension.hexcube;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.blocks.ModBlocks;
 import com.deeplake.idealland.init.InitBiome;
 import com.deeplake.idealland.world.dimension.hexcube.structure.*;
 import net.minecraft.block.BlockColored;
@@ -244,14 +242,14 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
         {
             int min = 1;
             int max = CHUNK_SIZE -1;
-            primer.setBlockState(min, y+min, min, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(min, y+min, max, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(max, y+min, min, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(max, y+min, max, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(min, y+max, min, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(min, y+max, max, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(max, y+max, min, ModBlocks.GRID_LAMP.getDefaultState());
-            primer.setBlockState(max, y+max, max, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(min, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(min, y+min, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(max, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(max, y+min, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(min, y+max, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(min, y+max, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(max, y+max, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(max, y+max, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
         }
     }
 
@@ -268,7 +266,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
         for (int i = 0; i < abyte.length; ++i)
         {
-            abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_CUBE);
+            abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_ONE);
         }
 
         chunk.resetRelightChecks();

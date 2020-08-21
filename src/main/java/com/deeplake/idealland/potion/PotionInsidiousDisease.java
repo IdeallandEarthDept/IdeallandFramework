@@ -1,15 +1,10 @@
 package com.deeplake.idealland.potion;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.MobEffects;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class PotionInsidiousDisease extends BasePotion {
@@ -43,7 +38,7 @@ public class PotionInsidiousDisease extends BasePotion {
 
     @Override
     public void performEffect(@Nonnull EntityLivingBase living, int amplified) {
-        Idealland.Log("Perform");
+        IdlFramework.Log("Perform");
         for (EffectTuple t:
                 tuples
              ) {

@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "FB",
+        "BF"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:cobblestone"
+        },
+        "F":
+        {
+            "item": "idealland:moroon_fragment"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:moroon_block",
+        "count": 2
+    }
+}

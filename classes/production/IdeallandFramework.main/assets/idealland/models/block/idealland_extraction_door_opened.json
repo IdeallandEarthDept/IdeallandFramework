@@ -1,0 +1,54 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+		"particle": "idealland:blocks/idealland_extraction_door",
+        "idealland_extraction_door": "idealland:blocks/idealland_extraction_door"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Base",
+            "from": [ 0, 0, 0 ], 
+            "to": [ 16, 1, 16 ], 
+            "faces": {
+                "north": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 16 ] },
+                "east": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 1 ] },
+                "south": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 1 ] },
+                "west": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 1 ] },
+                "up": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 16 ] },
+                "down": { "texture": "#idealland_extraction_door", "uv": [ 0, 0, 16, 16 ] }
+            }
+        }
+    ]
+}

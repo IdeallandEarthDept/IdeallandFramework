@@ -1,18 +1,13 @@
 package com.deeplake.idealland.enchantments;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.meta.MetaUtil;
-import com.deeplake.idealland.util.CommonFunctions;
-import com.deeplake.idealland.util.EntityUtil;
+import com.deeplake.idealland.IdlFramework;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.RegistryNamespaced;
 import net.minecraft.world.World;
@@ -26,7 +21,7 @@ import java.util.List;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 
-@Mod.EventBusSubscriber(modid = Idealland.MODID)
+@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class ModEnchantmentInit {
 
     public static final EntityEquipmentSlot[] aentityequipmentslot = new EntityEquipmentSlot[] {EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};

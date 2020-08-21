@@ -1,6 +1,5 @@
 package com.deeplake.idealland.entity.creatures.ai;
 
-import com.deeplake.idealland.Idealland;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
@@ -91,12 +90,12 @@ public class EntityAIBulletAttack extends EntityAIBase
         }
         else
         {
-//            Idealland.LogWarning("cant see");
+//            IdlFramework.LogWarning("cant see");
             this.ticksLookingAtTarget = 0;
         }
 
-//        Idealland.Log(String.format("Looking ticks = %d", ticksLookingAtTarget ));
-//        Idealland.Log(String.format("dist = %.2f/%.2f", targetDistance, maxRange));
+//        IdlFramework.Log(String.format("Looking ticks = %d", ticksLookingAtTarget ));
+//        IdlFramework.Log(String.format("dist = %.2f/%.2f", targetDistance, maxRange));
         if (targetDistance <= maxRange && this.ticksLookingAtTarget >= 20)
         {
             this.entityHost.getNavigator().clearPath();

@@ -1,6 +1,5 @@
 package com.deeplake.idealland.init;
 
-import com.deeplake.idealland.world.dimension.DimenHexaCubix8;
 import com.deeplake.idealland.world.dimension.DimensionOne;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;

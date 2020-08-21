@@ -1,6 +1,6 @@
 package com.deeplake.idealland.blocks;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.item.ModItems;
 import com.deeplake.idealland.util.IHasModel;
@@ -45,6 +45,6 @@ public class BlockBase extends Block implements IHasModel
 	
 	@Override
 	public void registerModels() {
-		Idealland.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		IdlFramework.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 }

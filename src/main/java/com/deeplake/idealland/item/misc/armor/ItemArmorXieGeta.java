@@ -1,23 +1,15 @@
 package com.deeplake.idealland.item.misc.armor;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.IGuaEnhance;
 import com.deeplake.idealland.item.ItemArmorBase;
-import com.deeplake.idealland.item.misc.ItemNanoMender;
-import com.deeplake.idealland.item.skills.martial.BuffTuple;
 import com.deeplake.idealland.util.CommonDef;
-import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -42,7 +34,6 @@ import java.util.List;
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.MODE;
-import static net.minecraft.entity.EntityList.createEntityByIDFromName;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
@@ -102,7 +93,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onCreatureHurt(LivingHurtEvent evt) {
         if (evt.isCanceled() || evt.getSource() != DamageSource.FALL) {
-            //Idealland.Log("Xie Geta wrong type");
+            //IdlFramework.Log("Xie Geta wrong type");
             return;
         }
 
@@ -111,7 +102,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
         if (onFoot.getItem() instanceof ItemArmorXieGeta)
         {
             float reduction = ItemArmorXieGeta.GetDamageReductionFall(onFoot);
-            //Idealland.Log("Xie Geta dmg reduction:%s", reduction);
+            //IdlFramework.Log("Xie Geta dmg reduction:%s", reduction);
             if (evt.getAmount() <= reduction)
             {
                 evt.setCanceled(true);

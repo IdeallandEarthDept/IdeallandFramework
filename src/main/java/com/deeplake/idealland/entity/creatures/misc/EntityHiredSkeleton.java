@@ -36,7 +36,7 @@ public class EntityHiredSkeleton extends EntitySkeleton {
     @Override
     public void onEntityUpdate() {
         super.onEntityUpdate();
-        //Idealland.Log(getPositionVector() + " " + getUniqueID().toString());
+        //IdlFramework.Log(getPositionVector() + " " + getUniqueID().toString());
     }
 
     protected boolean shouldBurnInDay()

@@ -17,7 +17,7 @@ public class ItemConsumableBase extends ItemBase {
     boolean consumeOther = false;
     public ItemConsumableBase(String name) {
         super(name);
-        setCreativeTab(ModCreativeTab.IDL_FADE);
+        setCreativeTab(ModCreativeTab.IDL_MISC);
     }
 
     /**

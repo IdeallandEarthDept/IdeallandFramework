@@ -1,12 +1,5 @@
 package com.deeplake.idealland.blocks.tileEntity.orbs;
 
-import com.deeplake.idealland.Idealland;
-import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
@@ -16,14 +9,8 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
-import java.util.Collections;
 import java.util.Random;
 
 public class TileEntityOrbBase extends TileEntity implements ITickable {
@@ -37,7 +24,7 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 	public void SetRange(int newRange){
 		range = newRange;
 		Vec3d posInFloat = GetPosInFloat();
-		//Idealland.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
+		//IdlFramework.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
 		aabb = new AxisAlignedBB(posInFloat.x - range, posInFloat.y - range, posInFloat.z - range, posInFloat.x + range, posInFloat.y + range, posInFloat.z + range);
 
 	}

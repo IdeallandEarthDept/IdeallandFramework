@@ -1,6 +1,6 @@
 package com.deeplake.idealland.item;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
@@ -12,13 +12,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,7 +27,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
-import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.GUA_TOTAL_SOCKET_DESC;
 
 //try to sync with ItemBase
 public class ItemArmorBase extends ItemArmor implements IHasModel {
@@ -88,7 +85,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 //	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 //		//Particle;
 //		super.onUsingTick(stack, living, count);
-//		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
+//		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
 //
 //		if (living.world.isRemote)
 //		{
@@ -133,7 +130,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
+		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 	protected static boolean isShiftPressed()

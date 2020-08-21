@@ -22,11 +22,11 @@ public class ModWorldGenNew implements IWorldGenerator {
 	private WorldGenerator testGen1, testGen2;
 
 	public ModWorldGenNew() {
-		testGen1 = new WorldGenMinable(ModBlocks.MORON_BLOCK.getDefaultState(),
-				9, BlockMatcher.forBlock(Blocks.NETHERRACK));
-
-		testGen2 = new WorldGenMinable(ModBlocks.GRID_LAMP.getDefaultState(),
-				4);
+//		testGen1 = new WorldGenMinable(Blocks.DIAMOND_BLOCK.getDefaultState(),
+//				9, BlockMatcher.forBlock(Blocks.NETHERRACK));
+//
+//		testGen2 = new WorldGenMinable(Blocks.GOLD_BLOCK.getDefaultState(),
+//				4);
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class ModWorldGenNew implements IWorldGenerator {
 				break;
 			case 0:
 				//overworld
-				//Idealland.Log("world gen running");
+				//IdlFramework.Log("world gen running");
 
 				//runGenOre(testGen2, world, random, chunkX, chunkZ, 32, 16, 18);
 

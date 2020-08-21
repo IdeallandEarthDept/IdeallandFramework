@@ -1,8 +1,6 @@
 package com.deeplake.idealland.util;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.entity.creatures.ideallandTeam.EntityIdeallandUnitBase;
-import com.deeplake.idealland.entity.creatures.moroon.EntityMoroonUnitBase;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.item.ItemBase;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
@@ -10,27 +8,19 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -176,7 +166,7 @@ public class CommonFunctions {
     }
 
     public static void LogPlayerAction(EntityLivingBase living, String action){
-        Idealland.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
+        IdlFramework.Log(String.format("%s(%s): %s",living.getName(), living.getUniqueID(), action));
     }
 
     public static boolean RepairItem(ItemStack stack, int amount)
@@ -251,20 +241,20 @@ public class CommonFunctions {
             {
                 player.experience -= costLeft;
                 costLeft = 0;
-                Idealland.Log("A");
+                IdlFramework.Log("A");
             }
             else {
                 costLeft -= player.experience;
-                Idealland.Log("B");
+                IdlFramework.Log("B");
                 if (player.experienceLevel > 0)
                 {
                     player.experienceLevel--;
                     player.experience = XPForLevel(player.experienceLevel);
-                    Idealland.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
+                    IdlFramework.Log(String.format("player.experience = %d", XPForLevel(player.experienceLevel)));
                 }
             }
         }
-        Idealland.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
+        IdlFramework.Log(String.format("Lv= %s, xp = %s", player.experienceLevel, player.experience));
         return true;
     }
 

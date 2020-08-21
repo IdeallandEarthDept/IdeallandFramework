@@ -1,18 +1,16 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLGeneral;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumHand;
@@ -24,7 +22,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.STATE;
@@ -59,7 +56,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
                     //stack.writeToNBT(tagCompound);
                     //net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(stack, name);
                     CommonFunctions.SafeSendMsgToPlayer(playerIn, getUnlocalizedName() + ".msg.success");
-                    Idealland.LogWarning(getNBT(stack).toString());
+                    IdlFramework.LogWarning(getNBT(stack).toString());
                     activateCoolDown(playerIn, stack);
                 }
 
@@ -91,7 +88,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
 ////                        worldIn = entityIn.world;
 ////                    }
 ////                    int state = GetInt(stack, STATE);
-//                    //Idealland.Log("State = " + state);
+//                    //IdlFramework.Log("State = " + state);
 //                    return (float)GetInt(stack, STATE);
 //                }
 //            }
@@ -132,7 +129,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
 
             Vec3d pos = entityIn.getPositionEyes(1.0F);
 
-            Idealland.Log("update:",getNBT(stack).toString());
+            IdlFramework.Log("update:",getNBT(stack).toString());
 
             Class s = getCreatureFromStack(stack);
             if (s == null)
@@ -144,11 +141,11 @@ public class ItemCreatureRadar extends ItemSkillBase {
                     IDLGeneral.ServerAABB(pos.addVector(-XZRangeRadius, -YRangeRadius, -XZRangeRadius), pos.addVector(XZRangeRadius, YRangeRadius, XZRangeRadius)));
             for (EntityLivingBase entity : entities)
             {
-                //Idealland.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
+                //IdlFramework.Log(String.format("[Active]Nearby %s -> %s" , entity.getName() ,entity.getAttackTarget()));
                 if (entity.getClass() == s && entity != entityIn)
                 {
                     detection++;
-                    //Idealland.Log("[Active]Detected!");
+                    //IdlFramework.Log("[Active]Detected!");
                 }
             }
 
@@ -156,7 +153,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
             int detectionPre = GetInt(stack, STATE);
             if (detectionPre != detection)//optimize
             {
-                Idealland.LogWarning("Changed to " + detection);
+                IdlFramework.LogWarning("Changed to " + detection);
                 SetInt(stack, STATE, detection);
                 CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) entityIn, msgKey, TextFormatting.YELLOW, detection);
                 //worldIn.playSound();

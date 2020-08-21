@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "AA",
+        "AA"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "idealland:grid_normal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:test",
+        "count": 4
+    }
+}

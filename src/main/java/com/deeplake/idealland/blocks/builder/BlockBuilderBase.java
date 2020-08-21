@@ -1,14 +1,12 @@
 package com.deeplake.idealland.blocks.builder;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.blocks.BlockBase;
 import com.deeplake.idealland.blocks.tileEntity.builder.TileEntityBuilderBase;
-import com.deeplake.idealland.blocks.tileEntity.builder.TileEntityBuilderOne;
 import com.deeplake.idealland.init.ModCreativeTab;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
@@ -37,7 +35,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-            Idealland.Log("Instantiate failed");
+            IdlFramework.Log("Instantiate failed");
         }
         return t;
     }

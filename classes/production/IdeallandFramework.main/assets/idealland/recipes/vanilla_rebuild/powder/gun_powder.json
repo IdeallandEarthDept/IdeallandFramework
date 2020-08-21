@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "minecraft:gunpowder"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:sugar" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

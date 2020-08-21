@@ -1,13 +1,10 @@
 package com.deeplake.idealland.item.misc;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.entity.creatures.misc.EntityEternalZombie;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.item.ItemBase;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -48,7 +45,7 @@ public class ItemSummon extends ItemBase {
             {
                 EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
                 entityLivingBase.setPosition(pos.getX() + 0.5f,pos.getY() + 1f,pos.getZ() + 0.5f);
-                Idealland.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
+                IdlFramework.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
                 worldIn.spawnEntity(entityLivingBase);
 //                if (entityLivingBase instanceof EntityLiving)
 //                {
@@ -57,7 +54,7 @@ public class ItemSummon extends ItemBase {
             }
             else {
                 if (doWarn)
-                    Idealland.LogWarning("Trying to summon a non-living entity");
+                    IdlFramework.LogWarning("Trying to summon a non-living entity");
             }
         }
 

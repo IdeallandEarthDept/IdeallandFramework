@@ -1,6 +1,5 @@
 package com.deeplake.idealland.item.consumables;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.entity.creatures.EntityModUnit;
 import com.deeplake.idealland.item.ItemBase;
 import com.deeplake.idealland.util.CommonFunctions;
@@ -10,14 +9,11 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -25,8 +21,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.MARK_TOTAL_COUNT;
-import static net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE;
-import static net.minecraft.entity.SharedMonsterAttributes.FOLLOW_RANGE;
 
 public class ItemPowerUpModular extends ItemBase {
     private IAttribute attrType;

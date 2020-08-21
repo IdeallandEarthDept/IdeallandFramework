@@ -32,7 +32,7 @@ public class GobletDigBlockAssign extends IForgeRegistryEntry.Impl<IRecipe> impl
 				if(stack.getItem() instanceof ItemDigGoblet)
 				{
 					if (foundGoblet) {
-						//Idealland.Log("Found more than one goblet item");
+						//IdlFramework.Log("Found more than one goblet item");
 						return false;//only one goblwt at a time
 					}
 					foundGoblet = true;
@@ -66,7 +66,7 @@ public class GobletDigBlockAssign extends IForgeRegistryEntry.Impl<IRecipe> impl
 				if(stack.getItem() instanceof ItemDigGoblet)
 				{
 					if (foundGoblet) {
-						//Idealland.Log("Found more than one goblet item");
+						//IdlFramework.Log("Found more than one goblet item");
 						return ItemStack.EMPTY;//only one goblwt at a time
 					}
 					cup = stack;

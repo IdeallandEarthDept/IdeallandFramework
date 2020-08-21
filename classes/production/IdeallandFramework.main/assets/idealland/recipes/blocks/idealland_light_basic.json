@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "B7B",
+        "B5B"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "idealland:grid_normal"
+        },
+        "7":
+        {
+            "item": "idealland:gua_7"
+        },
+        "5":
+        {
+            "item": "idealland:gua_5"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:idealland_light_basic",
+        "count": 4
+    }
+}

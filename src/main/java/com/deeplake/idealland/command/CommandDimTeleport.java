@@ -1,6 +1,6 @@
 package com.deeplake.idealland.command;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.Teleport;
 import net.minecraft.command.CommandBase;
@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 
 import  com.google.common.collect.Lists;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 
 public class CommandDimTeleport extends CommandBase {
 
-    private final List<String> aliases = Lists.newArrayList(Idealland.MODID, "tp", "tpdim", "tpdimension", "chuansong");
+    private final List<String> aliases = Lists.newArrayList(IdlFramework.MODID, "tp", "tpdim", "tpdimension", "chuansong");
 
     @Override
     public String getName() {

@@ -1,10 +1,7 @@
 package com.deeplake.idealland.recipe.special;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.item.goblet.ItemGobletBase;
 import com.deeplake.idealland.item.goblet.ItemP2WGoblet;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -78,7 +75,7 @@ public class GobletFill extends IForgeRegistryEntry.Impl<IRecipe> implements IRe
 				{
 					payingXP+=9;
 				}
-				//Idealland.Log(stack.getItem().getUnlocalizedName() + " vs " + ItemBlock.getItemFromBlock(Blocks.GOLD_BLOCK).getUnlocalizedName());
+				//IdlFramework.Log(stack.getItem().getUnlocalizedName() + " vs " + ItemBlock.getItemFromBlock(Blocks.GOLD_BLOCK).getUnlocalizedName());
 			}
 		}
 

@@ -73,7 +73,7 @@ public class EntityMoroonFlickFighter extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //Idealland.Log("Tick");
+        //IdlFramework.Log("Tick");
         if (!this.world.isRemote)
         {
             if (world.getWorldTime() % TICK_PER_SECOND == 0) {

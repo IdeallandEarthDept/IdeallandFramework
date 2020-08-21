@@ -1,8 +1,7 @@
 package com.deeplake.idealland.item;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
-import com.deeplake.idealland.item.skills.martial.ItemSkillGuaPalm;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.IHasModel;
@@ -19,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,10 +27,7 @@ import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.UUID;
 
-import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
-import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhanceString;
-import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.GUA_TOTAL_SOCKET_DESC;
 
 public class ItemBase extends Item implements IHasModel {
 	private boolean overrideRarity = false;
@@ -124,7 +119,7 @@ public class ItemBase extends Item implements IHasModel {
 	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 		//Particle;
 		super.onUsingTick(stack, living, count);
-		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
+		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
 
 		if (living.world.isRemote)
 		{
@@ -163,7 +158,7 @@ public class ItemBase extends Item implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		Idealland.proxy.registerItemRenderer(this, 0, "inventory");
+		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 	protected static boolean isShiftPressed()

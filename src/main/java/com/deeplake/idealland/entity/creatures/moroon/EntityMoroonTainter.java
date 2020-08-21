@@ -24,7 +24,7 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
 
     public EntityMoroonTainter(World worldIn) {
         super(worldIn);
-        setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(ModBlocks.MORON_BLOCK));
+        setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Blocks.PUMPKIN));
         spawn_without_moroon_ground = true;
     }
 
@@ -32,7 +32,6 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -56,7 +55,7 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //Idealland.Log("Tick");
+        //IdlFramework.Log("Tick");
         if (!this.world.isRemote)
         {
             int i = MathHelper.floor(this.posX);
@@ -78,7 +77,7 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
                 if (rand.nextFloat() < taintChance * (2 - getHealth() / getMaxHealth()) &&
                         legalTransformBlockstate(this.world.getBlockState(blockpos)))
                 {
-                    this.world.setBlockState(blockpos, ModBlocks.MORON_BLOCK.getDefaultState());
+                    this.world.setBlockState(blockpos, Blocks.PUMPKIN.getDefaultState());
                 }
             }
         }
@@ -96,24 +95,6 @@ public class EntityMoroonTainter extends EntityMoroonUnitBase {
 
     public boolean getCanSpawnHere()
     {
-        if (ModConfig.SPAWN_CONF.SPAWN_TAINTER_REQ_BUFF)
-        {
-            boolean foundValidPlayer = false;
-            float range = ModConfig.SPAWN_CONF.SPAWN_TAINTER_RANGE;
-
-            Vec3d basePos = this.getPositionVector();
-            List<EntityPlayer> entities = world.getEntitiesWithinAABB(EntityPlayer.class, IDLGeneral.ServerAABB(basePos.addVector(-range, -range, -range), basePos.addVector(range, range, range)));
-            for (EntityPlayer living: entities
-            ) {
-                if (living.getActivePotionEffect(ModPotions.NOTICED_BY_MOR) != null)
-                {
-                    foundValidPlayer = true;
-                    break;
-                }
-            }
-            return super.getCanSpawnHere() && foundValidPlayer;
-        }else {
-            return super.getCanSpawnHere();
-        }
+        return super.getCanSpawnHere();
     }
 }

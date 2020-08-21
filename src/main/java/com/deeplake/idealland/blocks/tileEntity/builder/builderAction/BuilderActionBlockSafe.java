@@ -40,7 +40,7 @@ public class BuilderActionBlockSafe extends BuilderActionBlock {
     @Override
     public boolean Execute(World world, BlockPos ori_pos){
         if (relativePos.lengthSquared() < 1) {
-            //Idealland.LogWarning("Trying to build a block at self-pos.");
+            //IdlFramework.LogWarning("Trying to build a block at self-pos.");
             return true;
         }
 

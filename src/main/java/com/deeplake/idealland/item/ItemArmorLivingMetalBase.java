@@ -1,17 +1,10 @@
 package com.deeplake.idealland.item;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.util.CommonFunctions;
-import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.IHasModel;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import com.deeplake.idealland.util.Reference;
-import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,8 +12,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
@@ -28,13 +19,6 @@ import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.input.Keyboard;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.BIOMETAL_WARNED;

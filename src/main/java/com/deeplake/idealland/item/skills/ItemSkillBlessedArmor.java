@@ -1,20 +1,15 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.util.IDLGeneral;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.List;
 
 import static net.minecraft.util.DamageSource.FALL;
 

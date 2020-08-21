@@ -28,7 +28,7 @@ public class TileEntityNullifyOrbMor extends TileEntityNullifyOrb implements ITi
 			if (aabb.contains(new Vec3d(event.getX(), event.getY(), event.getZ())))
 			{
 				event.setResult(Event.Result.DENY);
-				//Idealland.Log("Stopped spawning:"+event.getEntityLiving().getName());
+				//IdlFramework.Log("Stopped spawning:"+event.getEntityLiving().getName());
 				return;
 			}
 		}

@@ -1,12 +1,10 @@
 package com.deeplake.idealland.entity.creatures.ideallandTeam;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.util.EntityUtil;
 import com.deeplake.idealland.util.IDLGeneral;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -14,7 +12,6 @@ import java.util.List;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.EntityUtil.FriendToIdl;
-import static net.minecraft.util.DamageSource.causePlayerDamage;
 
 public class EntityAntiAirRadar extends EntityIdeallandUnitBase {
     public EntityAntiAirRadar(World worldIn) {

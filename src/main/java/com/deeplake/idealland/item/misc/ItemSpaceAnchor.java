@@ -1,18 +1,14 @@
 package com.deeplake.idealland.item.misc;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.ItemBase;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.EntityUtil;
-import com.deeplake.idealland.util.IDLNBT;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;

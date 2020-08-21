@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "SIS",
+        "S7S",
+        "SIS"
+    ],
+    
+    "key":
+    {
+        "7":
+        {
+            "item": "idealland:gua_7"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "S":
+        {
+            "item": "idealland:grid_normal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:nullify_orb",
+        "count": 1
+    }
+}

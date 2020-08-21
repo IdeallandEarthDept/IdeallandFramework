@@ -56,23 +56,15 @@ public class ModSpawn {
 
     private static void addNormalSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_M_O_B, EntityMoroonBombBeacon.class, 1, 1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_BASTION, EntityMoroonBastionWalker.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_FLICKER, EntityMoroonFlickFighter.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_ASSASSIN, EntityMorBlindingAssassin.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_SNIPER, EntityMoroonGhostArcher.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_MARTIAL, EntityMoroonEliteMartialist.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_VAMPIRE, EntityMoroonVampire.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_MIND_MAGE, EntityMoroonMindMage.class, 1,1);
-
+            //Example Spawn
+            //add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
         }
     }
 
     private static void addOpenGroundSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
-            if (!BiomeDictionary.hasType(biome, Type.DENSE))
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
+            //if (!BiomeDictionary.hasType(biome, Type.DENSE))
+            //   add(biome, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
         }
     }
 
@@ -80,7 +72,7 @@ public class ModSpawn {
         for (Biome biome : Biome.REGISTRY) {
             if (BiomeDictionary.hasType(biome, Type.WET) || (BiomeDictionary.hasType(biome, Type.WATER)))
             {
-                add(biome, ModConfig.SPAWN_CONF.SPAWN_TIDE_MAKER, EntityMoroonTideMaker.class, 1, 1);
+                //add(biome, ModConfig.SPAWN_CONF.SPAWN_TIDE_MAKER, EntityMoroonTideMaker.class, 1, 1);
             }
         }
     }
@@ -108,6 +100,4 @@ public class ModSpawn {
             biome.getSpawnableList(EnumCreatureType.MONSTER).add(new Biome.SpawnListEntry(entityclassIn, weight, groupCountMin, groupCountMax));
         }
     }
-
-
 }

@@ -1,8 +1,6 @@
 package com.deeplake.idealland.item.goblet;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.ItemBase;
-import com.deeplake.idealland.item.skills.ItemSkillBase;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -124,7 +122,7 @@ public class ItemGobletBase extends ItemBase {
                 SetCacheEXP(stack, playerXP);
                 //stack.writeToNBT()
             }
-            //Idealland.Log(playerXP + " " + getUnlocalizedName(stack));
+            //IdlFramework.Log(playerXP + " " + getUnlocalizedName(stack));
         }
     }
 

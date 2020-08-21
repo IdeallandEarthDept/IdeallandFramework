@@ -1,0 +1,5 @@
+{    "parent": "item/handheld",
+  "textures": {
+    "layer0":"idealland:items/skill/skill_base"
+  }
+}

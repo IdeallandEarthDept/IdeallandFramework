@@ -1,10 +1,7 @@
 package com.deeplake.idealland.recipe.special;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.ModItems;
 import com.deeplake.idealland.item.goblet.ItemGobletBase;
-import com.deeplake.idealland.item.goblet.ItemP2WGoblet;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemPickaxe;
@@ -43,7 +40,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 				if(stack.getItem() instanceof ItemGobletBase)
 				{
 					if (foundGoblet) {
-						//Idealland.Log("Found more than one goblet item");
+						//IdlFramework.Log("Found more than one goblet item");
 						return false;//only one goblwt at a time
 					}
 					foundGoblet = true;
@@ -56,7 +53,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.DIG;
 					}
 					else {
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return false;
 					}
 				}
@@ -69,7 +66,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.HEAL;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return false;
 					}
 				}
@@ -80,7 +77,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.WIND;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return false;
 					}
 				}
@@ -91,7 +88,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.FLAME;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return false;
 					}
 				}
@@ -102,7 +99,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.MOUNTAIN;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return false;
 					}
 				}
@@ -129,7 +126,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 				if(stack.getItem() instanceof ItemGobletBase)
 				{
 					if (foundGoblet) {
-						//Idealland.Log("Found more than one goblet item");
+						//IdlFramework.Log("Found more than one goblet item");
 						return ItemStack.EMPTY;//only one sword at a time
 					}
 					cup = stack;
@@ -143,7 +140,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.DIG;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return ItemStack.EMPTY;
 					}
 				}
@@ -156,7 +153,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.HEAL;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return ItemStack.EMPTY;
 					}
 				}
@@ -167,7 +164,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.WIND;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return ItemStack.EMPTY;
 					}
 				}
@@ -178,7 +175,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 						mode = EnumCupMode.FLAME;
 					}
 					else {//more than one item
-						//Idealland.Log("Found more than one non-goblet item");
+						//IdlFramework.Log("Found more than one non-goblet item");
 						return ItemStack.EMPTY;
 					}
 				}
@@ -189,13 +186,13 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
                         mode = EnumCupMode.MOUNTAIN;
                     }
                     else {//more than one item
-                        //Idealland.Log("Found more than one non-goblet item");
+                        //IdlFramework.Log("Found more than one non-goblet item");
                         return ItemStack.EMPTY;
                     }
                 }
 				else
 				{
-					//Idealland.Log("Found other");
+					//IdlFramework.Log("Found other");
 					return ItemStack.EMPTY; //Found other.
 				}
 			}
@@ -205,7 +202,7 @@ public class GobletChangeMode extends IForgeRegistryEntry.Impl<IRecipe> implemen
 		ItemStack result = cup;
 		if (foundGoblet)
 		{
-			//Idealland.Log("Gobletfound");
+			//IdlFramework.Log("Gobletfound");
 			switch (mode)
 			{
 				case DIG:

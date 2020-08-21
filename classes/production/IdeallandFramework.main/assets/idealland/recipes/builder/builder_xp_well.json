@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " D ",
+        "3B3",
+        "SSS"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:water_bucket"
+        },
+        "3":
+        {
+            "item": "idealland:gua_3"
+        },
+        "D":
+        {
+            "item": "minecraft:diamond"
+        },
+        "S":
+        {
+            "item": "idealland:grid_normal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:build_xp_well",
+        "count": 1
+    }
+}

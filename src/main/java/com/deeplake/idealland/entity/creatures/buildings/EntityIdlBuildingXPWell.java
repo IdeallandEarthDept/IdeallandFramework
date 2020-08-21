@@ -1,9 +1,7 @@
 package com.deeplake.idealland.entity.creatures.buildings;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.blocks.ModBlocks;
-import com.deeplake.idealland.entity.creatures.ideallandTeam.EntityIDLXPWell;
-import com.deeplake.idealland.entity.creatures.ideallandTeam.EntityIdlTurret;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -22,7 +20,7 @@ public class EntityIdlBuildingXPWell extends EntityIdlBuildingBase {
 
         if (buildingCore == null)
         {
-            Idealland.LogWarning("Core is null");
+            IdlFramework.LogWarning("Core is null");
         }
 
         int bottomRange = 1;

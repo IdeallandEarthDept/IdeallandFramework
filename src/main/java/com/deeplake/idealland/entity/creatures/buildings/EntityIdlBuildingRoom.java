@@ -1,6 +1,6 @@
 package com.deeplake.idealland.entity.creatures.buildings;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -20,7 +20,7 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
         buildingCore.ResetTasks();
         InitTaskQueue();
         buildingCore.setSpeed(40f / TICK_PER_SECOND);
-        Idealland.LogWarning("Summon. Size = " + size);
+        IdlFramework.LogWarning("Summon. Size = " + size);
     }
 
     void InitTaskQueue()
@@ -29,13 +29,13 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
 
         if (buildingCore == null)
         {
-            Idealland.LogWarning("Core is null");
+            IdlFramework.LogWarning("Core is null");
         }
 
         int bottomRange = size;
         int wallHeight = 2 * size + 1;
 
-        Idealland.LogWarning("Size = " + size);
+        IdlFramework.LogWarning("Size = " + size);
 
         IBlockState blockState = Blocks.IRON_BLOCK.getDefaultState();
 

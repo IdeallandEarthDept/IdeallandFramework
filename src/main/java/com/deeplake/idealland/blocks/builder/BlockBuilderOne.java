@@ -13,7 +13,7 @@ public class BlockBuilderOne extends BlockBase implements ITileEntityProvider {
 
     public BlockBuilderOne(String name, Material material) {
         super(name, material);
-        setCreativeTab(ModCreativeTab.IDL_BUILDER);
+        setCreativeTab(ModCreativeTab.IDL_MISC);
         setSoundType(SoundType.METAL);
         setHardness(5.0F);
         setResistance(15.0F);

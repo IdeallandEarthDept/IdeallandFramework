@@ -1,0 +1,35 @@
+{
+    "result": {
+        "item": "minecraft:dragon_breath"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:glass_bottle" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_6" }
+        ],
+        [
+            { "item": "idealland:gua_6" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

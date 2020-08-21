@@ -1,7 +1,5 @@
 package com.deeplake.idealland.gui.expOne;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;

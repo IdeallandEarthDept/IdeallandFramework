@@ -1,9 +1,7 @@
 package com.deeplake.idealland.item.skills;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.util.IDLGeneral;
 import com.deeplake.idealland.util.Reference;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -40,7 +38,7 @@ public class ItemSkillThunderFall extends ItemSkillBase {
         //CrowFlight.Log(String.format("DMG:%s=%f",evt.getEntityLiving(), evt.getAmount()));
         if (evt.getSource() == FALL && hurtOne instanceof EntityPlayer)
         {
-            //Idealland.Log("player Falling");
+            //IdlFramework.Log("player Falling");
             EntityPlayer player = (EntityPlayer)hurtOne;
             ItemStack stack = AttemptPlayerHand(player, EnumHand.MAIN_HAND);
             if (stack == ItemStack.EMPTY)

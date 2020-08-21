@@ -1,6 +1,5 @@
 package com.deeplake.idealland.entity.projectiles;
 
-import com.deeplake.idealland.Idealland;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
@@ -11,7 +10,6 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
@@ -49,7 +47,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     protected EntityIdlProjectile(World worldIn, ProjectileArgs args) {
         super(worldIn);
         this.args = args;
-        //Idealland.Log("bullet created %s, args = %s", getUniqueID(), this.args);
+        //IdlFramework.Log("bullet created %s, args = %s", getUniqueID(), this.args);
     }
 
     /**
@@ -116,7 +114,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
      */
     public void onUpdate()
     {
-        //Idealland.Log("Bullet pos update:%s", getPositionEyes(0));
+        //IdlFramework.Log("Bullet pos update:%s", getPositionEyes(0));
 
         if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.isDead) && this.world.isBlockLoaded(new BlockPos(this)))
         {
@@ -171,7 +169,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     {
         if (args == null)
         {
-            //Idealland.LogWarning("Args not found for bullet");
+            //IdlFramework.LogWarning("Args not found for bullet");
             return false;
         }
         return args.burning;
@@ -187,7 +185,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
      */
     protected void onImpact(RayTraceResult result)
     {
-        //Idealland.Log("bullet impact %s", getUniqueID());
+        //IdlFramework.Log("bullet impact %s", getUniqueID());
         if (!this.world.isRemote)
         {
             if (result.entityHit != null)

@@ -73,7 +73,7 @@ public class EntityMoroonTideMaker extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //Idealland.Log("Tick");
+        //IdlFramework.Log("Tick");
         if (!this.world.isRemote)
         {
             int i = MathHelper.floor(this.posX);

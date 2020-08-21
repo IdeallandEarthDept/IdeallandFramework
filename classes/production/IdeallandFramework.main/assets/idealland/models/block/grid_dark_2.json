@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "idealland:blocks/grid_dark_2"
+	}
+}

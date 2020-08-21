@@ -1,6 +1,5 @@
 package com.deeplake.idealland.potion;
 
-import com.deeplake.idealland.Idealland;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;

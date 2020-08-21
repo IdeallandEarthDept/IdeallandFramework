@@ -17,39 +17,16 @@ public class ModRecipes {
 	
 	public static void Init() {
 		//Only smelting recipes
-		//only need to add here
 //		GameRegistry.addSmelting(ModItems.PURE_INGOT,
 //				new ItemStack(ModItems.WEAPON_PEARL),
 //				0.1f);
-//
-//		GameRegistry.addSmelting(ModItems.WEAPON_PEARL,
-//				new ItemStack(ModItems.PURE_INGOT),
-//				0.1f);
-//
-//		GameRegistry.addSmelting(ModBlocks.DIVINE_ORE,
-//				new ItemStack(ModItems.DIVINE_INGOT),
-//				6f);
-//
-//		GameRegistry.addSmelting(ModBlocks.PURE_ORE,
-//				new ItemStack(ModItems.PURE_INGOT),
-//				3f);
 		
 	}
 	
 	@SubscribeEvent
 	public static void registerRecipes(RegistryEvent.Register<IRecipe> evt) {
 		IForgeRegistry<IRecipe> r = evt.getRegistry();
-		r.register(new BasicGua8().setRegistryName(new ResourceLocation(Reference.MOD_ID, "basic_gua_8")));
-		r.register(new GobletFill().setRegistryName(new ResourceLocation(Reference.MOD_ID, "goblet_fill")));
-		r.register(new SkillUpgrade().setRegistryName(new ResourceLocation(Reference.MOD_ID, "skill_upgrade")));
-        r.register(new GobletChangeMode().setRegistryName(new ResourceLocation(Reference.MOD_ID, "goblet_change_mode")));
-		r.register(new GobletDigBlockAssign().setRegistryName(new ResourceLocation(Reference.MOD_ID, "goblet_dig_block_assign")));
-		r.register(new GuaEnhanceByCrafting().setRegistryName(new ResourceLocation(Reference.MOD_ID, "gua_enhance_by_crafting")));
-		r.register(new SaiSwordAnchorSet().setRegistryName(new ResourceLocation(Reference.MOD_ID, "sai_sword")));
-
-        //
-//		//IForgeRegistry<IRecipe> r_eh = evt.getRegistry();
-//		r.registerSpawnList(new EarthEnhance().setRegistryName(new ResourceLocation(Reference.MOD_ID, "sword_earth_enhance")));
-
+		//Example
+		//r.register(new GobletFill().setRegistryName(new ResourceLocation(Reference.MOD_ID, "goblet_fill")));
 	}
 }

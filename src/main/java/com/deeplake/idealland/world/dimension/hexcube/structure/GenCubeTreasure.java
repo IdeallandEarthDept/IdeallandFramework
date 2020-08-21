@@ -1,18 +1,13 @@
 package com.deeplake.idealland.world.dimension.hexcube.structure;
 
-import com.deeplake.idealland.Idealland;
-import com.deeplake.idealland.util.CommonDef;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.storage.loot.LootTableList;
 
 import java.util.Random;
-
-import static com.deeplake.idealland.util.CommonDef.CHUNK_SIZE;
 
 public class GenCubeTreasure extends GenCubeBase {
 

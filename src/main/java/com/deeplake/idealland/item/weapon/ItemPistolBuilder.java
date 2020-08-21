@@ -1,13 +1,8 @@
 package com.deeplake.idealland.item.weapon;
 
 import com.deeplake.idealland.entity.projectiles.EntityIdlProjectile;
-import com.deeplake.idealland.entity.projectiles.EntityProjectileBuilder;
 import com.deeplake.idealland.entity.projectiles.ProjectileArgs;
-import com.deeplake.idealland.item.ItemAdaptingBase;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

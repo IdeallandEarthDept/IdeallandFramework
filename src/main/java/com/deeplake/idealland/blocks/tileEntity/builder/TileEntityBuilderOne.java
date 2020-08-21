@@ -3,6 +3,7 @@ package com.deeplake.idealland.blocks.tileEntity.builder;
 import com.deeplake.idealland.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.deeplake.idealland.blocks.tileEntity.builder.builderAction.BuilderActionBlock;
 import com.deeplake.idealland.blocks.ModBlocks;
+import net.minecraft.init.Blocks;
 
 import java.util.Vector;
 
@@ -13,7 +14,7 @@ public class TileEntityBuilderOne extends TileEntityBuilderBase {
 		list = new Vector<BuilderActionBase>();
 		for (int x = -radius; x <= radius; x++)
 			for (int z = -radius; z <= radius; z++) {
-				list.add(new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, x,-1,z));
+				list.add(new BuilderActionBlock(Blocks.BRICK_BLOCK, x,-1,z));
 			}
 	}
 

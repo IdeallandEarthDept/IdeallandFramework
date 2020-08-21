@@ -30,7 +30,7 @@ public class SaiSwordAnchorSet extends IForgeRegistryEntry.Impl<IRecipe> impleme
 				if(stack.getItem() == ModItems.ITEM_SAI_SWORD)
 				{
 					if (foundGoblet) {
-						//Idealland.Log("Found more than one goblet item");
+						//IdlFramework.Log("Found more than one goblet item");
 						return false;//only one goblwt at a time
 					}
 					foundGoblet = true;

@@ -1,15 +1,11 @@
 package com.deeplake.idealland.item.misc;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.IGuaEnhance;
-import com.deeplake.idealland.item.ItemBase;
 import com.deeplake.idealland.item.ItemSwordBase;
-import com.deeplake.idealland.item.skills.ItemSkillBase;
 import com.deeplake.idealland.util.IDLGeneral;
 import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.Reference;
 import com.google.common.collect.Multimap;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -20,7 +16,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;

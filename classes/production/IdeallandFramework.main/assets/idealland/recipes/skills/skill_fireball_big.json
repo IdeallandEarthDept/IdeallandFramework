@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "5O5",
+        "OSO",
+        "5O5"
+    ],
+    
+    "key":
+    {
+        "5":
+        {
+            "item": "idealland:gua_5"
+        },
+        "O":
+        {
+            "item": "idealland:matter_original"
+        },
+        "S":
+        {
+            "item": "idealland:skill_fireball"
+        }
+        
+    },
+    
+    "result":
+    {
+        "item": "idealland:skill_fireball_big",
+        "count": 1
+    }
+}

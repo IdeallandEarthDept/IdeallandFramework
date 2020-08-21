@@ -1,6 +1,6 @@
 package com.deeplake.idealland.gui;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.gui.expOne.ContainerDemo;
 import com.deeplake.idealland.gui.expOne.GuiContainerDemo;
 import com.deeplake.idealland.gui.research.ContainerResearch;
@@ -21,7 +21,7 @@ public class ModGuiElementLoader implements IGuiHandler {
 
     public ModGuiElementLoader()
     {
-        NetworkRegistry.INSTANCE.registerGuiHandler(Idealland.instance, this);
+        NetworkRegistry.INSTANCE.registerGuiHandler(IdlFramework.instance, this);
     }
 
     @Nullable

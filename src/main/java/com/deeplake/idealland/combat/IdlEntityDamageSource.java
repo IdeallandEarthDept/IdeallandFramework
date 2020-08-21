@@ -1,6 +1,6 @@
 package com.deeplake.idealland.combat;
 
-import com.deeplake.idealland.Idealland;
+import com.deeplake.idealland.IdlFramework;
 import net.minecraft.util.DamageSource;
 
 import static com.deeplake.idealland.util.CommonDef.GUA_TYPES;
@@ -20,7 +20,7 @@ public class IdlEntityDamageSource extends DamageSource {
         }
         else {
             //out of range
-            Idealland.LogWarning("Trying to access invalid gua type:" + index);
+            IdlFramework.LogWarning("Trying to access invalid gua type:" + index);
         }
         return this;
     }
@@ -30,7 +30,7 @@ public class IdlEntityDamageSource extends DamageSource {
         if (index < 0 || index >= GUA_TYPES)
         {
             //out of range
-            Idealland.LogWarning("Trying to access invalid gua type:" + index);
+            IdlFramework.LogWarning("Trying to access invalid gua type:" + index);
             return false;
         }
 

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BDB"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "idealland:grid_normal"
+        },
+        "D":
+        {
+            "item": "idealland:yin_sign"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:idealland_extraction_door",
+        "count": 2
+    }
+}
