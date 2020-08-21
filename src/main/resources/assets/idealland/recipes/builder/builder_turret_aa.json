@@ -1,0 +1,36 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "SOS",
+        "S7S",
+        " I "
+    ],
+    
+    "key":
+    {
+        "O":
+        {
+            "item": "idealland:idl_order_1"
+        },
+        "7":
+        {
+            "item": "idealland:gua_7"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "S":
+        {
+            "item": "idealland:grid_normal"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:build_turret_aa",
+        "count": 1
+    }
+}

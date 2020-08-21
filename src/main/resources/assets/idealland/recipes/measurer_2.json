@@ -1,0 +1,56 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "650",
+        "1C3",
+        "427"
+    ],
+    
+    "key":
+    {
+        "1":
+    {
+        "item": "idealland:gua_1"
+    },
+        "0":
+        {
+            "item": "idealland:gua_0"
+        },
+        "2":
+        {
+            "item": "idealland:gua_2"
+        },
+        "3":
+        {
+            "item": "idealland:gua_3"
+        },
+        "4":
+        {
+            "item": "idealland:gua_4"
+        },
+        "5":
+        {
+            "item": "idealland:gua_5"
+        },
+        "6":
+        {
+            "item": "idealland:gua_6"
+        },
+        "7":
+        {
+            "item": "idealland:gua_7"
+        },
+        "C":
+        {
+            "item": "idealland:disturb_measure"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:disturb_measure_2",
+        "count": 1
+    }
+}

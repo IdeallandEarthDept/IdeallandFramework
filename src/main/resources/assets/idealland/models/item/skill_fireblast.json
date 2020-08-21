@@ -1,0 +1,5 @@
+{    "parent": "idealland:item/skill_base",
+  "textures": {
+    "layer1":"idealland:items/skill/skill_fire_blast"
+  }
+}

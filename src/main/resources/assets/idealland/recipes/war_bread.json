@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "idealland:war_bread"
+    },
+    "ingredients": [
+        [
+            { "item": "idealland:moroon_fragment" }
+        ],
+        [
+            { "item": "minecraft:bread" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

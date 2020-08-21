@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "F",
+        "S"
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "item": "minecraft:stick"
+        },
+        "F":
+        {
+            "item": "idealland:gua_5"
+        }
+    },
+    
+    "result":
+    {
+        "item": "minecraft:torch",
+        "count": 1
+    }
+}

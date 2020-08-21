@@ -1,0 +1,29 @@
+{
+    "result": {
+        "item": "minecraft:redstone"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:glowstone_dust" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ],
+        [
+            { "item": "idealland:gua_7" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

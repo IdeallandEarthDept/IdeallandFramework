@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "half=true,open=false,powered=false": { "model": "idealland:idealland_extraction_door_closed", "x": 0, "y": 0 },
+		"half=true,open=true,powered=false": { "model": "idealland:idealland_extraction_door_closed", "x": 0, "y": 0 },
+        "half=true,powered=true,open=false": { "model": "idealland:idealland_extraction_door_opened_top", "x": 0, "y": 0 },
+		"half=true,powered=true,open=true": { "model": "idealland:idealland_extraction_door_opened_top", "x": 0, "y": 0 },
+		"half=false,powered=false,open=false": { "model": "idealland:idealland_extraction_door_closed", "x": 0, "y": 0 },
+        "half=false,powered=false,open=true": { "model": "idealland:idealland_extraction_door_opened_top", "x": 180, "y": 0 },
+		"half=false,powered=true,open=false": { "model": "idealland:idealland_extraction_door_closed", "x": 0, "y": 0 },
+        "half=false,powered=true,open=true": { "model": "idealland:idealland_extraction_door_opened_top", "x": 180, "y": 0 },
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BE"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:bread"
+        },
+        "E":
+        {
+            "item": "minecraft:book"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:memory_bread",
+        "count": 1
+    }
+}

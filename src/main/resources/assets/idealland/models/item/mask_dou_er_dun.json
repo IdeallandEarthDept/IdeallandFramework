@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0":"idealland:items/misc/mask_dou_er_dun"
+    }
+}

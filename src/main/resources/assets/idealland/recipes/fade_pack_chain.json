@@ -1,0 +1,14 @@
+{
+    "result": {
+        "item": "idealland:package_fade_armor_chain"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:iron_ingot" }
+        ],
+        [
+            { "item": "idealland:gua_6" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

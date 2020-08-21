@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "B",
+        "I",
+        "B"
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "B":
+        {
+            "item": "idealland:paper_blood"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:blood_iron_ingot",
+        "count": 1
+    }
+}

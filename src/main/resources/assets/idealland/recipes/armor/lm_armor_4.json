@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "I I",
+        "I I"
+    ],
+    
+    "key":
+    {
+        "I":
+        {
+            "item": "idealland:bio_bronze_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:l_m_armor_4",
+        "count": 1
+    }
+}

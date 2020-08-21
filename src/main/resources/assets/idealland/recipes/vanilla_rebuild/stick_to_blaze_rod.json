@@ -1,0 +1,35 @@
+{
+    "result": {
+        "item": "minecraft:blaze_rod"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:stick" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

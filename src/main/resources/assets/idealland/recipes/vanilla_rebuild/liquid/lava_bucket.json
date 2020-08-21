@@ -1,0 +1,35 @@
+{
+    "result": {
+        "item": "minecraft:lava_bucket"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:bucket" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ],
+        [
+            { "item": "idealland:gua_5" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

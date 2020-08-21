@@ -1,0 +1,44 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " A ",
+        "DNI",
+        "RCR"
+    ],
+    
+    "key":
+    {
+        "A":
+        {
+            "item": "minecraft:crafting_table"
+        },
+        "D":
+        {
+            "item": "minecraft:diamond"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "N":
+        {
+            "item": "idealland:nano_mender_experimental"
+        },
+        "R":
+        {
+            "item": "minecraft:redstone"
+        },
+        "C":
+        {
+            "item": "minecraft:comparator"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:nano_mender_basic",
+        "count": 2
+    }
+}

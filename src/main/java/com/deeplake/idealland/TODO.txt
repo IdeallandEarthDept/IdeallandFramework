@@ -1,0 +1,15 @@
+plans:
+buff:
+[shield A]: absorbs damage. for each damage absorbed, -1s.
+[shield B]: (Darker Protection) absorbs damage, revenges attacker, try create explosion
+[Explosion Proof]
+[Arrow Proof]* only arrows, or other bullets
+[melee proof]
+[nullified/phased]deal and receive no melee damage
+
+[void touch]all damage is void damage.
+
+[Berserk]Damage dealt and receive is increaed by Lv * 10%
+--crtical
+[Crit% Up/Down]
+[Crit% Dmg Up/Down]

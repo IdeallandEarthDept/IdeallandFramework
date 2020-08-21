@@ -1,0 +1,33 @@
+{
+    "result": {
+        "item": "minecraft:gold_ore"
+    },
+    "ingredients": [
+        [
+            { "item": "minecraft:gold_ingot" }
+        ],
+        [
+            { "item": "minecraft:stone" ,
+            "data" :  0}
+        ],
+        [
+            { "item": "idealland:gua_4" }
+        ],
+        [
+            { "item": "idealland:gua_4" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ],
+        [
+            { "item": "idealland:gua_0" }
+        ]
+    ],
+    "type": "forge:ore_shapeless"
+}

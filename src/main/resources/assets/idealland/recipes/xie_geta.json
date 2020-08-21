@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "WWW",
+        "0 0"
+    ],
+    
+    "key":
+    {
+        "W":
+        {
+            "item": "minecraft:stick"
+        },
+        "0":
+        {
+            "item": "idealland:yin_sign"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:xie_geta",
+        "count": 1
+    }
+}

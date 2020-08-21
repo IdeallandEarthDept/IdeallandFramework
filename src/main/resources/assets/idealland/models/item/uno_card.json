@@ -1,0 +1,10 @@
+{
+    "parent": "item/generated",
+
+    "overrides": [
+        { "predicate": { "card_suit": 0.000000 }, "model": "idealland:item/uno_0" },
+        { "predicate": { "card_suit": 1.000000 }, "model": "idealland:item/uno_1" },
+        { "predicate": { "card_suit": 2.000000 }, "model": "idealland:item/uno_2" },
+        { "predicate": { "card_suit": 3.000000 }, "model": "idealland:item/uno_3" }
+    ]
+}

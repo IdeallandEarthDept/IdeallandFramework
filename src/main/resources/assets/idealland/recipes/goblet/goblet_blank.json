@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "G G",
+        " G ",
+        "GGG"
+    ],
+    
+    "key":
+    {
+        "G":
+        {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:goblet_blank",
+        "count": 1
+    }
+}

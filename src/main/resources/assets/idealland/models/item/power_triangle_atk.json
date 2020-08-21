@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0":"dweapon:items/sword/power_triangle_atk"
+    }
+}

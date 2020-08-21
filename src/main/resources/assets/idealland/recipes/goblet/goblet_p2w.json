@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "0 0",
+        "0B0",
+        "0 0"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "idealland:goblet_blank"
+        },
+        "0":
+        {
+            "item": "idealland:yin_sign"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:p2w_goblet",
+        "count": 1
+    }
+}

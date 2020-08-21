@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BBB",
+        "BDB",
+        "BBB"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:cobblestone"
+        },
+        "D":
+        {
+            "item": "idealland:yang_sign"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:grid_normal",
+        "count": 8
+    }
+}

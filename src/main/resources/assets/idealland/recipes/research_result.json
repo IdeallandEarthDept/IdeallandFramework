@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "BBB",
+        "BOB",
+        "BBB"
+    ],
+    
+    "key":
+    {
+        "B":
+        {
+            "item": "minecraft:bookshelf"
+        },
+        "O":
+        {
+            "item": "idealland:matter_original"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:research_result",
+        "count": 1
+    }
+}

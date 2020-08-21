@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " RS",
+        "PS ",
+        "S  "
+    ],
+    
+    "key":
+    {
+        "P":
+        {
+            "item": "minecraft:dye",
+            "data": 9
+        },
+        "R":
+        {
+            "item": "minecraft:dye",
+            "data": 1
+        },
+        "S":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "idealland:yi_jian_mei",
+        "count": 1
+    }
+}
