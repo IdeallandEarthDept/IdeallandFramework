@@ -13,14 +13,10 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.lwjgl.Sys;
 
 public class InitBiome {
-    public  static  final Biome BIOME_CUBE = new BiomeBlank("hex_cube");
     public  static  final Biome BIOME_ONE = new BiomeOne();
-    public  static  final Biome BIOME_FOR_DIM_ONE = new BiomeForDimOne();
     public static void registerBiomes()
     {
-        initBiome(BIOME_CUBE,"biome_hex_cube_reg", BiomeManager.BiomeType.COOL);
         initBiome(BIOME_ONE, "biome_one", BiomeManager.BiomeType.WARM, Type.HILLS, Type.DENSE);
-        initBiome(BIOME_FOR_DIM_ONE, "biome_for_dim_one", BiomeManager.BiomeType.WARM, Type.SPOOKY, Type.DENSE);
     }
 
     public static Biome initBiome(Biome biome, String name, BiomeManager.BiomeType biomeType, Type... type)

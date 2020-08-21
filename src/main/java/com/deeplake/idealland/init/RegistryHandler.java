@@ -81,13 +81,11 @@ public class RegistryHandler {
 		InitDimension.registerDimensions();
 
 		ModEntityInit.registerEntities();
-		//ConfigHandler.registerConfig(event);
 	}
 
 	public static void postInitReg()
 	{
-		WorldType TYPE_ONE = new WorldTypeOne();
-		WorldType TYPE_TWO = new WorldTypeCustom("TYPE_TWO");
+		//WorldType TYPE_ONE = new WorldTypeOne();
 	}
 
 	public static void initRegistries(FMLInitializationEvent event)

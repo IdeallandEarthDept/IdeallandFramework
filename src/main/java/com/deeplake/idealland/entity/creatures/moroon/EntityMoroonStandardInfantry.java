@@ -1,8 +1,6 @@
 package com.deeplake.idealland.entity.creatures.moroon;
 
-import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.entity.creatures.ai.EntityAIStrafeRangedAttack;
-import com.deeplake.idealland.entity.projectiles.EntityMoroonBullet;
 import com.deeplake.idealland.entity.projectiles.ProjectileArgs;
 import com.deeplake.idealland.item.ModItems;
 import com.deeplake.idealland.util.CommonFunctions;
@@ -13,7 +11,6 @@ import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;

@@ -1,6 +1,5 @@
 package com.deeplake.idealland.util;
 
-import com.deeplake.idealland.enchantments.ModEnchantmentLover;
 import com.deeplake.idealland.entity.creatures.EntityModUnit;
 import com.deeplake.idealland.meta.MetaUtil;
 import com.google.common.base.Predicate;

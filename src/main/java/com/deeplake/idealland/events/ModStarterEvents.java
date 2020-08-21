@@ -1,4 +1,4 @@
-package com.deeplake.idealland.init;
+package com.deeplake.idealland.events;
 
 import com.deeplake.idealland.Idealland;
 import com.deeplake.idealland.item.ModItems;
