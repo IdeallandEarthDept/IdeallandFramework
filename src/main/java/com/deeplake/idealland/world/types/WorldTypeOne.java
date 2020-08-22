@@ -21,8 +21,9 @@ public class WorldTypeOne extends WorldType {
         super("TYPE_ONE");
     }
 
-    @Override
-    public BiomeProvider getBiomeProvider(World world) {
-        return new BiomeProviderSingle(InitBiome.BIOME_ONE);
-    }
+//    @Override
+//    public BiomeProvider getBiomeProvider(World world) {
+//
+//        return new BiomeProviderSingle(InitBiome.BIOME_ONE);
+//    }
 }

@@ -19,6 +19,8 @@ import java.util.Random;
 
 public class ModWorldGenNew implements IWorldGenerator {
 
+	//Please register this in preInitRegistries
+
 	private WorldGenerator testGen1, testGen2;
 
 	public ModWorldGenNew() {

@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class ModWorldGenOld implements IWorldGenerator {
 
+	//Please register this in preInitRegistries
+
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {

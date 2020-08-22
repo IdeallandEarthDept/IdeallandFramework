@@ -1,8 +1,0 @@
-{
-    "parent": "item/generated",
-    
-    "overrides": [
-        { "predicate": { "state": 0.000000 }, "model": "idealland:item/skill_hate_detect_0" },
-        { "predicate": { "state": 1.000000 }, "model": "idealland:item/skill_hate_detect_1" }
-    ]
-}

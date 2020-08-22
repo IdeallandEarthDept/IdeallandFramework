@@ -74,8 +74,8 @@ public class RegistryHandler {
 
 	public static void preInitRegistries(FMLPreInitializationEvent event)
 	{
-		GameRegistry.registerWorldGenerator(new ModWorldGenOld(), 100);
-		GameRegistry.registerWorldGenerator(new ModWorldGenNew(), 120);
+		//GameRegistry.registerWorldGenerator(new ModWorldGenOld(), 100);
+		//GameRegistry.registerWorldGenerator(new ModWorldGenNew(), 120);
 
 		InitBiome.registerBiomes();
 		InitDimension.registerDimensions();

@@ -10,10 +10,10 @@ import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class InitBiome {
-    public  static  final Biome BIOME_ONE = new BiomeOne();
+    //public  static  final Biome BIOME_ONE = new BiomeOne();
     public static void registerBiomes()
     {
-        initBiome(BIOME_ONE, "biome_one", BiomeManager.BiomeType.WARM, Type.HILLS, Type.DENSE);
+        //initBiome(BIOME_ONE, "biome_one", BiomeManager.BiomeType.WARM, Type.HILLS, Type.DENSE);
     }
 
     public static Biome initBiome(Biome biome, String name, BiomeManager.BiomeType biomeType, Type... type)
