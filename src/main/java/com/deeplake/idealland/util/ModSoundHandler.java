@@ -12,8 +12,8 @@ public class ModSoundHandler {
 
     public static void  registerSounds()
     {
-        SOUND_1 = registerSound("entity.moroon.ambient");
-        SOUND_2 = registerSound("entity.moroon.hurt");
+        //SOUND_1 = registerSound("entity.moroon.ambient");
+        //SOUND_2 = registerSound("entity.moroon.hurt");
 //        SOUND_3 = registerSound("entity.moroon.ambient3");
     }
 
