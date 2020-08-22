@@ -5,6 +5,7 @@ import com.deeplake.idealland.world.dimension.hexcube.structure.*;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +14,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.common.BiomeManager;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -266,7 +268,8 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
         for (int i = 0; i < abyte.length; ++i)
         {
-            abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_ONE);
+            abyte[i] = (byte)Biome.getIdForBiome(Biomes.EXTREME_HILLS);
+            //abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_ONE);
         }
 
         chunk.resetRelightChecks();

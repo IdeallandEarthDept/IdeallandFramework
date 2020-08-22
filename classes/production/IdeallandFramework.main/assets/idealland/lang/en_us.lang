@@ -1,10 +1,6 @@
 #PARSE_ESCAPES
 #tabs
 itemGroup.ideallandMiscTab=IDL Hall
-itemGroup.ideallandFurnitureTab=IDL Furniture Department
-itemGroup.ideallandBuilderTab=IDL Construction Department
-itemGroup.ideallandSkillsTab=IDL Skill Department
-itemGroup.ideallandFadeTab=IDL Fading Department
 
 generator.TYPE_ONE=Type One;
 generator.TYPE_TWO=Type Two;
@@ -12,154 +8,26 @@ generator.TYPE_TWO=Type Two;
 #config
 configgui.idealland.category.Menu0.GeneralConf=General Config
 idealland.conf.general.welcome=Welcome Message Key
-idealland.conf.general.skill_rate=Moroon Skill Drop Rate
-idealland.conf.general.edict_craftable=Edict Craftable
-
-configgui.idealland.category.Menu0.PerformanceConf=Performance Config
-idealland.conf.performance.builder=Simplify Clientside Builder
-
-configgui.idealland.category.Menu0.CurseConf=Revive Curse Config
-idealland.conf.revive_curse.enabled=Revive Curse Active
-idealland.conf.revive_curse.avengeful=Revive Creature Avengeful
-idealland.conf.revive_curse.child_threshold=Revive as child health cap
-idealland.conf.revive_curse.revive_blacklist=Blacklist
-
-configgui.idealland.category.Menu0.HitConf=One-Hit Curse Config
-idealland.conf.one_hit_curse.enabled=Curse Active
-
-configgui.idealland.category.Menu0.SpawnConf=Spawn Config
-
-conf.tainter_req_buff=Tainter only spawn when noticed
-conf.spawn.enabled=Spawn Moroon Creatures
-conf.kill_norm_increase_chance=Kill Notice Chance
-conf.invasion_length=Moroon Invasion Length
-conf.invasion_period=Moroon Invasion Period
-conf.invasion_period_forcast_threshold=Invasion Forecast Threshold
-conf.tainter_buff_spawn_range=Tainter Spawn Range
 
 #Enchantments
 enchantment.idealland.test_enchantment=Early Access
-enchantment.idealland.anti_vanilla=Otherworldly Invader
-enchantment.idealland.anti_mod=Wrath of Vanilla
-enchantment.idealland.lover=Romeo & Juliet
-enchantment.idealland.anti_aoa=Advance of Ascension
-enchantment.idealland.anti_gog=Grimless of Kratos
-enchantment.idealland.poison_touch=Poision Imbue
-enchantment.idealland.death_bringer=Sudden Demise
-enchantment.idealland.anti_vanilla_protection=Otherworldly Protection
-enchantment.idealland.anti_mod_protection=Shelter of Vanilla
-enchantment.idealland.anti_magic_protection=Magic Resistance
-enchantment.idealland.water_form=Form of Water
-enchantment.idealland.fire_form=Forged in Fire
-enchantment.idealland.armor_pierce=Armor Piercing
-
 
 #Messages
-idealland.mor_kill_count_notify=Statistics show that you have eliminated %d Moroon units.
-idealland.kill_count_herald=[IDL] The Moroon are interested in your fights.
-
-idealland.moroon_incoming=[IDL] IN COMING! Moroon around you, stay alarmed.
 idealland.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
 idealland.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
-
-idealland.msg.being_targeted=[IDL][Warn] You are being targeted.
-idealland.msg.being_targeted_by_sniper=[IDL][Warn] SNIPER targeting you.
-
-idealland.msg.boss_revive=>>YOU CAN NOT KILL ME! I AM THE INCARNATION OF LIFE ITSELF! <<
-idealland.msg.boss_revive_2=[IDL][Warn] %s supporting creatures nearby. Remove them before you kill the boss.
-
-idealland.msg.radar_nearbycreatures=[IDL]%s x %s detected.
-idealland.msg.starter_kit_given=[IDL] A starter kit has been given to you.
-idealland.msg.welcome=[IDL] The White Tower Illuminates you.
-
-idealland.msg.low_dura=[%s] I'm breaking.
-
-idealland.msg.until_death=Until Death: %s <3 %s
-
-idealland.msg.produce_complete=[IDL] Production complete: [%s-%s] %s
-idealland.msg.research_complete=[IDL] Research complete: [%s-%s]
-
-idealland.msg.upgrade_module.ok=[IDL] Attribute upgraded. %s -> %s
-idealland.msg.upgrade_module.req_lv=[IDL] Requires your XP level: %s
-
-idealland.msg.dim_id_invalid=[IDL] We failed to found world with id: "%s".
 
 #Potions
 idealland.potion.deadly=Deadly
 idealland.potion.zen_heart=Countless Virtue
-idealland.potion.virus_one=Virus One
-idealland.potion.undying=Undying
-idealland.potion.magic_resist=Magic Resistance
-idealland.potion.blast_resist=Explotion Resitance
-idealland.potion.knockback_resist=Knockback Resistance
-idealland.potion.rest_in_peace=Rest In Peace
-idealland.potion.erosion=Erosion
-idealland.potion.invincible=Invincible
-idealland.potion.interference=E.M.P.
-idealland.potion.noticed_by_mor=Noticed
-idealland.potion.crit_chance_plus=Crit Rate +
-idealland.potion.crit_chance_minus=Crit Rate -
-idealland.potion.crit_dmg_plus=Crit Dmg +
-idealland.potion.crit_dmg_minus=Crit Dmg -
-idealland.potion.berserk=Berserk
-
 
 
 #Entities
-entity.skeleton_tower.name=Skeleton Watchtower
-entity.hired_skeleton.name=Hired Skeleton
 entity.moroon_tainter.name=Moroon Pathfinder
-entity.moroon_tide_maker.name=M. Tide-Maker
-entity.moroon_orbital_beacon.name=M.O.B. (Moroon Orbital Beacon)
-entity.moroon_bastion_walker.name=M. Bastion Walker
-entity.moroon_flick_fighter.name=M. Flicker Fighter
-entity.moroon_blinding_assassin.name=M. Blinding Assassin
-entity.moroon_sniper.name=M. Shadow Archer
-entity.moroon_martialist.name=Moroon Martialist
-entity.moroon_boss_avatar_of_life.name=M. Avatar of Life
-entity.moroon_vampire.name=M. Nightwing Alpha
-entity.moroon_mind_mage.name=M. Mind Mage
-entity.moroon_standard_infantry.name=Moroon Standard Infantry
-entity.eternal_soldier.name=Eternal
-entity.elk_33.name=Elk
-
-entity.idealland_whitetower_core.name=IDL White Tower Core
-entity.idealland_electric_interferer.name=IDL EMP Site
-entity.idealland_builder_base.name=IDL Test builder
-entity.idealland_builder_test_2.name=IDL Test builder 2
-entity.idealland_turret_prototype.name=IDL Prototype Turret
-entity.idealland_turret_aa.name=IDL Anti-Air Turret
-entity.idealland_radar_air.name=IDL Anti-Air Radar
-
-entity.idealland_builder_xp_well.name=IDL XP Well (Building)
-entity.idealland_xp_well.name=IDL XP Well
 
 #Blocks
 tile.idealland_light_basic.name=Idealland Lamp
-tile.idealland_extraction_door.name=Idealland Gate
-
-tile.nullify_orb.name=Idealland Hexproof Orb
-tile.nullify_orb_mor.name=Idealland Hexproof Orb[Moroon Enhanced]
-tile.de_boom_orb.name=Idealland Blastproof Orb
-tile.de_arrow_orb.name=Idealland De-Arrow Orb
-tile.de_water_orb.name=Idealland Dehydration Orb
-tile.earth_mender_basic.name=Idealland EarthMender
-
 
 tile.test.name=Idealland Block A
-tile.grid_dark_2.name=Idealland Block B
-tile.grid_lamp.name=Idealland Grid Lamp
-tile.grid_normal.name=Idealland Grid
-tile.construction_site.name=Idealland Construction Site
-tile.builder_one.name=I.D.L. Builder: One
-tile.builder_house.name=I.D.L. Builder: House
-tile.builder_farm.name=I.D.L. Builder: Farm
-tile.builder_farm_sin.name=S.I.N. Builder: Wheat Farm(Grown)
-tile.fence_brick.name=Brick Wall Builder
-
-tile.moroon_block.name=Moroon Block
-
-tile.idl_glass.name=IDL Glass
 
 #Items
 idealland.food.shared.xp_desc=Grants XP: %d
@@ -171,240 +39,13 @@ idealland.shared.press_shift=Hold SHIFT to examine info.
 
 fading.duration.desc=Vanishes after %d seconds
 
-item.gua_0.name=Zero (Earth)
-item.gua_0.desc=Earth power. Made from yin signs.
-item.gua_1.name=One (Thunder)
-item.gua_1.desc=Thunder power. Made from yin signs & yang signs.
-item.gua_2.name=Two (Water)
-item.gua_2.desc=Water power. Made from yin signs & yang signs.
-item.gua_3.name=Three (Lake)
-item.gua_3.desc=Lake/Happiness power. Made from yin signs & yang signs.
-item.gua_4.name=Four (Mountain)
-item.gua_4.desc=Mountain power. Made from yin signs & yang signs.
-item.gua_5.name=Five (Fire)
-item.gua_5.desc=Fire power. Made from yin signs & yang signs.
-item.gua_6.name=Six (Wind)
-item.gua_6.desc=Wind power. Made from yin signs & yang signs.
-item.gua_7.name=Seven (Sky)
-item.gua_7.desc=Sky power. Made from yang signs.
-
 item.debug_test.name=Debug Item
 item.debug_test.desc=For debuging. Not for playing.
-
-item.debug_test_2.name=Debug Item
-item.debug_test_2.desc=For debuging. Not for playing.
 
 item.xie_geta.name=Geta of Mr.Xie
 item.xie_geta.desc.0=Uphill mode. Grants Lv.%s Jump Boost.
 item.xie_geta.desc.1=Flat ground mode. Grants Lv.%s Speed.
 item.xie_geta.desc.2=Down hill mode. Reduces %s fall damage.
-
-item.underfoot_geta.name=Geta Underfoot
-item.underfoot_geta.desc=Removes a debuff and a buff per %s sec. Fire damage taken x%s.
-
-item.summon_eternal.name=Summon Eternal
-item.summon_eternal.desc=Summons a zombie in diamond-suit, with diamond sword. For debug uses.
-
-item.uno_card.name=Uno Card
-item.uno_card.desc=Attacking a creature with same-color-card deal %.1f damage,\ndifferent color will backfire %.1f damage and draw a card.\n Attacking a creature empty handed will give it a card.
-
-item.level_up_badge.name=Level Up Badge
-item.level_up_badge.desc=Level ups an Moroon or Idealland Unit.
-
-item.yin_sign.name=Yin (0)
-item.yin_sign.desc=Dark power. Get 3 to craft the eight elements.
-item.yang_sign.name=Yang (1)
-item.yang_sign.desc=Light power. Get 3 to craft the eight elements.
-
-item.water_caster.name=Water Manifestion
-item.water_caster.desc=Spent Two(Water) element to place water.
-item.water_caster.msg.no_ammo=You need an item called Two(Water) to place water.
-
-item.water_extractor.name=Water Abstraction
-item.water_extractor.desc=Convert water to Two(Water) element.
-
-item.helmet_sniper.name=Moroon Sniper Helmet
-item.helmet_sniper.desc=+25%% Crit Chance, +50%% Crit Damage when sneaking.\nOn non-player-creature: +100%% Projectile crit chance when sneaking, +8 Follow Range.
-
-item.matter_original.name=Matter Original
-item.matter_original.desc=The original matter.
-
-item.paper_blood.name=Blood Tainted Paper
-item.paper_blood.desc=Hit creature with paper to get this.
-
-item.blood_iron_ingot.name=Blood Iron Ingot
-item.blood_iron_ingot.desc=Something's not right with this ingot.
-
-item.kinship_sword.name=Kin-Kill Sword
-item.kinship_sword.desc=Will also inflict 50%% damage to nearby creatures of the same type.
-
-item.memory_bread.name=Bread of Lore
-item.memory_bread.desc=Learned this craft from some other world.
-
-item.war_bread.name=Bread of War
-item.war_bread.desc=Eating this will cause Moroon invasion.
-
-item.moroon_fragment.name=Moroon Fragment
-item.moroon_fragment.desc=Moroon loot.
-
-item.moroon_ingot.name=Moroon Ingot
-item.moroon_ingot.desc=For repairing and crafting moroon gears.
-
-item.bio_bronze_ingot.name=Bio Bronze Ingot
-item.bio_bronze_ingot.desc=Elementary Idealland bio metal. Can be used to make living metal gears.
-
-item.nano_mender_experimental.name=Nano Mender
-item.nano_mender_experimental.desc=Automatically repairs your armor and items in hand.\nExperimental version, very low durability.
-
-item.nano_mender_basic.name=Nano Mender (II)
-item.nano_mender_basic.desc=Automatically repairs your armor and items in hand.
-
-item.nano_mender_greater.name=Nano Mender (V)
-item.nano_mender_greater.desc=Automatically repairs your armor and items in hand. Contains 1024 durability points.
-
-item.emp_site.name=Build Interference Device
-item.emp_site.desc=Build a EMP Device here that suppresses Moroon beacons.
-
-item.build_xp_well.name=Build XP Well
-item.build_xp_well.desc=Build a 5x5x5 well that can be regularly harvested for experience. Interact the core to harvest.
-
-item.build_turret.name=Build Turret
-item.build_turret.desc=Build a basic turret.
-
-item.build_turret_aa.name=Build Anti-Air Turret
-item.build_turret_aa.desc=Build a turret that will fire at airbourne enemies. (It won't attack ground targets)
-
-item.build_radar_aa.name=Build Anti-Air Radar
-item.build_radar_aa.desc=Build a radar
-
-item.ethereal_sword.name=Ethereal Sword
-item.ethereal_sword.desc=Extra high enchantability. Damage and durability increases with the enchantments on it.
-
-item.smash_shield.name=Smash Shield[WIP]
-item.smash_shield.desc=Works as a weapon and a shield.
-
-item.healing_gun.name=Healing Sprayer
-item.healing_gun.desc=Heals nearby friendly non-mechanical creatures.
-
-item.antenna.name=Moroon Antenna
-item.antenna.desc=Can be used to build Interference Device.
-
-item.disturb_measure.name=Disturb Meter
-item.disturb_measure.desc=Charged when mod creatures hurt vanilla creatures. \nFilled: %d/%d
-
-item.disturb_measure_2.name=Disturb Meter II
-item.disturb_measure_2.desc=Charged when mod creatures hurt vanilla creatures. \nFilled: %d/%d
-
-item.research_result.name=Ten Thousand Books Read
-item.research_result.desc=Unravel to see what you get.
-
-item.fade_chain_1.name=Chainmail Helmet(Illusionary)
-item.fade_chain_2.name=Chainmail Chestplace(Illusionary)
-item.fade_chain_3.name=Chainmail Leggings(Illusionary)
-item.fade_chain_4.name=Chainmail Boots(Illusionary)
-
-item.fade_diamond_1.name=Diamond Helmet(Illusionary)
-item.fade_diamond_2.name=Diamond Chestplace(Illusionary)
-item.fade_diamond_3.name=Diamond Leggings(Illusionary)
-item.fade_diamond_4.name=Diamond Boots(Illusionary)
-
-item.package_fade_armor_chain.name=Illusionary Armor Set(Chain)
-item.package_fade_armor_chain.desc=Wears a set of make-shift armor that gradually fades.
-
-item.package_fade_armor_diamond.name=Illusionary Armor Set(Diamond)
-item.package_fade_armor_diamond.desc=Wears a set make-shift armor that gradually fades.
-
-#Armor
-item.armor_qsh_1.name=S.I.N. Hat
-item.armor_qsh_1.desc=Armor made from another world.
-
-item.armor_qsh_2.name=S.I.N. Body
-item.armor_qsh_2.desc=Armor made from another world.
-
-item.armor_qsh_3.name=S.I.N. Leggings
-item.armor_qsh_3.desc=Armor made from another world.
-
-item.armor_qsh_4.name=S.I.N. Boots
-item.armor_qsh_4.desc=Armor made from another world.
-
-item.mor_armor_1.name=Moroon Helmet
-item.mor_armor_1.desc=Armor made by moroon.
-
-item.mor_armor_2.name=Moroon Chestplate
-item.mor_armor_2.desc=Armor made by moroon.
-
-item.mor_armor_3.name=Moroon Leggings
-item.mor_armor_3.desc=Armor made by moroon.
-
-item.mor_armor_4.name=Moroon Boots
-item.mor_armor_4.desc=Armor made by moroon.
-
-#Biometal
-
-item.l_m_armor_1.name=Bio-Bronze Head
-item.l_m_armor_1.desc=Biometal regenerates as you heals.
-
-item.l_m_armor_2.name=Bio-Bronze Body
-item.l_m_armor_2.desc=Biometal regenerates as you heals.
-
-item.l_m_armor_3.name=Bio-Bronze Legs
-item.l_m_armor_3.desc=Biometal regenerates as you heals.
-
-item.l_m_armor_4.name=Bio-Bronze Foot
-item.l_m_armor_4.desc=Biometal regenerates as you heals.
-
-
-#Masks
-item.mask_dou_er_dun.name=Mask: Dou Er Dun the Blue Faced
-item.mask_dou_er_dun.desc=He stole an royal horse. Try sneaking.
-
-item.helm_sanity.name=Mind Shield Helmet
-item.helm_sanity.desc=Immune to mind mage distortion.
-
-item.idl_order_1.name=Idealnd Authorization
-item.idl_order_1.desc=Allows you to access T1 Idealland tech.
-
-item.idl_order_2.name=Idealnd Authorization II
-item.idl_order_2.desc=Allows you to access T2 Idealland tech.
-
-#Edicts
-edict.shared.start=My chant is command, my will is truth.
-edict.shared.end=Command issued.
-edict.shared.fail=Command canceled.
-
-item.kill_all_mortal_edict.name=Edict: Superme Verdict
-item.kill_all_mortal_edict.desc=Destroy all non-player creatures. (255x255x255)
-item.kill_all_mortal_edict.on_start=Kill.
-item.kill_all_mortal_edict.on_end=Hereby, you die.
-
-item.build_simple_house_edict.name=Edict: Home Everywhere
-item.build_simple_house_edict.desc=build a basic house.
-item.build_simple_house_edict.on_start=This place is mine.
-item.build_simple_house_edict.on_end=A house will be built.
-
-item.edict_random.name=An Edict Pack
-item.edict_random.desc=Contains a edict.
-item.edict_random.desc_extra=(Not available with current game options.)
-
-#Goblets
-item.goblet_blank.name=Gold Chalice
-item.goblet_blank.desc=Can convert to P.2.W. Chalice.
-
-item.goblet_dig.name=P.2.W. Chalice[Dig Mode]
-item.goblet_dig.desc=Removes nearby stone blocks. Range increases with pay level, max at Lv.5.
-item.goblet_dig.desc2=Also removes : %s  (stuff a block to set it)
-
-item.goblet_heal.name=P.2.W. Chalice[Heal Mode]
-item.goblet_heal.desc=Heals you at the the rate of %d/sec.
-
-item.goblet_flame.name=P.2.W. Chalice[Flame Mode]
-item.goblet_flame.desc=Deals %d fire damage per sec to nearby creatures and ignite them.
-
-item.goblet_wind.name=P.2.W. Chalice[Wind Mode]
-item.goblet_wind.desc=Knockbacks nearby creatures, boosts speed. Sneak to boost jump.
-
-item.goblet_mountain.name=P.2.W. Chalice[Mountain Mode]
-item.goblet_mountain.desc=Boosts KB resistance. Sneak to boost defense.
 
 item.p2w_goblet.name=P.2.W. Chalice
 item.p2w_goblet.desc=Pay gold to increase your power. (Try crafting it with the 8 elements and gold)
@@ -412,165 +53,6 @@ item.p2w_goblet.contain.desc=Containing %d exp.
 item.p2w_goblet.player.desc=Owner power: Lv.%d (%d/%d exp)
 
 #Skills
-item.random_skill.name=Unlearned Skill
-item.random_skill.desc=Right click to learn a skill.
-
-item.skill_base.name=Blank Skill Eightfold
-item.skill_base.desc=Can be crafted into various skills. Note that some skills can't be craftted.
-
-item.skill_merlin_illusion.name=Illusion A
-item.skill_merlin_illusion.desc=(FGO:Merlin)\nIncrease all allies' Critical Rate. (1 turn)\nDecrease all enemies' Critical Rate. (3 turn)\nApply Invincible to all allies. (1 turn)
-
-item.skill_calm_walk.name=Calm Walk
-item.skill_calm_walk.desc=[Passive][In-hand]Prevents damage dealt by or be dealt to you. Grants Slowness and KB Resistance.\n (Damage from other players won't be affected.)
-
-item.skill_sacrifice_2020.name=Sacrifice 2020
-item.skill_sacrifice_2020.desc=Sacrifice yourself to cure nearby players.
-
-item.skill_radar_creature.name=Race Detection[WIP]
-item.skill_radar_creature.desc=Detects nearby creatures of given type. Interact with a creature to set the type.
-item.skill_radar_creature.extra=Scanning: %s
-
-item.skill_hate_detect.name=Hostility Radar
-item.skill_hate_detect.desc=Reports when you are being targeted.
-
-item.skill_hate_detect_sniper.name=Hostility Radar[Sniper]
-item.skill_hate_detect_sniper.desc=Reports when you are being targeted by Moroon Sniper.
-
-item.skill_taunt_nearby.name=Come To Me
-item.skill_taunt_nearby.desc=Taunts all nearby AI creature.
-
-item.skill_thunder_fall.name=Thunder Fall
-item.skill_thunder_fall.desc=[Passive][Main/Off hand] If you are going to take fall damage, prevent it and deal 3x anvil damage to nearby creatures within 5 blocks.
-
-item.skill_all_attack_target.name=Guilty Verdict
-item.skill_all_attack_target.desc=All nearby creatures attacks the target creature.
-
-item.skill_leadership.name=Leadership
-item.skill_leadership.desc=Boosts the attack power of nearby players.
-
-item.skill_windwalk.name=Windwalker
-item.skill_windwalk.desc=Grants speed buff.
-
-item.skill_fireblast.name=Fire Blast
-item.skill_fireblast.desc=Damage nearby creatures and ignite them.
-
-item.skill_fireball.name=Fire Ball
-item.skill_fireball.desc=Launches a fireball.
-
-item.skill_fireball_big.name=Explosive Ball
-item.skill_fireball_big.desc=Launches a explosive fireball that destroys and burns blocks.
-
-item.skill_invincible.name=Invincible Armor
-item.skill_invincible.desc=Gives you Invincible buff.
-
-item.skill_martial1.name=Swift Punch
-item.skill_martial1.desc=Punches the enemy at front.
-
-item.skill_martial_slam.name=Forceful Throw
-item.skill_martial_slam.desc=Strongly knockback the enemy and deal martial damage.
-
-item.skill_fade_armor_chain.name=Summon Illusion Armor(Chain mail)
-item.skill_fade_armor_chain.desc=Wears a set of make-shift armor that gradually fades. Enchantments on this skill will be inherited.
-
-item.skill_fade_armor_diamond.name=Summon Illusion Armor(Diamond)
-item.skill_fade_armor_diamond.desc=Wears a set of make-shift armor that gradually fades. Enchantments on this skill will be inherited.
-
-item.skill_repair_armor.name=Repair Armor
-item.skill_repair_armor.desc=Repairs wearing armor. Also offers enchantment.
-
-item.skill_notice_meter.name=Moroon Intelligence
-item.skill_notice_meter.desc=Guess the current moroon interest value on you. Upgrade to lower error.
-item.skill_notice_meter.desc_2=[Useless with current game options]
-
-item.skill_scry.name=Divination
-item.skill_scry.desc=Gives you two elemental sign.
-
-item.skill_xp_shield.name=Shield of Knowledge[WIP]
-item.skill_xp_shield.desc=[Main/off handed][Passive]Absorbs damage with the cost of %s experience/damage.
-
-item.skill_pride_shield.name=Shield of Pride[WIP]
-item.skill_pride_shield.desc=[Main/off handed][Passive]Whenever damage is dealt to you, prevent that damage if it's no more than your level, double it otherwise.
-
-item.skill_xp_strike.name=Strike of the Learned
-item.skill_xp_strike.desc=Deals damage equals to your level. If target health is lower than your level, that damage bypasses armor.
-
-item.skill_gambit.name=Casino Rush
-item.skill_gambit.desc=50%% chance of doubling off-hand item, 50%% chance of making it disappear.
-
-item.skill_elk_transform.name=Elk Transform[WIP]
-item.skill_elk_transform.desc=/+1\:Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.
-
-item.skill_sheep_transform.name=Sheep Transform
-item.skill_sheep_transform.desc=Transform a non-player creature into a sheep. This is permanent and cannot be undone.
-
-item.skill_mirrorwork.name=Mirror Workshop
-item.skill_mirrorwork.desc=Duplicates the the items in your offhand. You become overheated,
-
-item.skill_decode_item.name=Decode Item
-item.skill_decode_item.desc=Transmutes the item in your offhand for xp. Careful.
-item.skill_decode_item.desc.extra=EXP per item: %.1f
-
-item.skill_clone_egg.name=Nega Hatchery
-item.skill_clone_egg.desc=Interact with a creature to creates a spawn egg for it.
-
-item.skill_clone_block.name=Structrual Cloner
-item.skill_clone_block.desc=Interact with a block to get one copy of it as an item like in creative.
-
-item.skill_gua_palm.name=Elemental Palm
-item.skill_gua_palm.desc=  Reduce damage taken by %d%% in mainhand;\n  Deal shock damage %d;\n  Inflict Weakness Lv.%d (%d s);\n  Knockback Lv.%d;\n  Inflicts Slowness Lv.%d (%d s);\n  Inflict fire damage %d and burn (%d s);\n  Heal you and target %d life.
-
-item.skill_mod_list_strike.name=Strike of Modders
-item.skill_mod_list_strike.desc=Deal damage equal to the number of mods installed. (Current: %d)
-
-item.skill_cd_cut_percent.name=Time Rush Alpha
-item.skill_cd_cut_percent.desc=Reduce the cooldown of offhand item by %.1f%%.
-
-item.skill_cd_cut_fixed.name=Time Rush Beta
-item.skill_cd_cut_fixed.desc=Speeds up the cooldown of offhand item by %.1f sec.
-
-item.yi_jian_mei.name=Yi Jian Mei
-item.yi_jian_mei.desc=Xue hua piao piao, bei feng xiao xiao~
-
-item.mor_rifle.name=Moroon Rifle
-item.mor_rifle.desc=Standard ranged moroon weapon. Idealland is still figuring how to shoot it.
-
-item.modular_hp.name=Lasting Module
-item.modular_hp.desc=Boosts the max health of a mechanical unit by %.1f.
-
-item.modular_atk.name=Arsenal Module
-item.modular_atk.desc=Boosts the attack of a mechanical unit by %.1f.
-
-item.modular_def.name=Armor Module
-item.modular_def.desc=Boosts the armor of a mechanical unit by %.1f.
-
-item.modular_hp_2.name=Lasting Module Beta
-item.modular_hp_2.desc=Boosts the max health of a mechanical unit by %.1f%%.
-
-item.modular_atk_2.name=Arsenal Module Beta
-item.modular_atk_2.desc=Boosts the attack of a mechanical unit by %.1f%%.
-
-item.modular_def_2.name=Armor Module Beta
-item.modular_def_2.desc=Boosts the armor of a mechanical unit by %.1f%%.
-
-item.extra_biao_sword.name=Zhu-Shi-Yi-Dao-Zhan [WIP]
-item.extra_biao_sword.desc=????
-item.extra_biao_sword.desc.0=Grows with kills.
-item.extra_biao_sword.desc.1=Applies slowing effect to nearby enemies.
-item.extra_biao_sword.desc.2=????
-item.extra_biao_sword.desc.3=????
-item.extra_biao_sword.desc.4=????
-
-item.extra_sai_sword.name=Not of This World [WIP]
-item.extra_sai_sword.desc=Interact to teleport target, sneak+RMB teleports self. Use Yin to set target anchor, use Yang to set self anchor.
-
-item.extra_kou_sword.name=Lucky 7 [WIP]
-item.extra_kou_sword.desc=Consumes offhand gold ingot to get random items.
-
-item.el_psy_congroo.name=Smartphone (OFF)
-item.el_psy_congroo.desc=This is a selection of the Steins Gate.
-idealland.msg.steins_gate=%s. El Psy Congroo.
-
 idealland.skill.shared.cool_down_desc=Cooldown: %.1fs
 idealland.skill.shared.power_desc=Damage: %.1f
 idealland.skill.shared.range_desc=Radius: %.1f block
@@ -588,19 +70,7 @@ idealland.kill_count.desc=Kills: %d
 
 idealland.skill.msg.cool_down=Cooling Down.
 
-idealland.temperature.msg.default_temp=Your best-fit temperature is at %s degrees.
-
-#Events
-idealland.death_report=Detected %s's death at %s
-
 #Death
-death.attack.example.player=%1$s exampled by %2$s
-death.attack.slam.player=%1$s was slammed onto ground by %2$s
-death.attack.slam.item=%1$s was slammed onto ground by %2$s using %3$s
-
-death.attack.martial.player=%1$s exprienced %2$s's fighting skills
-death.attack.martial.item=%1$s exprienced %2$s's %3$s
-
 #examples
 #death.fell.accident.ladder=%1$s fell off a ladder
 #death.fell.accident.vines=%1$s fell off some vines
@@ -611,7 +81,3 @@ death.attack.martial.item=%1$s exprienced %2$s's %3$s
 #death.fell.assist.item=%1$s was doomed to fall by %2$s using %3$s
 #death.fell.finish=%1$s fell too far and was finished by %2$s
 #death.fell.finish.item=%1$s fell too far and was finished by %2$s using %3$s
-#
-#death.attack.thrown=%1$s was pummeled by %2$s
-#death.attack.thrown.item=%1$s was pummeled by %2$s using %3$s
-#death.attack.cactus.player=%1$s walked into a cactus whilst trying to escape %2$s
