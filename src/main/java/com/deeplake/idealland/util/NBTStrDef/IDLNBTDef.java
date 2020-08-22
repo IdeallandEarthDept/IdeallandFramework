@@ -1,5 +1,7 @@
 package com.deeplake.idealland.util.NBTStrDef;
 
+import com.deeplake.idealland.IdlFramework;
+
 public class IDLNBTDef {
 	//GENERAL:
 	public static final String IDEALLAND = "idealland_nbt";
@@ -63,7 +65,7 @@ public class IDLNBTDef {
 
 	public static final String MODE = "mode";
 
-	public static final String STARTER_KIT_VERSION_TAG = "last_starter_kit";
+	public static final String STARTER_KIT_VERSION_TAG = "last_starter_kit_" + IdlFramework.MODID;
     public static final int CUR_STARTER_KIT_VERSION = 2;
 
 	//edict

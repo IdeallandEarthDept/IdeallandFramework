@@ -21,11 +21,6 @@ import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.*;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModStarterEvents {
-	
-	//public static final String TAG_PLAYER_HAS_BOOK = IDLNBTDef.STARTER_BOOK_GIVEN;
-
-	//if the event subscriber is static, so should the events be
-	//Thanks Cadiboo for telling me that
 	  @SubscribeEvent
 	  public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 		  EntityPlayer player = event.player;
