@@ -1,3 +1,16 @@
+
+尊重理想境，以及道家深湖本人。
+
+只要你在致谢里或代码注视里保留理想境的名号，
+就可以随意使用、转载，
+甚至可以用来制作商业化mod。
+
+建议在适当的位置公开标明你的mod是用理境框架制作的，但并非强制。
+
+如果你用来干蠢事而触犯法规，自己承担一切责任。
+
+以下为Forge条款。
+
 Unless noted below, Minecraft Forge, Forge Mod Loader, and all 
 parts herein are licensed under the terms of the LGPL 2.1 found
 here http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt and 
