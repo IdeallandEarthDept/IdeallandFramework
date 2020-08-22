@@ -10,7 +10,7 @@ public class ModItems {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
 	//Basic
-	public static final Item PAPER_BLOOD = new ItemBase("paper_blood");
+	//public static final Item PAPER_BLOOD = new ItemBase("paper_blood");
 
 
 	/*
