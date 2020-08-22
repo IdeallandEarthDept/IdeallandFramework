@@ -51,8 +51,8 @@ public class ModPotions {
 //        DEADLY = new PotionDeadly(false, 0x333333, "deadly", 0);
 //        ZEN_HEART = new PotionZenHeart(false, 0xcccc00, "zen_heart", 1);
 
-        evt.getRegistry().register(DEADLY);
-        evt.getRegistry().register(ZEN_HEART);
+//        evt.getRegistry().register(DEADLY);
+//        evt.getRegistry().register(ZEN_HEART);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
@@ -84,15 +84,15 @@ public class ModPotions {
         Entity trueSource = evt.getSource().getTrueSource();
         if (trueSource instanceof EntityLivingBase){
             EntityLivingBase sourceCreature = (EntityLivingBase)trueSource;
-            if (sourceCreature.isEntityUndead())
-            {
-                PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
-                if (curBuff != null) {
-                    if (!world.isRemote) {
-                        evt.setCanceled(true);
-                    }
-                }
-            }
+//            if (sourceCreature.isEntityUndead())
+//            {
+//                PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
+//                if (curBuff != null) {
+//                    if (!world.isRemote) {
+//                        evt.setCanceled(true);
+//                    }
+//                }
+//            }
 
             //Apply damage multiplier
             Collection<PotionEffect> activePotionEffectsAttacker = sourceCreature.getActivePotionEffects();
@@ -107,9 +107,6 @@ public class ModPotions {
                     }
                 }
             }
-
-            //blood paper(not potion related)
-            ItemStack stackInHand = sourceCreature.getHeldItemMainhand();
 
             //Critical Judgement
             if (!(trueSource instanceof EntityPlayer)) {//Players have their own critical judgement system. Now we add the non-player system.
@@ -214,14 +211,14 @@ public class ModPotions {
                 EntityLivingBase sourceCreature = (EntityLivingBase)trueSource;
                 if (sourceCreature.isEntityUndead())
                 {
-                    PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
-                    if (curBuff != null) {
-                        PotionEffect sourceBuff = sourceCreature.getActivePotionEffect(ZEN_HEART);
-                        if (sourceBuff == null) {//prevent dead loop
-                            sourceCreature.knockBack(hurtOne, evt.getStrength(), -evt.getRatioX(), -evt.getRatioZ());
-                        }
-                        evt.setCanceled(true);
-                    }
+//                    PotionEffect curBuff = hurtOne.getActivePotionEffect(ZEN_HEART);
+//                    if (curBuff != null) {
+//                        PotionEffect sourceBuff = sourceCreature.getActivePotionEffect(ZEN_HEART);
+//                        if (sourceBuff == null) {//prevent dead loop
+//                            sourceCreature.knockBack(hurtOne, evt.getStrength(), -evt.getRatioX(), -evt.getRatioZ());
+//                        }
+//                        evt.setCanceled(true);
+//                    }
                 }
             }
 
