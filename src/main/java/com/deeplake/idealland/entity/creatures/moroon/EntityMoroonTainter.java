@@ -1,9 +1,5 @@
 package com.deeplake.idealland.entity.creatures.moroon;
 
-import com.deeplake.idealland.blocks.ModBlocks;
-import com.deeplake.idealland.potion.ModPotions;
-import com.deeplake.idealland.util.IDLGeneral;
-import com.deeplake.idealland.init.ModConfig;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.*;
@@ -13,10 +9,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class EntityMoroonTainter extends EntityMoroonUnitBase {
 

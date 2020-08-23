@@ -1,8 +1,7 @@
-package com.deeplake.idealland.potion;
+package com.deeplake.idealland.potion.buff;
 
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.Mod;

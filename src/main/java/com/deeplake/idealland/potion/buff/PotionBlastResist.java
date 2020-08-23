@@ -1,4 +1,4 @@
-package com.deeplake.idealland.potion;
+package com.deeplake.idealland.potion.buff;
 
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.entity.EntityLivingBase;

@@ -1,6 +1,7 @@
-package com.deeplake.idealland.potion;
+package com.deeplake.idealland.potion.buff;
 
 import com.deeplake.idealland.IdlFramework;
+import com.deeplake.idealland.potion.EffectTuple;
 import net.minecraft.entity.EntityLivingBase;
 
 import javax.annotation.Nonnull;

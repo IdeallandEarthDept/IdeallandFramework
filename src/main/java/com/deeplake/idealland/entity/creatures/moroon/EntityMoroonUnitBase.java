@@ -2,10 +2,6 @@ package com.deeplake.idealland.entity.creatures.moroon;
 
 import com.deeplake.idealland.entity.creatures.EntityModUnit;
 import com.deeplake.idealland.entity.creatures.ideallandTeam.EntityIdeallandUnitBase;
-import com.deeplake.idealland.item.ModItems;
-import com.deeplake.idealland.potion.ModPotions;
-import com.deeplake.idealland.init.ModConfig;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityZombie;
@@ -13,7 +9,6 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -21,8 +16,6 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
-
-import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityMoroonUnitBase extends EntityModUnit {
 

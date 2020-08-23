@@ -1,4 +1,4 @@
-package com.deeplake.idealland.potion;
+package com.deeplake.idealland.potion.buff;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;

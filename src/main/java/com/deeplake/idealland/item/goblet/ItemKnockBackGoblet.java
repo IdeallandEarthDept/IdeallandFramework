@@ -1,7 +1,5 @@
 package com.deeplake.idealland.item.goblet;
 
-import com.deeplake.idealland.item.ModItems;
-import com.deeplake.idealland.potion.ModPotions;
 import com.deeplake.idealland.util.IDLGeneral;
 import com.deeplake.idealland.util.Reference;
 import net.minecraft.client.resources.I18n;
@@ -17,17 +15,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
-import static net.minecraft.util.DamageSource.causePlayerDamage;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemKnockBackGoblet extends ItemGobletBase {

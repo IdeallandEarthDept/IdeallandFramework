@@ -1,4 +1,4 @@
-package com.deeplake.idealland.potion;
+package com.deeplake.idealland.potion.buff;
 
 public class PotionZenHeart extends BasePotion {
     public PotionZenHeart(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {
