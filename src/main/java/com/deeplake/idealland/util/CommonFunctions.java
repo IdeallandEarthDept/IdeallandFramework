@@ -14,7 +14,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -23,6 +27,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.Calendar;
 
 import static com.deeplake.idealland.util.AchvDef.GetAchvName;
 
@@ -276,5 +282,30 @@ public class CommonFunctions {
             return ((ItemBase) item).isRangedWeaponItem();
         }
         return false;
+    }
+
+    public static void WriteGraveToSign(EntityPlayer player, World world, TileEntity tileEntity1) {
+        if (tileEntity1 instanceof TileEntitySign)
+        {
+
+            WriteGraveToSign(player.getDisplayName(), world, tileEntity1);
+        }
+    }
+
+    private static void WriteGraveToSign(ITextComponent name, World world, TileEntity tileEntity1) {
+        if (tileEntity1 instanceof TileEntitySign)
+        {
+            ((TileEntitySign) tileEntity1).signText[0] = name;
+            ((TileEntitySign) tileEntity1).signText[1] = new TextComponentString("R.I.P.");
+
+            Calendar calendar = world.getCurrentDate();
+            ((TileEntitySign) tileEntity1).signText[2] = new TextComponentString(
+                    CommonDef.formatDate.format(calendar)
+            );
+
+            ((TileEntitySign) tileEntity1).signText[3] = new TextComponentString(
+                    CommonDef.formatTime.format(calendar)
+            );
+        }
     }
 }

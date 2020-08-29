@@ -3,6 +3,7 @@ package com.deeplake.idealland.entity.creatures;
 import com.deeplake.idealland.blocks.blockMoroon.BlockMoroonBase;
 import com.deeplake.idealland.init.ModLootList;
 import com.deeplake.idealland.util.EntityUtil;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
 import com.google.common.base.Predicate;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +14,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.monster.EntityShulker;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -77,6 +79,18 @@ public class EntityModUnit extends EntityCreature {
         this.dataManager.register(SWINGING_ARMS, Boolean.FALSE);
 
         super.entityInit();
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setInteger(IDLNBTDef.LEVEL, level);
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        level = compound.getInteger(IDLNBTDef.LEVEL);
     }
 
     public void setLevel(int newLevel)

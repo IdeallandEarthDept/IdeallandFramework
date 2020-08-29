@@ -124,8 +124,9 @@ public class IDLNBTDef {
 	//level
 	public static final String LAST_LEVEL = "last_lv";
 
+	public static final String LEVEL = "lv_idl";
 
-
+	public static final String INIT_DONE = "init_done";
 
 
 	//nonsense

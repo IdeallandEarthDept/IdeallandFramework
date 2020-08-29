@@ -1,5 +1,7 @@
 package com.deeplake.idealland.util;
 
+import java.text.SimpleDateFormat;
+
 public class CommonDef {
     public static final int STANDARD_DUNGEON_MOB_RARITY = 100;
 
@@ -25,6 +27,8 @@ public class CommonDef {
 
     public static String MOD_NAME_AOA3 = "aoa3";
     public static String MOD_NAME_GOG = "grimoreofgaia3";
+    public static SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+    public static SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
 
     /**
      * Flag 1 will cause a block update. Flag 2 will send the change to clients. Flag 4 will prevent the block from
