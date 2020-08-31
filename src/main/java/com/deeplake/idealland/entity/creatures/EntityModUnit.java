@@ -44,12 +44,14 @@ public class EntityModUnit extends EntityCreature {
     public boolean is_mechanic = false;
     public boolean is_god = false;
     public boolean is_building = false;
+    public boolean is_cubix = false;
 
     public boolean spawn_without_darkness = false;
     public boolean spawn_without_moroon_ground = false;
 
     public boolean isMoroon = false;
     public boolean isIdealland = false;
+    protected boolean applyLevelBoost = false;
 
     public boolean dontDespawn = false;
 
@@ -131,6 +133,20 @@ public class EntityModUnit extends EntityCreature {
             return 2;
         }
         return 1;
+    }
+
+    //在简单难度中区域难度的范围是0.75–1.5，在普通难度时为1.5–4.0，在困难难度时为2.25–6.75。
+    public void ApplyGeneralLevelBoost(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
+    {
+        //with localDiff / 10 chance to lv up recursively
+        int level = getLevel();
+        int maxLv = getMaxLevel();
+        float localDifficulty = difficulty.getAdditionalDifficulty();
+        while (level < maxLv && ((getRNG().nextFloat()* 10f) <= localDifficulty))
+        {
+            level++;
+        }
+        setLevel(level);
     }
 
     @Override

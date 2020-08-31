@@ -40,6 +40,7 @@ public class EntityMoroonUnitBase extends EntityModUnit {
         experienceValue = 10;
         isMoroon = true;
         isIdealland = false;
+        applyLevelBoost = true;
     }
 
     public int getMaxLevel() {
