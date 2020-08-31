@@ -287,7 +287,6 @@ public class CommonFunctions {
     public static void WriteGraveToSign(EntityPlayer player, World world, TileEntity tileEntity1) {
         if (tileEntity1 instanceof TileEntitySign)
         {
-
             WriteGraveToSign(player.getDisplayName(), world, tileEntity1);
         }
     }
