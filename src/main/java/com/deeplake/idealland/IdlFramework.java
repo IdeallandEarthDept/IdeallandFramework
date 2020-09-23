@@ -6,7 +6,9 @@ import com.deeplake.idealland.init.ModConfig;
 import com.deeplake.idealland.init.ModRecipes;
 import com.deeplake.idealland.init.ModSpawn;
 import com.deeplake.idealland.init.RegistryHandler;
+import com.deeplake.idealland.keys.KeyboardManager;
 import com.deeplake.idealland.meta.MetaUtil;
+import com.deeplake.idealland.network.NetworkHandler;
 import com.deeplake.idealland.proxy.ProxyBase;
 import com.deeplake.idealland.util.CommonDef;
 import com.deeplake.idealland.util.Reference;
@@ -30,7 +32,7 @@ import static com.deeplake.idealland.init.RegistryHandler.initRegistries;
 public class IdlFramework {
     public static final String MODID = "untitled";
     public static final String NAME = "IdlFramework";
-    public static final String VERSION = "0.1.020";
+    public static final String VERSION = "0.1.101";
 
     public static Logger logger;
 
@@ -62,8 +64,15 @@ public class IdlFramework {
         RegisterTileEntity();
         initRegistries(event);
         new ModGuiElementLoader();
-        IdlFramework.LogWarning("Init " + MODID);
-    }
+        if (!proxy.isServer())
+        {
+            KeyboardManager.init();
+        }
+        NetworkHandler.init();
+
+		LogWarning("%s has finished its initializations", MODID);
+
+	}
 
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {

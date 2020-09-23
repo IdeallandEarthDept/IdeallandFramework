@@ -25,6 +25,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -49,7 +51,8 @@ public class RegistryHandler {
 //			IdlFramework.Log("registered enchantments: %s", enchantment.getName());
 //		}
 	}
-	
+
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void onModelRegister(ModelRegistryEvent event)
 	{

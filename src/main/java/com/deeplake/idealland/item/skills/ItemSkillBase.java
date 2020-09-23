@@ -1,9 +1,11 @@
 package com.deeplake.idealland.item.skills;
 
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.item.ItemBase;
 import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
+import com.deeplake.idealland.util.MessageDef;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -16,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -55,6 +58,13 @@ public class ItemSkillBase extends ItemBase {
     public boolean showCDDesc = true;
     public boolean showDamageDesc = true;
     public boolean showRangeDesc = false;
+
+    //for arknights
+    public boolean offHandCast = false;
+    public boolean mainHandCast = false;
+    public boolean cannotMouseCast = false;
+
+    protected int maxDialogues = 0;
 
     protected int GetMaxTick(ItemStack stack) {
         return (int) (getCoolDown(stack) * TICK_PER_SECOND);
@@ -160,12 +170,17 @@ public class ItemSkillBase extends ItemBase {
     @Override
     public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected) {
         super.onUpdate(stack, worldIn, entityIn, itemSlot, isSelected);
-        stack.setItemDamage(stack.getItemDamage() - 1);
+        //stack.setItemDamage(stack.getItemDamage() - 1);
     }
 
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        if (cannotMouseCast)
+        {
+            return new ActionResult<>(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+        }
+
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (isStackReady(playerIn, stack))
         {
@@ -184,14 +199,62 @@ public class ItemSkillBase extends ItemBase {
         return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 
-    public boolean canCast(World worldIn, EntityLivingBase playerIn, EnumHand handIn)
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
     {
+        if (livingBase instanceof EntityPlayer)
+        {
+            isStackReady((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
+        }
         return true;
     }
 
-    public boolean tryCast(World worldIn, EntityLivingBase playerIn, EnumHand handIn)
+    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
     {
+        if (livingBase instanceof EntityPlayer)
+        {
+            activateCoolDown((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
+        }
         return true;
+    }
+
+    public boolean onKeyboardCast(EntityLivingBase caster, ItemStack stack, EnumHand hand)
+    {
+        World world = caster.world;
+        boolean casterIsPlayer = caster instanceof EntityPlayer;
+        if (!casterIsPlayer || isStackReady((EntityPlayer) caster, stack)) {
+            if (canCast(world, caster, hand)) {
+                if (hand == EnumHand.MAIN_HAND) {
+                    if (mainHandCast) {
+                        return tryCast(caster.world, caster, hand);
+                    } else  {
+                        if (casterIsPlayer)
+                        {
+                            CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_MAINHAND);
+                        }
+                        else {
+                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                        }
+                    }
+                } else if (hand == EnumHand.OFF_HAND)
+                    if (offHandCast) {
+                        return tryCast(caster.world, caster, hand);
+                    }else {
+                        if (casterIsPlayer)
+                        {
+                            CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_OFFHAND);
+                        }
+                        else {
+                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                        }
+                    }
+            }
+        }
+        else {
+            EntityPlayer player = (EntityPlayer) caster;
+            CommonFunctions.SafeSendMsgToPlayer(TextFormatting.YELLOW, player, MessageDef.IN_COOLDOWN);
+        }
+
+        return false;
     }
 
     /**
