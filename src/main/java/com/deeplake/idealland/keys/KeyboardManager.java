@@ -44,7 +44,7 @@ public class KeyboardManager {
             if(!mc.inGameHasFocus) return;
             if(mc.currentScreen != null) return;
 
-            EnumHand hand = ClientProxy.CAST_OFFHAND.isPressed() ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
+            EnumHand hand = ClientProxy.CAST_OFFHAND.isKeyDown() ? EnumHand.MAIN_HAND : EnumHand.OFF_HAND;
             IdlFramework.Log("pressed key cast :" + hand);
 
             ItemStack item = player.getHeldItem(hand);
