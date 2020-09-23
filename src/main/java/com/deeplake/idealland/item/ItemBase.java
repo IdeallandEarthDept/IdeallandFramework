@@ -18,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,14 +29,16 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
+import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.DESC_COMMON;
 
 public class ItemBase extends Item implements IHasModel {
 	private boolean overrideRarity = false;
 	private EnumRarity enumRarity = EnumRarity.COMMON;
 	protected boolean showGuaSocketDesc = false;
 	protected boolean shiftToShowDesc = false;
+	protected boolean use_flavor = false;
 	protected boolean useable = false;
-	boolean isRangedWeapon = false;
+	private boolean isRangedWeapon = false;
 	protected boolean logNBT = false;
 	protected boolean glitters = false;
 
@@ -138,11 +141,23 @@ public class ItemBase extends Item implements IHasModel {
 		{
 			player.setActiveHand(hand);
 			ItemStack stack = player.getHeldItem(hand);
-			return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+			boolean result = onUseSimple(player, stack);
+			if (result)
+			{
+				return ActionResult.newResult(EnumActionResult.SUCCESS, stack);
+			}
+			else {
+				return ActionResult.newResult(EnumActionResult.FAIL, stack);
+			}
 		}
 		else {
 			return super.onItemRightClick(world, player, hand);
 		}
+	}
+
+	public boolean onUseSimple(EntityPlayer player, ItemStack stack)
+	{
+		return true;
 	}
 
 	public void clientUseTick(ItemStack stack, EntityLivingBase living, int count)
@@ -170,61 +185,49 @@ public class ItemBase extends Item implements IHasModel {
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 
-		IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc,isShiftPressed(),showGuaSocketDesc,
+		IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc, showGuaSocketDesc, use_flavor,
 				getMainDesc(stack,world,tooltip,flag));
 
 		if (logNBT)
 		{
 			tooltip.add(IDLNBTUtil.getNBT(stack).toString());
 		}
-//		boolean shiftPressed = !shiftToShowDesc || isShiftPressed();
-//		if (shiftPressed)
-//		{
-//			String desc = getMainDesc(stack, world, tooltip, flag);
-//			if (!desc.isEmpty())
-//			{
-//				tooltip.add(desc);
-//			}
-//
-//			if (showGuaSocketDesc)
-//			{
-//			    int guaTotal = IDLSkillNBT.GetGuaEnhanceTotal(stack);
-//				tooltip.add(I18n.format(GUA_TOTAL_SOCKET_DESC, IDLSkillNBT.GetGuaEnhanceTotal(stack)));
-//				if (guaTotal > 0)
-//                {
-//                    tooltip.add(I18n.format("idealland.gua_enhance_list.desc", GetGuaEnhance(stack, 0),
-//							GetGuaEnhanceString(stack, 1),
-//							GetGuaEnhanceString(stack, 2),
-//							GetGuaEnhanceString(stack, 3),
-//							GetGuaEnhanceString(stack, 4),
-//							GetGuaEnhanceString(stack, 5),
-//							GetGuaEnhanceString(stack, 6),
-//							GetGuaEnhanceString(stack, 7)));
-//                }
-//
-//				int freeSockets = IDLSkillNBT.GetGuaEnhanceFree(stack);
-//				if (freeSockets > 0)
-//				{
-//					tooltip.add(TextFormatting.AQUA + I18n.format(IDLNBTDef.GUA_FREE_SOCKET_DESC, freeSockets));
-//				}
-//				else {
-//					tooltip.add(TextFormatting.ITALIC + (TextFormatting.WHITE + I18n.format(IDLNBTDef.GUA_NO_FREE_SOCKET_DESC)));
-//				}
-//			}
-//		}
-//		else {
-//			tooltip.add(TextFormatting.AQUA +  I18n.format("idealland.shared.press_shift"));
-//		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public String descGetKey(ItemStack stack, World world, boolean showFlavor)
+	{
+		return showFlavor ? (stack.getUnlocalizedName() + IDLNBTDef.FLAVOR_KEY)
+				: (stack.getUnlocalizedName() + IDLNBTDef.DESC_COMMON);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getMainDesc(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		String key = stack.getUnlocalizedName() + ".desc";
-		if (I18n.hasKey(key))
+		if (CommonFunctions.isShiftPressed() || !shiftToShowDesc)
 		{
-			String mainDesc = I18n.format(key);
-			return mainDesc;
+			String key = descGetKey(stack,world,false);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		if (!CommonFunctions.isShiftPressed() && use_flavor)
+		{
+			String key = descGetKey(stack,world,true);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
 		}
 		return "";
 	}

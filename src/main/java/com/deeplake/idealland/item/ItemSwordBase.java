@@ -6,6 +6,7 @@ import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.IHasModel;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -21,6 +22,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.util.List;
 
+import static com.deeplake.idealland.util.CommonFunctions.isShiftPressed;
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.GUA_TOTAL_SOCKET_DESC;
 
@@ -29,6 +31,11 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	private EnumRarity enumRarity = EnumRarity.COMMON;
 	protected boolean showGuaSocketDesc = false;
 	protected boolean shiftToShowDesc = false;
+	protected boolean use_flavor = false;
+	protected boolean useable = false;
+	private boolean isRangedWeapon = false;
+	protected boolean logNBT = false;
+	protected boolean glitters = false;
 
 	//for accessing the private value
 	protected Item.ToolMaterial toolMaterial;
@@ -112,63 +119,53 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
-	protected static boolean isShiftPressed()
-	{
-		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-	}
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
 
-		boolean shiftPressed = !shiftToShowDesc || isShiftPressed();
-		if (shiftPressed)
+		IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc, showGuaSocketDesc, use_flavor,
+				getMainDesc(stack,world,tooltip,flag));
+
+		if (logNBT)
 		{
-			String desc = getMainDesc(stack, world, tooltip, flag);
-			if (!desc.isEmpty())
-			{
-				tooltip.add(desc);
-			}
-
-			if (showGuaSocketDesc)
-			{
-				tooltip.add(I18n.format(GUA_TOTAL_SOCKET_DESC, IDLSkillNBT.GetGuaEnhanceTotal(stack)));
-				int guaTotal = IDLSkillNBT.GetGuaEnhanceTotal(stack);
-				if (guaTotal > 0)
-				{
-					tooltip.add(I18n.format("idealland.gua_enhance_list.desc", GetGuaEnhance(stack, 0),
-							GetGuaEnhance(stack, 1),
-							GetGuaEnhance(stack, 2),
-							GetGuaEnhance(stack, 3),
-							GetGuaEnhance(stack, 4),
-							GetGuaEnhance(stack, 5),
-							GetGuaEnhance(stack, 6),
-							GetGuaEnhance(stack, 7)));
-				}
-
-				int freeSockets = IDLSkillNBT.GetGuaEnhanceFree(stack);
-				if (freeSockets > 0)
-				{
-					tooltip.add(TextFormatting.AQUA + I18n.format(IDLNBTDef.GUA_FREE_SOCKET_DESC, freeSockets));
-				}
-				else {
-					tooltip.add(TextFormatting.ITALIC + (TextFormatting.WHITE + I18n.format(IDLNBTDef.GUA_NO_FREE_SOCKET_DESC)));
-				}
-			}
+			tooltip.add(IDLNBTUtil.getNBT(stack).toString());
 		}
-		else {
-			tooltip.add(TextFormatting.AQUA +  I18n.format("idealland.shared.press_shift"));
-		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public String descGetKey(ItemStack stack, World world, boolean showFlavor)
+	{
+		return showFlavor ? (stack.getUnlocalizedName() + IDLNBTDef.FLAVOR_KEY)
+				: (stack.getUnlocalizedName() + IDLNBTDef.DESC_COMMON);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getMainDesc(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		String key = stack.getUnlocalizedName() + ".desc";
-		if (I18n.hasKey(key))
+		if (CommonFunctions.isShiftPressed() || !shiftToShowDesc)
 		{
-			String mainDesc = I18n.format(key);
-			return mainDesc;
+			String key = descGetKey(stack,world,false);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		if (!CommonFunctions.isShiftPressed() && use_flavor)
+		{
+			String key = descGetKey(stack,world,true);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
 		}
 		return "";
 	}

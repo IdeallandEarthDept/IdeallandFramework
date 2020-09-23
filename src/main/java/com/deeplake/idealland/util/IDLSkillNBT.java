@@ -1,7 +1,9 @@
 package com.deeplake.idealland.util;
 
 import com.deeplake.idealland.item.IGuaEnhance;
+import com.deeplake.idealland.item.skills.ItemSkillBase;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -18,6 +20,8 @@ import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.*;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil.*;
 
 public class IDLSkillNBT {
+    public static final String SUCCESS_DESC_KEY = ".on_sucess";
+    public static final String IN_CD_DESC_KEY = ".on_cooldown";
     public int level;
     public int range_boost = 0;
     public int duration_boost = 0;
@@ -171,15 +175,14 @@ public class IDLSkillNBT {
 
     @SideOnly(Side.CLIENT)
     public static void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag,
-                                       boolean shiftToShowDesc, boolean isShiftPressed , boolean showGuaSocketDesc, String mainDesc) {
+                                       boolean shiftToShowDesc, boolean showGuaSocketDesc, boolean use_flavor, String mainDescOrFlavor) {
 
-        boolean shiftPressed = !shiftToShowDesc || isShiftPressed;
+        boolean shiftPressed = !shiftToShowDesc || CommonFunctions.isShiftPressed();
         if (shiftPressed)
         {
-            String desc = mainDesc;
-            if (!desc.isEmpty())
+            if (!mainDescOrFlavor.isEmpty())
             {
-                tooltip.add(desc);
+                tooltip.add(mainDescOrFlavor);
             }
 
             if (showGuaSocketDesc)
@@ -210,6 +213,62 @@ public class IDLSkillNBT {
         }
         else {
             tooltip.add(TextFormatting.AQUA +  I18n.format("idealland.shared.press_shift"));
+            if (use_flavor)
+            {
+                tooltip.add(TextFormatting.ITALIC +  mainDescOrFlavor);
+            }
+        }
+    }
+
+    public static int getLevel(ItemStack stack)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return 0;
+        }
+        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+
+        int level = GetInt(stack, LEVEL_TAG);
+
+        if (level <= 0)
+        {
+            return 1;
+        }
+
+        int lvMax = skillBase.GetLevelMax(stack);
+
+        if (level > lvMax)
+        {
+            return lvMax;
+        }
+
+        return level;
+    }
+
+    public static void SetLevel(ItemStack stack, int count)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return;
+        }
+        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+
+        if (count <= skillBase.GetLevelMax(stack)) {
+            SetInt(stack, LEVEL_TAG, count);
+        }
+    }
+
+    public static void AddLevelByCount(ItemStack stack, int count)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return;
+        }
+        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+        int lvMax = skillBase.GetLevelMax(stack);
+        int anticipatedCount = count + getLevel(stack);
+        if (anticipatedCount <= lvMax ) {
+            SetInt(stack, LEVEL_TAG, anticipatedCount);
+        }
+        else {
+            SetInt(stack, LEVEL_TAG, lvMax);
         }
     }
 }

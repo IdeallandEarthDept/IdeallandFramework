@@ -6,17 +6,20 @@ import com.deeplake.idealland.util.CommonFunctions;
 import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.IHasModel;
 import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -26,14 +29,20 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
+import static com.deeplake.idealland.util.CommonFunctions.isShiftPressed;
 import static com.deeplake.idealland.util.IDLSkillNBT.GetGuaEnhance;
+import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.GUA_TOTAL_SOCKET_DESC;
 
 //try to sync with ItemBase
 public class ItemArmorBase extends ItemArmor implements IHasModel {
-    private boolean overrideRarity = false;
-    private EnumRarity enumRarity = EnumRarity.COMMON;
+	private boolean overrideRarity = false;
+	private EnumRarity enumRarity = EnumRarity.COMMON;
 	protected boolean showGuaSocketDesc = false;
 	protected boolean shiftToShowDesc = false;
+	protected boolean use_flavor = false;
+	protected boolean useable = false;
+	protected boolean logNBT = false;
+
 	protected boolean ignoreVanillaSystem = false;
 
 	protected static final UUID[] ARMOR_MODIFIERS_OVERRIDE = new UUID[] {UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"), UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"), UUID.fromString("9F3D476D-C118-4544-8365-64846904B48E"), UUID.fromString("2AD3F246-FEE1-4E67-B886-69FD380BB150")};
@@ -133,27 +142,54 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
-	protected static boolean isShiftPressed()
-	{
-		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-		super.addInformation(stack, world, tooltip, flag);
-		IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc,isShiftPressed(),showGuaSocketDesc,
+
+		IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc, showGuaSocketDesc, use_flavor,
 				getMainDesc(stack,world,tooltip,flag));
+
+		if (logNBT)
+		{
+			tooltip.add(IDLNBTUtil.getNBT(stack).toString());
+		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	public String descGetKey(ItemStack stack, World world, boolean showFlavor)
+	{
+		return showFlavor ? (stack.getUnlocalizedName() + IDLNBTDef.FLAVOR_KEY)
+				: (stack.getUnlocalizedName() + IDLNBTDef.DESC_COMMON);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getMainDesc(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
 	{
-		String key = stack.getUnlocalizedName() + ".desc";
-		if (I18n.hasKey(key))
+		if (CommonFunctions.isShiftPressed() || !shiftToShowDesc)
 		{
-			String mainDesc = I18n.format(key);
-			return mainDesc;
+			String key = descGetKey(stack,world,false);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
+		}
+
+		if (!CommonFunctions.isShiftPressed() && use_flavor)
+		{
+			String key = descGetKey(stack,world,true);
+			if (I18n.hasKey(key))
+			{
+				return I18n.format(key);
+			}
+			else
+			{
+				return "";
+			}
 		}
 		return "";
 	}

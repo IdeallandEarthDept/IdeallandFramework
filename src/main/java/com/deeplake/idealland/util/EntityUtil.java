@@ -1,9 +1,12 @@
 package com.deeplake.idealland.util;
 
+import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.entity.creatures.EntityModUnit;
 import com.deeplake.idealland.meta.MetaUtil;
 import com.google.common.base.Predicate;
+import com.sun.istack.internal.NotNull;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
@@ -16,6 +19,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import javax.annotation.Nullable;
@@ -59,6 +64,11 @@ public class EntityUtil {
 
     public static boolean ApplyBuff(EntityLivingBase livingBase, Potion potion, int level, float seconds)
     {
+        if (livingBase == null || potion == null)
+        {
+            IdlFramework.LogWarning("Trying to apply illegal potion");
+            return false;
+        }
         livingBase.addPotionEffect(new PotionEffect(potion, (int) (seconds * TICK_PER_SECOND) + 1, level));
         return true;
     }
@@ -231,6 +241,10 @@ public class EntityUtil {
 
     public static ATTITUDE getAttitude(EntityLivingBase subject, EntityLivingBase object)
     {
+        if (subject.isOnSameTeam(object))
+        {
+            return ATTITUDE.FRIEND;
+        }
         return getAttitude(faction(subject), faction(object));
     }
 
@@ -314,11 +328,19 @@ public class EntityUtil {
         return new Vec3d(entity.posX + Math.sin(angle), entity.getEyeHeight() + entity.posY, entity.posZ + Math.cos(angle));
     }
 
+    public static final Predicate<EntityLivingBase> InWater = new Predicate<EntityLivingBase>()
+    {
+        public boolean apply(@Nullable EntityLivingBase p_apply_1_)
+        {
+            return p_apply_1_ != null && p_apply_1_.isInWater();
+        }
+    };
+
     public static final Predicate<EntityLivingBase> FriendToIdl = new Predicate<EntityLivingBase>()
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.FRIEND);
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.FRIEND);
         }
     };
 
@@ -326,7 +348,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -334,7 +356,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
+            return  p_apply_1_ != null && (getAttitude(Faction.IDEALLAND, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable() && !p_apply_1_.onGround;
         }
     };
 
@@ -342,7 +364,7 @@ public class EntityUtil {
     {
         public boolean apply(@Nullable EntityLivingBase p_apply_1_)
         {
-            return  (getAttitude(Faction.MOROON, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
+            return  p_apply_1_ != null && (getAttitude(Faction.MOROON, p_apply_1_)==ATTITUDE.HATE) && (p_apply_1_).attackable();
         }
     };
 
@@ -479,5 +501,11 @@ public class EntityUtil {
         HATE,
         IGNORE,
         FRIEND
+    }
+
+    public static Biome getBiomeForEntity(Entity entity)
+    {
+        World world = entity.getEntityWorld();
+        return world.getBiomeForCoordsBody(entity.getPosition());
     }
 }

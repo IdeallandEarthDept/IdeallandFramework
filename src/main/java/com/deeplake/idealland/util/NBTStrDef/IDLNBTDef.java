@@ -24,6 +24,7 @@ public class IDLNBTDef {
 	public static final String DURA_BOOST = "dura_boost";
 	public static final String IS_IDENTIFIED = "identified";
 	public static final String STATE = "state";
+	public static final String STATE_2 = "state2";
 
 	public static final String IS_NAME_HIDDEN = "name_hidden";
 	public static final String IS_MANUAL_READY = "manual_ready";
@@ -32,7 +33,10 @@ public class IDLNBTDef {
 	public static final String HATE = "hate";
 
 	public static final String EDICT_REPEATABLE = "is_repeatable";
-	
+
+	//upgrading
+	public static final String DIFFICULTY = "difficulty";
+
 	//TOOLTIP
 	public static final String TOOLTIP_SKY = ".sky_desc";
 	public static final String TOOLTIP_EARTH = ".earth_desc";
@@ -40,6 +44,9 @@ public class IDLNBTDef {
 	public static final String TOOLTIP_SHARED = ".shared_desc";
 	public static final String TOOLTIP_HIDDEN = ".hidden";
 	public static final String TOOLTIP_DAMAGE = ".damage_desc";
+
+	public static final String NAME_OFF= "idealland.shared.off";
+	public static final String NAME_ON= "idealland.shared.on";
 	
 	public static final String TRUENAME_TO_REVEAL = ".true_name_reveal";
 	public static final String MANUAL_PAGE_COUNT = ".manual_page_count";
@@ -119,7 +126,6 @@ public class IDLNBTDef {
     //temperature
 	public static final String BASE_TEMPERATURE = "base_temperature";
 	public static final String BASE_IS_SET = "base_is_set";
-	//ublic static final String LEARNING_DONE = "learning_done";
 
 	//level
 	public static final String LAST_LEVEL = "last_lv";
@@ -134,7 +140,7 @@ public class IDLNBTDef {
 	public static final String KILL_COUNT_DESC = "idealland.kill_count.desc";
 
 	public static final String MARKING_POS_A = "marking_pos_a";
-	public static final String MARKING_POS_B = "marking_pos_a";
+	public static final String MARKING_POS_B = "marking_pos_b";
 
 	public static final String MARK_ATK = "mark.attackDamage";
 	public static final String MARK_HP = "mark.maxHealth";
@@ -148,4 +154,5 @@ public class IDLNBTDef {
 	public static final String MARK_TOTAL_COUNT = "mark.count";
 
 
+    public static final String FLAVOR_KEY = ".flvr";
 }

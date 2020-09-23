@@ -3,10 +3,15 @@ package com.deeplake.idealland.item.food;
 import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.item.ModItems;
+import com.deeplake.idealland.util.CommonFunctions;
+import com.deeplake.idealland.util.IDLSkillNBT;
 import com.deeplake.idealland.util.IHasModel;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
+import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -16,7 +21,42 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
+import static com.deeplake.idealland.util.CommonFunctions.isShiftPressed;
+
 public class ItemFoodBase extends ItemFood implements IHasModel {
+
+    private boolean overrideRarity = false;
+    private EnumRarity enumRarity = EnumRarity.COMMON;
+    protected boolean showGuaSocketDesc = false;
+    protected boolean shiftToShowDesc = false;
+    protected boolean use_flavor = false;
+    protected boolean useable = false;
+    protected boolean logNBT = false;
+
+    //for creating variants
+    protected int value_main = 1;
+    public ItemFoodBase setValue(int amount)
+    {
+        this.value_main = amount;
+        return this;
+    }
+
+    public ItemFoodBase setRarity(EnumRarity enumRarity)
+    {
+        overrideRarity = true;
+        this.enumRarity = enumRarity;
+        return this;
+    }
+
+    public EnumRarity getRarity(ItemStack stack)
+    {
+        if (overrideRarity)
+        {
+            return enumRarity;
+        }else {
+            return super.getRarity(stack);
+        }
+    }
 
     public int addXP = 0;
 
@@ -63,16 +103,56 @@ public class ItemFoodBase extends ItemFood implements IHasModel {
 
     }
 
+
     @SideOnly(Side.CLIENT)
     @Override
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
-        String key = stack.getUnlocalizedName() + ".desc";
-        if (I18n.hasKey(key))
+
+        IDLSkillNBT.addInformation(stack,world,tooltip,flag,shiftToShowDesc, showGuaSocketDesc, use_flavor,
+                getMainDesc(stack,world,tooltip,flag));
+
+        if (logNBT)
         {
-            String mainDesc = I18n.format(key);
-            tooltip.add(mainDesc);
+            tooltip.add(IDLNBTUtil.getNBT(stack).toString());
         }
-        if (addXP > 0)
-            tooltip.add(I18n.format("idealland.food.shared.xp_desc", addXP));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String descGetKey(ItemStack stack, World world, boolean showFlavor)
+    {
+        return showFlavor ? (stack.getUnlocalizedName() + IDLNBTDef.FLAVOR_KEY)
+                : (stack.getUnlocalizedName() + IDLNBTDef.DESC_COMMON);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public String getMainDesc(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
+    {
+        if (CommonFunctions.isShiftPressed() || !shiftToShowDesc)
+        {
+            String key = descGetKey(stack,world,false);
+            if (I18n.hasKey(key))
+            {
+                return I18n.format(key);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        if (!CommonFunctions.isShiftPressed() && use_flavor)
+        {
+            String key = descGetKey(stack,world,true);
+            if (I18n.hasKey(key))
+            {
+                return I18n.format(key);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        return "";
     }
 }

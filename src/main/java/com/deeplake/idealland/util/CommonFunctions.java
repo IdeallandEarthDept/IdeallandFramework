@@ -24,15 +24,23 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.lwjgl.input.Keyboard;
 
 import java.util.Calendar;
 
 import static com.deeplake.idealland.util.AchvDef.GetAchvName;
+import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 
 public class CommonFunctions {
+
+    public static boolean isSecondTick(World world)
+    {
+        return world.getWorldTime() % TICK_PER_SECOND == 0;
+    }
 
     public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z)
     {
@@ -67,11 +75,11 @@ public class CommonFunctions {
     }
 
     public static int SecondToTicks(int ticks) {
-        return ticks * CommonDef.TICK_PER_SECOND;
+        return ticks * TICK_PER_SECOND;
     }
 
     public static int SecondToTicks(float ticks) {
-        return (int)(ticks * CommonDef.TICK_PER_SECOND);
+        return (int)(ticks * TICK_PER_SECOND);
     }
 
     public static void TryGrantAchv(EntityPlayer player, String key)
@@ -299,12 +307,33 @@ public class CommonFunctions {
 
             Calendar calendar = world.getCurrentDate();
             ((TileEntitySign) tileEntity1).signText[2] = new TextComponentString(
-                    CommonDef.formatDate.format(calendar)
+                    CommonDef.formatDate.format(calendar.getTime())
             );
 
             ((TileEntitySign) tileEntity1).signText[3] = new TextComponentString(
-                    CommonDef.formatTime.format(calendar)
+                    CommonDef.formatTime.format(calendar.getTime())
             );
         }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static boolean isShiftPressed()
+    {
+        return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
+    }
+
+    public static void sendBasicMsg(ItemStack stack, EntityPlayer player, int index)
+    {
+        if (player.world.isRemote)
+        {
+            return;
+        }
+
+        SendMsgToPlayer((EntityPlayerMP) player, String.format("%s.msg.%d", stack.getUnlocalizedName(), index));
+    }
+
+    public static void addToEventBus(Object target)
+    {
+        MinecraftForge.EVENT_BUS.register(target);
     }
 }

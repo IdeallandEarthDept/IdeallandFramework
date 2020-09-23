@@ -90,7 +90,7 @@ public class RegistryHandler {
 
 	public static void initRegistries(FMLInitializationEvent event)
 	{
-		ModSoundHandler.registerSounds();
+		ModSoundHandler.soundRegister();
 	}
 
 	public static void serverRegistries(FMLServerStartingEvent event)

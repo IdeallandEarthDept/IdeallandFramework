@@ -9,6 +9,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumHand;
 
+import static com.deeplake.idealland.util.IDLSkillNBT.getLevel;
+
 public class ItemSkillMartialAttack extends ItemSkillBase {
     public float KBPowerBase = 0.1f;
     public float KBPowerPerLevel = 0.1f;

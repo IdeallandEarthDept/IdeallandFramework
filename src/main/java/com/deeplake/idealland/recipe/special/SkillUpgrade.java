@@ -9,6 +9,9 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
 
+import static com.deeplake.idealland.util.IDLSkillNBT.SetLevel;
+import static com.deeplake.idealland.util.IDLSkillNBT.getLevel;
+
 public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
 	@Override
@@ -37,7 +40,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					{
 						stack1 = stack;
 						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
-						lv1 = itemSkillBase.getLevel(stack);
+						lv1 = getLevel(stack);
 						if (lv1 >= itemSkillBase.maxLevel)
 						{
 							return false;
@@ -45,7 +48,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					}
 					else {
 						stack2 = stack;
-						lv2 = ((ItemSkillBase)(stack.getItem())).getLevel(stack);
+						lv2 = getLevel(stack);
 					}
 				}
 				else
@@ -82,9 +85,9 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					{
 						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
 						stack1 = stack;
-						lv1 = itemSkillBase.getLevel(stack);
+						lv1 = getLevel(stack);
 						stackResult = stack1.copy();
-						itemSkillBase.SetLevel(stackResult, lv1 + 1);
+						SetLevel(stackResult, lv1 + 1);
 					}
 				}
 				else

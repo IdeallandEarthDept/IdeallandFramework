@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
+import static com.deeplake.idealland.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillWindWalk extends ItemSkillBase {
     public ItemSkillWindWalk(String name) {

@@ -3,8 +3,7 @@ package com.deeplake.idealland.item.skills;
 import com.deeplake.idealland.init.ModCreativeTab;
 import com.deeplake.idealland.item.ItemBase;
 import com.deeplake.idealland.util.CommonFunctions;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTDef;
-import com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil;
+import com.deeplake.idealland.util.IDLSkillNBT;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -15,6 +14,7 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -25,6 +25,7 @@ import java.util.List;
 import static com.deeplake.idealland.util.CommonDef.G_SKY;
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.CommonFunctions.SendMsgToPlayer;
+import static com.deeplake.idealland.util.CommonFunctions.isShiftPressed;
 
 enum SKILL_MSG_TYPE
 {
@@ -48,9 +49,6 @@ public class ItemSkillBase extends ItemBase {
     public float level_modifier = 0f;
 
     public int maxLevel = 5;
-
-    public static final String SUCCESS_DESC_KEY = ".on_sucess";
-    public static final String IN_CD_DESC_KEY = ".on_cooldown";
 
     public int gua_index = G_SKY;
 
@@ -103,15 +101,15 @@ public class ItemSkillBase extends ItemBase {
 
     public float getRange(ItemStack stack)
     {
-        return (getLevel(stack) - 1) * range_per_level + base_range;
+        return (IDLSkillNBT.getLevel(stack) - 1) * range_per_level + base_range;
     }
 
     public float getVal(ItemStack stack)
     {
-        return  (getLevel(stack) - 1) * val_per_level + basic_val;
+        return  (IDLSkillNBT.getLevel(stack) - 1) * val_per_level + basic_val;
     }
     public float getCoolDown(ItemStack stack) {
-        float result = -(getLevel(stack) - 1) * cool_down_reduce_per_lv + cool_down;
+        float result = -(IDLSkillNBT.getLevel(stack) - 1) * cool_down_reduce_per_lv + cool_down;
         return result > 0.1f ? result : 0.1f; }
 
     //leveling-------------------------------------
@@ -124,46 +122,14 @@ public class ItemSkillBase extends ItemBase {
         return maxLevel;
     }
 
-    public int getLevel(ItemStack stack)
-    {
-        int level = IDLNBTUtil.GetInt(stack, IDLNBTDef.LEVEL_TAG);
-        return level == 0 ? 1 : level;
-    }
-
-    public void SetLevel(ItemStack stack, int count)
-    {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
-            return;
-        }
-
-        if (count <= GetLevelMax(stack)) {
-            IDLNBTUtil.SetInt(stack, IDLNBTDef.LEVEL_TAG, count);
-        }
-    }
-
-    public void AddLevelByCount(ItemStack stack, int count)
-    {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
-            return;
-        }
-
-        int anticipatedCount = count + getLevel(stack);
-        if (anticipatedCount <= GetLevelMax(stack)) {
-            IDLNBTUtil.SetInt(stack, IDLNBTDef.LEVEL_TAG, anticipatedCount);
-        }
-        else {
-            IDLNBTUtil.SetInt(stack, IDLNBTDef.LEVEL_TAG, GetLevelMax(stack));
-        }
-    }
-    
     public void SendDefaultMsg(EntityPlayer player, ItemStack stack, SKILL_MSG_TYPE msg_type)
     {
         switch (msg_type)
         {
             case CD:
-                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IN_CD_DESC_KEY);
+                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.IN_CD_DESC_KEY);
             case SUCCESS:
-                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ SUCCESS_DESC_KEY);
+                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.SUCCESS_DESC_KEY);
                 default:
                     break;
         }
@@ -200,7 +166,32 @@ public class ItemSkillBase extends ItemBase {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-        return super.onItemRightClick(worldIn, playerIn, handIn);
+        ItemStack stack = playerIn.getHeldItem(handIn);
+        if (isStackReady(playerIn, stack))
+        {
+            if (canCast(worldIn, playerIn, handIn))
+            {
+                tryCast(worldIn, playerIn, handIn);
+                activateCoolDown(playerIn, stack);
+                return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+            }
+            else {
+                return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+
+            }
+        }
+
+        return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
+    }
+
+    public boolean canCast(World worldIn, EntityLivingBase playerIn, EnumHand handIn)
+    {
+        return true;
+    }
+
+    public boolean tryCast(World worldIn, EntityLivingBase playerIn, EnumHand handIn)
+    {
+        return true;
     }
 
     /**
@@ -226,7 +217,7 @@ public class ItemSkillBase extends ItemBase {
                 tooltip.add(I18n.format("idealland.skill.shared.range_desc", getRange(stack)));
             if (maxLevel != 1)
             {
-                tooltip.add(I18n.format("idealland.skill.shared.level_desc", getLevel(stack), maxLevel));
+                tooltip.add(I18n.format("idealland.skill.shared.level_desc", IDLSkillNBT.getLevel(stack), maxLevel));
             }
         }
     }
@@ -251,10 +242,10 @@ public class ItemSkillBase extends ItemBase {
 //    	}
 
         String strMain = super.getItemStackDisplayName(stack);
-        int lv = getLevel(stack);
+        int lv = IDLSkillNBT.getLevel(stack);
         String strMaxLv = lv == maxLevel ? I18n.format("idealland.skill.shared.lv_max") : "";
 
-        return I18n.format("idealland.skill.shared.name_format_with_lv",strMain, getLevel(stack), strMaxLv);
+        return I18n.format("idealland.skill.shared.name_format_with_lv",strMain, IDLSkillNBT.getLevel(stack), strMaxLv);
     }
 
     public String GetDuraDescString(float val)

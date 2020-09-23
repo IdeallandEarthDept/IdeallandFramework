@@ -17,6 +17,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_TURN;
+import static com.deeplake.idealland.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillAttackBoost extends ItemSkillBase {
     public ItemSkillAttackBoost(String name) {

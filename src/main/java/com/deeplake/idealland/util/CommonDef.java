@@ -7,7 +7,10 @@ public class CommonDef {
 
     public static final int TICK_PER_SECOND = 20;
 
+    //for fgo skills
     public static final int SECOND_PER_TURN = 5;
+    //for arknight skills
+    public static final int METER_PER_BLOCK = 2;
 
     public static final int TICK_PER_TURN = SECOND_PER_TURN * TICK_PER_SECOND;
 
@@ -24,6 +27,8 @@ public class CommonDef {
     public static int G_FIRE = 5;
     public static int G_WIND = 6;
     public static int G_SKY = 7;
+
+    public static int MAX_AIR = 300;
 
     public static String MOD_NAME_AOA3 = "aoa3";
     public static String MOD_NAME_GOG = "grimoreofgaia3";
