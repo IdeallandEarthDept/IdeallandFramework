@@ -18,6 +18,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -157,37 +158,16 @@ public class EntityUtil {
         }
         return getModName(creature).equals(CommonDef.MOD_NAME_AOA3);
     }
-//
-//    public static EntityLivingBase FindLover(EntityLivingBase source, float range, ModEnchantmentLover enchant)
-//    {
-//        if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, source) == 0)
-//        {
-//            return null;
-//        }
-//
-//        EntityLivingBase result = null;
-//        Vec3d sourcePos = source.getPositionEyes(0f);
-//        source.playSound(SoundEvents.ENTITY_LIGHTNING_IMPACT, 1f, 1f);
-//        //Damage nearby entities
-//        List<EntityLivingBase> list = source.world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(sourcePos.addVector(-range, -range, -range), sourcePos.addVector(range, range, range)));
-//        for (EntityLivingBase creature : list) {
-//            if (creature != source) {
-//                if (EnchantmentHelper.getMaxEnchantmentLevel(enchant, creature) > 0)
-//                {
-//                    if (result != null)
-//                    {
-//                        //more than one lover found
-//                        return null;
-//                    }
-//                    else {
-//                        result = creature;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return result;
-//    }
+
+    public static <T extends Entity> List<T> getEntitiesWithinAABB(World world, Class <? extends T > clazz, AxisAlignedBB aabb, @Nullable Predicate <? super T > filter)
+    {
+        return world.getEntitiesWithinAABB(clazz, aabb, filter);
+    }
+
+    public static <T extends Entity> List<T> getEntitiesWithinAABB(World world, Class <? extends T > clazz, Vec3d center, float range, @Nullable Predicate <? super T > filter)
+    {
+        return world.getEntitiesWithinAABB(clazz, IDLGeneral.ServerAABB(center.addVector(-range, -range, -range), center.addVector(range, range, range)) , filter);
+    }
 
     public static Vec3d GetRandomAroundUnderfoot(EntityLivingBase entity, float radius)
     {
@@ -241,6 +221,11 @@ public class EntityUtil {
 
     public static ATTITUDE getAttitude(EntityLivingBase subject, EntityLivingBase object)
     {
+        if (subject == null || object == null)
+        {
+            return ATTITUDE.IGNORE;
+        }
+
         if (subject.isOnSameTeam(object))
         {
             return ATTITUDE.FRIEND;
@@ -368,6 +353,13 @@ public class EntityUtil {
         }
     };
 
+    public static final Predicate<EntityLivingBase> IsVanilla = new Predicate<EntityLivingBase>()
+    {
+        public boolean apply(@Nullable EntityLivingBase p_apply_1_)
+        {
+            return  p_apply_1_ != null && isVanillaResident((p_apply_1_)) && (p_apply_1_).attackable();
+        }
+    };
     public static double getAttack(EntityLivingBase creature)
     {
         if (creature == null)
@@ -418,6 +410,21 @@ public class EntityUtil {
             return 0;
         }
         return attribute.getAttributeValue();
+    }
+
+    public static double getAttrBase(EntityLivingBase creature, IAttribute attr)
+    {
+        if (creature == null)
+        {
+            return 0;
+        }
+
+        IAttributeInstance attribute = creature.getEntityAttribute(attr);
+        if (attribute == null)
+        {
+            return 0;
+        }
+        return attribute.getBaseValue();
     }
 
     public static boolean boostAttr(EntityLivingBase creature, IAttribute attrType, float amountFixed, UUID uuid)

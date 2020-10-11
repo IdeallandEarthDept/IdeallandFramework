@@ -120,6 +120,12 @@ public class IDLNBTUtil {
 	}
 
 	//Integer
+	public static boolean SetLong(ItemStack stack, String key, long value)
+	{
+		NBTTagCompound nbt = getNBT(stack);
+		nbt.setLong(key, value);
+		return true;
+	}
 	public static boolean SetInt(ItemStack stack, String key, int value)
 	{
 		NBTTagCompound nbt = getNBT(stack);
@@ -158,7 +164,21 @@ public class IDLNBTUtil {
 			return defaultVal;
 		}
 	}
-	
+
+	public static long GetLong(ItemStack stack, String key, int defaultVal)
+	{
+		if (StackHasKey(stack, key))
+		{
+			NBTTagCompound nbt = getNBT(stack);
+			return nbt.getLong(key);
+		}
+		else
+		{
+			return defaultVal;
+		}
+	}
+
+
 	public static int GetInt(ItemStack stack, String key)
 	{
 		return GetInt(stack, key, 0);

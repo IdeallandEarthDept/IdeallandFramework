@@ -11,6 +11,7 @@ public class MessageDef {
 
     public static String getSkillCastKey(ItemStack stack, int index)
     {
-        return String.format("msg.%s.cast.%d", stack, index);
+        //remove"item."
+        return String.format("msg.%s.cast.%d", stack.getUnlocalizedName().substring(5), index);
     }
 }

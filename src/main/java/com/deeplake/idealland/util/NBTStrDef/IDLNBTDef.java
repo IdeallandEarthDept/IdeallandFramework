@@ -32,6 +32,12 @@ public class IDLNBTDef {
 	public static final String IS_HEIRLOOM = "heirloom_of";
 	public static final String HATE = "hate";
 
+	//skill arknights
+	public static final String IS_CASTING = "is_casting";
+	public static final String CUR_CHARGE = "cur_charge";//x100
+	public static final String CUR_TIME_LEFT = "time_left";//x100,please note that two may be the same
+
+
 	public static final String EDICT_REPEATABLE = "is_repeatable";
 
 	//upgrading

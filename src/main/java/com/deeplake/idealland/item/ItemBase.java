@@ -176,10 +176,6 @@ public class ItemBase extends Item implements IHasModel {
 		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
-	protected static boolean isShiftPressed()
-	{
-		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT);
-	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -231,4 +227,10 @@ public class ItemBase extends Item implements IHasModel {
 		}
 		return "";
 	}
+
+	public void onMouseFire(EntityPlayer player)
+	{
+
+	}
+
 }

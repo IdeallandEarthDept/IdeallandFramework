@@ -29,6 +29,7 @@ import static com.deeplake.idealland.util.CommonDef.G_SKY;
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static com.deeplake.idealland.util.CommonFunctions.SendMsgToPlayer;
 import static com.deeplake.idealland.util.CommonFunctions.isShiftPressed;
+import static com.deeplake.idealland.util.MessageDef.getSkillCastKey;
 
 enum SKILL_MSG_TYPE
 {
@@ -49,6 +50,9 @@ public class ItemSkillBase extends ItemBase {
     public float basic_val = 0f;
     public float val_per_level = 0f;
 
+    public float dura_val = 0f;
+    public float dura_per_level = 0f;
+
     public float level_modifier = 0f;
 
     public int maxLevel = 5;
@@ -58,6 +62,7 @@ public class ItemSkillBase extends ItemBase {
     public boolean showCDDesc = true;
     public boolean showDamageDesc = true;
     public boolean showRangeDesc = false;
+    public boolean showDuraDesc = false;
 
     //for arknights
     public boolean offHandCast = false;
@@ -102,6 +107,13 @@ public class ItemSkillBase extends ItemBase {
         return this;
     }
 
+    public ItemSkillBase setDura(float val, float val_per_level)
+    {
+        dura_val = val;
+        this.dura_per_level = val_per_level;
+        return this;
+    }
+
     public ItemSkillBase setRange(float val, float val_per_level)
     {
         base_range = val;
@@ -114,6 +126,10 @@ public class ItemSkillBase extends ItemBase {
         return (IDLSkillNBT.getLevel(stack) - 1) * range_per_level + base_range;
     }
 
+    public float getDura(ItemStack stack)
+    {
+        return  (IDLSkillNBT.getLevel(stack) - 1) * dura_per_level + dura_val;
+    }
     public float getVal(ItemStack stack)
     {
         return  (IDLSkillNBT.getLevel(stack) - 1) * val_per_level + basic_val;
@@ -278,6 +294,9 @@ public class ItemSkillBase extends ItemBase {
                 tooltip.add(I18n.format("idealland.skill.shared.power_desc", getVal(stack)));
             if (showRangeDesc)
                 tooltip.add(I18n.format("idealland.skill.shared.range_desc", getRange(stack)));
+            if (showDuraDesc)
+                tooltip.add(GetDuraDescString(getDura(stack)));
+
             if (maxLevel != 1)
             {
                 tooltip.add(I18n.format("idealland.skill.shared.level_desc", IDLSkillNBT.getLevel(stack), maxLevel));
@@ -316,4 +335,15 @@ public class ItemSkillBase extends ItemBase {
         return I18n.format("idealland.skill.shared.duration_desc", val);
     }
 
+    public void trySayDialogue(EntityLivingBase livingBase, ItemStack stack)
+    {
+        if (maxDialogues > 0)
+        {
+            int index = livingBase.getRNG().nextInt(maxDialogues);
+            if (livingBase instanceof EntityPlayer)
+            {
+                CommonFunctions.SafeSendMsgToPlayer((EntityPlayer) livingBase, getSkillCastKey(stack, index));
+            }
+        }
+    }
 }

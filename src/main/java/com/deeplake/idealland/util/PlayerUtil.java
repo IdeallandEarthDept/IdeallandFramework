@@ -67,4 +67,14 @@ public class PlayerUtil {
     {
         return player.capabilities.isCreativeMode;
     }
+
+    public static boolean giveToPlayer(EntityPlayer player, ItemStack stack)
+    {
+        boolean result = player.addItemStackToInventory(stack);
+        if (!result)
+        {
+            player.dropItem(stack, false);
+        }
+        return result;
+    }
 }

@@ -16,6 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
+import static com.deeplake.idealland.util.CommonDef.INT_AS_FLOAT;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTDef.*;
 import static com.deeplake.idealland.util.NBTStrDef.IDLNBTUtil.*;
 
@@ -254,6 +255,57 @@ public class IDLSkillNBT {
         if (count <= skillBase.GetLevelMax(stack)) {
             SetInt(stack, LEVEL_TAG, count);
         }
+    }
+
+    public static boolean IsCasting(ItemStack stack)
+    {
+        return GetBoolean(stack, IDLNBTDef.IS_CASTING);
+    }
+
+    public static void SetCasting(ItemStack stack, boolean bool)
+    {
+        SetBoolean(stack, IDLNBTDef.IS_CASTING, bool);
+    }
+
+    public static void SetDura(ItemStack stack, float count)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return;
+        }
+        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+
+        SetInt(stack, CUR_TIME_LEFT, (int) (count * INT_AS_FLOAT));
+    }
+
+    public static void SetCharge(ItemStack stack, float count)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return;
+        }
+        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+
+        SetInt(stack, CUR_CHARGE, (int) (count * INT_AS_FLOAT));
+    }
+
+    public static float GetCharge(ItemStack stack)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return 0;
+        }
+
+        int charge = GetInt(stack, CUR_CHARGE);
+
+        return (float)charge / INT_AS_FLOAT;
+    }
+
+    public static float GetDura(ItemStack stack)
+    {
+        if (!(stack.getItem() instanceof ItemSkillBase)) {
+            return 0;
+        }
+        int dura = GetInt(stack, CUR_TIME_LEFT);
+
+        return (float)dura / INT_AS_FLOAT;
     }
 
     public static void AddLevelByCount(ItemStack stack, int count)

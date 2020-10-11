@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 public class CommonDef {
     public static final int STANDARD_DUNGEON_MOB_RARITY = 100;
 
+    public static final int INT_AS_FLOAT = 10000;
+
     public static final int TICK_PER_SECOND = 20;
 
     //for fgo skills
