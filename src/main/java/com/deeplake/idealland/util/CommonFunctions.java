@@ -31,11 +31,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
 import java.util.Calendar;
+import java.util.Random;
 
 import static com.deeplake.idealland.util.AchvDef.GetAchvName;
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 
 public class CommonFunctions {
+
+    public static double flunctate(double ori, double radius, Random random)
+    {
+        return ori + (random.nextFloat() * 2 - 1) * radius;
+    }
 
     public static boolean isSecondTick(World world)
     {

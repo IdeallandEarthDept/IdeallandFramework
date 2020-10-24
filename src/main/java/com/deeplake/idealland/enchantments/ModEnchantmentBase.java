@@ -4,12 +4,18 @@ import com.deeplake.idealland.IdlFramework;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 import net.minecraft.util.DamageSource;
 
 public class ModEnchantmentBase extends Enchantment {
+    private boolean isTreasure = false;
+
     private int maxLevel = 1;
 
     private float base_val = 0f;
@@ -21,6 +27,11 @@ public class ModEnchantmentBase extends Enchantment {
     private Enchantment[] conflicts = new Enchantment[]{};
 
     private boolean isHidden = false;
+
+    private boolean isCurseEnch = false;
+
+    //make this accessible
+    protected final EntityEquipmentSlot[] applicableEquipmentTypesOpen;
 
     //failed attempt to inter-mod compatible
     //private Enchantment shareConflicts = null;
@@ -40,6 +51,17 @@ public class ModEnchantmentBase extends Enchantment {
     public ModEnchantmentBase setMaxLevel(int maxLevel)
     {
         this.maxLevel = maxLevel;
+        return this;
+    }
+
+    public ModEnchantmentBase setAsTreasure()
+    {
+        this.isTreasure = true;
+        return this;
+    }
+    public ModEnchantmentBase setAsCurse()
+    {
+        this.isCurseEnch = true;
         return this;
     }
 
@@ -63,8 +85,17 @@ public class ModEnchantmentBase extends Enchantment {
         return this;
     }
 
+    @Override
+    public boolean isCurse() {
+        return isCurseEnch;
+    }
+
     public float getValue(int level)
     {
+        if (level <= 0)
+        {
+            return 0;
+        }
         return base_val + (level - 1) * per_level;
     }
 
@@ -75,7 +106,20 @@ public class ModEnchantmentBase extends Enchantment {
 
     public int getLevelOnCreature(EntityLivingBase creature)
     {
+        if (creature == null)
+        {
+            return 0;
+        }
         return EnchantmentHelper.getMaxEnchantmentLevel(this, creature);
+    }
+
+    public boolean appliedOnCreature(EntityLivingBase creature)
+    {
+        if (creature == null)
+        {
+            return false;
+        }
+        return EnchantmentHelper.getMaxEnchantmentLevel(this, creature) > 0;
     }
 
     //Constructors
@@ -85,7 +129,7 @@ public class ModEnchantmentBase extends Enchantment {
         setRegistryName(IdlFramework.MODID, name);
         setName(name);
         ModEnchantmentInit.ENCHANTMENT_LIST.add(this);
-
+        applicableEquipmentTypesOpen = slots;
         //additional enchantments: (modified level + 1) / 50, after applying,
         //modified level /= 2. This don't change the list, but only changes the chance of going on.
 
@@ -126,7 +170,7 @@ public class ModEnchantmentBase extends Enchantment {
 //if ( final_level < 1 ) final_level = 1
     @Override
     public int getMaxEnchantability(int enchantmentLevel) {
-        return (int) (getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier + 10 * rarityDeltaMultiplier);
+        return (int) (getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier + 50 * rarityDeltaMultiplier);
     }
 
     @Override
@@ -161,6 +205,14 @@ public class ModEnchantmentBase extends Enchantment {
     //Normally you won't care for this
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack) {
+        //special requirement: tool or sword
+        if (applicableEquipmentTypesOpen == ModEnchantmentInit.mainHand)
+        {
+            Item itemType = stack.getItem();
+            if (!(itemType instanceof ItemSword) && !(itemType instanceof ItemTool)) {
+                return false;
+            }
+        }
         return !isHidden && super.canApplyAtEnchantingTable(stack);
     }
 
@@ -168,7 +220,7 @@ public class ModEnchantmentBase extends Enchantment {
     //villager will sell it for double price
     public boolean isTreasureEnchantment()
     {
-        return false;
+        return this.isTreasure;
     }
 
     //    @Override
@@ -179,5 +231,20 @@ public class ModEnchantmentBase extends Enchantment {
     //other shorthands
     public int getEnchantmentLevel(ItemStack stack) {
         return EnchantmentHelper.getEnchantmentLevel(this, stack);
+    }
+
+    /**
+     * Called whenever a mob is damaged with an item that has this enchantment on it.
+     */
+    public void onEntityDamaged(EntityLivingBase user, Entity target, int level)
+    {
+    }
+
+    /**
+     * Whenever an entity that has this enchantment on one of its associated items is damaged this method will be
+     * called.
+     */
+    public void onUserHurt(EntityLivingBase user, Entity attacker, int level)
+    {
     }
 }

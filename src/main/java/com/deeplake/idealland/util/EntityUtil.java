@@ -4,8 +4,6 @@ import com.deeplake.idealland.IdlFramework;
 import com.deeplake.idealland.entity.creatures.EntityModUnit;
 import com.deeplake.idealland.meta.MetaUtil;
 import com.google.common.base.Predicate;
-import com.sun.istack.internal.NotNull;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -19,9 +17,13 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import javax.annotation.Nullable;
@@ -32,8 +34,15 @@ import java.util.UUID;
 
 import static com.deeplake.idealland.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraft.entity.SharedMonsterAttributes.*;
+import static net.minecraftforge.fml.common.gameevent.TickEvent.Type.WORLD;
 
+@Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class EntityUtil {
+    public static void simpleKnockBack(float power, EntityLivingBase source, EntityLivingBase target)
+    {
+        target.knockBack(source, power, (source.posX - target.posX), (source.posZ - target.posZ));
+    }
+
     public static void TryRemoveDebuff(EntityLivingBase livingBase)
     {
         //washes away debuff
@@ -192,6 +201,61 @@ public class EntityUtil {
         for (int i = 0; i < count; i++)
         {
             SpawnParticleAround(entity, particleTypes);
+        }
+    }
+
+    public static void createTeleportEffect(EntityLivingBase livingBase)
+    {
+        if (livingBase == null)
+        {
+            return;
+        }
+
+        World worldIn = livingBase.world;
+        if (worldIn.isRemote)
+        {
+            Vec3d oriPos = livingBase.getPositionEyes(0);
+            Random random = livingBase.getRNG();
+            AxisAlignedBB bb = livingBase.getRenderBoundingBox();
+            double radiusX = bb.maxX - bb.minX;
+            double radiusY = bb.maxY - bb.minY;
+            double radiusZ = bb.maxZ - bb.minZ;
+
+            for (int i = 0; i <= 10; i++)
+            {
+                worldIn.spawnParticle(EnumParticleTypes.PORTAL,
+                        CommonFunctions.flunctate(oriPos.x, radiusX, random),
+                        CommonFunctions.flunctate(oriPos.y, radiusY, random),
+                        CommonFunctions.flunctate(oriPos.z, radiusZ, random),
+                        random.nextFloat(),
+                        random.nextFloat(),
+                        random.nextFloat()
+                );
+            }
+
+            worldIn.playSound(oriPos.x, oriPos.y, oriPos.z, SoundEvents.ENTITY_ENDERMEN_TELEPORT, null, 1f, 1.3f, false);
+        }
+    }
+
+    static float angle = 0f;
+
+    @SubscribeEvent
+    static void onWorldTick(TickEvent.WorldTickEvent event)
+    {
+        if (event.type == WORLD )
+        {
+            angle += 1.0f;//ModConfig.DEBUG_CONF.HALO_OMEGA;
+            angle %= 6.282f;
+        }
+    }
+
+    public static void spawnHaloParticleAround(EntityLivingBase entity, EnumParticleTypes particleTypes, float radius)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            float deltaOmega = 1.0f * i;//ModConfig.DEBUG_CONF.HALO_OMEGA;
+            Vec3d pos = new Vec3d(entity.posX + radius * Math.sin(angle + deltaOmega),  entity.posY + 0.1f * entity.getRNG().nextFloat(), entity.posZ + radius * Math.cos(angle + deltaOmega));
+            entity.world.spawnParticle(particleTypes, pos.x, pos.y, pos.z, 0,0,0);
         }
     }
 
@@ -514,5 +578,11 @@ public class EntityUtil {
     {
         World world = entity.getEntityWorld();
         return world.getBiomeForCoordsBody(entity.getPosition());
+    }
+
+    public static boolean isSunlit(Entity entity)
+    {
+        float f = entity.getBrightness();
+        return  f > 0.5F && entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
     }
 }
