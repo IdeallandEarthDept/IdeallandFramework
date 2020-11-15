@@ -16,7 +16,7 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
     public EntityIdlBuildingRoom(World worldIn) {
         super(worldIn);
         setAttr(1, 0, 0, 8, 5);
-        size = ModConfig.DEBUG_CONF.ROOM_SIZE;
+        size = 3;//ModConfig.DEBUG_CONF.ROOM_SIZE;
         buildingCore.ResetTasks();
         InitTaskQueue();
         buildingCore.setSpeed(40f / TICK_PER_SECOND);

@@ -52,10 +52,6 @@ public class EntityUtil {
             if (buff.getPotion().isBadEffect()){
                 livingBase.removePotionEffect(buff.getPotion());
             }
-            else
-            {
-
-            }
         }
     }
 
@@ -584,5 +580,15 @@ public class EntityUtil {
     {
         float f = entity.getBrightness();
         return  f > 0.5F && entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
+    }
+
+    public static boolean isMoonlit(Entity entity)
+    {
+        int tickInDay = (int) (entity.getEntityWorld().getWorldTime() % 24000);
+        if (tickInDay > 167 && tickInDay < 11834)
+        {
+            return false;
+        }
+        return entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
     }
 }

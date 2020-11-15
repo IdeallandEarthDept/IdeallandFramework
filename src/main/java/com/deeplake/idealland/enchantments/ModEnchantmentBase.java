@@ -130,6 +130,8 @@ public class ModEnchantmentBase extends Enchantment {
         setName(name);
         ModEnchantmentInit.ENCHANTMENT_LIST.add(this);
         applicableEquipmentTypesOpen = slots;
+        //note this slots arguments. Only enchantments in those slots will be counted!
+
         //additional enchantments: (modified level + 1) / 50, after applying,
         //modified level /= 2. This don't change the list, but only changes the chance of going on.
 
@@ -140,23 +142,7 @@ public class ModEnchantmentBase extends Enchantment {
 //                VERY_RARE(1);
     }
 
-    //not of much use. only fixed int damage
-    @Override
-    public int calcModifierDamage(int level, DamageSource source) {
-        return super.calcModifierDamage(level, source);
-    }
-
-    //B = 1~30, depending on slots and bookshelves
-    //L = B + R1 + R2 + 1
-    //R = randomInteger(0, E / 4)
-    //L *= 1 + random(-0.15,0.15)
-    @Override
-    public int getMinEnchantability(int enchantmentLevel) {
-        return (int) (super.getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier);
-    }
-
-
-//    // Generate a random number between 1 and 1+(enchantability/2), with a triangular distribution
+    //    // Generate a random number between 1 and 1+(enchantability/2), with a triangular distribution
 //    int rand_enchantability = 1 + randomInt(enchantability / 4 + 1) + randomInt(enchantability / 4 + 1);
 //
 //    // Choose the enchantment level
@@ -168,6 +154,19 @@ public class ModEnchantmentBase extends Enchantment {
 //    // Finally, we calculate the level
 //    int final_level = round(k * rand_bonus_percent);
 //if ( final_level < 1 ) final_level = 1
+
+    // max: (30 + MaterialEnchantability/2) * 1.15 =  34.5 + 0.575 * ench
+    //diamond:
+
+    //B = 1~30, depending on slots and bookshelves
+    //L = B + R1 + R2 + 1
+    //R = randomInteger(0, E / 4)
+    //L *= 1 + random(-0.15,0.15)
+    @Override
+    public int getMinEnchantability(int enchantmentLevel) {
+        return (int) (super.getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier);
+    }
+
     @Override
     public int getMaxEnchantability(int enchantmentLevel) {
         return (int) (getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier + 50 * rarityDeltaMultiplier);
@@ -246,5 +245,44 @@ public class ModEnchantmentBase extends Enchantment {
      */
     public void onUserHurt(EntityLivingBase user, Entity attacker, int level)
     {
+    }
+
+    /**
+     * Calculates the damage protection of the enchantment based on level and damage source passed.
+     */
+    public int calcModifierDamage(int level, DamageSource source)
+    {
+        //Note that this can't judge the victim's attributes as it does not contain the ref of that living base.
+        //it returns an int, but at last it calculates as a float.
+        //1 = 8% Damage. 10 = 80% (max reduction)
+        //note it's not Enchantment.calcDamageByCreature(int level, EnumCreatureAttribute creatureType)
+
+        return super.calcModifierDamage(level, source);
+
+        //EnchantmentProtection:
+//        if (source.canHarmInCreative())
+//        {
+//            return 0;
+//        }
+//        else if (this.protectionType == EnchantmentProtection.Type.ALL)
+//        {
+//            return level;
+//        }
+//        else if (this.protectionType == EnchantmentProtection.Type.FIRE && source.isFireDamage())
+//        {
+//            return level * 2;
+//        }
+//        else if (this.protectionType == EnchantmentProtection.Type.FALL && source == DamageSource.FALL)
+//        {
+//            return level * 3;
+//        }
+//        else if (this.protectionType == EnchantmentProtection.Type.EXPLOSION && source.isExplosion())
+//        {
+//            return level * 2;
+//        }
+//        else
+//        {
+//            return this.protectionType == EnchantmentProtection.Type.PROJECTILE && source.isProjectile() ? level * 2 : 0;
+//        }
     }
 }

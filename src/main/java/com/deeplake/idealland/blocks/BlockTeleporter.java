@@ -18,8 +18,8 @@ public class BlockTeleporter extends BlockBase {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
-            Teleport.teleportToDim(playerIn, ModConfig.DEBUG_CONF.DIM_ONE_ID, playerIn.getPosition().getX(),
-                    playerIn.posY + 5, playerIn.posZ);
+//            Teleport.teleportToDim(playerIn, ModConfig.DEBUG_CONF.DIM_ONE_ID, playerIn.getPosition().getX(),
+//                    playerIn.posY + 5, playerIn.posZ);
             return true;
         }
 

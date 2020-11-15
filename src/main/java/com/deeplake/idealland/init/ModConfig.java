@@ -29,9 +29,9 @@ public class ModConfig {
     public static final GeneralConf GeneralConf = new GeneralConf();
 
     public static class GeneralConf {
-        @Config.LangKey("idealland.conf.general.welcome")
-        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
-        public String WELCOME_MSG = "idealland.msg.welcome";
+//        @Config.LangKey("idealland.conf.general.welcome")
+//        @Config.Comment("The text shown when a player logs in. Can be a key or a string.")
+//        public String WELCOME_MSG = "idealland.msg.welcome";
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.DebugConf")
@@ -39,14 +39,7 @@ public class ModConfig {
     public static final DebugConf DEBUG_CONF = new DebugConf();
 
     public static class DebugConf {
-        @Config.LangKey("idealland.conf.debug.room_size")
-        @Config.Comment("The radius of room builder")
-        public int ROOM_SIZE = 3;
 
-        @Config.LangKey("idealland.conf.debug.dim_one_id")
-        @Config.Comment("DIM HEXA 16")
-        @Config.RequiresMcRestart
-        public int DIM_ONE_ID = 7777;
     }
 
     @Config.LangKey("configgui.idealland.category.Menu0.SpawnConf")
@@ -59,9 +52,9 @@ public class ModConfig {
         @Config.RequiresMcRestart
         public boolean SPAWN = true;
 
-        @Config.LangKey("entity.moroon_tainter.name")
-        @Config.Comment("Spawn Moroon Tainter")
-        @Config.RequiresMcRestart
-        public int SPAWN_TAINTER = 100;
+//        @Config.LangKey("entity.moroon_tainter.name")
+//        @Config.Comment("Spawn Moroon Tainter")
+//        @Config.RequiresMcRestart
+//        public int SPAWN_TAINTER = 100;
     }
 }
