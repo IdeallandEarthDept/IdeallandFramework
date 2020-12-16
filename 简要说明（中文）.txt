@@ -11,3 +11,17 @@
 
 此致
 理想境驻地球交流部
+
+
+
+补充说明：
+1.12.2的版本比较老，使用Java8进行开发，因此用于开发的软件经常需要下载比较老的版本，最新的会出问题。
+
+IntelliJ IDEA建议使用2019.4。
+在这里找寻IDEA的老版本：https://www.jetbrains.com/idea/download/other.html
+推荐IDEA下载链接（64位Windows，561M）：https://download.jetbrains.com/idea/ideaIC-2019.1.4-jbr11.win.zip
+
+在这里找寻JDK8：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
+JDK8官方下载地址（64位Windows，561M）：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox
+这个界面使用Chrome有可能无法正常显示，请使用Internet Explorer（不是Edge）尝试。
+
