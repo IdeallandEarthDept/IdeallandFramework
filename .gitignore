@@ -19,4 +19,9 @@ build
 
 # other
 eclipse
-run
+run/*
+!run/SinglePlayer.txt
+runServer/*
+!runServer/eula.txt
+!runServer/server.properties
+
