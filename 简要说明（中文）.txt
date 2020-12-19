@@ -25,3 +25,6 @@ IntelliJ IDEA建议使用2019.4。
 JDK8官方下载地址（64位Windows，561M）：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html#license-lightbox
 这个界面使用Chrome有可能无法正常显示，请使用Internet Explorer（不是Edge）尝试。
 
+build.gradle里加入了两行阿里云加速，以缓解大陆用户build慢到令人发指的苦恼。如果人在海外，请手动删除build.gradle里的这两行：
+maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}

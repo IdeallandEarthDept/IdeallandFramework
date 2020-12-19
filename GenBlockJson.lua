@@ -1,5 +1,5 @@
 local outFile = nil;
-local modName = "idealland";
+local modName = "idlframewok";
 local blockName = "grid_normal";
 
 local function GenModelBlockItem()
