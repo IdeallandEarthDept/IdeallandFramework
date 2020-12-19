@@ -1,0 +1,14 @@
+{
+  "entity.moroon.ambient":
+  {
+    "category": "entity",
+    "subtitle": "entity.moroon.ambient",
+    "sounds": [{"name":  "idlframework:entity/moroon/ambient", "stream":  true}]
+  },
+  "entity.moroon.hurt":
+  {
+    "category": "entity",
+    "subtitle": "entity.moroon.hurt",
+    "sounds": [{"name":  "idlframework:entity/moroon/hurt", "stream":  true}]
+  }
+}
