@@ -1,3 +1,7 @@
+在这里可以看视频教程
+https://www.bilibili.com/video/BV1Ar4y1K7Qk
+See the video tutorial in the link above (vocal in Chinese).
+
 -------------------------------------------
 Source installation information for modders
 -------------------------------------------
