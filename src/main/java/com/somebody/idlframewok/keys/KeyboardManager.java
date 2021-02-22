@@ -22,8 +22,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class KeyboardManager {
     //ref: https://harbinger.covertdragon.team/chapter-18/keyboard.html
 
-    // 注册快捷键。
-// 没有调用的时间限制，但建议在 FMLInitializationEvent 发布时调用。
     public static void init() {
         for (KeyBinding key:
              ClientProxy.KEY_BINDINGS) {

@@ -35,7 +35,6 @@ public class EntityIdeallandUnitBase extends EntityModUnit {
         return 1;
     }
 
-    //在简单难度中区域难度的范围是0.75–1.5，在普通难度时为1.5–4.0，在困难难度时为2.25–6.75。
     public void ApplyGeneralLevelBoost(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
         //with localDiff / 10 chance to lv up recursively

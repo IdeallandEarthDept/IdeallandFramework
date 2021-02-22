@@ -53,8 +53,6 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     {
         float difficulty = HexCubeHelper.getDifficulty(x,y,z);
 
-        //白-浅绿-浅蓝-浅黄-橙-浅红-红
-        //黑曜石
         int diffInt = (int) difficulty;
         if (diffInt <= colorByDiff.length)
         {
@@ -70,8 +68,6 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     {
         float difficulty = HexCubeHelper.getDifficulty(x,y,z);
 
-        //白-浅绿-浅蓝-浅黄-橙-浅红-红
-        //黑曜石
         int diffInt = (int) difficulty;
 
         return colorByDiff[diffInt % colorByDiff.length];

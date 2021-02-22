@@ -48,13 +48,13 @@ public class IdlFramework {
         if (MODID.equals("untitled"))
         {
             logger.error("Please change your mod id in the main class.");
-            logger.error("请在IdlFramework中修改你的MODID");
+            
         }
 
         if (Reference.CLIENT_PROXY_CLASS.indexOf("somebody.idlframewok.proxy.ClientProxy") > 0)
         {
             logger.warn("Have you changed your package name to author and modname?");
-            logger.warn("你是否忘记修改目录为作者名和mod名？");
+            
         }
 
         RegistryHandler.preInitRegistries(event);
