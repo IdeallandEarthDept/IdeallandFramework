@@ -1,10 +1,11 @@
+
 buildscript {
     repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
-        maven { url 'https://bmclapi2.bangbang93.com/maven' }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+        maven { url "https://${mirror_maven_url}" }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.2'
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.3.4"
     }
 }
 
@@ -62,10 +63,10 @@ for (clazz in classToInit) {
 }
 
 replaceString "https://launchermeta.mojang.com/mc/game/version_manifest.json", redirectUrl("https://bmclapi2.bangbang93.com/mc/game/version_manifest.json")
-replaceString "http://resources.download.minecraft.net/", "https://download.mcbbs.net/assets/" // use MCBBS mirror due to there's no way to hook http 302 response when downloading assets
-replaceString "https://libraries.minecraft.net/", "https://download.mcbbs.net/maven"
-replaceString "https://maven.minecraftforge.net", "https://bmclapi2.bangbang93.com/maven/"
-replaceString "https://maven.minecraftforge.net/de/oceanlabs/mcp/versions.json", redirectUrl("https://bmclapi2.bangbang93.com/maven/de/oceanlabs/mcp/versions.json")
+replaceString "http://resources.download.minecraft.net/", "https://download.mcbbs.net/assets/" // use MCBBS mirror due to there"s no way to hook http 302 response when downloading assets
+replaceString "https://libraries.minecraft.net/", "https://${mirror_maven_url}"
+replaceString "https://maven.minecraftforge.net", "https://${mirror_maven_url}"
+replaceString "https://maven.minecraftforge.net/de/oceanlabs/mcp/versions.json", redirectUrl("https://${mirror_maven_url}/de/oceanlabs/mcp/versions.json")
 
 tasks.whenTaskAdded {
     if (it.name == "getVersionJson") it.dependsOn mirrorManifest
