@@ -1,17 +1,16 @@
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-        jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://bmclapi2.bangbang93.com/maven' }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3.2'
     }
 }
+
+apply from: 'mirror.gradle'
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-
 
 version = "1.0"
 group = "com.ideallandframework.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -33,6 +32,21 @@ minecraft {
     // simply re-run your setup task after changing the mappings to update your workspace.
     mappings = "snapshot_20171003"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+}
+
+repositories {
+    // remove minecraft and forge maven repositories to avoid interference
+    removeIf {
+        println it
+        it instanceof MavenArtifactRepository &&
+            (it.url.toString() == "https://repo.maven.apache.org/maven2/" ||
+            it.url.toString() == "https://maven.minecraftforge.net" ||
+            it.url.toString() == "https://libraries.minecraft.net/")
+    }
+    // add mirror repositories
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'https://bmclapi2.bangbang93.com/maven' }
+    maven { url 'https://download.mcbbs.net/maven' }
 }
 
 dependencies {
