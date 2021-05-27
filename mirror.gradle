@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'https://bmclapi2.bangbang93.com/maven' }
     }
     dependencies {

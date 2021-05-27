@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'https://bmclapi2.bangbang93.com/maven' }
     }
     dependencies {
@@ -37,14 +37,13 @@ minecraft {
 repositories {
     // remove minecraft and forge maven repositories to avoid interference
     removeIf {
-        println it
         it instanceof MavenArtifactRepository &&
             (it.url.toString() == "https://repo.maven.apache.org/maven2/" ||
             it.url.toString() == "https://maven.minecraftforge.net" ||
             it.url.toString() == "https://libraries.minecraft.net/")
     }
     // add mirror repositories
-    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
     maven { url 'https://bmclapi2.bangbang93.com/maven' }
     maven { url 'https://download.mcbbs.net/maven' }
 }
