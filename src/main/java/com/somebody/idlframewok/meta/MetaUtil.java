@@ -3,6 +3,7 @@ package com.somebody.idlframewok.meta;
 import net.minecraftforge.fml.common.Loader;
 
 public class MetaUtil {
+    public static boolean isIDLLoaded = false;
     public static boolean isIRRLoaded = false;
     public static boolean isLoaded_TiC = false;
     public static boolean isLoaded_Slashblade = false;

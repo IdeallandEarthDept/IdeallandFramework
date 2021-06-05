@@ -85,6 +85,7 @@ public class IdlFramework {
             ModSpawn.registerSpawnList();
         }
 
+        MetaUtil.isIDLLoaded = Loader.isModLoaded("idealland");
         MetaUtil.isIRRLoaded = Loader.isModLoaded("itemrender");
         MetaUtil.isLoaded_TiC = Loader.isModLoaded("tconstruct");
         MetaUtil.isLoaded_Slashblade = Loader.isModLoaded("flammpfeil.slashblade");
@@ -107,11 +108,13 @@ public class IdlFramework {
 
 
     private void TrashTalking() {
-//        if (MetaUtil.isIRRLoaded) {
-//            IdlFramework.Log("Item Renderer? Consider contributing to MCMod-dot-cn.");
-//        } else {
-//            //IdlFramework.Log("No Item Renderer found.");
-//        }
+        if (MetaUtil.isIDLLoaded)
+        {
+            IdlFramework.Log("[Idealland Framework] Bow to Idealland.");
+        }
+        else {
+            IdlFramework.Log("[Idealland Framework] Made with Idealland Framework.");
+        }
     }
 
     private static void RegisterTileEntity() {
