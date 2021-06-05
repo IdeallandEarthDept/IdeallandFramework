@@ -18,6 +18,7 @@ public class BlockGeneralOrb extends BlockBase implements ITileEntityProvider {
 
 	public BlockGeneralOrb(String name, Material material, Class <? extends TileEntity> classEntity) {
 		super(name, material);
+		this.hasTileEntity = true;
 		this.tileEntity = classEntity;
 		setSoundType(SoundType.METAL);
 		setHardness(5.0F);

@@ -39,6 +39,12 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 		Init();
     }
 
+	@Override
+	public void invalidate() {
+		MinecraftForge.EVENT_BUS.unregister(this);
+		super.invalidate();
+	}
+
     public Vec3d GetPosInFloat()
 	{
 		BlockPos myPos = this.pos;

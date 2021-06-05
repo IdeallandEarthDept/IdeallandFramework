@@ -19,7 +19,7 @@ public class BlockDeboomOrb extends BlockBase implements ITileEntityProvider {
 
 	public BlockDeboomOrb(String name, Material material) {
 		super(name, material);
-		
+		this.hasTileEntity = true;
 		setSoundType(SoundType.METAL);
 		setHardness(5.0F);
 		setResistance(1500.0F);
