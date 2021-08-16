@@ -1,25 +1,39 @@
 buildscript {
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-        jcenter()
-        maven { url = "https://maven.minecraftforge.net/" }
+        if (use_mirror_url == "true") {
+            // clear all proxy settings, this is available for global
+            System.clearProperty "http.proxyHost"
+            System.clearProperty "http.proxyPort"
+            System.clearProperty "https.proxyHost"
+            System.clearProperty "https.proxyPort"
+            System.clearProperty "socksProxyHost"
+            System.clearProperty "socksProxyPort"
+            System.setProperty "java.net.useSystemProxies", "false"
+
+            maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+            maven { url "https://${mirror_maven_url}" }
+        } else {
+            mavenCentral()
+            maven { url "https://maven.minecraftforge.net" }
+        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.3.4"
     }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
+boolean useMirror = use_mirror_url == "true"
+if (useMirror) apply from: "mirror.gradle"
+apply plugin: "net.minecraftforge.gradle.forge"
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 version = "1.0"
 group = "com.ideallandframework.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "modid"
 
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
 compileJava {
-    sourceCompatibility = targetCompatibility = '1.8'
+    sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
@@ -35,6 +49,21 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
+repositories {
+    if (useMirror) {
+        // remove minecraft and forge maven repositories to avoid interference
+        removeIf {
+            it instanceof MavenArtifactRepository &&
+                (it.url.toString() == "https://repo.maven.apache.org/maven2/" ||
+                it.url.toString() == "https://maven.minecraftforge.net" ||
+                it.url.toString() == "https://libraries.minecraft.net/")
+        }
+        // add mirror repositories
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+        maven { url "https://${mirror_maven_url}" }
+    }
+}
+
 dependencies {
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
@@ -42,16 +71,16 @@ dependencies {
     //compile "some.group:artifact:version"
 
     // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+    //compile "com.mod-buildcraft:buildcraft:6.0.8:dev"  // adds buildcraft to the dev env
+    //compile "com.googlecode.efficient-java-matrix-library:ejml:0.24" // adds ejml to the dev env
 
-    // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
-    //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    // the "provided" configuration is for optional dependencies that exist at compile-time but might not at runtime.
+    //provided "com.mod-buildcraft:buildcraft:6.0.8:dev"
 
-    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
+    // the deobf configurations:  "deobfCompile" and "deobfProvided" are the same as the normal compile and provided,
     // except that these dependencies get remapped to your current MCP mappings
-    //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-    //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
+    //deobfCompile "com.mod-buildcraft:buildcraft:6.0.8:dev"
+    //deobfProvided "com.mod-buildcraft:buildcraft:6.0.8:dev"
 
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
@@ -66,20 +95,14 @@ processResources {
 
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
+        include "mcmod.info"
 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand "version":project.version, "mcversion":project.minecraft.version
     }
 
     // copy everything else except the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
-
-repositories.each {
-    if (it instanceof MavenArtifactRepository && it.url.toString() == "https://files.minecraftforge.net/maven") {
-        it.url = "https://maven.minecraftforge.net/"
+        exclude "mcmod.info"
     }
 }

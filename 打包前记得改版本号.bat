@@ -1,2 +1,4 @@
+@echo off
 chcp 65001
-gradlew build
+call gradlew.bat build
+pause
