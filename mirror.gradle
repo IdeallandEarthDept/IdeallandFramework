@@ -17,6 +17,9 @@ import net.minecraftforge.gradle.util.json.version.Library
 import sun.misc.SharedSecrets
 import sun.misc.Unsafe
 
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+
 // initialize the constant pool and force to load strings so that strings can be replaced
 void initConstantPool(Class<?> clazz) {
     if (clazz != null && !clazz.interface) {
@@ -62,7 +65,7 @@ for (clazz in classToInit) {
     initConstantPool Unsafe.theUnsafe.allocateInstance(clazz).class
 }
 
-replaceString "https://launchermeta.mojang.com/mc/game/version_manifest.json", redirectUrl("https://bmclapi2.bangbang93.com/mc/game/version_manifest.json")
+replaceString "https://launchermeta.mojang.com/mc/game/version_manifest.json", redirectUrl("https://${mirror_assets_url}/mc/game/version_manifest.json")
 replaceString "http://resources.download.minecraft.net/", "https://download.mcbbs.net/assets/" // use MCBBS mirror due to there"s no way to hook http 302 response when downloading assets
 replaceString "https://libraries.minecraft.net/", "https://${mirror_maven_url}"
 replaceString "https://maven.minecraftforge.net", "https://${mirror_maven_url}"
@@ -81,7 +84,7 @@ task mirrorManifest {
             it.setAccessible true
             it
         } get forge get forge.extension.version with {
-            if (it.url != null) it.url = redirectUrl it.url.replace("launchermeta.mojang.com", "bmclapi2.bangbang93.com")
+            if (it.url != null) it.url = redirectUrl it.url.replace("launchermeta.mojang.com", mirror_assets_url)
         }
     }
 }
@@ -94,10 +97,58 @@ task mirrorVersionJson {
             it.setAccessible true
             it
         } get forge with {
-            it.assetIndex.url = redirectUrl it.assetIndex.url.replace("launchermeta.mojang.com", "bmclapi2.bangbang93.com")
+            it.assetIndex.url = redirectUrl it.assetIndex.url.replace("launchermeta.mojang.com", mirror_assets_url)
             it.downloads.values().each {
-                if (it.url != null) it.url = redirectUrl it.url.replace("launcher.mojang.com", "bmclapi2.bangbang93.com")
+                if (it.url != null) it.url = redirectUrl it.url.replace("launcher.mojang.com", mirror_assets_url)
             }
         }
+    }
+}
+
+afterEvaluate {
+    ForgePlugin forge = project.plugins.findPlugin ForgePlugin.class
+
+    def mcpName = forge.delayedString("mcp_${Constants.REPLACE_MCP_CHANNEL}").call()
+    def mcpVersion = forge.delayedString("${Constants.REPLACE_MCP_VERSION}-${Constants.REPLACE_MCP_MCVERSION}").call()
+    def mcpBasePath = "/de/oceanlabs/mcp/${mcpName}/${mcpVersion}/${mcpName}-${mcpVersion}."
+    def mcpBaseUrl = "https://${mirror_maven_url}${mcpBasePath}"
+    new URL("${mcpBaseUrl}zip").withInputStream { is ->
+        Files.copy(is, file("${projectDir}/.gradle/local-repo${mcpBasePath}zip").toPath().with { path ->
+            Files.createDirectories(path.parent)
+            path
+        }, StandardCopyOption.REPLACE_EXISTING)
+    }
+    file("${projectDir}/.gradle/local-repo${mcpBasePath}pom").withWriter { writer ->
+        writer.write("""\
+            <?xml version="1.0" encoding="UTF-8"?>
+            <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <modelVersion>4.0.0</modelVersion>
+                <groupId>de.oceanlabs.mcp</groupId>
+                <artifactId>${mcpName}</artifactId>
+                <version>${mcpVersion}</version>
+                <packaging>zip</packaging>
+            </project>
+            """.stripIndent())
+    }
+
+    def mcVersion = forge.delayedString("${Constants.REPLACE_MC_VERSION}").call()
+    def mcBasePath = "/de/oceanlabs/mcp/mcp/${mcVersion}/mcp-${mcVersion}"
+    def mcBaseUrl = "https://${mirror_maven_url}${mcBasePath}"
+    new URL("${mcBaseUrl}-srg.zip").withInputStream { is ->
+        Files.copy(is, file("${projectDir}/.gradle/local-repo${mcBasePath}-srg.zip").toPath().with { path ->
+            Files.createDirectories(path.parent)
+            path
+        }, StandardCopyOption.REPLACE_EXISTING)
+    }
+    file("${projectDir}/.gradle/local-repo${mcBasePath}.pom").withWriter { writer ->
+        writer.write("""\
+            <?xml version="1.0" encoding="UTF-8"?>
+            <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                <modelVersion>4.0.0</modelVersion>
+                <groupId>de.oceanlabs.mcp</groupId>
+                <artifactId>mcp</artifactId>
+                <version>${mcVersion}</version>
+            </project>
+            """.stripIndent())
     }
 }
