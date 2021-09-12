@@ -5,5 +5,5 @@ if errorlevel 1 (
     set "JAVA_TOOL_OPTIONS=%JAVA_TOOL_OPTIONS% -Dfile.encoding=UTF-8"
 )
 chcp 65001
-call gradlew.bat setupDecompWorkspace
+call gradlew.bat setupDecompWorkspace idea genIntellijRuns
 pause
