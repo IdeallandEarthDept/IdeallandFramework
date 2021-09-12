@@ -60,6 +60,7 @@ repositories {
         }
         // add mirror repositories
         maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+        maven { url "file://${projectDir}/.gradle/local-repo" }
         maven { url "https://${mirror_maven_url}" }
     }
 }
