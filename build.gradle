@@ -96,6 +96,10 @@ sourceSets {
     }
 }
 
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
