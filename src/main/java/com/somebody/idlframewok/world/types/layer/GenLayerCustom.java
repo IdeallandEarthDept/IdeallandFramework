@@ -7,6 +7,8 @@ import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
+import static com.somebody.idlframewok.init.InitBiome.BIOME_ONE;
+
 public class GenLayerCustom extends GenLayer
 {
     @SuppressWarnings("unchecked")
@@ -30,13 +32,13 @@ public class GenLayerCustom extends GenLayer
         int desertIdx = net.minecraftforge.common.BiomeManager.BiomeType.DESERT.ordinal();
 
         biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.EXTREME_HILLS, 30));
-        //biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(BIOME_ONE, 30));
+        biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(BIOME_ONE, 30));
 
         if (p_i45560_4_ == WorldType.DEFAULT_1_1)
         {
             biomes[desertIdx].clear();
             biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(Biomes.EXTREME_HILLS, 30));
-            //biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(BIOME_ONE, 30));
+            biomes[desertIdx].add(new net.minecraftforge.common.BiomeManager.BiomeEntry(BIOME_ONE, 30));
             this.settings = null;
         }
         else

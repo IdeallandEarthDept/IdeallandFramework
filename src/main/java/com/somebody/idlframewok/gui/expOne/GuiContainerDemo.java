@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.gui.expOne;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
+import com.somebody.idlframewok.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -17,7 +18,7 @@ import java.io.IOException;
 
 @SideOnly(Side.CLIENT)
 public class GuiContainerDemo extends GuiContainer {
-    private static final String TEXTURE_PATH = IdlFramework.MODID + ":" + "textures/gui/container/gui_demo.png";
+    private static final String TEXTURE_PATH = Idealland.MODID + ":" + "textures/gui/container/gui_demo.png";
     private static final ResourceLocation TEXTURE = new ResourceLocation(TEXTURE_PATH);
 
     private static final int BUTTON_UP = 0;
@@ -52,7 +53,7 @@ public class GuiContainerDemo extends GuiContainer {
         String title = I18n.format("container.fmltutor.demo");
         this.fontRenderer.drawString(title, (this.xSize - this.fontRenderer.getStringWidth(title)) / 2, 6, 0x404040);
 
-        ItemStack item = new ItemStack(Items.QUARTZ);
+        ItemStack item = new ItemStack(ModItems.P_2_W_GOBLET);
         this.itemRender.renderItemAndEffectIntoGUI(item, 8, 20);
     }
 

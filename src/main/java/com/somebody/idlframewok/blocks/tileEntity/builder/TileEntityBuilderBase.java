@@ -3,6 +3,7 @@ package com.somebody.idlframewok.blocks.tileEntity.builder;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlock;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlockSafe;
+import com.somebody.idlframewok.blocks.ModBlocks;
 import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.state.IBlockState;
@@ -52,7 +53,7 @@ public class TileEntityBuilderBase extends TileEntity implements ITickable {
 //		if (world.isRemote && isReady)
 //		{
 //			Random random = new Random();
-//			Vec3d myPos = GetPosInFloat();
+//			Vec3d myPos = getPosInFloat();
 //			float range = 2f;
 //			float x = (random.nextFloat() - 0.5f) * range;
 //			float y = (random.nextFloat() - 0.5f) * range;
@@ -193,7 +194,7 @@ public class TileEntityBuilderBase extends TileEntity implements ITickable {
 				list.add(reserved_first_tasks_count, new BuilderActionBlock(newState, pos));
 				reserved_first_tasks_count++;
 			}else {
-				list.add(reserved_first_tasks_count, new BuilderActionBlock(Blocks.BRICK_BLOCK, pos));
+				list.add(reserved_first_tasks_count, new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, pos));
 				list.add(new BuilderActionBlockSafe(newState, pos));
 			}
 		} else {

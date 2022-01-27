@@ -1,13 +1,17 @@
 package com.somebody.idlframewok.entity;
 
+import com.somebody.idlframewok.blocks.ModBlocks;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.*;
 import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.init.ModConfig;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -16,12 +20,14 @@ import java.util.Vector;
 
 public class BuildingCore {
 
+    protected SoundEvent buildSound = SoundEvents.BLOCK_NOTE_CHIME;
+    private BlockPos pos;
     private World world;
     protected Vector<BuilderActionBase> list;
 
     protected int reserved_first_tasks_count = 0;//some has to be done before anything else, like clearing
 
-    public float buildRatePerTick = 60f;
+    public float buildRatePerTick = ModConfig.PerformanceConf.BUILDER_SPEED_MODIFIER;
     public float curBuildCounter = - CommonDef.TICK_PER_SECOND * 3f * buildRatePerTick;
 
     private int curBuildActionIndex = 0;
@@ -62,12 +68,13 @@ public class BuildingCore {
                 list.add(reserved_first_tasks_count, new BuilderActionBlock(newState, pos));
                 reserved_first_tasks_count++;
             }else {
-                list.add(reserved_first_tasks_count, new BuilderActionBlock(Blocks.BRICK_BLOCK, pos));
+                list.add(reserved_first_tasks_count, new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, pos));
                 list.add(new BuilderActionBlockSafe(newState, pos));
             }
         } else {
             list.add(new BuilderActionBlockBrutal(newState, pos));
         }
+        this.pos = pos;
     }
 
     public void readFromNBT(NBTTagCompound compound) {
@@ -107,8 +114,12 @@ public class BuildingCore {
     public void update(BlockPos basePos) {
         boolean remote = world.isRemote;
 
-        if (finished || remote) {
+        if (finished || (ModConfig.PerformanceConf.SIMPLE_BUILDER && remote)) {
             return;
+        }
+
+        if (world.getTotalWorldTime() % CommonDef.TICK_PER_SECOND == 0) {
+            PlaySound(buildSound);
         }
 
         curBuildCounter += buildRatePerTick;
@@ -172,4 +183,10 @@ public class BuildingCore {
             }
         }
     }
+
+    public void PlaySound(SoundEvent ev)
+    {
+        world.playSound(null, pos, ev, SoundCategory.BLOCKS, 0.3F, 1f);
+    }
+
 }

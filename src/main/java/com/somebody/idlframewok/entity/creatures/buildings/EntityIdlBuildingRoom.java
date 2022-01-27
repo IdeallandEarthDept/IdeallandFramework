@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.entity.creatures.buildings;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
+import com.somebody.idlframewok.init.ModConfig;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -15,11 +16,11 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
     public EntityIdlBuildingRoom(World worldIn) {
         super(worldIn);
         setAttr(1, 0, 0, 8, 5);
-        size = 3;//ModConfig.DEBUG_CONF.ROOM_SIZE;
+        size = ModConfig.DEBUG_CONF.ROOM_SIZE;
         buildingCore.ResetTasks();
         InitTaskQueue();
         buildingCore.setSpeed(40f / TICK_PER_SECOND);
-        IdlFramework.LogWarning("Summon. Size = " + size);
+        //Idealland.LogWarning("Summon. Size = " + size);
     }
 
     void InitTaskQueue()
@@ -28,13 +29,13 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
 
         if (buildingCore == null)
         {
-            IdlFramework.LogWarning("Core is null");
+            Idealland.LogWarning("Core is null");
         }
 
         int bottomRange = size;
         int wallHeight = 2 * size + 1;
 
-        IdlFramework.LogWarning("Size = " + size);
+        Idealland.LogWarning("Size = " + size);
 
         IBlockState blockState = Blocks.IRON_BLOCK.getDefaultState();
 

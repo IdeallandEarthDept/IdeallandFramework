@@ -1,10 +1,11 @@
 package com.somebody.idlframewok.world.dimension.hexcube;
 
+import com.somebody.idlframewok.blocks.ModBlocks;
+import com.somebody.idlframewok.init.InitBiome;
 import com.somebody.idlframewok.world.dimension.hexcube.structure.*;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.util.math.BlockPos;
@@ -53,6 +54,8 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     {
         float difficulty = HexCubeHelper.getDifficulty(x,y,z);
 
+        //白-浅绿-浅蓝-浅黄-橙-浅红-红
+        //黑曜石
         int diffInt = (int) difficulty;
         if (diffInt <= colorByDiff.length)
         {
@@ -68,6 +71,8 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     {
         float difficulty = HexCubeHelper.getDifficulty(x,y,z);
 
+        //白-浅绿-浅蓝-浅黄-橙-浅红-红
+        //黑曜石
         int diffInt = (int) difficulty;
 
         return colorByDiff[diffInt % colorByDiff.length];
@@ -86,7 +91,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
     boolean chunkUsed(int x, int z)
     {
-        return (x != 0 && z != 0);
+        return true;
     }
 
     public void buildChunk(int x, int z, ChunkPrimer primer) {
@@ -238,14 +243,14 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
         {
             int min = 1;
             int max = CHUNK_SIZE -1;
-            primer.setBlockState(min, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(min, y+min, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(max, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(max, y+min, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(min, y+max, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(min, y+max, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(max, y+max, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
-            primer.setBlockState(max, y+max, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
+            primer.setBlockState(min, y+min, min, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(min, y+min, max, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(max, y+min, min, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(max, y+min, max, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(min, y+max, min, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(min, y+max, max, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(max, y+max, min, ModBlocks.GRID_LAMP.getDefaultState());
+            primer.setBlockState(max, y+max, max, ModBlocks.GRID_LAMP.getDefaultState());
         }
     }
 
@@ -262,8 +267,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
         for (int i = 0; i < abyte.length; ++i)
         {
-            abyte[i] = (byte)Biome.getIdForBiome(Biomes.EXTREME_HILLS);
-            //abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_ONE);
+            abyte[i] = (byte)Biome.getIdForBiome(InitBiome.BIOME_CUBE);
         }
 
         chunk.resetRelightChecks();

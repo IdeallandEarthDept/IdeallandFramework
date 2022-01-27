@@ -4,9 +4,12 @@ import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.entity.creatures.ai.BulletMode;
 import com.somebody.idlframewok.entity.creatures.ai.EntityAIBulletAttack;
 import com.somebody.idlframewok.entity.creatures.ai.RangedAttackArguments;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -31,7 +34,7 @@ public class EntityTurretPrototype2 extends EntityModUnit {
     }
 
     @Override
-    protected void initEntityAI() {
+    protected void firstTickAI() {
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, lookRange));
         this.tasks.addTask(6, new EntityAILookIdle(this));
 

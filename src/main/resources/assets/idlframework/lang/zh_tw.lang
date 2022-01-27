@@ -1,0 +1,685 @@
+# PARSE_ESCAPES
+itemGroup.ideallandMiscTab=理境大厅
+itemGroup.ideallandFurnitureTab=理境装潢所
+itemGroup.ideallandBuilderTab=理境建筑所
+itemGroup.ideallandSkillsTab=理境教育所
+itemGroup.ideallandFadeTab=理境幻术所
+
+generator.TYPE_ONE=类型一
+generator.TYPE_ONE.info=Idealland Debug Mode
+generator.TYPE_TWO=类型二
+
+# key mapping
+key.category.idealland=理想境键位设置
+key.idealland.activate_skill_offhand=使用副手技能
+key.idealland.activate_skill_mainhand=使用主手技能
+
+# config
+configgui.idealland.category.Menu0.GeneralConf=综合选项
+idealland.conf.general.welcome=欢迎词
+idealland.conf.general.skill_rate=摩隆技能掉率
+idealland.conf.general.edict_craftable=可制作圣旨
+
+configgui.idealland.category.Menu0.PerformanceConf=性能配置
+idealland.conf.performance.builder=简化客户端建造器表现
+
+configgui.idealland.category.Menu0.ReviveCurseConf=复生诅咒选项
+idealland.conf.death_box_curse.enabled=落地成盒生效
+idealland.conf.revive_curse.enabled=复生诅咒生效
+idealland.conf.revive_curse.avengeful=复生者复仇
+idealland.conf.revive_curse.child_threshold=小僵尸血量门槛
+idealland.conf.revive_curse.revive_blacklist=不复活这些
+
+configgui.idealland.category.Menu0.HitConf=秒杀诅咒配置
+idealland.conf.one_hit_curse.enabled=诅咒生效
+
+configgui.idealland.category.Menu0.CurseConf=其他诅咒选项
+idealland.conf.sleep_curse.enabled=开启深度睡眠
+
+idealland.conf.level_curse.enabled=等级影响属性
+idealland.conf.level_curse.max_level=等级上限：超过此等级不提升属性了。
+idealland.conf.level_curse.max_speed=最大速度加成比例。 1 = +100%
+idealland.conf.level_curse.init_hp_ratio=初始血量上限加成比例。. -0.5 = -50%
+
+configgui.idealland.category.Menu0.SpawnConf=刷怪配置
+
+# config
+conf.tainter_req_buff=暴露机制：只在暴露的玩家旁生成染污者
+conf.spawn.enabled=生成摩隆生物
+conf.kill_norm_increase_chance=非摩隆生物提升入侵点数概率
+conf.invasion_length=摩隆入侵时长（秒）
+conf.invasion_period=摩隆入侵周期（入侵点数）
+conf.invasion_period_forcast_threshold=摩隆入侵预警值（需小于入侵周期）
+conf.tainter_buff_spawn_range=染污者生成范围（距离玩家至多这么多格）
+
+# Enchantments
+enchantment.idealland.test_enchantment=测试期
+enchantment.idealland.anti_vanilla=异界入侵者
+enchantment.idealland.anti_mod=原版之怒
+enchantment.idealland.lover=梁山伯与祝英台
+enchantment.idealland.anti_aoa=实有世界
+enchantment.idealland.anti_gog=奎爷神典
+enchantment.idealland.poison_touch=淬毒
+enchantment.idealland.death_bringer=阎王令
+enchantment.idealland.anti_vanilla_protection=异界庇护者
+enchantment.idealland.anti_mod_protection=原版之护
+enchantment.idealland.anti_magic_protection=耐魔保护
+enchantment.idealland.water_form=水作骨肉
+enchantment.idealland.fire_form=火中锤炼
+enchantment.idealland.armor_pierce=穿甲
+
+
+# Messages
+idealland.mor_kill_count_notify=[作废]Statistics show that you have eliminated %d Moroon units.
+idealland.kill_count_herald=[作废] The Moroon are interested in your fights.
+
+idealland.moroon_incoming=[IDL] 警报！摩隆入侵！
+idealland.moroon_incoming_herald=[IDL][注意] 摩隆密切关注着你的战斗。
+idealland.msg.notice_meter_report=[IDL]摩隆注意度： %d, 入侵准备: %d/%d, 测量误差:%d
+
+idealland.msg.being_targeted=[IDL][注意] 检测到敌意
+idealland.msg.being_targeted_by_sniper=[IDL][注意] 狙击手 在瞄准你
+
+idealland.msg.boss_revive=>>子无敢弑我也！我乃万物之长。 <<
+idealland.msg.boss_revive_2=[IDL][注意]附近有 %d 个信仰它的生物存在，清除它们才能弑神。
+
+idealland.msg.radar_nearbycreatures=[IDL]%d x %s detected..
+idealland.msg.starter_kit_given=[IDL]请查收新手包。
+idealland.msg.welcome=[IDL]白塔之光照耀。
+
+idealland.msg.low_dura=[%s]我濒临破碎。
+
+idealland.msg.until_death=至死不渝: %s <3 %s
+
+idealland.msg.produce_complete=[IDL]Production complete: [%d-%s] %s
+idealland.msg.research_complete=[IDL]Research complete: [%d-%s]
+
+idealland.msg.upgrade_module.ok=[IDL] 属性升级成功： %s -> %s
+idealland.msg.upgrade_module.req_lv=[IDL] 需要经验等级： %d
+
+idealland.msg.dim_id_invalid=[IDL] 我们未能找到具有此id的世界: "%s".
+
+idealland.msg.knights_attack=[%s] 骑兵连，进——攻！！！
+
+idealland.msg.nice_sleep=睡得真香~
+idealland.msg.bad_sleep=被惊醒使你暴躁。
+
+idealland.msg.init_active=已根据你的等级调整你的属性
+idealland.msg.stat_lv_up=恭喜，你升级了，属性也增长了。
+idealland.msg.stat_lv_overflow=你的等级过高，升级不会进一步提升属性。
+
+idealland.msg.cannot_place_box=未能放置箱子，周围箱子过多。
+idealland.msg.out_of_range=MISS (OUT OF RANGE)
+idealland.skill.msg.not_castable_mainhand=Mainhand item not castable.
+idealland.skill.msg.not_castable_offhand=Offhand item not castable.
+# Potions
+idealland.potion.deadly=致死
+idealland.potion.zen_heart=功德无量
+idealland.potion.virus_one=一号病毒
+idealland.potion.undying=不息
+idealland.potion.magic_resist=魔法抗性
+idealland.potion.blast_resist=爆炸抗性
+idealland.potion.knockback_resist=击退抗性
+idealland.potion.rest_in_peace=安息
+idealland.potion.erosion=腐蚀
+idealland.potion.invincible=无敌
+idealland.potion.interference=电磁干扰
+idealland.potion.noticed_by_mor=暴露
+idealland.potion.crit_chance_plus=暴击率提升
+idealland.potion.crit_chance_minus=暴击率下降
+idealland.potion.crit_dmg_plus=暴击伤害提升
+idealland.potion.crit_dmg_minus=暴击伤害下降
+idealland.potion.berserk=狂暴
+
+
+
+# Entities
+entity.skeleton_tower.name=骷髅望塔
+entity.hired_skeleton.name=骷髅佣兵
+entity.moroon_tainter.name=摩隆 拓荒者
+entity.moroon_tide_maker.name=摩隆 兴潮者
+entity.moroon_orbital_beacon.name=摩隆 轨道轰炸信标
+entity.moroon_bastion_walker.name=摩隆 行路堡垒
+entity.moroon_flick_fighter.name=摩隆 闪烁战士
+entity.moroon_blinding_assassin.name=摩隆 致盲刺客
+entity.moroon_sniper.name=摩隆 影射手
+entity.moroon_martialist.name=摩隆 格斗家
+entity.moroon_boss_avatar_of_life.name=摩隆 众生魔祖
+entity.moroon_vampire.name=摩隆 夜翼侯
+entity.moroon_mind_mage.name=摩隆 扰心师
+entity.moroon_standard_infantry.name=摩隆 军团步兵
+entity.eternal_soldier.name=永生者
+entity.elk_33.name=麋鹿
+
+entity.cubix_1.name=Cubix Duet
+entity.squid_base.name=Black Squid
+entity.squid_moroon.name=M. Black Squid
+
+entity.idealland_whitetower_core.name=理境·白塔核心
+entity.idealland_electric_interferer.name=理境·电子干扰站
+entity.idealland_builder_base.name=理境·测试建造机
+entity.idealland_builder_test_2.name=理境·测试建造机·乙型
+entity.idealland_turret_prototype.name=理境·原型炮台
+entity.idealland_turret_aa.name=理境·防空炮台
+entity.idealland_radar_air.name=理境·防空雷达
+
+entity.idealland_builder_xp_well.name=理境·经验井（建造中）
+entity.idealland_xp_well.name=理境·经验井
+
+tile.idealland_light_basic.name=理境灯
+tile.idealland_extraction_door.name=理境屏障门
+
+tile.nullify_orb.name=理境辟邪球
+tile.nullify_orb_mor.name=理境辟邪球【反摩隆】
+tile.de_boom_orb.name=理境防爆球
+tile.de_arrow_orb.name=理境避矢球
+tile.de_water_orb.name=理境脱水球
+tile.earth_mender_basic.name=理境愈地器
+
+
+tile.test.name=理境测试块
+tile.grid_dark_2.name=理境网格·乙
+tile.grid_lamp.name=理境网格灯
+tile.grid_normal.name=理境网格
+tile.construction_site.name=理境施工现场
+tile.builder_one.name=理境建筑·太初
+tile.builder_house.name=理境建筑·住房
+tile.builder_farm.name=理境建筑·标准田
+tile.builder_farm_sin.name=大秦建筑·小麦田（成熟）
+tile.fence_brick.name=围墙建设器
+
+tile.moroon_block.name=摩隆块
+
+tile.idl_glass.name=理境玻璃
+
+idealland.food.shared.xp_desc=含有经验: %d
+# Items
+idealland.gua_enhance_no_free.desc=可用铁砧镶嵌卦象
+idealland.gua_enhance_free.desc=徒手卦象镶嵌槽: %d
+
+# Items
+idealland.gua_enhance_total.desc=卦象强化: %d
+idealland.shared.press_shift=长按SHIFT查看详情
+
+idealland.shared.off=[OFF]
+idealland.shared.on=[ON]
+
+fading.duration.desc=%d 秒后消失。
+
+item.gua_0.name=坤
+item.gua_0.desc=地之力，以阴爻构成。
+item.gua_1.name=震
+item.gua_1.desc=雷之力，以阴爻阳爻构成。
+item.gua_2.name=坎
+item.gua_2.desc=水之力，以阴爻阳爻构成。
+item.gua_3.name=兑
+item.gua_3.desc=泽/悦之力，以阴爻阳爻构成。
+item.gua_4.name=艮
+item.gua_4.desc=山之力，以阴爻阳爻构成。
+item.gua_5.name=离
+item.gua_5.desc=火之力，以阴爻阳爻构成。
+item.gua_6.name=巽
+item.gua_6.desc=风之力，以阴爻阳爻构成。
+item.gua_7.name=乾
+item.gua_7.desc=天之力，以阳爻构成。
+
+item.debug_test.name=调试物品
+item.debug_test.desc=  在主手时减少受到的伤害 %d ;\n  造成 %d 电击伤害;\n  付与虚弱 Lv.%d (%d s);\n  击退 Lv.%d;\n  付与自身击退抗性 Lv.%d (%d s);\n  付与 %d 火焰伤害并点燃目标(%d s);\n  治疗双方 %d 点生命.
+
+item.debug_test_2.name=调试物品2
+item.debug_test_2.desc=  在主手时减少受到的伤害 %d %% ;\n  造成 %d 电击伤害;\n  付与虚弱 Lv.%d (%d s);\n  击退 Lv.%d;\n  付与自身击退抗性 Lv.%d (%d s);\n  付与 %d 火焰伤害并点燃目标(%d s);\n  治疗双方 %d 点生命.
+
+item.xie_geta.name=谢公屐
+item.xie_geta.desc.0=上山模式，赋予%s级跳跃提升\n 右键地面切换模式
+item.xie_geta.desc.1=平地模式，赋予%s级速度\n 右键地面切换模式
+item.xie_geta.desc.2=下山模式，赋予I级缓慢并减少受到的摔落伤害 %s 点。\n 右键地面切换模式
+
+item.underfoot_geta.name=足下屐
+item.underfoot_geta.desc=每 %s 秒驱散一个增益效果和一个减益效果。 受到的火焰伤害变为%s倍。
+
+item.summon_eternal.name=召唤永生者（调试物品）
+item.summon_eternal.desc=召唤一个钻石套僵尸。
+
+item.uno_card.name=四色牌
+item.uno_card.desc=攻击手持同色牌的生物造成 %.1f 伤害，\n异色则反弹 %.1f 伤害并抓一张牌。\n攻击空手的生物会送给他一张牌。
+
+item.level_up_badge.name=升级徽章
+item.level_up_badge.desc=晋升一个摩隆或理境单位。
+
+item.yin_sign.name=阴爻
+item.yin_sign.desc=三个阴阳爻可以合成八卦。
+item.yang_sign.name=阳爻
+item.yang_sign.desc=三个阴阳爻可以合成八卦。
+
+item.water_caster.name=放水术
+item.water_caster.desc=消耗坎卦放置水。
+item.water_caster.msg.no_ammo=你需要名为“坎”的物品。
+
+item.water_extractor.name=抽水术
+item.water_extractor.desc=将水转化为坎卦。
+
+item.helmet_sniper.name=摩隆狙击盔
+item.helmet_sniper.desc=潜行时+25%% 暴击率，+50%% 暴击伤害\n非玩家佩戴时: +100%% 潜行时弹射物暴击率， +8 跟随距离
+
+item.matter_original.name=太极原质
+item.matter_original.desc=原初之材料
+
+item.paper_blood.name=血染之纸
+item.paper_blood.desc=用纸攻击生物可获得。
+
+item.blood_iron_ingot.name=血染铁锭
+item.blood_iron_ingot.desc=这铁锭有点不对劲。
+
+item.kinship_sword.name=血脉断绝剑
+item.kinship_sword.desc=击中时，同时对附近与目标同类的生物造成50%%伤害。
+
+item.medicine_parasite_1.name=抗寄生虫药
+item.medicine_parasite_1.desc=用于寄生虫感染的治疗。 \n每次一瓶。视感染程度服用1~9次。  \n不良反应：反胃
+
+item.medicine_parasite_3.name=抗寄生虫药 +
+item.medicine_parasite_3.desc=用于寄生虫感染的治疗。 \n每次一瓶。视感染程度服用1~3次。  \n不良反应：反胃
+
+item.medicine_parasite_9.name=抗寄生虫药 ++
+item.medicine_parasite_9.desc=用于寄生虫感染的治疗。 \n每次一瓶。  \n不良反应：长时间反胃
+
+item.diag_parasite.name=寄生虫检测器
+item.diag_parasite.desc.0=右键测试自己是否被寄生虫感染。 \n上次测试结果：阴性
+item.diag_parasite.desc.1=右键测试自己是否被寄生虫感染。 \n上次测试结果：阳性
+
+idealland.msg.diagnostic_negative=阴性！放心了！
+idealland.msg.diagnostic_positive=阳性。不太妙。
+
+item.memory_bread.name=知识面包
+item.memory_bread.desc=从某其他世界学来的手艺。
+
+item.war_bread.name=战争面包
+item.war_bread.desc=吃下会暴露在摩隆视野之下。
+
+item.moroon_fragment.name=摩隆碎屑
+item.moroon_fragment.desc=摩隆掉落物。
+
+item.moroon_ingot.name=摩隆锭
+item.moroon_ingot.desc=制作与修复摩隆装备。
+
+item.bio_bronze_ingot.name=活铜
+item.bio_bronze_ingot.desc=理境生产的初阶生命金属，制成的装备都具有生命。
+
+item.nano_mender_experimental.name=纳米修复机
+item.nano_mender_experimental.desc=自动修复你的盔甲和手中物品。试验版，剂量很小。
+
+item.nano_mender_basic.name=纳米修复机 (乙型)
+item.nano_mender_basic.desc=自动修复你的盔甲和手中物品。
+
+item.nano_mender_greater.name=纳米修复机 (戊型)
+item.nano_mender_greater.desc=自动修复你的盔甲和手中物品。含有1024点耐久。
+
+item.emp_site.name=建造·电子干扰站
+item.emp_site.desc=设置一个电子干扰站，抑制周围摩隆轨道信标的工作
+
+item.build_xp_well.name=建造·经验井
+item.build_xp_well.desc=建造一个 5x5x5 的经验井。每当井满时，右键可以收获经验。
+
+item.build_turret.name=建造·炮台
+item.build_turret.desc=建造一个基本炮台。
+
+item.build_turret_aa.name=建造·防空炮台
+item.build_turret_aa.desc=建造一个只攻击空中目标的炮台。
+
+item.build_radar_aa.name=建造·防空雷达
+item.build_radar_aa.desc=建造一个辅助附近炮台发现空中目标的雷达。
+
+item.ethereal_sword.name=咒铸剑
+item.ethereal_sword.desc=极高的附魔适性，随着附魔数量的增多会提高伤害和耐久。
+
+item.smash_shield.name=轰击盾
+item.smash_shield.desc=可以当做武器的盾
+
+item.healing_gun.name=治疗枪
+item.healing_gun.desc=恢复附近非机械生物的生命。
+
+item.antenna.name=摩隆天线
+item.antenna.desc=可以用来制作电子干扰站
+
+item.disturb_measure.name=干扰测量器
+item.disturb_measure.desc=当附近模组生物攻击原版生物时充能。充能完成时提供理境授权I级 \n充能: %d/%d
+
+item.disturb_measure_2.name=干扰测量器 II
+item.disturb_measure_2.desc=当附近模组生物攻击原版生物时充能。充能完成时提供理境授权II级 \n充能: %d/%d
+
+item.research_result.name=读书破万卷
+item.research_result.desc=书中自有……开卷有益就是了。右键，开啊！
+
+item.fade_chain_1.name=锁链头盔（幻）
+item.fade_chain_2.name=锁链胸甲（幻）
+item.fade_chain_3.name=锁链护腿（幻）
+item.fade_chain_4.name=锁链靴子（幻）
+
+item.fade_diamond_1.name=钻石头盔(幻)
+item.fade_diamond_2.name=钻石胸甲(幻)
+item.fade_diamond_3.name=钻石护腿(幻)
+item.fade_diamond_4.name=钻石靴子(幻)
+
+item.package_fade_armor_chain.name=幻术铠甲包(锁链)
+item.package_fade_armor_chain.desc=穿上逐渐消失的幻术甲。
+
+item.package_fade_armor_diamond.name=幻术铠甲包(钻石)
+item.package_fade_armor_diamond.desc=穿上逐渐消失的幻术甲。
+
+item.armor_qsh_1.name=大秦帽子
+item.armor_qsh_1.desc=仿照某世界里的人设计。
+
+item.armor_qsh_2.name=大秦身躯
+item.armor_qsh_2.desc=仿照某世界里的人设计。
+
+item.armor_qsh_3.name=大秦护腿
+item.armor_qsh_3.desc=仿照某世界里的人设计。
+
+item.armor_qsh_4.name=大秦鞋
+item.armor_qsh_4.desc=仿照某世界里的人设计。
+
+item.mor_armor_1.name=摩隆头盔
+item.mor_armor_1.desc=摩隆的经济型护甲。
+
+item.mor_armor_2.name=摩隆胸甲
+item.mor_armor_2.desc=摩隆的经济型护甲。
+
+item.mor_armor_3.name=摩隆护腿
+item.mor_armor_3.desc=摩隆的经济型护甲。
+
+item.mor_armor_4.name=摩隆战靴
+item.mor_armor_4.desc=摩隆的经济型护甲。
+
+
+item.l_m_armor_1.name=活铜头部
+item.l_m_armor_1.desc=生命金属会着你的恢复而修复。
+
+item.l_m_armor_2.name=活铜身躯
+item.l_m_armor_2.desc=生命金属会着你的恢复而修复。
+
+item.l_m_armor_3.name=活铜腿部
+item.l_m_armor_3.desc=生命金属会着你的恢复而修复。
+
+item.l_m_armor_4.name=活铜足部
+item.l_m_armor_4.desc=生命金属会着你的恢复而修复。
+
+
+# Maskes
+item.mask_dou_er_dun.name=蓝脸的窦尔敦
+item.mask_dou_er_dun.desc=盗御马！潜行试试
+
+item.helm_sanity.name=自闭头盔
+item.helm_sanity.desc=免疫心灵法师的干扰
+
+item.idl_order_1.name=理境授权I级
+item.idl_order_1.desc=理境T1科技使用许可，内含法术的特殊芯片
+
+item.idl_order_2.name=理境授权II级
+item.idl_order_2.desc=理境T2科技使用许可，内含法术的特殊芯片
+
+edict.shared.start=吾所咏唱乃是旨意，吾之所述化为真理：
+edict.shared.end=急急如敕令，钦此！
+edict.shared.fail=旨意撤销。
+
+item.kill_all_mortal_edict.name=旨意：最高裁决
+item.kill_all_mortal_edict.desc=消灭所有非玩家生物。（范围：约255x255x255）
+item.kill_all_mortal_edict.on_start=此乃灭杀之裁决。无论敌友，凡无真魂者，平等灭杀。
+item.kill_all_mortal_edict.on_end=距离255以内方域，所有非玩家生物即刻死去。
+
+item.build_simple_house_edict.name=旨意：四海为家
+item.build_simple_house_edict.desc=建造一个基本住宅（约7x5x7）
+item.build_simple_house_edict.on_start=此乃投宿之旨意。在此征地，用于建筑。
+item.build_simple_house_edict.on_end=即刻在此建筑基本住宅。
+
+item.edict_random.name=圣旨包
+item.edict_random.desc=包含一副圣旨
+item.edict_random.desc_extra=（当前选项不可用）
+
+# Goblets
+item.goblet_blank.name=黄金杯
+item.goblet_blank.desc=可以制作成销金杯。
+
+item.goblet_dig.name=销金杯[挖掘模式]
+item.goblet_dig.desc=手持时使附近的石头消失，范围大小与等级有关。最高5级。（空合成解除模式）
+item.goblet_dig.desc2=也能清理: %s  (塞方块来设置)
+
+item.goblet_heal.name=销金杯[治疗模式]
+item.goblet_heal.desc=以每秒钟 %d 点的速率治疗手持者。（空合成解除模式）
+
+item.goblet_flame.name=销金杯[侵略如火]
+item.goblet_flame.desc=对附近的生物每秒造成 %d 火炎伤害，并点燃它们。（空合成解除模式）
+
+item.goblet_wind.name=销金杯[疾如罡风]
+item.goblet_wind.desc=击退附近的生物。（空合成解除模式）
+
+item.goblet_mountain.name=销金杯[不动如山]
+item.goblet_mountain.desc=提供击退抗性。潜行时额外获得（伤害）抗性提升。
+
+item.p2w_goblet.name=销金杯[装填模式]
+item.p2w_goblet.desc=氪金让你变强，强到骨子里。（塞金子升级，塞八卦、镐、食物可以改变模式）
+item.p2w_goblet.contain.desc=融解 %d 金
+item.p2w_goblet.player.desc=黄金之力：等级%d （%d/%d 金）
+
+item.random_skill.name=未习得技能
+item.random_skill.desc=右键习得一个随机技能
+
+# Skills
+item.skill_base.name=空白技能石
+item.skill_base.desc=可以用来合成某些技能.
+
+item.skill_merlin_illusion.name=幻术 A
+item.skill_merlin_illusion.desc=(FGO:梅林)\n付与己方全体无敌状态(1回合)\n    暴击率提升(1回合)\n敌方全体暴击发生率下降(3回合)
+
+item.skill_calm_walk.name=闲庭信步
+item.skill_calm_walk.desc=[被动][主/副手持]防止你受到或造成的所有伤害，获得缓慢和击退抗性。（来自其他玩家的伤害照常）
+
+item.skill_sacrifice_2020.name=2020之殇
+item.skill_sacrifice_2020.desc=牺牲自己，治愈附近玩家。以此铭记2020年的疫情。
+
+item.skill_radar_creature.name=物种雷达[WIP]
+item.skill_radar_creature.desc=检测附近某种生物的数量。右键交互以设置生物
+item.skill_radar_creature.extra=扫描中: %s
+
+item.skill_hate_detect.name=敌意雷达
+item.skill_hate_detect.desc=在有生物想攻击你时预警。
+
+item.skill_hate_detect_sniper.name=敌意雷达（狙）
+item.skill_hate_detect_sniper.desc=在有摩隆鬼狙想攻击你时预警。
+
+# Skills
+item.skill_taunt_nearby.name=向我开炮
+item.skill_taunt_nearby.desc=嘲讽附近的AI生物。
+
+item.skill_thunder_fall.name=雷霆坠
+item.skill_thunder_fall.desc=[被动触发][主/副手持]若你将受到坠落伤害，则防止之，并对5格内的其他生物造成3倍铁砧伤害。
+
+item.skill_all_attack_target.name=千夫所指
+item.skill_all_attack_target.desc=附近的生物攻击目标生物。
+
+item.skill_leadership.name=领袖之呼
+item.skill_leadership.desc=给予附近玩家力量增益
+
+item.skill_windwalk.name=踏风而行
+item.skill_windwalk.desc=获得速度提升
+
+item.skill_fireblast.name=火炎爆发
+item.skill_fireblast.desc=对附近的生物造成火炎伤害，并点燃它们。
+
+item.skill_fireball.name=火球
+item.skill_fireball.desc=发射一个火焰弹。
+
+item.skill_fireball_big.name=爆炎火球
+item.skill_fireball_big.desc=发射一个爆炸性的火球，会破坏方块并点燃火焰。
+
+item.skill_invincible.name=不破之甲
+item.skill_invincible.desc=获得无敌效果。不免疫击退。
+
+item.skill_martial1.name=格斗：拳
+item.skill_martial1.desc=拳击前面的生物。
+
+item.skill_martial_slam.name=格斗：投
+item.skill_martial_slam.desc=对所选的敌人造成强力伤害与击退。
+
+item.skill_fade_armor_chain.name=召唤幻术甲(锁链)
+item.skill_fade_armor_chain.desc=穿上逐渐消失的幻术甲。会继承技能上的附魔。
+
+item.skill_fade_armor_diamond.name=召唤幻术甲(钻石)
+item.skill_fade_armor_diamond.desc=穿上逐渐消失的幻术甲。会继承技能上的附魔。
+
+item.skill_repair_armor.name=修复护甲
+item.skill_repair_armor.desc=修复护甲，并予以技能上的附魔
+
+item.skill_notice_meter.name=摩隆情报
+item.skill_notice_meter.desc=探测摩隆对你的注意度。升级可以减小误差。
+item.skill_notice_meter.desc_2=[当前游戏选项下无用]
+
+item.skill_scry.name=占卜
+item.skill_scry.desc=获得两个卦象。
+
+item.skill_xp_shield.name=知识之盾[制作中]
+item.skill_xp_shield.desc=[被动][主/副手持]以 %s 点经验/伤害的效率用经验抵消伤害
+
+item.skill_pride_shield.name=学者之傲气
+item.skill_pride_shield.desc=[被动][主/副手持]若你将受到伤害，如果你的等级大于其数量，则防止它；反之翻倍。
+
+item.skill_xp_strike.name=知识拳
+item.skill_xp_strike.desc=造成等于你等级数量的伤害。如果目标血量小于你的等级，则该伤害无视护甲。
+
+item.skill_gambit.name=黑城豪赌
+item.skill_gambit.desc=50%% 概率复制副手物品；50%% 概率令其消失。慎重使用。
+
+item.skill_elk_transform.name=化为麋鹿[制作中]
+item.skill_elk_transform.desc=/+1\\:目标神器或生物失去所有异能，且成为基础力量与防御力为3/3的绿色麋鹿生物。
+
+item.skill_sheep_transform.name=变羊术
+item.skill_sheep_transform.desc=讲一个非玩家生物变成羊。这个过程不可逆。
+
+item.skill_mirrorwork.name=复制术
+item.skill_mirrorwork.desc=复制你副手的物品。
+
+item.skill_decode_item.name=解码物品
+item.skill_decode_item.desc=将你副手物品转化为经验。小心使用
+item.skill_decode_item.desc.extra=每件经验： %f
+
+item.skill_clone_egg.name=逆孵化
+item.skill_clone_egg.desc=右键一个生物来获得一个它的生成蛋。
+
+item.skill_clone_block.name=结构克隆术
+item.skill_clone_block.desc=右键一个方块来获得一份其物品，就如创造模式那样。
+
+item.skill_gua_palm.name=八卦掌
+item.skill_gua_palm.desc=在主手时减少受到的伤害 %.1f%% ;\n  造成 %d 电击伤害;\n  付与虚弱 Lv.%d (%d s);\n  击退 Lv.%d;\n  付与缓慢 Lv.%d (%d s);\n  付与 %d 火焰伤害并点燃目标(%d s);\n  治疗双方 %d 点生命.
+
+item.skill_mod_list_strike.name=众神之击
+item.skill_mod_list_strike.desc=对目标造成等于所安装Mod数量的伤害。当前：%d
+
+item.skill_cd_cut_percent.name=时间湍流·甲型
+item.skill_cd_cut_percent.desc=减少副手物品的冷却 %.1f%%。
+
+item.skill_cd_cut_fixed.name=时间湍流·乙型
+item.skill_cd_cut_fixed.desc=减少副手物品的冷却 %.1fs。
+
+item.skill_knights_attack.name=骑兵连，进攻！
+item.skill_knights_attack.desc=[需要骑乘] 给附近骑乘、被骑乘的友方单位强力增益。包括自己。
+
+item.skill_rule_of_survival.name=雪境生存法则
+item.skill_rule_of_survival.desc=(明日方舟·银灰)\n[副手施法]\n可以在下列状态和初始状态间切换：\n攻击范围缩小，防御力+%d%%，每秒恢复最大生命的%.1f%%
+msg.skill_rule_of_survival.cast.0=“当他们耀武扬威时，无人知晓......”
+msg.skill_rule_of_survival.cast.1=“你为何来到这里——”
+msg.skill_rule_of_survival.cast.2=“我的仇敌，我的玩物？”
+msg.skill_rule_of_survival.cast.3=“......当他们哀嚎求饶时，无人应答。”
+
+item.yi_jian_mei.name=《一剪梅》
+item.yi_jian_mei.desc=雪↘↗花↗飘↘↗飘↗北↘↗风↗萧↘↗萧↗
+
+item.mor_rifle.name=摩隆能量枪
+item.mor_rifle.desc=标准的摩隆远程武器，可以发射能量弹。
+
+item.modular_hp.name=冗余模块
+item.modular_hp.desc=右键提升一个机械生物的生命上限 %.1f 点。
+
+item.modular_atk.name=火力模块
+item.modular_atk.desc=右键提升一个机械生物的攻击力 %.1f 点。
+
+item.modular_def.name=装甲模块
+item.modular_def.desc=右键提升一个机械生物的护甲 %.1f 点。
+
+item.modular_hp_2.name=冗余模块·乙
+item.modular_hp_2.desc=右键提升一个机械生物的生命上限 %.1f %%
+
+item.modular_atk_2.name=火力模块·乙
+item.modular_atk_2.desc=右键提升一个机械生物的攻击力 %.1f %%.
+
+item.modular_def_2.name=装甲模块·乙
+item.modular_def_2.desc=右键提升一个机械生物的护甲 %.1f %%.
+
+item.extra_biao_sword.name=猪屎一刀斩 [WIP]
+item.extra_biao_sword.desc=????
+item.extra_biao_sword.desc.0=Grows with kills.
+item.extra_biao_sword.desc.1=Applies slowing effect to nearby enemies.
+item.extra_biao_sword.desc.2=????
+item.extra_biao_sword.desc.3=????
+item.extra_biao_sword.desc.4=????
+
+item.extra_sai_sword.name=异界恶物 [WIP]
+item.extra_sai_sword.desc=右键传送目标， 潜行右键传送自己。用阴爻设置目标锚点，用阳爻设置自己锚点。
+item.extra_sai_sword.desc.pos1=Self:(%s,%s,%s)
+item.extra_sai_sword.desc.pos2=Target:(%s,%s,%s)
+
+item.extra_kou_sword.name=幸运7 [WIP]
+item.extra_kou_sword.desc=Consumes offhand gold ingot to get random items.
+
+item.el_psy_congroo.name=智能手机 (关)
+item.el_psy_congroo.desc=这一切都是命运石之门的选择。
+idealland.msg.steins_gate=%s， El Psy Congroo。
+
+item.ethereal_ingot.name=空灵锭
+item.ethereal_ingot.desc=所制成的装备会随着附魔变强。
+
+item.cubix_ingot.name=六方
+item.cubix_ingot.desc=材料。合成时所在房间的难度，影响道具强度。（仅在六方噩梦维度有效）
+
+item.modders_ingot.name=万神锭
+item.modders_ingot.desc=所合成的道具随着安装mod数量增多而变强。
+
+item.cubix_sword.name=六方剑
+item.cubix_sword.desc=它面世时所处的难度决定它的强度。（仅在六方噩梦维度计算难度）
+
+item.report_721.name=七二一报告
+item.report_721.desc=消耗召唤降雨。
+
+item.saga_mother_praise.name=《慈母吟》
+item.saga_mother_praise.desc=[背包中即生效]\n在你醒来时修复身上所有盔甲与衣物。\n在你醒来时，此物品有概率消失。
+item.saga_mother_praise.flvr=慈母手中线，游子身上衣。
+item.saga_mother_praise.msg.1=临行密密缝，意恐迟迟归。
+item.saga_mother_praise.msg.2=谁言寸草心，报得三春晖。
+
+idealland.skill.shared.cool_down_desc=冷却: %.1f秒
+idealland.skill.shared.power_desc=伤害: %.1f
+idealland.skill.shared.range_desc=半径: %.1f 格
+idealland.skill.shared.duration_desc=持续: %.1f秒
+idealland.skill.shared.error_desc=误差: +-%d
+idealland.skill.shared.level_desc=等级: %d/%d
+idealland.skill.shared.name_format=%s
+idealland.skill.shared.name_format_with_lv=%s (%s级) %s
+idealland.skill.shared.lv_max=[满]
+
+idealland.gua_enhance_list.desc=地%s 雷%s 水%s 山%s \n 泽%s 火%s 风%s 天%s
+idealland.gua_not_applicable.desc=-
+
+idealland.kill_count.desc=杀敌数: %d
+
+idealland.skill.msg.cool_down=冷却中
+
+idealland.temperature.msg.default_temp=Your best-fit temperature is at %s degrees.
+
+# Events
+idealland.death_report=检测到 %s 在 %s 死亡
+
+# Death
+death.attack.example.player=%1$s exampled by %2$s
+death.attack.slam.player=%1$s 被 %2$s 摔至地面
+death.attack.slam.item=%1$s 被 %2$s 用 %3$s 摔至地面
+
+death.attack.martial.player=%1$s 被 %2$s 的格斗技击败
+death.attack.martial.item=%1$s 吃了 %2$s 一招 %3$s
+

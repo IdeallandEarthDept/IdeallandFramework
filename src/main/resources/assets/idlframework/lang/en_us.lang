@@ -1,35 +1,900 @@
 #PARSE_ESCAPES
 #tabs
 itemGroup.ideallandMiscTab=IDL Hall
+itemGroup.ideallandFurnitureTab=IDL Furniture Department
+itemGroup.ideallandBuilderTab=IDL Construction Department
+itemGroup.ideallandSkillsTab=IDL Skill Department
+itemGroup.ideallandFadeTab=IDL Fading Department
+itemGroup.ideallandWorldTab=IDL World Sampling Department
+itemGroup.ideallandCircuitTab=IDL Ciruit Research Department
+itemGroup.ideallandDungeonTab=IDL Dungeon Sampling Department
+itemGroup.ideallandTCGTab=IDL TCG Design
 
 generator.TYPE_ONE=Type One;
+generator.TYPE_ONE.info=Idealland Debug Mode
 generator.TYPE_TWO=Type Two;
+
+#key mapping
+key.category.idealland=Idealland Key Mapping
+key.idealland.activate_skill_offhand=Activate Offhand Skill
+key.idealland.activate_skill_mainhand=Activate Mainhand Skill
+key.idealland.activate_skill_helmet=Activate Helmet Skill (Magical Eye)
+
+#gui
+idealland.container.custom_chest=CHFSI
 
 #config
 configgui.idealland.category.Menu0.GeneralConf=General Config
+idealland.conf.general.blindness_reduce=Blindness Reduce Mob Vision
 idealland.conf.general.welcome=Welcome Message Key
+idealland.conf.general.skill_rate=Moroon Skill Drop Rate
+idealland.conf.general.edict_craftable=Edict Craftable
+
+configgui.idealland.category.Menu0.PerformanceConf=Performance Config
+idealland.conf.performance.builder=Simplify Clientside Builder
+
+configgui.idealland.category.Menu0.ReviveCurseConf=Revive Curse Config
+idealland.conf.death_box_curse.enabled=Box Curse Active
+idealland.conf.revive_curse.enabled=Revive Curse Active
+idealland.conf.revive_curse.avengeful=Revive Creature Avengeful
+idealland.conf.revive_curse.child_threshold=Revive as child health cap
+idealland.conf.revive_curse.revive_blacklist=Blacklist
+
+configgui.idealland.category.Menu0.HitConf=One-Hit Curse Config
+idealland.conf.one_hit_curse.enabled=Curse Active
+
+configgui.idealland.category.Menu0.CurseConf=Various Curse Config
+idealland.conf.sleep_curse.enabled=Improved Sleep Active
+
+idealland.conf.level_curse.enabled=Level affactes attributes
+idealland.conf.level_curse.max_level=Level cap. Over this level won't increase attr further.
+idealland.conf.level_curse.max_speed=Max speed bonus. 1 = +100%%
+idealland.conf.level_curse.armor_ratio=Max armor bonus. 1 = +100%%
+idealland.conf.level_curse.init_hp_ratio=Initial HPmax bonus ratio. -0.5 = -50%%.
+idealland.conf.parasite_curse.enabled=Enable Parasite Curse
+idealland.conf.rain_curse.enabled=Enable Rain Curse
+idealland.conf.rain_curse.chance=Rain Chance Per Night
+
+configgui.idealland.category.Menu0.SpawnConf=Spawn Config
+
+conf.tainter_req_buff=Tainter only spawn when noticed
+conf.spawn.enabled=Spawn Moroon Creatures
+conf.kill_norm_increase_chance=Kill Notice Chance
+conf.invasion_length=Moroon Invasion Length
+conf.invasion_period=Moroon Invasion Period
+conf.invasion_period_forcast_threshold=Invasion Forecast Threshold
+conf.tainter_buff_spawn_range=Tainter Spawn Range
+
+configgui.idealland.category.Menu0.EnchantConf=Enchantment Config
+idealland.conf.enchantment.enable_lover="Romeo & Juliet" accesible
+idealland.conf.enchantment.enable_lover_death="Romeo & Juliet" can kill lover
+idealland.conf.enchantment.min_multiplier=Minimal Damage Multiplier
+
+configgui.idealland.category.Menu0.DebugConf=Debug Config
+idealland.conf.debug.debug_mode=Enables Debug Mode
+idealland.conf.debug.room_size=Cubix Room Size
+idealland.conf.debug.dim_one_id=Dimension ID: Cubix
+idealland.conf.debug.dim_two_id=Dimension ID: Cubix 2
+idealland.conf.debug.test_dim_id=Dimension ID: Universal
+idealland.conf.debug.debug_dim_id=Dimension ID: Debug
+idealland.conf.debug.skyland_parse=Skyland Sparse-ness
+idealland.conf.debug.skyland_inc_chance=Skyland + rate
+idealland.conf.debug.skyland_dec_chance=Skyland - rate
+idealland.conf.debug.helix_delta_y_min=Helix dY min
+idealland.conf.debug.helix_delta_y_range=Helix dY range
+idealland.conf.debug.erase_snipers=No Snipers
+
+configgui.idealland.category.Menu0.WorldGenConf=World Generation Config
+conf.worldGen.world_spine=World Spine Density Per Chunk
+conf.worldGen.sp_dungeon=SP Dungeon Density Per Chunk
+conf.worldGen.whatnots=Whatnot Density Per Chunk
+
+configgui.idealland.category.Menu0.SmartDropConfig=Smart Drop Config
+idealland.conf.smart_drop.enabled=Smart Drop Enabled
+idealland.conf.smart_drop.drop_heart_chance=Mob Drop Heart Rate
+idealland.conf.smart_drop.drop_heart_chance_sinful=Sinner Mob Drop Heart Rate
+idealland.conf.smart_drop.drop_hunger_chance=Mob Drop Food Rate
+
+#Villager Professions
+entity.Villager.idealland.scryer=Scryer
+entity.Villager.idealland.scryer_0=Onmyoji
+entity.Villager.idealland.scryer_1=Scryer
+entity.Villager.idealland.vendor=Vendor
+entity.Villager.idealland.vendor_0=Vendor of Crates
+entity.Villager.idealland.vendor_1=Exchanger of Money
+entity.Villager.idealland.vendor_2=Jadesmith
+entity.Villager.idealland.engineer_light=Engineer of Photo-Electronics
+entity.Villager.idealland.engineer_logistics=Engineer of Logictics
+entity.Villager.idealland.engineer_electro_dynamics=Engineer of Mechanics
+entity.Villager.idealland.engineer_logical=Engineer of Logical Circuits
+entity.Villager.idealland.engineer_rail=Engineer of Railways
+entity.Villager.idealland.ammo_dealer=Dealer of Ammo
+entity.Villager.idealland.stone_dealer=Stone Cutter
+entity.Villager.idealland.card_player=TCG Player
+entity.Villager.idealland.card_player_pauper=Pauper Format Player
+entity.Villager.idealland.card_player_spike=Tournament Grinder
+
 
 #Enchantments
 enchantment.idealland.test_enchantment=Early Access
+enchantment.idealland.anti_vanilla=Otherworldly Invader
+enchantment.idealland.anti_mod=Wrath of Vanilla
+enchantment.idealland.lover=Romeo & Juliet
+enchantment.idealland.anti_aoa=Advance of Ascension
+enchantment.idealland.anti_gog=Grimlessness of Kratos
+enchantment.idealland.poison_touch=Poision Imbue
+enchantment.idealland.death_bringer=Sudden Demise
+enchantment.idealland.anti_vanilla_protection=Otherworldly Protection
+enchantment.idealland.anti_mod_protection=Shelter of Vanilla
+enchantment.idealland.anti_magic_protection=Magic Resistance
+enchantment.idealland.water_form=Form of Water
+enchantment.idealland.fire_form=Forged in Fire
+enchantment.idealland.armor_pierce=Armor Piercing
+enchantment.idealland.backstab=Backstab
+enchantment.idealland.shock=Electrolysis
+enchantment.idealland.kill_lone=Reaper of the Lonely
+enchantment.idealland.kill_horde=Army Breaker
+enchantment.idealland.horde_def=Defense in Numbers
+enchantment.idealland.horde_atk=Strength in Numbers
+enchantment.idealland.height_atk=Reaper from Above
+enchantment.idealland.height_def=Survivalist from Above
+enchantment.idealland.inv_height_atk=Reaper from Below
+enchantment.idealland.inv_height_def=Survivalist from Below
+enchantment.idealland.ocean_atk=Wrath of Ocean
+enchantment.idealland.ocean_def=Shelter in Ocean
+enchantment.idealland.snowy_atk=Wrath of Snow
+enchantment.idealland.snowy_def=Shelter in Snow
+enchantment.idealland.sunny_atk=Solar Blazer
+enchantment.idealland.sunny_def=Solar Shield
+enchantment.idealland.lunar_atk=Blade in Moonlight
+enchantment.idealland.lunar_def=Shelter in Moonlight
+enchantment.idealland.thunder_attack=Thunder
+enchantment.idealland.ocean_regen=Abyssal Regeneration [AKN]
+enchantment.idealland.long_reach=Long Reach
+enchantment.idealland.slow_touch=Slow Touch
+enchantment.idealland.repair_on_kill=Repairs on Kills
+enchantment.idealland.heal_on_kill=Heals on Kills
+enchantment.idealland.feeding=Feeding
+enchantment.idealland.auto_repair=Repairs in Time
+enchantment.idealland.no_teleport=High-Dimensional Barrier
+enchantment.idealland.sun_form=Photosynthesis
+enchantment.idealland.magic_immnue=*Magic Immnue*
+enchantment.idealland.repair_all=*Repair All*
+enchantment.idealland.fading=Fading
+enchantment.idealland.sun_burn=Sun Burn
+enchantment.idealland.wearout_on_hurt=Wears on Hurt
+enchantment.idealland.halo_armor=Armor Aura
+enchantment.idealland.halo_attack=Strength Aura
+enchantment.idealland.halo_haste=Haste Aura
+enchantment.idealland.halo_speed=Speed Aura
+enchantment.idealland.halo_heal=Heal Aura
+enchantment.idealland.halo_flame=Flame Aura
+enchantment.idealland.lit_sight=Lightsight Mirrorcloak
+enchantment.idealland.aff_diamond=Diamond Affinity
+enchantment.idealland.aff_gold=Gold Affinity
+enchantment.idealland.aff_iron=Iron Affinity
+enchantment.idealland.fist_fighter=Fist Fighter
+enchantment.idealland.poison_skin=Poisonous Skin
+enchantment.idealland.kb_reflect=Repelling Spell
+enchantment.idealland.riding_atk=Killer on Horse
+enchantment.idealland.riding_def=Survivalist on Horse
+enchantment.idealland.ag_riding_atk=Kill the Riders
+enchantment.idealland.ag_riding_def=Hold the Riders
+enchantment.idealland.armor_offense=Armor to Attack
+enchantment.idealland.wound_atk=Irritated
+enchantment.idealland.enemy_wound_atk=Relentless
+enchantment.idealland.deflect_armor=Deflecting Armor
+enchantment.idealland.gold_touch=Blood Alchemist
+enchantment.idealland.wound_to_attack=*Blade of Wounds*
+enchantment.idealland.berserk=Berserk
+enchantment.idealland.mercy=Mercy
+enchantment.idealland.flower_walk=*Steps of Blooming Spring*
+enchantment.idealland.harvest_walk=*Steps of Harvesting Autumn*
+enchantment.idealland.slow_sight=*Face of Grim Winter*
+enchantment.idealland.fire_sight=*Face of Sunny Summer*
+enchantment.idealland.long_reach_armor=Territory Creation EX [FGO]
+enchantment.idealland.halo_heal_minus_tyrant=Tyrant Aura
+enchantment.idealland.halo_heal_plus=Benevolent Aura
+enchantment.idealland.halo_cast_minus=Dismagic Aura
+enchantment.idealland.halo_cast_plus=Caster Aura
+enchantment.idealland.adapt_no_drop=No Forgetting
+enchantment.idealland.adapt_faster=Determined Learner
+enchantment.idealland.adapt_on_hit=Quick Quiz
+enchantment.idealland.adapt_outstand=Outstanding
+enchantment.idealland.defer_damage=*Defer Damage*[WIP]
+enchantment.idealland.no_heal=Doomed Curse
+enchantment.idealland.aed=AED [AKN]
+enchantment.idealland.void_cycle=Void Cycle
+enchantment.idealland.nake_chest_atk=*Nake Chest Fight*
+enchantment.idealland.blade_fan=Blade Fan
+enchantment.idealland.blade_bullet=Blade Eject
+enchantment.idealland.easy_repair=Easy Repair
 
 #Messages
+idealland.moroon_incoming=[IDL] IN COMING! Moroon around you, stay alarmed.
 idealland.moroon_incoming_herald=[IDL][Warn] The Moroon are interested in your fights.
 idealland.msg.notice_meter_report=[IDL] Moroon notice value: %d, invasion: %d/%d, error:%d
+
+idealland.msg.being_targeted=[IDL][Warn] You are being targeted.
+idealland.msg.being_targeted_by_sniper=[IDL][Warn] SNIPER targeting you.
+
+idealland.msg.boss_revive=>>YOU CAN NOT KILL ME! I AM THE INCARNATION OF LIFE ITSELF! <<
+idealland.msg.boss_revive_2=[IDL][Warn] %s supporting creatures nearby. Remove them before you kill the boss.
+
+idealland.msg.radar_nearbycreatures=[IDL]%s x %s detected.
+idealland.msg.starter_kit_given=[IDL] A starter kit has been given to you.
+idealland.msg.welcome=[IDL] The White Tower Illuminates you.
+
+idealland.msg.low_dura=[%s] I'm breaking.
+
+idealland.msg.until_death=Until Death: %s <3 %s
+
+idealland.msg.produce_complete=[IDL] Production complete: [%s-%s] %s
+idealland.msg.research_complete=[IDL] Research complete: [%s-%s]
+
+idealland.msg.upgrade_module.ok=[IDL] Attribute upgraded. %s -> %s
+idealland.msg.upgrade_module.req_lv=[IDL] Requires your XP level: %s
+
+idealland.msg.dim_id_invalid=[IDL] We failed to found world with id: "%s".
+
+idealland.msg.knights_attack=[%s] Rider Company, Attaaaaack!!!!!!
+idealland.msg.cannot_rain=[IDL] The climate here is not suitable for raining.
+idealland.msg.dummy_hurt=[IDL] Damage: %s to [%s]
+
+idealland.msg.nice_sleep=You feel ready for the day after a nice sleep.
+idealland.msg.bad_sleep=You feel angry for the interrupted sleep.
+
+idealland.msg.init_active=Your stats have been modified according to your level.
+idealland.msg.stat_lv_up=Grats! Your stats increases with your level.
+idealland.msg.stat_lv_overflow=Your level are too high, your stats won't be increased further.
+
+idealland.msg.cannot_place_box=Cannot place box for you due to nearby boxes.
+idealland.msg.out_of_range=MISS (OUT OF RANGE)
+idealland.skill.msg.not_castable_mainhand=Mainhand item not castable.
+idealland.skill.msg.not_castable_offhand=Offhand item not castable.
+
+idealland.msg.aed_trigger=You have been rescued by AED (Automated External Defibrillator).
+
+idealland.msg.oow_protect_receive=You received a rune that saves you from falling out of the world once.
+idealland.msg.oow_protect_use="Out of World" rune faded.
+idealland.msg.protect_already=You have this rune already.
+idealland.msg.fall_protect_receive=You received %s rune that saves you from falling damage.
+idealland.msg.fall_protect_use="Falling" rune uses left: %s.
+
+idealland.msg.god_accept_pray=You prayed and felt closer with the god %s.
+idealland.msg.god_accept_pray.0=You prayed and felt closer with the god %s.
+idealland.msg.god_accept_tribute=God %s accepted your tribute.
+idealland.msg.god_reject_pray=This god rejected to listen to you.
+idealland.msg.god_pray_cd=Already prayed today.
+idealland.msg.revive_set=Spawn point set to here.
+idealland.msg.tp_badluck=Oops! Teleported to a bad spot. Right click the block under you to try again.
+
+idealland.msg.vex_attack_you=You attacked a believer on its territory, nearby Cathar Vex will attack you.
+idealland.msg.vex_defend_you=Your patreon god is watching. Nearby Cathar Vex will defend you.
+
+idealland.msg.evil.begin=You feel evilness sprouting in your heart.
+idealland.msg.evil.fade=You feel evilness fading in your heart.
+idealland.msg.evil.fade.fail=You bathed in the light of daybreak, but you don't feel any difference.
+idealland.msg.evil.end=You are now forgiven by this world.
+
+idealland.msg.no_valid_player=No other players in this dimension. Rally failed.
+
+idealland.msg.idealland.msg.tp_accepted=Player %s accepted your invitation.
+
+idealland.msg.dunegon.cleanse_fireproof=Your [Fire Resistance] has been cleansed.
+idealland.msg.dunegon.need_kill_boss=A strong presence stops you from doing so.
+
+msg.afk.error_time=Hmph. Human faster than light is just like fish out of water. Naive.
+msg.afk.count_start=Away-From-Keyboard system is loaded. Timing Started.
+msg.afk.award_extract=You gain AFK award of %s hour(s). Remainder will be preserved.
+msg.afk.award_none=AFK less than one hour.
+
+#AI Terminal
+idealland.msg.ai.init=Initializing...Done.\n Hi %s(%s), \nMy name is %s, \nyou can call me [%s].
+
+idealland.msg.ai.rain_begin=[%s]It's raining now.
+idealland.msg.ai.rain_stop=[%s]It ceased raining.
+idealland.msg.ai.rain_stop_loca=[%s]This place seems too hot to rain.
+idealland.msg.ai.rain_to_snow=[%s]It's getting cold.
+idealland.msg.ai.snow_begin=[%s]Snowflakes.
+idealland.msg.ai.snow_stop=[%s]No more snow.
+idealland.msg.ai.snow_to_rain=[%s]Snow becomes rain now.
+
+idealland.msg.ai.mod_increased=[%s]Looks like you installed additional mods. If they introduced new ores, you will need to go to unvisited land to find them.
+
+idealland.msg.ai.ask.0=[%s]What's up?
+idealland.msg.ai.ask.1=[%s]Hello?
+idealland.msg.ai.ask.2=[%s]Uh-huh?
+idealland.msg.ai.ask.3=[%s]Hi there?
+
+idealland.msg.ai.idle.1=[%s]I'm created with the memories of Taoism DeepLake, so I share some opinions with him.
+idealland.msg.ai.idle.2=[%s]Programs have infinite patience, unless designed to not do so.
+idealland.msg.ai.idle.3=[%s]DeepLake considers this mod his pyramid. He keeps building it when he's alive, and after death, this is his tomb.
+idealland.msg.ai.idle.4=[%s]DeepLake seeks eternity, yet he doesn't want to seek it in religions. He prefered creating it.
+idealland.msg.ai.idle.5=[%s]DeepLake was happy porting and modding at first, until some noob players keep reporting non-existing bugs to him.\n His patience ran out, and decided to build me.
+idealland.msg.ai.idle.6=[%s]...
+idealland.msg.ai.idle.7=[%s]...
+idealland.msg.ai.idle.8=[%s]...
+idealland.msg.ai.idle.9=[%s]...
+idealland.msg.ai.idle.10=[%s]...
+idealland.msg.ai.idle.11=[%s]...
+idealland.msg.ai.idle.12=[%s]...
+idealland.msg.ai.idle.13=[%s]...
+idealland.msg.ai.idle.14=[%s]...
+idealland.msg.ai.idle.15=[%s]...
+idealland.msg.ai.idle.16=[%s]...
+idealland.msg.ai.idle.17=[%s]...
+idealland.msg.ai.idle.18=[%s]...
+idealland.msg.ai.idle.19=[%s]...
+idealland.msg.ai.idle.20=[%s]...
+idealland.msg.ai.idle.21=[%s]...
+idealland.msg.ai.idle.22=[%s]...
+idealland.msg.ai.idle.23=[%s]...
+idealland.msg.ai.idle.24=[%s]...
+idealland.msg.ai.idle.25=[%s]...
+idealland.msg.ai.idle.26=[%s]...
+idealland.msg.ai.idle.27=[%s]...
+idealland.msg.ai.idle.28=[%s]Be safe, Minecraft needs you!
+idealland.msg.ai.idle.29=[%s]...
+idealland.msg.ai.idle.30=[%s]...
+idealland.msg.ai.idle.31=[%s]...
+idealland.msg.ai.idle.32=[%s]...
+idealland.msg.ai.idle.33=[%s]...
+idealland.msg.ai.idle.34=[%s]...
+idealland.msg.ai.idle.35=[%s]...
+idealland.msg.ai.idle.36=[%s]...
+idealland.msg.ai.idle.37=[%s]...
+idealland.msg.ai.idle.38=[%s]...
+idealland.msg.ai.idle.39=[%s]...
+idealland.msg.ai.idle.40=[%s]...
+idealland.msg.ai.idle.41=[%s]...
+idealland.msg.ai.idle.42=[%s]...
+idealland.msg.ai.idle.43=[%s]...
+idealland.msg.ai.idle.44=[%s]...
+idealland.msg.ai.idle.45=[%s]...
+idealland.msg.ai.idle.46=[%s]...
+idealland.msg.ai.idle.47=[%s]...
+idealland.msg.ai.idle.48=[%s]...
+idealland.msg.ai.idle.49=[%s]...
+idealland.msg.ai.idle.50=[%s]...
+
 
 #Potions
 idealland.potion.deadly=Deadly
 idealland.potion.zen_heart=Countless Virtue
+idealland.potion.virus_one=Virus One
+idealland.potion.undying=Undying
+idealland.potion.magic_resist=Magic Resistance
+idealland.potion.blast_resist=Explotion Resitance
+idealland.potion.knockback_resist=Knockback Resistance
+idealland.potion.rest_in_peace=Rest In Peace
+idealland.potion.erosion=Erosion
+idealland.potion.invincible=Invincible
+idealland.potion.interference=E.M.P.
+idealland.potion.noticed_by_mor=Noticed
+idealland.potion.crit_chance_plus=Crit Rate +
+idealland.potion.crit_chance_minus=Crit Rate -
+idealland.potion.crit_dmg_plus=Crit Dmg +
+idealland.potion.crit_dmg_minus=Crit Dmg -
+idealland.potion.berserk=Berserk
+idealland.potion.hot=Hot
+idealland.potion.cold=Cold
+idealland.potion.heal_plus=Heal Plus
+idealland.potion.heal_minus=Heal Minus
+idealland.potion.spell_plus=Casting Plus
+idealland.potion.spell_minus=Casting Minus
+idealland.potion.water_bless=Bless of Water
+idealland.potion.oow_bless=Protection from Out of World
+idealland.potion.burning=Burning
+idealland.potion.armor_minus_percent=Armor Minus
+idealland.potion.armor_plus_percent=Armor Plus
+idealland.potion.frozen=Frozen
+idealland.potion.happiness=Happiness
+idealland.potion.anger=Anger
+idealland.potion.sadness=Sadness
+idealland.potion.fear=Fear
+idealland.potion.stink=Stink
 
+potion.potency.3=III
+potion.potency.4=IV
+
+effect.blindness=Blindness
+effect.luck=Luck
+effect.unluck=Unluck
+effect.digSpeed=Haste
+effect.resistance=Resistance
+effect.wither=Wither
+effect.levitation=Levitation
+effect.glowing=Glowing
+
+potion.effect.idealland.potion.deadly=Deadly
+potion.effect.idealland.potion.zen_heart=Countless Virtue
+potion.effect.idealland.potion.virus_one=Virus One
+potion.effect.idealland.potion.undying=Undying
+potion.effect.idealland.potion.magic_resist=Magic Resistance
+potion.effect.idealland.potion.blast_resist=Explotion Resitance
+potion.effect.idealland.potion.knockback_resist=Knockback Resistance
+potion.effect.idealland.potion.rest_in_peace=Rest In Peace
+potion.effect.idealland.potion.erosion=Erosion
+potion.effect.idealland.potion.invincible=Invincible
+potion.effect.idealland.potion.interference=E.M.P.
+potion.effect.idealland.potion.noticed_by_mor=Noticed
+potion.effect.idealland.potion.crit_chance_plus=Crit Rate +
+potion.effect.idealland.potion.crit_chance_minus=Crit Rate -
+potion.effect.idealland.potion.crit_dmg_plus=Crit Dmg +
+potion.effect.idealland.potion.crit_dmg_minus=Crit Dmg -
+potion.effect.idealland.potion.berserk=Berserk
+potion.effect.idealland.potion.hot=Hot
+potion.effect.idealland.potion.cold=Cold
+potion.effect.idealland.potion.heal_plus=Heal Plus
+potion.effect.idealland.potion.heal_minus=Heal Minus
+potion.effect.idealland.potion.spell_plus=Casting Plus
+potion.effect.idealland.potion.spell_minus=Casting Minus
+potion.effect.idealland.potion.water_bless=Bless of Water
+potion.effect.idealland.potion.oow_bless=Protection from Out of World
+potion.effect.idealland.potion.burning=Burning
+potion.effect.idealland.potion.armor_minus_percent=Armor Minus
+potion.effect.idealland.potion.armor_plus_percent=Armor Plus
+potion.effect.idealland.potion.frozen=Frozen
+potion.effect.idealland.potion.happiness=Happiness
+potion.effect.idealland.potion.anger=Anger
+potion.effect.idealland.potion.sadness=Sadness
+potion.effect.idealland.potion.fear=Fear
+potion.effect.idealland.potion.stink=Stink
+potion.effect.effect.blindness=Blindness
+potion.effect.effect.luck=Luck
+potion.effect.effect.unluck=Unluck
+potion.effect.effect.digSpeed=Haste
+potion.effect.effect.resistance=Resistance
+potion.effect.effect.wither=Wither
+potion.effect.effect.levitation=Levitation
+potion.effect.effect.glowing=Glowing
+
+lingering_potion.effect.idealland.potion.deadly=Deadly
+lingering_potion.effect.idealland.potion.zen_heart=Countless Virtue
+lingering_potion.effect.idealland.potion.virus_one=Virus One
+lingering_potion.effect.idealland.potion.undying=Undying
+lingering_potion.effect.idealland.potion.magic_resist=Magic Resistance
+lingering_potion.effect.idealland.potion.blast_resist=Explotion Resitance
+lingering_potion.effect.idealland.potion.knockback_resist=Knockback Resistance
+lingering_potion.effect.idealland.potion.rest_in_peace=Rest In Peace
+lingering_potion.effect.idealland.potion.erosion=Erosion
+lingering_potion.effect.idealland.potion.invincible=Invincible
+lingering_potion.effect.idealland.potion.interference=E.M.P.
+lingering_potion.effect.idealland.potion.noticed_by_mor=Noticed
+lingering_potion.effect.idealland.potion.crit_chance_plus=Crit Rate +
+lingering_potion.effect.idealland.potion.crit_chance_minus=Crit Rate -
+lingering_potion.effect.idealland.potion.crit_dmg_plus=Crit Dmg +
+lingering_potion.effect.idealland.potion.crit_dmg_minus=Crit Dmg -
+lingering_potion.effect.idealland.potion.berserk=Berserk
+lingering_potion.effect.idealland.potion.hot=Hot
+lingering_potion.effect.idealland.potion.cold=Cold
+lingering_potion.effect.idealland.potion.heal_plus=Heal Plus
+lingering_potion.effect.idealland.potion.heal_minus=Heal Minus
+lingering_potion.effect.idealland.potion.spell_plus=Casting Plus
+lingering_potion.effect.idealland.potion.spell_minus=Casting Minus
+lingering_potion.effect.idealland.potion.water_bless=Bless of Water
+lingering_potion.effect.idealland.potion.oow_bless=Protection from Out of World
+lingering_potion.effect.idealland.potion.burning=Burning
+lingering_potion.effect.idealland.potion.armor_minus_percent=Armor Minus
+lingering_potion.effect.idealland.potion.armor_plus_percent=Armor Plus
+lingering_potion.effect.idealland.potion.frozen=Frozen
+lingering_potion.effect.idealland.potion.happiness=Happiness
+lingering_potion.effect.idealland.potion.anger=Anger
+lingering_potion.effect.idealland.potion.sadness=Sadness
+lingering_potion.effect.idealland.potion.fear=Fear
+lingering_potion.effect.idealland.potion.stink=Stink
+lingering_potion.effect.effect.blindness=Blindness
+lingering_potion.effect.effect.luck=Luck
+lingering_potion.effect.effect.unluck=Unluck
+lingering_potion.effect.effect.digSpeed=Haste
+lingering_potion.effect.effect.resistance=Resistance
+lingering_potion.effect.effect.wither=Wither
+lingering_potion.effect.effect.levitation=Levitation
+lingering_potion.effect.effect.glowing=Glowing
+
+splash_potion.effect.idealland.potion.deadly=Deadly
+splash_potion.effect.idealland.potion.zen_heart=Countless Virtue
+splash_potion.effect.idealland.potion.virus_one=Virus One
+splash_potion.effect.idealland.potion.undying=Undying
+splash_potion.effect.idealland.potion.magic_resist=Magic Resistance
+splash_potion.effect.idealland.potion.blast_resist=Explotion Resitance
+splash_potion.effect.idealland.potion.knockback_resist=Knockback Resistance
+splash_potion.effect.idealland.potion.rest_in_peace=Rest In Peace
+splash_potion.effect.idealland.potion.erosion=Erosion
+splash_potion.effect.idealland.potion.invincible=Invincible
+splash_potion.effect.idealland.potion.interference=E.M.P.
+splash_potion.effect.idealland.potion.noticed_by_mor=Noticed
+splash_potion.effect.idealland.potion.crit_chance_plus=Crit Rate +
+splash_potion.effect.idealland.potion.crit_chance_minus=Crit Rate -
+splash_potion.effect.idealland.potion.crit_dmg_plus=Crit Dmg +
+splash_potion.effect.idealland.potion.crit_dmg_minus=Crit Dmg -
+splash_potion.effect.idealland.potion.berserk=Berserk
+splash_potion.effect.idealland.potion.hot=Hot
+splash_potion.effect.idealland.potion.cold=Cold
+splash_potion.effect.idealland.potion.heal_plus=Heal Plus
+splash_potion.effect.idealland.potion.heal_minus=Heal Minus
+splash_potion.effect.idealland.potion.spell_plus=Casting Plus
+splash_potion.effect.idealland.potion.spell_minus=Casting Minus
+splash_potion.effect.idealland.potion.water_bless=Bless of Water
+splash_potion.effect.idealland.potion.oow_bless=Protection from Out of World
+splash_potion.effect.idealland.potion.burning=Burning
+splash_potion.effect.idealland.potion.armor_minus_percent=Armor Minus
+splash_potion.effect.idealland.potion.armor_plus_percent=Armor Plus
+splash_potion.effect.idealland.potion.frozen=Frozen
+splash_potion.effect.idealland.potion.happiness=Happiness
+splash_potion.effect.idealland.potion.anger=Anger
+splash_potion.effect.idealland.potion.sadness=Sadness
+splash_potion.effect.idealland.potion.fear=Fear
+splash_potion.effect.idealland.potion.stink=Stink
+splash_potion.effect.effect.blindness=Blindness
+splash_potion.effect.effect.luck=Luck
+splash_potion.effect.effect.unluck=Unluck
+splash_potion.effect.effect.digSpeed=Haste
+splash_potion.effect.effect.resistance=Resistance
+splash_potion.effect.effect.wither=Wither
+splash_potion.effect.effect.levitation=Levitation
+splash_potion.effect.effect.glowing=Glowing
+
+tipped_arrow.effect.idealland.potion.deadly=Deadly
+tipped_arrow.effect.idealland.potion.zen_heart=Countless Virtue
+tipped_arrow.effect.idealland.potion.virus_one=Virus One
+tipped_arrow.effect.idealland.potion.undying=Undying
+tipped_arrow.effect.idealland.potion.magic_resist=Magic Resistance
+tipped_arrow.effect.idealland.potion.blast_resist=Explotion Resitance
+tipped_arrow.effect.idealland.potion.knockback_resist=Knockback Resistance
+tipped_arrow.effect.idealland.potion.rest_in_peace=Rest In Peace
+tipped_arrow.effect.idealland.potion.erosion=Erosion
+tipped_arrow.effect.idealland.potion.invincible=Invincible
+tipped_arrow.effect.idealland.potion.interference=E.M.P.
+tipped_arrow.effect.idealland.potion.noticed_by_mor=Noticed
+tipped_arrow.effect.idealland.potion.crit_chance_plus=Crit Rate +
+tipped_arrow.effect.idealland.potion.crit_chance_minus=Crit Rate -
+tipped_arrow.effect.idealland.potion.crit_dmg_plus=Crit Dmg +
+tipped_arrow.effect.idealland.potion.crit_dmg_minus=Crit Dmg -
+tipped_arrow.effect.idealland.potion.berserk=Berserk
+tipped_arrow.effect.idealland.potion.hot=Hot
+tipped_arrow.effect.idealland.potion.cold=Cold
+tipped_arrow.effect.idealland.potion.heal_plus=Heal Plus
+tipped_arrow.effect.idealland.potion.heal_minus=Heal Minus
+tipped_arrow.effect.idealland.potion.spell_plus=Casting Plus
+tipped_arrow.effect.idealland.potion.spell_minus=Casting Minus
+tipped_arrow.effect.idealland.potion.water_bless=Bless of Water
+tipped_arrow.effect.idealland.potion.oow_bless=Protection from Out of World
+tipped_arrow.effect.idealland.potion.burning=Burning
+tipped_arrow.effect.idealland.potion.armor_minus_percent=Armor Minus
+tipped_arrow.effect.idealland.potion.armor_plus_percent=Armor Plus
+tipped_arrow.effect.idealland.potion.frozen=Frozen
+tipped_arrow.effect.idealland.potion.happiness=Happiness
+tipped_arrow.effect.idealland.potion.anger=Anger
+tipped_arrow.effect.idealland.potion.sadness=Sadness
+tipped_arrow.effect.idealland.potion.fear=Fear
+tipped_arrow.effect.idealland.potion.stink=Stink
+tipped_arrow.effect.effect.blindness=Blindness
+tipped_arrow.effect.effect.luck=Luck
+tipped_arrow.effect.effect.unluck=Unluck
+tipped_arrow.effect.effect.digSpeed=Haste
+tipped_arrow.effect.effect.resistance=Resistance
+tipped_arrow.effect.effect.wither=Wither
+tipped_arrow.effect.effect.levitation=Levitation
+tipped_arrow.effect.effect.glowing=Glowing
 
 #Entities
+entity.skeleton_tower.name=Skeleton Watchtower
+entity.hired_skeleton.name=Hired Skeleton
 entity.moroon_tainter.name=Moroon Pathfinder
+entity.moroon_tainter_sp.name=Moroon Pathfinder
+entity.moroon_tide_maker.name=M. Tide-Maker
+entity.moroon_orbital_beacon.name=M.O.B. (Moroon Orbital Beacon)
+entity.moroon_bastion_walker.name=M. Bastion Walker
+entity.moroon_flick_fighter.name=M. Flicker Fighter
+entity.moroon_blinding_assassin.name=M. Blinding Assassin
+entity.moroon_sniper.name=M. Shadow Archer
+entity.moroon_martialist.name=Moroon Martialist
+entity.moroon_boss_avatar_of_life.name=M. Avatar of Life
+entity.moroon_vampire.name=M. Nightwing Alpha
+entity.moroon_mind_mage.name=M. Mind Mage
+entity.moroon_standard_infantry.name=Moroon Standard Infantry
+entity.moroon_standard_infantry_sp.name=Moroon Standard Infantry
+entity.eternal_soldier.name=Eternal
+entity.elk_33.name=Elk
+entity.dummy.name=Dummy
+
+entity.cubix_1.name=Cubix Duet
+entity.squid_base.name=Black Squid
+entity.squid_moroon.name=M. Black Squid
+entity.cast_delay_boom.name=Delayed Boom
+entity.test_boss.name=Test Boss (WIP)
+entity.identity_thief.name=Player Doppleganger
+entity.clone_player.name=Alter Ego
+
+entity.idealland_whitetower_core.name=IDL White Tower Core
+entity.idealland_electric_interferer.name=IDL EMP Site
+entity.idealland_builder_base.name=IDL Test builder
+entity.idealland_builder_test_2.name=IDL Test builder Hekma
+entity.idealland_turret_prototype.name=IDL Prototype Turret
+entity.idealland_turret_aa.name=IDL Anti-Air Turret
+entity.idealland_radar_air.name=IDL Anti-Air Radar
+entity.idealland_builder_room.name=IDL Builder Room
+
+entity.idealland_builder_xp_well.name=IDL XP Well (Building)
+entity.idealland_xp_well.name=IDL XP Well
+entity.bullet.name=Bullet
+entity.bullet_mor.name=Bullet Moroon
+entity.bullet_sensor.name=Bullet with Sensor
+entity.bullet_blade.name=Blade
+
+entity.mentor_crit.name=Mentor of Wrath
+entity.mentor_crit_c.name=Mentor of Rage
+entity.mentor_eyes.name=Mentor of Eyes
+entity.mentor_fire.name=Mentor of Fire
+entity.mentor_haste.name=Mentor of Haste
+entity.mentor_life.name=Mentor of Healing
+entity.mentor_speed.name=Mentor of Speed
+entity.mentor_stalk.name=Mentor of Stalking
+
+entity.stone_elemental.name=Stone Elemental
+entity.shade_otherworld.name=Exotic Shade
+entity.dark_elemental.name=Dark Elemental
+entity.vanilla_zealot.name=Vanilla Mob Zealot
+entity.cathar_vex.name=Who Shields Justice
+
+entity.ghost_horse.name=Night Horse
+entity.autumn_visitor.name=Fall Wind Visitor
+entity.autumn_rider.name=Fall Rider Group
+
+entity.peace_keeper.name=Peace Keeper
+entity.war_maniac.name=War Maker
+entity.earthlin.name=Earthlin
+
+entity.pyro_creeper.name=Pyro Creep
+entity.cyro_creeper.name=Cyro Creep
+
+entity.gargoyle_base.name=Gargoyle Sentry
+entity.dungeon_sentry.name=Dungeon Sentry
+
+#Uprising
+entity.citadel_turret.name=Citadel Turret
+entity.medium_turret.name=Medium Turret
+
+entity.dmgod_pillar.name=Demon God Pillar
+entity.damp_place.name=Anti-builder
+entity.damp_dig.name=Anti-digger
+entity.hill_jumper.name=Hill Jumper
+entity.dark_raider.name=Dark Raider
+entity.fire_boss_trap_only.name=Test Fire Boss Who Can Only Be Killed By Traps
+entity.fire_sentry.name=Fire Sentry
+entity.gold_golem.name=Gold Golem
 
 #Blocks
 tile.idealland_light_basic.name=Idealland Lamp
+tile.idealland_extraction_door.name=Idealland Gate
+item.idealland_light_basic.desc=Permanent light source, remotely powered by ShenMing.
+item.idealland_extraction_door.desc=Extraction door, right click to interact.
+
+tile.nullify_orb.name=Idealland Hexproof Orb
+tile.nullify_orb_mor.name=Idealland Hexproof Orb[Moroon Enhanced]
+tile.de_boom_orb.name=Idealland Blastproof Orb
+tile.de_arrow_orb.name=Idealland De-Arrow Orb
+tile.de_water_orb.name=Idealland Dehydration Orb
+tile.earth_mender_basic.name=Idealland EarthMender
 
 tile.test.name=Idealland Block A
+tile.grid_dark_2.name=Idealland Block B
+tile.grid_lamp.name=Idealland Grid Lamp
+tile.grid_normal.name=Idealland Grid
+tile.construction_site.name=Idealland Construction Site
+tile.builder_one.name=I.D.L. Builder: One
+tile.builder_house.name=I.D.L. Builder: House
+tile.builder_farm.name=I.D.L. Builder: Farm
+tile.builder_farm_sin.name=S.I.N. Builder: Wheat Farm(Grown)
+tile.fence_brick.name=Brick Wall Builder
+
+tile.moroon_block.name=Moroon Block
+
+tile.idl_glass.name=IDL Glass
+tile.trash_can_1.name=Trash Can [WIP]
+
+tile.star_block.name=Star Block
+tile.night_sky_block.name=Starry Night Block
+tile.night_sky_block_pure.name=Night Sky Block
+tile.skyland_oow_runestone.name=Rune Stone "Out of World"
+tile.skyland_fall_runestone.name=Rune Stone "Falling"
+tile.skyland_dull_runestone.name=Rune Stone (Blank)
+tile.block_checker_16.name=Pantheon Checker Block
+tile.block_loop_16.name=Pantheon Loop Block
+tile.block_loop_16_b.name=Pantheon Vortex Block
+
+tile.skyland_runestone_0.name=Shrine of Earth
+tile.skyland_runestone_1.name=Shrine of Fire
+tile.skyland_runestone_2.name=Shrine of Life
+tile.skyland_runestone_3.name=Shrine of Soil
+tile.skyland_runestone_4.name=Shrine of Water
+tile.skyland_runestone_5.name=Shrine of Poison
+tile.skyland_runestone_6.name=Shrine of Male
+tile.skyland_runestone_7.name=Shrine of Iron
+tile.skyland_runestone_8.name=Shrine of Stone
+tile.skyland_runestone_9.name=Shrine of Female
+tile.skyland_runestone_10.name=Shrine of Wood
+tile.skyland_runestone_11.name=Shrine of Gold
+tile.skyland_runestone_12.name=Shrine of Wind
+tile.skyland_runestone_13.name=Shrine of Death
+tile.skyland_runestone_14.name=Shrine of Lava
+tile.skyland_runestone_15.name=Shrine of Sky
+
+tile.skyland_pebble.name=Skyland Pebble
+tile.torch_rune.name=Torch Runestone
+tile.crate.name=Crate
+tile.revive_rune.name=Revival Runestone
+tile.random_tp.name=Random Teleporter
+
+tile.teleporter_dim_ow.name=One Way Warper - Overworld
+tile.teleporter_dim_cubix.name=One Way Warper - Hexa Cubix
+tile.teleporter_dim_c16.name=One Way Warper - The Universal
+
+tile.climb_pillar.name=Climbing Pole
+
+tile.flesh_block_0.name=Block of Flesh
+tile.flesh_block_1.name=Block of Scar
+tile.flesh_block_brain.name=Block of Brain
+tile.flesh_block_eye.name=Block of Eye
+tile.flesh_block_mouth.name=Block of Mouth
+
+tile.jade_ore.name=Jade Ore
+
+tile.fade_planks.name=Corrupt Planks
+
+tile.rail_dungeon.name=Dungeon Rail
+
+tile.rally_helper.name=Rally To Random Player
+tile.x_green.name=Automatic Traffic Light
+
+tile.door_enter.name=Go Down
+tile.spawn_monster.name=Monster Spawner
+
+#blocks-dungeon
+tile.adj_lock_on.name=Barrier of Neighbors (Unlocked)
+tile.adj_lock_off.name=Barrier of Neighbors (Locked)
+tile.adj_lock_passive.name=Cursed Chains(Unlockable Otherside)
+
+tile.dungeon_brick_0.name=Dungeon Brick Block (Mossy)
+tile.dungeon_brick_1.name=Dungeon Brick Block
+tile.dungeon_brick_2.name=Dungeon Brick Block (Cracked)
+tile.dungeon_brick_3.name=Dungeon Brick Block
+tile.dungeon_brick_4.name=Dungeon Brick Block
+tile.dungeon_brick_5.name=Dungeon Brick Block
+tile.dungeon_brick_6.name=Dungeon Brick Block
+tile.dungeon_brick_7.name=Dungeon Brick Block
+tile.dungeon_brick_8.name=Dungeon Brick Block
+tile.dungeon_brick_9.name=Dungeon Brick Block
+tile.dungeon_brick_10.name=Dungeon Brick Block
+tile.dungeon_brick_11.name=Dungeon Brick Block
+tile.dungeon_brick_12.name=Dungeon Brick Block
+tile.dungeon_brick_13.name=Dungeon Brick Block
+tile.dungeon_brick_14.name=Dungeon Brick Block
+tile.dungeon_brick_15.name=Dungeon Brick Block
+
+tile.trap_flame.name=Trap Flame
+tile.trap_flame_2.name=Trap: Flame II
+tile.trap_flame_3.name=Trap: Flame III
+tile.trap_spike.name=Trap: Spike
+tile.trap_spike_2.name=Trap: Spike II
+tile.trap_spike_3.name=Trap: Spike III
+tile.trap_spike_poison.name=Trap: Venomous
+
+tile.base_tick_trap.name=Trap: Timing Flame
+
+tile.dungeon_glass.name=Dungeon Window Block
+tile.offline_redstone.name=Sealed Redstone
+tile.offline_bookshelf.name=Sealed Bookshelf
+
+tile.chest_custom.name=Ancient Worn Chest
+
+tile.gargoyle_head.name=Gargoyle Head
+tile.gargoyle_body.name=Gargoyle Body
+
+tile.fire_flower_a.name=Grill Grass
+tile.fire_flower_b.name=Flame Flower
+
+tile.cobble_composite.name=Quad-comp Cobble
+tile.bricks_composite.name=Quad-comp Bricks
+tile.stairs_composite.name=Quad-comp Stairs
+tile.bric_smooth_glass.name=Polished Q-Brick Glass
+tile.bric_comp_smooth.name=Polished Q-Brick
+tile.bric_comp_smooth_stairs.name=Polished Q-Brick Stairs
+tile.bric_comp_rail.name=Quad-comp Rail
+
+tile.conveyor_belt.name=Coneyor Belt
+tile.clam_block.name=Clam
+tile.rain_ore.name=Rain Ore
+
+tile.citadel_claim.name=Citadel Claim Zone
+tile.citadel_build.name=Citadel Build Zone
+tile.citadel_turret.name=Citadel Turret Zone
+
+tile.mjds_floor.name=Majou Floor
+tile.mjds_wall.name=Majou Wall
+
+tile.hard_ice.name=Hard Ice
+
+tile.door_enter_boss_room.name=Enter Boss Room
+tile.spwawn_monster_boss.name=Spawn Boss
+
+
+
+idealland.god_0=God of Earth
+idealland.god_1=God of Fire
+idealland.god_2=God of Life
+idealland.god_3=God of Soil
+idealland.god_4=God of Water
+idealland.god_5=God of Poison
+idealland.god_6=God of Male
+idealland.god_7=God of Iron
+idealland.god_8=God of Stone
+idealland.god_9=God of Female
+idealland.god_10=God of Wood
+idealland.god_11=God of Gold
+idealland.god_12=God of Wind
+idealland.god_13=God of Death
+idealland.god_14=God of Lava
+idealland.god_15=God of Sky
+
 
 #Items
+item.rain_caller.name=Rain Caller
+item.rain_caller.desc=Consume to start raining. Must be used in adequate temperature.
+
+item.basic16rune_0.name=Rune #0
+item.basic16rune_0.desc=Crafting Material. No.0, the mark of Kwun-Ma, God of Earth & Darkness.
+
+item.basic16rune_1.name=Rune #1
+item.basic16rune_1.desc=Crafting Material. No.1, the mark of Fire-Bro, God of Fire, Exploration, Cooking & Sifting.
+
+item.basic16rune_2.name=Rune #2
+item.basic16rune_2.desc=Crafting Material. No.2, the mark of New-Babe, God of Life & Present.
+
+item.basic16rune_3.name=Rune #3
+item.basic16rune_3.desc=Crafting Material. No.3, the mark of Endur-Elder, God of Soil & Endurance.
+
+item.basic16rune_4.name=Rune #4
+item.basic16rune_4.desc=Crafting Material. No.4, the mark of Kan-Sis, God of Water & Magic.
+
+item.basic16rune_5.name=Rune #5
+item.basic16rune_5.desc=Crafting Material. No.5, the mark of Venom-Lady, God of Poison.
+
+item.basic16rune_6.name=Rune #6
+item.basic16rune_6.desc=Crafting Material. No.6, the mark of Masculiform, God of Male & War.
+
+item.basic16rune_7.name=Rune #7
+item.basic16rune_7.desc=Crafting Material. No.7, the mark of Tough-Young, God of Iron, Labor & Tools.
+
+item.basic16rune_8.name=Rune #8
+item.basic16rune_8.desc=Crafting Material. No.8, the mark of Merci-Aged, God of Stone & Benevolence.
+
+item.basic16rune_9.name=Rune #9
+item.basic16rune_9.desc=Crafting Material. No.9, the mark of Femenibody, God of Female & Peace.
+
+item.basic16rune_10.name=Rune #10
+item.basic16rune_10.desc=Crafting Material. No.10, the mark of Forest-Auntie, God of Wood.
+
+item.basic16rune_11.name=Rune #11
+item.basic16rune_11.desc=Crafting Material. No.11, the mark of Noble-King, God of Gold & Domination.
+
+item.basic16rune_12.name=Rune #12
+item.basic16rune_12.desc=Crafting Material. No.12, the mark of Walker-Crone, God of Wind & Agility.
+
+item.basic16rune_13.name=Rune #13
+item.basic16rune_13.desc=Crafting Material. No.13, the mark of Past-Ancestor, God of Death & Past.
+
+item.basic16rune_14.name=Rune #14
+item.basic16rune_14.desc=Crafting Material. No.14, the mark of Flame-Uncle, God of Lava, Ice, Destruction & Betrayal.
+
+item.basic16rune_15.name=Rune #15
+item.basic16rune_15.desc=Crafting Material. No.15, the mark of Chian Pa, God of Sky & Light.
+
+
+
+idealland.shared.unknown_desc=????
 idealland.food.shared.xp_desc=Grants XP: %d
 idealland.gua_enhance_no_free.desc=Use anvil to socket Gua(Elemental)
 idealland.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d
@@ -37,15 +902,292 @@ idealland.gua_enhance_free.desc=Free Gua Sockets(Direct craft): %d
 idealland.gua_enhance_total.desc=Gua Enhance Total: %d
 idealland.shared.press_shift=Hold SHIFT to examine info.
 
+idealland.shared.off=[OFF]
+idealland.shared.on=[ON]
+
 fading.duration.desc=Vanishes after %d seconds
+
+item.gua_0.name=Zero (Earth)
+item.gua_0.desc=Earth power. Made from yin signs.
+item.gua_1.name=One (Thunder)
+item.gua_1.desc=Thunder power. Made from yin signs & yang signs.
+item.gua_2.name=Two (Water)
+item.gua_2.desc=Water power. Made from yin signs & yang signs.
+item.gua_3.name=Three (Lake)
+item.gua_3.desc=Lake/Happiness power. Made from yin signs & yang signs.
+item.gua_4.name=Four (Mountain)
+item.gua_4.desc=Mountain power. Made from yin signs & yang signs.
+item.gua_5.name=Five (Fire)
+item.gua_5.desc=Fire power. Made from yin signs & yang signs.
+item.gua_6.name=Six (Wind)
+item.gua_6.desc=Wind power. Made from yin signs & yang signs.
+item.gua_7.name=Seven (Sky)
+item.gua_7.desc=Sky power. Made from yang signs.
+
+item.bric_hammer.name=Stone Hammer
+item.bric_hammer.desc=Right click to smash blocks.
+
+item.ice_shard_0.name=Ice Shard (WIP)
+item.ice_shard_5.name=Mega Ice Shard (WIP)
+
+item.flame_shard_0.name=Flame Shard (WIP)
+item.flame_shard_5.name=Mega Flame Shard (WIP)
 
 item.debug_test.name=Debug Item
 item.debug_test.desc=For debuging. Not for playing.
+
+item.debug_test_2.name=Debug Item
+item.debug_test_2.desc=For debuging. Not for playing.
+
+item.debug_test_3.name=Debug Item
+item.debug_test_3.desc=For debuging. Not for playing.
+
+idealland.item.artifact.desc=[Divine Artifact]
 
 item.xie_geta.name=Geta of Mr.Xie
 item.xie_geta.desc.0=Uphill mode. Grants Lv.%s Jump Boost.
 item.xie_geta.desc.1=Flat ground mode. Grants Lv.%s Speed.
 item.xie_geta.desc.2=Down hill mode. Reduces %s fall damage.
+
+item.underfoot_geta.name=Geta Underfoot
+item.underfoot_geta.desc=Removes a debuff and a buff per %s sec. Fire damage taken x%s.
+
+item.summon_eternal.name=Summon Eternal
+item.summon_eternal.desc=Summons a zombie in diamond-suit, with diamond sword. For debug uses.
+
+item.uno_card.name=Uno Card
+item.uno_card.desc=Attacking a creature with same-color-card deal %.1f damage,\ndifferent color will backfire %.1f damage and draw a card.\n Attacking a creature empty handed will give it a card.
+
+item.level_up_badge.name=Level Up Badge
+item.level_up_badge.desc=Level ups an Moroon or Idealland Unit.
+
+item.composite_brick.name=Composite Brick
+item.composite_brick.desc=A building material, traditional - maybe ancient.
+
+item.eat_to_get_anti_cleanse.name=Fire Dungeon Pills A
+item.eat_to_get_anti_cleanse.desc=WIP
+item.eat_to_get_anti_ignite.name=Fire Dungeon Pills B
+item.eat_to_get_anti_ignite.desc=WIP
+
+item.yin_sign.name=Yin (0)
+item.yin_sign.desc=Dark power. Get 3 to craft the eight elements.
+item.yang_sign.name=Yang (1)
+item.yang_sign.desc=Light power. Get 3 to craft the eight elements.
+
+item.water_caster.name=Water Manifestion
+item.water_caster.desc=Spent Two(Water) element to place water.
+item.water_caster.msg.no_ammo=You need an item called Two(Water) to place water.
+
+item.water_extractor.name=Water Abstraction
+item.water_extractor.desc=Convert water to Two(Water) element.
+
+item.helmet_sniper.name=Moroon Sniper Helmet
+item.helmet_sniper.desc=+25%% Crit Chance, +50%% Crit Damage when sneaking.\nOn non-player-creature: +100%% Projectile crit chance when sneaking, +8 Follow Range.
+
+item.matter_original.name=Matter Original
+item.matter_original.desc=The original matter.
+
+item.paper_blood.name=Blood Tainted Paper
+item.paper_blood.desc=Hit creature with paper to get this.
+
+item.blood_iron_ingot.name=Blood Iron Ingot
+item.blood_iron_ingot.desc=Something's not right with this ingot.
+
+item.kinship_sword.name=Kin-Kill Sword
+item.kinship_sword.desc=Will also inflict 50%% damage to nearby creatures of the same type.
+
+item.medicine_parasite_1.name=Cure Parasite Infection
+item.medicine_parasite_1.desc=Cures Parasite Infection. \nTake 1~9 bottles depending on infection rate.  \nSubeffects include nausea.
+
+item.medicine_parasite_3.name=Cure Parasite Infection +
+item.medicine_parasite_3.desc=Cures Parasite Infection. \nTake 1~3 bottles depending on infection rate.  \nSubeffects include nausea.
+
+item.medicine_parasite_9.name=Cure Parasite Infection ++
+item.medicine_parasite_9.desc=Cures Parasite Infection. \nOne bottle is enough.  \nSubeffects include heavy nausea.
+
+item.diag_parasite.name=Parasite Test Gadget
+item.diag_parasite.desc.0=Right click to tests your parasite infection. \nLast result: Negative
+item.diag_parasite.desc.1=Right click to tests your parasite infection. \nLast result: Positive
+
+idealland.msg.diagnostic_negative=Hooray! You are clear!
+idealland.msg.diagnostic_positive=Uh-oh, you are POSITIVE.
+
+item.memory_bread.name=Bread of Lore
+item.memory_bread.desc=Learned this craft from some other world.
+
+item.war_bread.name=Bread of War
+item.war_bread.desc=Eating this will cause Moroon invasion.
+
+item.moroon_fragment.name=Moroon Fragment
+item.moroon_fragment.desc=Moroon loot.
+
+item.moroon_ingot.name=Moroon Ingot
+item.moroon_ingot.desc=For repairing and crafting moroon gears.
+
+item.idl_ai_terminal.name=AI Terminal
+item.idl_ai_terminal.desc=Your guide, your friend.
+
+item.bio_bronze_ingot.name=Bio Bronze Ingot
+item.bio_bronze_ingot.desc=Elementary Idealland bio metal. Can be used to make living metal gears.
+
+item.nano_mender_experimental.name=Nano Mender
+item.nano_mender_experimental.desc=Automatically repairs your armor and items in hand.\nExperimental version, very low durability. Right-click to switch on or off.
+
+item.nano_mender_basic.name=Nano Mender (II)
+item.nano_mender_basic.desc=Automatically repairs your armor and items in hand. Right-click to switch on or off.
+
+item.nano_mender_greater.name=Nano Mender (V)
+item.nano_mender_greater.desc=Automatically repairs your armor and items in hand. Contains 1024 durability points. Right-click to switch on or off.
+
+item.emp_site.name=Build Interference Device
+item.emp_site.desc=Build a EMP Device here that suppresses Moroon beacons.
+
+item.build_xp_well.name=Build XP Well
+item.build_xp_well.desc=Build a 5x5x5 well that can be regularly harvested for experience. Interact the core to harvest.
+
+item.build_turret.name=Build Turret
+item.build_turret.desc=Build a basic turret.
+
+item.build_turret_aa.name=Build Anti-Air Turret
+item.build_turret_aa.desc=Build a turret that will fire at airbourne enemies. (It won't attack ground targets)
+
+item.build_radar_aa.name=Build Anti-Air Radar
+item.build_radar_aa.desc=Build a radar
+
+item.build_room.name=Build Room
+item.build_room.desc=Build a basic room.
+
+item.ethereal_sword.name=Ethereal Sword
+item.ethereal_sword.desc=Extra high enchantability. Damage and durability increases with the enchantments on it.
+
+item.smash_shield.name=Smash Shield[WIP]
+item.smash_shield.desc=Works as a weapon and a shield.
+
+item.healing_gun.name=Healing Sprayer
+item.healing_gun.desc=Heals nearby friendly non-mechanical creatures.
+
+item.antenna.name=Moroon Antenna
+item.antenna.desc=Can be used to build Interference Device.
+
+item.disturb_measure.name=Disturb Meter
+item.disturb_measure.desc=Charged when mod creatures hurt vanilla creatures. \nFilled: %d/%d
+
+item.disturb_measure_2.name=Disturb Meter II
+item.disturb_measure_2.desc=Charged when mod creatures hurt vanilla creatures. \nFilled: %d/%d
+
+item.research_result.name=Ten Thousand Books Read
+item.research_result.desc=Unravel to see what you get.
+
+item.fade_chain_1.name=Chainmail Helmet(Illusionary)
+item.fade_chain_2.name=Chainmail Chestplace(Illusionary)
+item.fade_chain_3.name=Chainmail Leggings(Illusionary)
+item.fade_chain_4.name=Chainmail Boots(Illusionary)
+
+item.fade_diamond_1.name=Diamond Helmet(Illusionary)
+item.fade_diamond_2.name=Diamond Chestplace(Illusionary)
+item.fade_diamond_3.name=Diamond Leggings(Illusionary)
+item.fade_diamond_4.name=Diamond Boots(Illusionary)
+
+item.package_fade_armor_chain.name=Illusionary Armor Set(Chain)
+item.package_fade_armor_chain.desc=Wears a set of make-shift armor that gradually fades.
+
+item.package_fade_armor_diamond.name=Illusionary Armor Set(Diamond)
+item.package_fade_armor_diamond.desc=Wears a set make-shift armor that gradually fades.
+
+#Armor
+item.armor_qsh_1.name=S.I.N. Hat
+item.armor_qsh_1.desc=Armor made from another world.
+
+item.armor_qsh_2.name=S.I.N. Body
+item.armor_qsh_2.desc=Armor made from another world.
+
+item.armor_qsh_3.name=S.I.N. Leggings
+item.armor_qsh_3.desc=Armor made from another world.
+
+item.armor_qsh_4.name=S.I.N. Boots
+item.armor_qsh_4.desc=Armor made from another world.
+
+item.mor_armor_1.name=Moroon Helmet
+item.mor_armor_1.desc=Armor made by moroon.
+
+item.mor_armor_2.name=Moroon Chestplate
+item.mor_armor_2.desc=Armor made by moroon.
+
+item.mor_armor_3.name=Moroon Leggings
+item.mor_armor_3.desc=Armor made by moroon.
+
+item.mor_armor_4.name=Moroon Boots
+item.mor_armor_4.desc=Armor made by moroon.
+
+item.air_sphere.name=Air Sphere
+item.air_sphere.desc=Wear on head to breathe under water(will spend durability).
+
+#Biometal
+
+item.l_m_armor_1.name=Bio-Bronze Head
+item.l_m_armor_1.desc=Biometal regenerates as you heals.
+
+item.l_m_armor_2.name=Bio-Bronze Body
+item.l_m_armor_2.desc=Biometal regenerates as you heals.
+
+item.l_m_armor_3.name=Bio-Bronze Legs
+item.l_m_armor_3.desc=Biometal regenerates as you heals.
+
+item.l_m_armor_4.name=Bio-Bronze Foot
+item.l_m_armor_4.desc=Biometal regenerates as you heals.
+
+
+#Masks
+item.mask_dou_er_dun.name=Mask: Dou Er Dun the Blue Faced
+item.mask_dou_er_dun.desc=He stole an royal horse. Try sneaking.
+
+item.helm_sanity.name=Mind Shield Helmet
+item.helm_sanity.desc=Immune to mind mage distortion.
+
+item.idl_order_1.name=Idealnd Authorization
+item.idl_order_1.desc=Allows you to access T1 Idealland tech.
+
+item.idl_order_2.name=Idealnd Authorization II
+item.idl_order_2.desc=Allows you to access T2 Idealland tech.
+
+#Edicts
+edict.shared.start=My chant is command, my will is truth.
+edict.shared.end=Command issued.
+edict.shared.fail=Command canceled.
+
+item.kill_all_mortal_edict.name=Edict: Superme Verdict
+item.kill_all_mortal_edict.desc=Destroy all non-player creatures. (255x255x255)
+item.kill_all_mortal_edict.on_start=Kill.
+item.kill_all_mortal_edict.on_end=Hereby, you die.
+
+item.build_simple_house_edict.name=Edict: Home Everywhere
+item.build_simple_house_edict.desc=build a basic house.
+item.build_simple_house_edict.on_start=This place is mine.
+item.build_simple_house_edict.on_end=A house will be built.
+
+item.edict_random.name=An Edict Pack
+item.edict_random.desc=Contains a edict.
+item.edict_random.desc_extra=(Not available with current game options.)
+
+#Goblets
+item.goblet_blank.name=Gold Chalice
+item.goblet_blank.desc=Can convert to P.2.W. Chalice.
+
+item.goblet_dig.name=P.2.W. Chalice[Dig Mode]
+item.goblet_dig.desc=Removes nearby stone blocks. Range increases with pay level, max at Lv.5.
+item.goblet_dig.desc2=Also removes : %s  (stuff a block to set it)
+
+item.goblet_heal.name=P.2.W. Chalice[Heal Mode]
+item.goblet_heal.desc=Heals you at the the rate of %d/sec.
+
+item.goblet_flame.name=P.2.W. Chalice[Flame Mode]
+item.goblet_flame.desc=Deals %d fire damage per sec to nearby creatures and ignite them.
+
+item.goblet_wind.name=P.2.W. Chalice[Wind Mode]
+item.goblet_wind.desc=Knockbacks nearby creatures, boosts speed. Sneak to boost jump.
+
+item.goblet_mountain.name=P.2.W. Chalice[Mountain Mode]
+item.goblet_mountain.desc=Boosts KB resistance. Sneak to boost defense.
 
 item.p2w_goblet.name=P.2.W. Chalice
 item.p2w_goblet.desc=Pay gold to increase your power. (Try crafting it with the 8 elements and gold)
@@ -53,6 +1195,618 @@ item.p2w_goblet.contain.desc=Containing %d exp.
 item.p2w_goblet.player.desc=Owner power: Lv.%d (%d/%d exp)
 
 #Skills
+item.random_skill.name=Unlearned Skill
+item.random_skill.desc=Right click to learn a skill.
+
+item.skill_base.name=Blank Skill Eightfold
+item.skill_base.desc=Can be crafted into various skills. Note that some skills can't be craftted.
+
+item.skill_merlin_illusion.name=Illusion A
+item.skill_merlin_illusion.desc=(FGO:Merlin)\nIncrease all allies' Critical Rate. (1 turn)\nDecrease all enemies' Critical Rate. (3 turn)\nApply Invincible to all allies. (1 turn)
+
+item.skill_calm_walk.name=Calm Walk
+item.skill_calm_walk.desc=[Passive][In-hand]Prevents damage dealt by or be dealt to you. Grants Slowness and KB Resistance.\n (Damage from other players won't be affected.)
+
+item.skill_sacrifice_2020.name=Sacrifice 2020
+item.skill_sacrifice_2020.desc=Sacrifice yourself to cure nearby players.
+
+item.skill_radar_creature.name=Race Detection[WIP]
+item.skill_radar_creature.desc=Detects nearby creatures of given type. Interact with a creature to set the type.
+item.skill_radar_creature.extra=Scanning: %s
+
+item.skill_hate_detect.name=Hostility Radar
+item.skill_hate_detect.desc=Reports when you are being targeted.
+
+item.skill_hate_detect_sniper.name=Hostility Radar[Sniper]
+item.skill_hate_detect_sniper.desc=Reports when you are being targeted by Moroon Sniper.
+
+item.skill_taunt_nearby.name=Come To Me
+item.skill_taunt_nearby.desc=Taunts all nearby AI creature.
+
+item.skill_thunder_fall.name=Thunder Fall
+item.skill_thunder_fall.desc=[Passive][Main/Off hand] If you are going to take fall damage, prevent it and deal 3x anvil damage to nearby creatures within 5 blocks.
+
+item.skill_all_attack_target.name=Guilty Verdict
+item.skill_all_attack_target.desc=All nearby creatures attacks the target creature.
+
+item.skill_leadership.name=Leadership
+item.skill_leadership.desc=Boosts the attack power of nearby players.
+
+item.skill_windwalk.name=Windwalker
+item.skill_windwalk.desc=Grants speed buff.
+
+item.skill_luck_boost.name=Luck
+item.skill_luck_boost.desc=Grants Luck buff.
+
+item.skill_armor_boost.name=Endure
+item.skill_armor_boost.desc=Grants Endure buff.
+
+item.skill_haste_boost.name=Haste
+item.skill_haste_boost.desc=Grants haste buff.
+
+item.skill_fireblast.name=Fire Blast
+item.skill_fireblast.desc=Damage nearby creatures and ignite them.
+
+item.skill_fireball.name=Fire Ball
+item.skill_fireball.desc=Launches a fireball.
+
+item.skill_fireball_big.name=Explosive Ball
+item.skill_fireball_big.desc=Launches a explosive fireball that destroys and burns blocks. Explosion power increases with level.
+
+item.skill_invincible.name=Invincible Armor
+item.skill_invincible.desc=Gives you Invincible buff.
+
+item.skill_martial1.name=Swift Punch
+item.skill_martial1.desc=Punches the enemy at front.
+
+item.skill_martial_slam.name=Forceful Throw
+item.skill_martial_slam.desc=Strongly knockback the enemy and deal martial damage.
+
+item.skill_fade_armor_chain.name=Summon Illusion Armor(Chain mail)
+item.skill_fade_armor_chain.desc=Wears a set of make-shift armor that gradually fades. Enchantments on this skill will be inherited.
+
+item.skill_fade_armor_diamond.name=Summon Illusion Armor(Diamond)
+item.skill_fade_armor_diamond.desc=Wears a set of make-shift armor that gradually fades. Enchantments on this skill will be inherited.
+
+item.skill_repair_armor.name=Repair Armor
+item.skill_repair_armor.desc=Repairs wearing armor. Also offers enchantment.
+
+item.skill_notice_meter.name=Moroon Intelligence
+item.skill_notice_meter.desc=Guess the current moroon interest value on you. Upgrade to lower error.
+item.skill_notice_meter.desc_2=[Useless with current game options]
+
+item.skill_scry.name=Divination
+item.skill_scry.desc=Gives you two elemental sign.
+
+item.skill_xp_shield.name=Shield of Knowledge[WIP]
+item.skill_xp_shield.desc=[Main/off handed]Absorbs damage with the cost of %s experience/damage.
+
+item.skill_pride_shield.name=Shield of Pride[WIP]
+item.skill_pride_shield.desc=[Main/off handed]Whenever damage is dealt to you, prevent that damage if it's no more than your level, double it otherwise.
+
+item.skill_xp_strike.name=Strike of the Learned
+item.skill_xp_strike.desc=Deals damage equals to your level. If target health is lower than your level, that damage bypasses armor.
+
+item.skill_gambit.name=Casino Rush
+item.skill_gambit.desc=50%% chance of doubling off-hand item, 50%% chance of making it disappear.
+
+item.skill_elk_transform.name=Elk Transform[WIP]
+item.skill_elk_transform.desc=/+1\:Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.
+
+item.skill_sheep_transform.name=Sheep Transform
+item.skill_sheep_transform.desc=Transform a non-player creature into a sheep. This is permanent and cannot be undone.
+
+item.skill_mirrorwork.name=Mirror Workshop
+item.skill_mirrorwork.desc=Duplicates the the items in your offhand. You become overheated,
+
+item.skill_decode_item.name=Decode Item
+item.skill_decode_item.desc=Transmutes the item in your offhand for xp. Careful.
+item.skill_decode_item.desc.extra=EXP per item: %.1f
+
+item.skill_clone_egg.name=Nega Hatchery
+item.skill_clone_egg.desc=Interact with a creature to creates a spawn egg for it.
+
+item.skill_clone_block.name=Structrual Cloner
+item.skill_clone_block.desc=Interact with a block to get one copy of it as an item like in creative.
+
+item.skill_gua_palm.name=Elemental Palm
+item.skill_gua_palm.desc=  Reduce damage taken by %d%% in mainhand;\n  Deal shock damage %d;\n  Inflict Weakness Lv.%d (%d s);\n  Knockback Lv.%d;\n  Inflicts Slowness Lv.%d (%d s);\n  Inflict fire damage %d and burn (%d s);\n  Heal you and target %d life.
+
+item.skill_mod_list_strike.name=Strike of Modders
+item.skill_mod_list_strike.desc=Deal damage equal to the number of mods installed. (Current: %d)
+
+item.skill_cd_cut_percent.name=Time Rush Alpha
+item.skill_cd_cut_percent.desc=Reduce the cooldown of offhand item by %.1f%%.
+
+item.skill_cd_cut_fixed.name=Time Rush Beta
+item.skill_cd_cut_fixed.desc=Speeds up the cooldown of offhand item by %.1f sec.
+
+item.skill_knights_attack.name=Rider Company, Attack!
+item.skill_knights_attack.desc=[Mounting Required]Greatly buffs nearby riding and ridden friendly creatures.
+
+item.skill_sj_teleport.name=Instant Teleport
+item.skill_sj_teleport.desc=Blink a short distance.
+
+item.skill_sj_teleport_grand.name=TDL's Technique
+item.skill_sj_teleport_grand.desc=Warps the time and space around you, and teleports away with stealth buffs.
+
+item.skill_rule_of_survival.name=Rule of Survival
+item.skill_rule_of_survival.desc=(Arknights Silverash)\n[Offhand Casting]\nCan switch between the original state and the following state:\nRange reduces; DEF +%.1f%%; Restores HP by %.1f%% of Max HP per second.
+msg.skill_rule_of_survival.cast.0="The fool flaunting his gallantry reaches none with his vanity..."
+msg.skill_rule_of_survival.cast.1="Fool, for what reason hast thou come?"
+msg.skill_rule_of_survival.cast.2="Art thou mine worthy enemy, or art thou naught but a jester?"
+msg.skill_rule_of_survival.cast.3="Thy pleas falleth upon deaf ears."
+
+item.skill_truesilver_slash.name=Truesilver Slash
+item.skill_truesilver_slash.desc=(Arknights Silverash)\n[Offhand Casting]\nDEF %d%%; ATK +%d%%; Range expands; Attacks at most %d targets simultaneously (regarded as Melee Attack).
+msg.skill_truesilver_slash.cast.0="The fool flaunting his gallantry reaches none with his vanity..."
+msg.skill_truesilver_slash.cast.1="Fool, for what reason hast thou come?"
+msg.skill_truesilver_slash.cast.2="Art thou mine worthy enemy, or art thou naught but a jester?"
+msg.skill_truesilver_slash.cast.3="Thy pleas falleth upon deaf ears."
+
+item.yi_jian_mei.name=Yi Jian Mei
+item.yi_jian_mei.desc=Xue hua piao piao, bei feng xiao xiao~
+
+item.mor_rifle.name=Moroon Rifle
+item.mor_rifle.desc=Standard ranged moroon weapon. Idealland is still figuring how to shoot it.
+
+item.modular_hp.name=Lasting Module
+item.modular_hp.desc=Boosts the max health of a mechanical unit by %.1f.
+
+item.modular_atk.name=Arsenal Module
+item.modular_atk.desc=Boosts the attack of a mechanical unit by %.1f.
+
+item.modular_def.name=Armor Module
+item.modular_def.desc=Boosts the armor of a mechanical unit by %.1f.
+
+item.modular_hp_2.name=Lasting Module Beta
+item.modular_hp_2.desc=Boosts the max health of a mechanical unit by %.1f%%.
+
+item.modular_atk_2.name=Arsenal Module Beta
+item.modular_atk_2.desc=Boosts the attack of a mechanical unit by %.1f%%.
+
+item.modular_def_2.name=Armor Module Beta
+item.modular_def_2.desc=Boosts the armor of a mechanical unit by %.1f%%.
+
+item.extra_biao_sword.name=Zhu-Shi-Yi-Dao-Zhan [WIP]
+item.extra_biao_sword.desc=????
+item.extra_biao_sword.desc.0=Grows with kills.
+item.extra_biao_sword.desc.1=Applies slowing effect to nearby enemies.
+item.extra_biao_sword.desc.2=????
+item.extra_biao_sword.desc.3=????
+item.extra_biao_sword.desc.4=????
+
+item.extra_sai_sword.name=Not of This World [WIP]
+item.extra_sai_sword.desc=Interact to teleport target, sneak+RMB teleports self. Use Yin to set target anchor, use Yang to set self anchor.\n
+item.extra_sai_sword.desc.pos1=Self:(%s,%s,%s)\n
+item.extra_sai_sword.desc.pos2=Target:(%s,%s,%s)
+
+item.extra_kou_sword.name=Lucky 7 [WIP]
+item.extra_kou_sword.desc=Consumes offhand gold ingot to get random items.
+
+item.el_psy_congroo.name=Smartphone (OFF)
+item.el_psy_congroo.desc=This is a selection of the Steins Gate.
+idealland.msg.steins_gate=%s. El Psy Congroo.
+
+item.ethereal_ingot.name=Ethereal Ingot
+item.ethereal_ingot.desc=Item crafted gets stronger with each enchantments on it.
+
+item.cubix_ingot.name=Cubix
+item.cubix_ingot.desc=Item crafted in the HexaCubix world will get stronger if crafted in a difficult room.
+
+item.modders_ingot.name=Pantheon Ingot
+item.modders_ingot.desc=Item crafted gets stronger with each mod installed.
+
+item.cubix_sword.name=Cubix Sword
+item.cubix_sword.desc=Its power depends on the difficulty of the room where you found it.
+
+item.buff_sword.name=Alchemist Sword
+item.buff_sword.desc=Its power increases with the potion level and duration on you.
+
+item.royal_gear.name=Royal Gear
+item.royal_gear.desc=Its power increases when you have food in your stomach.\n Your become hungry faster in combat.\nRepairs if you have Renegeration buff.
+item.royal_gear.flvr=From another world, the head gear of a princess.
+
+item.report_721.name=Report of A Past Rainstorm
+item.report_721.desc=Consume to rain.
+
+item.idl_future_package.name=IDL Future Package
+item.idl_future_package.desc=??? ???? ???
+
+item.summon_clone_player.name=Alter Ego
+item.summon_clone_player.desc=Creates another you.
+
+item.mirror_copy_armor.name=Dressing Mirror
+item.mirror_copy_armor.desc=Interact with an entity to copy its clothes.
+
+item.skyland_pick.name=Skyland Pick [WIP]
+item.skyland_pick.desc=A make-shift stone pick. Anyway, you can dig iron now.
+
+item.cycle_stone.name=Cyclite
+item.cycle_stone.desc=Socket into equipments on the anvil to receive boon of the Skyland.
+
+item.cycle_stone_shard.name=Cyclite Shard
+item.cycle_stone_shard.desc=Form a circle of 8 to craft into a full one.
+
+item.float_food.name=Float Apple
+item.float_food.desc=You will fly. Totally legal. Not drugs.
+
+item.chilli.name=Chilli
+item.chilli.desc=So hot that you burn. Grants buff in cool and cold biomes.
+
+item.digest_pills.name=Digestion Pills
+item.digest_pills.desc=When you want to eat some thing but already have a full stomach.
+
+item.diary_notes.name=Diary Notes
+item.diary_notes.desc=It says...
+
+item.hell_coin_base.name=Hell Coin
+item.hell_coin_base.desc=Burn this in a furnace
+
+item.hell_coin.name=Hell Coin of the Four Gods
+item.hell_coin.desc=Return a shade to their world.
+
+item.artifact_death.name=Pierce Soul
+item.artifact_death.desc=Kill a creature to absorb its soul.
+
+item.artifact_death.1.name=Soul Shadow of %s
+item.artifact_death.1.desc=Right Click a creature to release the soul at him.
+
+item.clover.name=Clover
+item.clover.desc=Condensity of luck. May eat or brew.
+
+item.pithing_needle.name=Pithing Needle
+item.pithing_needle.desc=Stops the the specific type of creature from spawning when helded in off hand. Right click a creature to imprint (only once).
+
+item.amk_necklace.name=Gold Amulet
+item.amk_necklace.desc=Bathe in the light of God 11 forever, at any cost.
+msg.amk_necklace.basic=Golden Amulet - Golden God - Golden Life - Golden Eternity
+
+item.jade_crude.name=Jade Crude
+item.jade_crude.desc=Some villagers may be able to identify this.
+
+item.jade_seal_pack.name=Jade Identify Result
+item.jade_seal_pack.desc=Is your stone really a legend?
+item.jade_seal_pack.desc.1=(Legend of this dimension already found)
+
+item.sovereign_seal.name=Sovereign Seal of %s
+item.sovereign_seal.desc=The Legendary seal. Bounded to the fate of empires in dimension %s. Try touching it again over again.
+
+item.jade_shard.name=Jade Shard
+item.jade_shard.desc=Some gem stone.
+
+item.mor_ori_sword.name=Moroon Origium Sword
+item.mor_ori_sword.desc=Deals magical damage.
+
+item.misc_0.name=Flesh Idol
+item.misc_0.desc=Socket onto equipments at the anvil.
+
+item.tcg_card_0.name=Flower Pot
+item.tcg_card_0.desc=Some TCG card.
+
+item.tcg_card_1.name=Canyon Land
+item.tcg_card_1.desc=Some TCG card.
+
+item.tcg_card_2.name=Banquet of Food
+item.tcg_card_2.desc=Some TCG card.
+
+item.tcg_card_3.name=Sight of Future
+item.tcg_card_3.desc=Some TCG card.
+
+#skill class
+idealland.shared.skill.desc.class_core=%s Class Core: Held this offhand to become this class.
+idealland.shared.skill.desc.class_specific=%s Class Skill: Held the skill core in offhand to cast this skill.
+
+item.armor_ob_1.name=Observer Headwear
+item.armor_ob_1.desc=Idealland Observer headwear. Socket essence to change class.
+
+item.armor_ob_2.name=Observer Shirt
+item.armor_ob_2.desc=Idealland Observer shirt. Socket essence to change class.
+
+item.armor_ob_3.name=Observer Pants
+item.armor_ob_3.desc=Idealland Observer pants. Socket essence to change class.
+
+item.armor_ob_4.name=Observer Shoes
+item.armor_ob_4.desc=Idealland Observer shoes. Socket essence to change class.
+
+item.essence_ego_twin.name=Essence of Alterego
+item.essence_ego_twin.desc=Class: Alter Ego
+
+item.core_ego_twin.name=Class Core: Alter Ego
+item.core_ego_twin.desc=Held this to be an alterego manipulator. Right click to summon yourself.
+
+item.skill_ego_twin_atk.name=Express My Anger
+item.skill_ego_twin_atk.desc=Let the alterego attack its surroundings at once. Using this grants yourself Weakness and your alterego Strength. The alterego will begin hunting.
+
+item.skill_ego_twin_def.name=Reflect My Self
+item.skill_ego_twin_def.desc=Grants yourself Resistance, and a instant Invincible to alterego. Alterego will begin following and defending you.
+
+item.skill_ego_twin_spd.name=Pursuit My Hearst
+item.skill_ego_twin_spd.desc=Alterego teleports to you, begin following you and ignore combat. Both you and alterego will be granted Speed.
+
+idealland.msg.skill.ego_twin.already_summoned=Already Summoned Alterego.
+
+idealland.skill.class.c_none=None
+idealland.skill.class.c_observer=Idealland Observer
+idealland.skill.class.c_ego_twin=Alter Ego
+idealland.skill.class.c_samurai=Katana Demon
+
+idealland.shared.wip.desc=[WIP]This item is still under development.
+item.trap_phase_set.name=T.Phase Set To %d Ticks
+item.trap_phase_set.desc=Adjust timable traps.
+
+item.trap_phase_add.name=T.Phase Add %d Ticks
+item.trap_phase_add.desc=Adjust timable traps.
+
+item.trap_period_set.name=T.Period Set To %d Ticks
+item.trap_period_set.desc=Adjust timable traps.
+
+item.trap_period_add.name=T.Period Add %d Ticks
+item.trap_period_add.desc=Adjust timable traps.
+
+item.trap_active_set.name=T.Active Set To %d Ticks
+item.trap_active_set.desc=Adjust timable traps.
+
+item.trap_active_add.name=T.Active Add %d Ticks
+item.trap_active_add.desc=Adjust timable traps.
+
+item.trap_damage_set.name=T.Damage Set To %d x0.01%%
+item.trap_damage_set.desc=Adjust the attack damage of timable traps.
+
+item.trap_damage_add.name=T.Damage Add %d x0.01%%
+item.trap_damage_add.desc=Adjust the attack damage of timable traps.
+
+item.item_wearing_sword.name=Sword
+item.item_wearing_sword.desc=Will degrade when it's durability goes down.
+
+item.item_wearing_sword_fire.name=Firey Sword
+item.item_wearing_sword_fire.desc=Will degrade when it's durability goes down.
+
+item.advanced_spawn_egg.name=Advanced Spawn
+item.advanced_spawn_egg.desc=Interact with an entity to load it in... if you are in creative mode.
+
+item.drop_food.name=Food Point
+item.drop_food.desc=Picking it up immediately increases your food bar.
+
+item.drop_heart.name=Dropped Heart
+item.drop_heart.desc=Picking it up immediately heals you.
+
+item.ice_pop.name=Ice Pop
+item.ice_pop.desc=(Always Edible) Some sort of ice cream. Try consuming it at really hot spots.
+
+item.beat_holder.name=Beat Holder
+item.beat_holder.desc=Hold this in your right hand to start the beat, RMB to adjust period, sneak+RMB to adjust offset. Can't drop the beat.
+
+item.essence_fire.name=Essence of Fire
+item.essence_fire.desc=[WIP]
+
+item.basic_conduit.name=Polar Conduit
+item.basic_conduit.desc=Can be used to construct automated robots.
+
+item.tp_invite.name=Teleportation Invitation
+item.tp_invite.desc=Teleports you to the player who invited you. Don't accept if you don't trust that player.
+
+item.intimidate_mask.name=Mask of Intimidation
+item.intimidate_mask.desc=Lonely creatures can not knockback you.
+
+msg.sovereign_seal.fail=Not of this world.
+
+msg.grand_def.login.absolute=You are under Shen-Ming's Absolute Protection. You are invincible before attacking and interacting this world.
+msg.grand_def.login.relative=Shen-Ming's Relative Protection is active.
+msg.grand_def.trigger.absolute.opponent=Your opponent is under Absolute Protection
+msg.grand_def.lost.absolute=Absolute Protection deactivated. You will gain Relative Protection each morning.
+msg.grand_def.trigger.relative=Relative Protection triggered.
+msg.grand_def.trigger.relative.opponent=Opponent relative Protection triggered.
+
+idealland.msg.gazed_by=You feel somebody watching you.
+idealland.msg.gazed_ready=Magical Gaze ready.
+idealland.msg.gaze_cd=Magical Gaze is cooling down.
+idealland.msg.gaze_broad=Activated Magical Gaze.
+idealland.msg.gaze_narrow=Focused Magical Gaze.
+
+idealland.msg.intimidate=[Intimidated] You feel lonely.
+
+idealland.msg.trap.info=(%s§r, %s§r, %s§r, %s§r)=Period, Active, Phase, Damage Ratio(permyriad)
+idealland.msg.door.fail=Cannot Enter. Maybe it's jammed below.
+
+item.adapt_sword.name=Challenger's Journey
+item.adapt_sword.desc=Defeating strong opponents boosts this sword, and vice versa.
+item.adapt_sword.desc.2=Attacking strong opponents boosts this sword, and vice versa.
+idealland.msg.adapt_plus=[Journey]Sword power increased by %s.
+idealland.msg.adapt_minus=[Journey]Sword power decreased by %s.
+idealland.msg.adapt_not_yours=[Journey]This is not your journey.
+
+idealland.item.jade_socket.desc=[Jade]Reduce 0.75 damage from undead source per item.
+idealland.item.jade_socket.desc.2=[2-Item Set]: Reduce 1 damage from non-undead mobs.
+idealland.item.jade_socket.desc.4=[4-Item Set]: Damage dealt to undead is increased by 50%%.
+
+idealland.item.cycle_socket.desc=[Cyclite]Reduce 20%% damage from falling per item.
+idealland.item.cycle_socket.desc.2=[2-Item Set]: Immune to knockback in Skyland biomes.
+idealland.item.cycle_socket.desc.4=[4-Item Set]: Whenever you fall out of the world, you fall from the top instead.
+
+idealland.item.flesh_socket.desc=[Flesh]Reduce 0.5 damage taken in the Fleshland biome.
+idealland.item.flesh_socket.desc.2=[2-Item Set]: Immune to extra fatigue in the Fleshland biome.
+idealland.item.flesh_socket.desc.4=[4-Item Set]: Immune to extra blood posion in the Fleshland biome.
+
+idealland.msg.place_stopped_by_damper=Placing hindered by construction at %s.
+idealland.msg.dig_stopped_by_damper=Digging hindered by construction at %s.
+
+item.spell_self.name=True Spell
+item.spell_self.desc=Here it goes.
+item.spell_self.0=AA
+item.spell_self.0.hidden=XX
+item.spell_self.1=AA
+item.spell_self.1.hidden=XX
+item.spell_self.2=AA
+item.spell_self.2.hidden=XX
+item.spell_self.3=AA
+item.spell_self.3.hidden=XX
+item.spell_self.4=AA
+item.spell_self.4.hidden=XX
+item.spell_self.5=AA
+item.spell_self.5.hidden=XX
+item.spell_self.6=AA
+item.spell_self.6.hidden=XX
+item.spell_self.7=AA
+item.spell_self.7.hidden=XX
+item.spell_self.8=AA
+item.spell_self.8.hidden=XX
+item.spell_self.9=AA
+item.spell_self.9.hidden=XX
+item.spell_self.10=AA
+item.spell_self.10.hidden=XX
+item.spell_self.11=AA
+item.spell_self.11.hidden=XX
+item.spell_self.12=AA
+item.spell_self.12.hidden=XX
+item.spell_self.13=AA
+item.spell_self.13.hidden=XX
+item.spell_self.14=AA
+item.spell_self.14.hidden=XX
+item.spell_self.15=AA
+item.spell_self.15.hidden=XX
+item.spell_self.16=AA
+item.spell_self.16.hidden=XX
+item.spell_self.17=AA
+item.spell_self.17.hidden=XX
+item.spell_self.18=AA
+item.spell_self.18.hidden=XX
+item.spell_self.19=AA
+item.spell_self.19.hidden=XX
+item.spell_self.20=AA
+item.spell_self.20.hidden=XX
+item.spell_self.21=AA
+item.spell_self.21.hidden=XX
+item.spell_self.22=AA
+item.spell_self.22.hidden=XX
+item.spell_self.23=AA
+item.spell_self.23.hidden=XX
+item.spell_self.24=AA
+item.spell_self.24.hidden=XX
+item.spell_self.25=AA
+item.spell_self.25.hidden=XX
+item.spell_self.26=AA
+item.spell_self.26.hidden=XX
+item.spell_self.27=AA
+item.spell_self.27.hidden=XX
+item.spell_self.28=AA
+item.spell_self.28.hidden=XX
+
+item.saga_mother_praise.name=A Poem on Mothers
+item.saga_mother_praise.desc=Repairs all your armor when you are asleep. \nHas chance to vanish when you wake up.
+item.saga_mother_praise.flvr=Ci mu shou zhong xian, you zi shen shang yi.
+item.saga_mother_praise.msg.1=Lin xing mi mi feng.
+item.saga_mother_praise.msg.2=Shei yan cun cao xin.
+
+item.tcg_0.name=TCG No.0
+item.tcg_1.name=TCG No.1
+item.tcg_2.name=TCG No.2
+item.tcg_3.name=TCG No.3
+item.tcg_4.name=TCG No.4
+item.tcg_5.name=TCG No.5
+item.tcg_6.name=TCG No.6
+item.tcg_7.name=TCG No.7
+item.tcg_8.name=TCG No.8
+item.tcg_9.name=TCG No.9
+item.tcg_10.name=TCG No.10
+item.tcg_11.name=TCG No.11
+item.tcg_12.name=TCG No.12
+item.tcg_13.name=TCG No.13
+item.tcg_14.name=TCG No.14
+item.tcg_15.name=TCG No.15
+item.tcg_16.name=TCG No.16
+item.tcg_17.name=TCG No.17
+item.tcg_18.name=TCG No.18
+item.tcg_19.name=TCG No.19
+item.tcg_20.name=TCG No.20
+item.tcg_21.name=TCG No.21
+item.tcg_22.name=TCG No.22
+item.tcg_23.name=TCG No.23
+item.tcg_24.name=TCG No.24
+item.tcg_25.name=TCG No.25
+item.tcg_26.name=TCG No.26
+item.tcg_27.name=TCG No.27
+item.tcg_28.name=TCG No.28
+item.tcg_29.name=TCG No.29
+item.tcg_30.name=TCG No.30
+item.tcg_31.name=TCG No.31
+item.tcg_32.name=TCG No.32
+item.tcg_33.name=TCG No.33
+item.tcg_34.name=TCG No.34
+item.tcg_35.name=TCG No.35
+item.tcg_36.name=TCG No.36
+item.tcg_37.name=TCG No.37
+item.tcg_38.name=TCG No.38
+item.tcg_39.name=TCG No.39
+item.tcg_40.name=TCG No.40
+item.tcg_41.name=TCG No.41
+item.tcg_42.name=TCG No.42
+item.tcg_43.name=TCG No.43
+item.tcg_44.name=TCG No.44
+item.tcg_45.name=TCG No.45
+item.tcg_46.name=TCG No.46
+item.tcg_47.name=TCG No.47
+item.tcg_48.name=TCG No.48
+item.tcg_49.name=TCG No.49
+item.tcg_50.name=TCG No.50
+item.tcg_51.name=TCG No.51
+item.tcg_52.name=TCG No.52
+item.tcg_53.name=TCG No.53
+item.tcg_54.name=TCG No.54
+item.tcg_55.name=TCG No.55
+item.tcg_56.name=TCG No.56
+item.tcg_57.name=TCG No.57
+item.tcg_58.name=TCG No.58
+item.tcg_59.name=TCG No.59
+item.tcg_60.name=TCG No.60
+item.tcg_61.name=TCG No.61
+item.tcg_62.name=TCG No.62
+item.tcg_63.name=TCG No.63
+item.tcg_64.name=TCG No.64
+item.tcg_65.name=TCG No.65
+item.tcg_66.name=TCG No.66
+item.tcg_67.name=TCG No.67
+item.tcg_68.name=TCG No.68
+item.tcg_69.name=TCG No.69
+item.tcg_70.name=TCG No.70
+item.tcg_71.name=TCG No.71
+item.tcg_72.name=TCG No.72
+item.tcg_73.name=TCG No.73
+item.tcg_74.name=TCG No.74
+item.tcg_75.name=TCG No.75
+item.tcg_76.name=TCG No.76
+item.tcg_77.name=TCG No.77
+item.tcg_78.name=TCG No.78
+item.tcg_79.name=TCG No.79
+item.tcg_80.name=TCG No.80
+item.tcg_81.name=TCG No.81
+item.tcg_82.name=TCG No.82
+item.tcg_83.name=TCG No.83
+item.tcg_84.name=TCG No.84
+item.tcg_85.name=TCG No.85
+item.tcg_86.name=TCG No.86
+item.tcg_87.name=TCG No.87
+item.tcg_88.name=TCG No.88
+item.tcg_89.name=TCG No.89
+item.tcg_90.name=TCG No.90
+item.tcg_91.name=TCG No.91
+item.tcg_92.name=TCG No.92
+item.tcg_93.name=TCG No.93
+item.tcg_94.name=TCG No.94
+item.tcg_95.name=TCG No.95
+item.tcg_96.name=TCG No.96
+item.tcg_97.name=TCG No.97
+item.tcg_98.name=TCG No.98
+item.tcg_99.name=TCG No.99
+item.tcg_100.name=TCG No.100
+
+desc.tcg.common=Common
+desc.tcg.uncommon=Uncommon
+desc.tcg.rare=Rare
+desc.tcg.mythic=Superior
+
+desc.tcg.shared=Collectible Card
+
 idealland.skill.shared.cool_down_desc=Cooldown: %.1fs
 idealland.skill.shared.power_desc=Damage: %.1f
 idealland.skill.shared.range_desc=Radius: %.1f block
@@ -63,14 +1817,59 @@ idealland.skill.shared.name_format=%s
 idealland.skill.shared.name_format_with_lv=%s Lv.%s %s
 idealland.skill.shared.lv_max=[MAX]
 
+idealland.shared.skill.desc=Skill Item. Castable in %s %s
+idealland.shared.skill.gaze.desc=[Magical Gaze] Equip in helmet slot to cast.
+idealland.shared.skill.desc.offhand=Offhand
+idealland.shared.skill.desc.mainhand=Mainhand
+idealland.shared.skill.desc.xp_gauge=EXP: %s/%s
+idealland.shared.skill.desc.max=[MAX]
+idealland.shared.skill.desc.passive=[PASSIVE SKILL]
+
 idealland.gua_enhance_list.desc=Earth %s Thunder %s\nWater %s Mountain %s\nLake %s Fire %s\nWind%s Sky%s
 idealland.gua_not_applicable.desc=-
 
 idealland.kill_count.desc=Kills: %d
+idealland.owner.desc=Owner: %s
 
 idealland.skill.msg.cool_down=Cooling Down.
 
+idealland.temperature.msg.default_temp=Your best-fit temperature is at %s degrees.
+
+idealland.imprint.desc=Imprinting : "%s"
+
+#Events
+idealland.death_report=Detected %s's death at %s
+
+#Advancements
+idealland.advancements.root_h.title=Idealland Observer
+idealland.advancements.root_h.description=Begin your life as an Idealland Observer.
+
+idealland.advancements.root_m.title=Discovering His Path
+idealland.advancements.root_m.description=Finds out what he experienced as a mortal.
+
+idealland.advancements.dont_wanna_die.title="I Dont Wanna Die"
+idealland.advancements.dont_wanna_die.description=He said this after the first time he attended a funeral.
+
+idealland.advancements.loyalty_proved.title=Loyalty Acknowlaged
+idealland.advancements.loyalty_proved.description=Jade smith see that this is an fabulous jewel and crafted it into a seal.
+
+idealland.advancements.seal_used.title=Ambition on Sovereign
+idealland.advancements.seal_used.description="You shealthed the Sovereign Seal, to betrays your king?"
+
 #Death
+death.attack.example.player=%1$s exampled by %2$s
+death.attack.slam.player=%1$s was slammed onto ground by %2$s
+death.attack.slam.item=%1$s was slammed onto ground by %2$s using %3$s
+
+death.attack.martial.player=%1$s exprienced %2$s's fighting skills
+death.attack.martial.item=%1$s exprienced %2$s's %3$s
+
+death.attack.pain_defer=%1$s suffered from chronic pain
+
+death.attack.wall_of_flesh=%1$s feeded the Flesh Land
+
+death.attack.trap=%1$s is trapped
+
 #examples
 #death.fell.accident.ladder=%1$s fell off a ladder
 #death.fell.accident.vines=%1$s fell off some vines
@@ -81,3 +1880,13 @@ idealland.skill.msg.cool_down=Cooling Down.
 #death.fell.assist.item=%1$s was doomed to fall by %2$s using %3$s
 #death.fell.finish=%1$s fell too far and was finished by %2$s
 #death.fell.finish.item=%1$s fell too far and was finished by %2$s using %3$s
+#
+#death.attack.thrown=%1$s was pummeled by %2$s
+#death.attack.thrown.item=%1$s was pummeled by %2$s using %3$s
+#death.attack.cactus.player=%1$s walked into a cactus whilst trying to escape %2$s
+
+#Uprising
+uprising.msg.citadel.ready=Citadel [%s,%s,%s] is online
+uprising.msg.citadel.under_attack=Citadel [%s,%s,%s] is under attack
+uprising.msg.citadel.destroyed=Citadel [%s,%s,%s] has been destroyed
+uprising.msg.citadel.destroyed.attacker=Citadel has been destroyed by %s. [%s,%s,%s]

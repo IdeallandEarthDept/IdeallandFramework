@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.item.weapon;
 
+import com.somebody.idlframewok.item.IWIP;
 import com.somebody.idlframewok.item.ItemAdaptingBase;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.IDLGeneral;
@@ -12,15 +13,17 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemHealingGun extends ItemAdaptingBase {
+import static com.somebody.idlframewok.util.CommonDef.METER_PER_BLOCK;
+
+public class ItemHealingGun extends ItemAdaptingBase implements IWIP {
     public ItemHealingGun(String name) {
         super(name);
         setRangedWeapon();
         useable = true;
 
-        base_cd = 10f;
-        base_power = 6f;
-        base_range = 3f;
+        cool_down = 10f;
+        basic_val = 6f;
+        base_range = 2.5f * METER_PER_BLOCK;
     }
 
     @Override
@@ -30,27 +33,27 @@ public class ItemHealingGun extends ItemAdaptingBase {
 
     public void onCreatureStoppedUsing(ItemStack stack, World worldIn, EntityLivingBase entityLiving, int timeLeft)
     {
-        //IdlFramework.Log("onCreatureStoppedUsing");
+        //Idealland.Log("onCreatureStoppedUsing");
         Vec3d basePos = entityLiving.getPositionVector();
         float range = getRange(stack);
         List<EntityLivingBase> entities = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-range, -range, -range), basePos.addVector(range, range, range)));
-        //IdlFramework.Log("found %d targets", entities.size());
+        //Idealland.Log("found %d targets", entities.size());
         for (EntityLivingBase target: entities
         ) {
-            if (EntityUtil.getAttitude(entityLiving, target) == EntityUtil.ATTITUDE.FRIEND)
+            if (EntityUtil.getAttitude(entityLiving, target) == EntityUtil.EnumAttitude.FRIEND)
             {
                 if (worldIn.isRemote)
                 {
                     EntityUtil.SpawnParticleAround(target, EnumParticleTypes.VILLAGER_HAPPY, 10);
                 }else {
-                    target.heal(getPower(stack));
+                    target.heal(getVal(stack));
                 }
             }
         }
 
         if (worldIn.isRemote)
         {
-            //IdlFramework.Log("spawn particle!");
+            //Idealland.Log("spawn particle!");
             spawnParticles(EnumParticleTypes.VILLAGER_HAPPY, worldIn, entityLiving);
         }
 
@@ -67,7 +70,7 @@ public class ItemHealingGun extends ItemAdaptingBase {
         for (float angle = 0f; angle < maxAngle; angle += deltaAngle)
         {
            // float radius = center.getRNG().nextFloat() * speedMagnitude;
-            //IdlFramework.Log("spawn particle at %s, %s, %s", center.posX, center.posY, center.posZ);
+            //Idealland.Log("spawn particle at %s, %s, %s", center.posX, center.posY, center.posZ);
             center.world.spawnParticle(particleType, center.posX+Math.cos(angle),
                     center.getPositionEyes(0f).y,
                     center.posZ+Math.sin(angle),

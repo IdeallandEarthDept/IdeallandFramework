@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"active=active": { "model": "idealland:base_tick_trap" },
+		"active=inactive": { "model": "idealland:base_tick_trap_off"}
+	}
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "state=0": {
+      "model": "idealland:base_tick_trap"
+    },
+    "state=1": {
+      "model": "idealland:base_tick_trap_off"
+    }
+  }
+}

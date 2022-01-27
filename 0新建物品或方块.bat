@@ -1,2 +1,2 @@
-lua GenBlockJson.lua
+lua DynamicGen.lua
 pause

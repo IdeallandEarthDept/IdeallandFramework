@@ -1,7 +1,7 @@
 package com.somebody.idlframewok.blocks.blockBasic;
 
 import com.somebody.idlframewok.blocks.BlockBase;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +20,7 @@ public class IdeallandLight extends BlockBase {
 		setHarvestLevel("pickaxe", 1);
 		setLightLevel(1f);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_MISC);
+		setCreativeTab(ModCreativeTabsList.IDL_BUILDING);
 	}
 
 	//optional

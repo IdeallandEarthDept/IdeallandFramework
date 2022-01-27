@@ -1,6 +1,6 @@
 package com.somebody.idlframewok.blocks.tileEntity.orbs;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ITickable;
@@ -22,7 +22,7 @@ public class TileEntityNullifyOrb extends TileEntityOrbBase implements ITickable
 		if (aabb == null)
 		{
 			world.setBlockState(pos, Blocks.AIR.getDefaultState());
-			IdlFramework.LogWarning("A Nullify Orb @%s is not working correctly. Removing it.", pos);
+			Idealland.LogWarning("A Nullify Orb @%s is not working correctly. Removing it.", pos);
 			invalidate();
 			return;
 		}
@@ -31,7 +31,7 @@ public class TileEntityNullifyOrb extends TileEntityOrbBase implements ITickable
 			if (aabb.contains(new Vec3d(event.getX(), event.getY(), event.getZ())))
 			{
 				event.setResult(Event.Result.DENY);
-				//IdlFramework.Log("Stopped spawning:"+event.getEntityLiving().getName());
+				//Idealland.Log("Stopped spawning:"+event.getEntityLiving().getName());
 				return;
 			}
 		}

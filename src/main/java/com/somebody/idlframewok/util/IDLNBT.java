@@ -1,11 +1,7 @@
 package com.somebody.idlframewok.util;
 
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
-
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.IDEALLAND;
 
 public class IDLNBT {
 	public int pearlCount;
@@ -70,98 +66,4 @@ public class IDLNBT {
 	//    --KILL_COUNT,etc
 
 
-	public static NBTTagCompound getTagSafe(NBTTagCompound tag, String key) {
-		if(tag == null) {
-			return new NBTTagCompound();
-		}
-
-		return tag.getCompoundTag(key);
-	}
-
-	public static NBTTagCompound getPlyrIdlTagSafe(EntityPlayer player) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getTagSafe(data, IDEALLAND);
-
-		return idl_data;
-	}
-
-	public static NBTTagCompound getPlayerIdeallandTagGroupSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getCompoundTag(key);
-	}
-
-	public static int[] getPlayerIdeallandIntArraySafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getIntArray(key);
-	}
-
-	public static int getPlayerIdeallandIntSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getInteger(key);
-	}
-	public static float getPlayerIdeallandFloatSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getFloat(key);
-	}
-	public static double getPlayerIdeallandDoubleSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getDouble(key);
-	}
-	public static boolean getPlayerIdeallandBoolSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getBoolean(key);
-	}
-	public static String getPlayerIdeallandStrSafe(EntityPlayer player, String key) {
-		return getPlyrIdlTagSafe(player).getString(key);
-	}
-
-	public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, int value) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
-
-		idl_data.setInteger(key, value);
-
-		data.setTag(IDEALLAND, idl_data);
-		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-	}
-
-	public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, int[] value) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
-
-		idl_data.setIntArray(key, value);
-
-		data.setTag(IDEALLAND, idl_data);
-		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-	}
-
-	public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, double value) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
-
-		idl_data.setDouble(key, value);
-
-		data.setTag(IDEALLAND, idl_data);
-		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-	}
-
-	public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, boolean value) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
-
-		idl_data.setBoolean(key, value);
-
-		data.setTag(IDEALLAND, idl_data);
-		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-	}
-
-	public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, String value) {
-		NBTTagCompound playerData = player.getEntityData();
-		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
-
-		idl_data.setString(key, value);
-
-		data.setTag(IDEALLAND, idl_data);
-		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
-	}
 }

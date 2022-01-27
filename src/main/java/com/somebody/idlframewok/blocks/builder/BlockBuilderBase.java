@@ -1,9 +1,9 @@
 package com.somebody.idlframewok.blocks.builder;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import com.somebody.idlframewok.blocks.BlockBase;
 import com.somebody.idlframewok.blocks.tileEntity.builder.TileEntityBuilderBase;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -16,7 +16,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
     public BlockBuilderBase(String name, Material material, Class<? extends TileEntityBuilderBase> tileEntity) {
         super(name, material);
         this.tileEntity = tileEntity;
-        setCreativeTab(ModCreativeTab.IDL_MISC);
+        setCreativeTab(ModCreativeTabsList.IDL_BUILDER);
         setSoundType(SoundType.METAL);
         setHardness(5.0F);
         setResistance(15.0F);
@@ -35,7 +35,7 @@ public class BlockBuilderBase extends BlockBase implements ITileEntityProvider {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
-            IdlFramework.Log("Instantiate failed");
+            Idealland.Log("Instantiate failed");
         }
         return t;
     }

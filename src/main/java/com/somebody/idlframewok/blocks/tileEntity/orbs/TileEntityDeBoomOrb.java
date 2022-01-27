@@ -1,6 +1,6 @@
 package com.somebody.idlframewok.blocks.tileEntity.orbs;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.event.world.ExplosionEvent;
@@ -12,14 +12,14 @@ public class TileEntityDeBoomOrb extends TileEntityOrbBase implements ITickable 
 	@SubscribeEvent
 	public void onExplode(ExplosionEvent.Start event) {
 		Vec3d pos = event.getExplosion().getPosition();
-		//IdlFramework.Log(String.format("onExplode:(%s,%s,%s)", pos.x, pos.y, pos.z));
+		//Idealland.Log(String.format("onExplode:(%s,%s,%s)", pos.x, pos.y, pos.z));
 		//can use some optimization here. each orb will make it worse.
 
 		if (!event.isCanceled() && aabb.contains(pos))
 		{
 			event.setCanceled(true);
 			PlaySoundHere();
-			IdlFramework.Log("Stopped an explosion");
+			Idealland.Log("Stopped an explosion");
 		}
 	}
 

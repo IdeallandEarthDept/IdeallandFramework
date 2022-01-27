@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.world.dimension.hexcube;
 
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.chunk.ChunkPrimer;
 
 import static com.somebody.idlframewok.util.CommonDef.CHUNK_SIZE;
@@ -21,6 +22,11 @@ public class HexCubeHelper {
         }
 
         return chunkX / CHUNK_PER_DIFF + chunkZ / CHUNK_PER_DIFF + (y >> 4) / CHUNK_PER_DIFF;
+    }
+
+    public static float getDifficulty(BlockPos blockPos)
+    {
+        return (blockPos.getX() >> 4) / CHUNK_PER_DIFF + (blockPos.getZ() >> 4) / CHUNK_PER_DIFF + (blockPos.getY() >> 4) / CHUNK_PER_DIFF;
     }
 
     public static void genGrass(ChunkPrimer primer, int x, int y, int z)

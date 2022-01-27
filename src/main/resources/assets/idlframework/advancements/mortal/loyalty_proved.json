@@ -1,0 +1,22 @@
+{
+    "display": {
+        "icon": {
+            "item": "idealland:jade_seal_pack"
+        },
+        "title": {
+            "translate": "idealland.advancements.loyalty_proved.title"
+        },
+        "description": {
+            "translate": "idealland.advancements.loyalty_proved.description"
+        },
+        "show_toast": true,
+        "announce_to_chat": true,
+        "frame": "challenge"
+    },
+    "parent": "idealland:mortal/root",
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

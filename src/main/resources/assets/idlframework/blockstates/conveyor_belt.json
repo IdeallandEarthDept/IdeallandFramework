@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "idealland:conveyor_belt"
+    },
+    "facing=south": {
+      "model": "idealland:conveyor_belt",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "idealland:conveyor_belt",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "idealland:conveyor_belt",
+      "y": 90
+    }
+  }
+}

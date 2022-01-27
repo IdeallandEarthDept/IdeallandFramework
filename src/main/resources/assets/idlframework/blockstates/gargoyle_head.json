@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "idealland:gargoyle_head"
+    },
+    "facing=south": {
+      "model": "idealland:gargoyle_head",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "idealland:gargoyle_head",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "idealland:gargoyle_head",
+      "y": 90
+    }
+  }
+}

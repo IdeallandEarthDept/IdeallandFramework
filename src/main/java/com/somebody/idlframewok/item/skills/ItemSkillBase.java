@@ -1,8 +1,8 @@
 package com.somebody.idlframewok.item.skills;
 
-import com.somebody.idlframewok.IdlFramework;
-import com.somebody.idlframewok.init.ModCreativeTab;
-import com.somebody.idlframewok.item.ItemBase;
+import com.somebody.idlframewok.Idealland;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
+import com.somebody.idlframewok.item.ItemAdaptingBase;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.MessageDef;
@@ -12,8 +12,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -25,10 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static com.somebody.idlframewok.util.CommonDef.G_SKY;
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.CommonFunctions.SendMsgToPlayer;
-import static com.somebody.idlframewok.util.CommonFunctions.isShiftPressed;
+import static com.somebody.idlframewok.util.CommonFunctions.*;
 import static com.somebody.idlframewok.util.MessageDef.getSkillCastKey;
 
 enum SKILL_MSG_TYPE
@@ -38,114 +34,24 @@ enum SKILL_MSG_TYPE
 }
 
 
-public class ItemSkillBase extends ItemBase {
+public class ItemSkillBase extends ItemAdaptingBase implements ICastable {
     public boolean isMartial = false;
-
-    public float cool_down = 1f;
-    public float cool_down_reduce_per_lv = 0.2f;
-
-    public float base_range = 5f;
-    public float range_per_level = 0f;
-
-    public float basic_val = 0f;
-    public float val_per_level = 0f;
-
-    public float dura_val = 0f;
-    public float dura_per_level = 0f;
-
-    public float level_modifier = 0f;
-
-    public int maxLevel = 5;
-
-    public int gua_index = G_SKY;
-
-    public boolean showCDDesc = true;
-    public boolean showDamageDesc = true;
-    public boolean showRangeDesc = false;
-    public boolean showDuraDesc = false;
-
-    //for arknights
-    public boolean offHandCast = false;
-    public boolean mainHandCast = false;
-    public boolean cannotMouseCast = false;
-
-    protected int maxDialogues = 0;
-
-    protected int GetMaxTick(ItemStack stack) {
-        return (int) (getCoolDown(stack) * TICK_PER_SECOND);
-    }
 
     public ItemSkillBase(String name) {
         super(name);
         setMaxStackSize(1);
         setNoRepair();
-        setCreativeTab(ModCreativeTab.IDL_MISC);
+        setCreativeTab(ModCreativeTabsList.IDL_SKILL);
+        offHandCast = true;
+        mainHandCast = true;
     }
 
-    @Override
-    public EnumRarity getRarity(ItemStack stack) {
-        return super.getRarity(stack);
-    }
-
-    public ItemSkillBase setMaxLevel(int maxLevel)
+    public ItemSkillBase setPassive()
     {
-        this.maxLevel = maxLevel;
+        cannotMouseCast = true;
+        offHandCast = false;
+        mainHandCast = false;
         return this;
-    }
-
-    public ItemSkillBase setVal(float val, float val_per_level)
-    {
-        basic_val = val;
-        this.val_per_level = val_per_level;
-        return this;
-    }
-
-    public ItemSkillBase setCD(float val, float val_per_level)
-    {
-        cool_down = val;
-        this.cool_down_reduce_per_lv = val_per_level;
-        return this;
-    }
-
-    public ItemSkillBase setDura(float val, float val_per_level)
-    {
-        dura_val = val;
-        this.dura_per_level = val_per_level;
-        return this;
-    }
-
-    public ItemSkillBase setRange(float val, float val_per_level)
-    {
-        base_range = val;
-        this.range_per_level = val_per_level;
-        return this;
-    }
-
-    public float getRange(ItemStack stack)
-    {
-        return (IDLSkillNBT.getLevel(stack) - 1) * range_per_level + base_range;
-    }
-
-    public float getDura(ItemStack stack)
-    {
-        return  (IDLSkillNBT.getLevel(stack) - 1) * dura_per_level + dura_val;
-    }
-    public float getVal(ItemStack stack)
-    {
-        return  (IDLSkillNBT.getLevel(stack) - 1) * val_per_level + basic_val;
-    }
-    public float getCoolDown(ItemStack stack) {
-        float result = -(IDLSkillNBT.getLevel(stack) - 1) * cool_down_reduce_per_lv + cool_down;
-        return result > 0.1f ? result : 0.1f; }
-
-    //leveling-------------------------------------
-
-    public int GetLevelMax(ItemStack stack)
-    {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
-            return 0;
-        }
-        return maxLevel;
     }
 
     public void SendDefaultMsg(EntityPlayer player, ItemStack stack, SKILL_MSG_TYPE msg_type)
@@ -156,29 +62,14 @@ public class ItemSkillBase extends ItemBase {
                 SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.IN_CD_DESC_KEY);
             case SUCCESS:
                 SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.SUCCESS_DESC_KEY);
-                default:
-                    break;
-        }
-    }
-
-    public static void activateCoolDown(EntityPlayer player, ItemStack stack)
-    {
-        Item item = stack.getItem();
-        if (item instanceof ItemSkillBase)
-        {
-            player.getCooldownTracker().setCooldown(stack.getItem(), ((ItemSkillBase) item).GetMaxTick(stack));
+            default:
+                break;
         }
     }
 
     public static void notifyCoolingDown(EntityPlayerMP player)
     {
         CommonFunctions.SendMsgToPlayer(player, "idlframewok.skill.msg.cool_down");
-    }
-
-    public static boolean isStackReady(EntityPlayer player, ItemStack stack)
-    {
-        return !player.getCooldownTracker().hasCooldown(stack.getItem());
-        //return stack.getItemDamage() == 0;
     }
 
     //--------------------------
@@ -200,9 +91,9 @@ public class ItemSkillBase extends ItemBase {
         ItemStack stack = playerIn.getHeldItem(handIn);
         if (isStackReady(playerIn, stack))
         {
-            if (canCast(worldIn, playerIn, handIn))
+            if (canCast(worldIn, playerIn, stack, slotFromHand(handIn), !worldIn.isRemote))
             {
-                tryCast(worldIn, playerIn, handIn);
+                applyCast(worldIn, playerIn, stack, slotFromHand(handIn));
                 activateCoolDown(playerIn, stack);
                 return new ActionResult<>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
             }
@@ -215,20 +106,46 @@ public class ItemSkillBase extends ItemBase {
         return new ActionResult<>(EnumActionResult.FAIL, playerIn.getHeldItem(handIn));
     }
 
-    public boolean canCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
-    {
-        if (livingBase instanceof EntityPlayer)
-        {
-            isStackReady((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
-        }
-        return true;
+    //This will just check, will not give error message. use hasErrorMessage for hinting.
+    @Override
+    public final boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
+        return canCast(worldIn, livingBase, stack, slot, false);
     }
 
-    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn)
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot, boolean hintErrorMsg) {
+        if (livingBase instanceof EntityPlayer)
+        {
+            switch (slot)
+            {
+                case MAINHAND:
+                    if (!mainHandCast)
+                        return false;
+                    break;
+                case OFFHAND:
+                    if (!offHandCast)
+                        return false;
+                    break;
+                case FEET:
+                    break;
+                case LEGS:
+                    break;
+                case CHEST:
+                    break;
+                case HEAD:
+                    break;
+                default:
+                    Idealland.LogWarning("Cast error", new IllegalStateException("Unexpected value: " + slot)); ;
+            }
+            return isStackReady((EntityPlayer) livingBase, stack);
+        }
+        return false;
+    }
+
+    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot)
     {
         if (livingBase instanceof EntityPlayer)
         {
-            activateCoolDown((EntityPlayer) livingBase, livingBase.getHeldItem(handIn));
+            activateCoolDown((EntityPlayer) livingBase, stack);
         }
         return true;
     }
@@ -238,29 +155,29 @@ public class ItemSkillBase extends ItemBase {
         World world = caster.world;
         boolean casterIsPlayer = caster instanceof EntityPlayer;
         if (!casterIsPlayer || isStackReady((EntityPlayer) caster, stack)) {
-            if (canCast(world, caster, hand)) {
+            if (canCast(world, caster, stack, CommonFunctions.slotFromHand(hand))) {
                 if (hand == EnumHand.MAIN_HAND) {
                     if (mainHandCast) {
-                        return tryCast(caster.world, caster, hand);
+                        return applyCast(caster.world, caster, stack, CommonFunctions.slotFromHand(hand));
                     } else  {
                         if (casterIsPlayer)
                         {
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_MAINHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
                 } else if (hand == EnumHand.OFF_HAND)
                     if (offHandCast) {
-                        return tryCast(caster.world, caster, hand);
+                        return applyCast(caster.world, caster, stack, CommonFunctions.slotFromHand(hand));
                     }else {
                         if (casterIsPlayer)
                         {
                             CommonFunctions.SafeSendMsgToPlayer(TextFormatting.RED, (EntityPlayer) caster, MessageDef.NOT_CASTABLE_OFFHAND);
                         }
                         else {
-                            IdlFramework.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
+                            Idealland.LogWarning("Trying to do invalid cast from a creature: %s", caster.getName());
                         }
                     }
             }

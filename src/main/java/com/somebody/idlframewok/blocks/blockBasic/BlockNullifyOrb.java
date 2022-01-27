@@ -3,7 +3,7 @@ package com.somebody.idlframewok.blocks.blockBasic;
 import com.somebody.idlframewok.blocks.BlockBase;
 import com.somebody.idlframewok.blocks.tileEntity.orbs.TileEntityNullifyOrb;
 import com.somebody.idlframewok.blocks.tileEntity.orbs.TileEntityNullifyOrbMor;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -19,13 +19,13 @@ public class BlockNullifyOrb extends BlockBase implements ITileEntityProvider {
 	public boolean isMoroonProof = false;
 	public BlockNullifyOrb(String name, Material material) {
 		super(name, material);
-		this.hasTileEntity = true;
+		
 		setSoundType(SoundType.METAL);
 		setHardness(5.0F);
 		setResistance(15.0F);
 		setHarvestLevel("pickaxe", 3);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_MISC);
+		setCreativeTab(ModCreativeTabsList.IDL_BUILDING);
 	}
 
 	public BlockNullifyOrb setAdvanced(boolean val)

@@ -27,7 +27,7 @@ public class GenCubeTorchRoom extends GenCubeBase {
         int minZ = 1;
         int maxZ = zSize - 1;
 
-        int yMax = ySize - 1;
+        int yMax = ySize - (hasLight ? 2 : 1);
 
         //east +x
         //south +z
@@ -45,12 +45,10 @@ public class GenCubeTorchRoom extends GenCubeBase {
     void CreateLogAt(World worldIn, BlockPos pos, EnumFacing facing)
     {
         //todo: prevent torch from falling
-        if (worldIn.getBlockState(pos.offset(facing.getOpposite())).getBlock() == Blocks.AIR)//does this work? need check
+        if (worldIn.getBlockState(pos.offset(facing.getOpposite())).getBlock() != Blocks.AIR)
         {
             this.setBlockAndNotifyAdequately(worldIn, pos, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, facing));
         }
-
-
     }
 
 

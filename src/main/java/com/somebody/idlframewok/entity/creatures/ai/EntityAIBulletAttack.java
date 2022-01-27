@@ -3,7 +3,9 @@ package com.somebody.idlframewok.entity.creatures.ai;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.projectile.*;
+import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -29,7 +31,7 @@ public class EntityAIBulletAttack extends EntityAIBase
         this.attackArguments = args;
         sqRange = args.range * args.range;
         this.entityHost = par1EntityLiving;
-        this.worldObj = par1EntityLiving.world;
+        this.worldObj = par1EntityLiving.getEntityWorld();
         this.setMutexBits(3);
     }
 
@@ -90,12 +92,12 @@ public class EntityAIBulletAttack extends EntityAIBase
         }
         else
         {
-//            IdlFramework.LogWarning("cant see");
+//            Idealland.LogWarning("cant see");
             this.ticksLookingAtTarget = 0;
         }
 
-//        IdlFramework.Log(String.format("Looking ticks = %d", ticksLookingAtTarget ));
-//        IdlFramework.Log(String.format("dist = %.2f/%.2f", targetDistance, maxRange));
+//        Idealland.Log(String.format("Looking ticks = %d", ticksLookingAtTarget ));
+//        Idealland.Log(String.format("dist = %.2f/%.2f", targetDistance, maxRange));
         if (targetDistance <= maxRange && this.ticksLookingAtTarget >= 20)
         {
             this.entityHost.getNavigator().clearPath();

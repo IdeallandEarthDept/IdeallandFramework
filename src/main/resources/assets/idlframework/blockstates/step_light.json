@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=active": {
+      "model": "idealland:step_light_on"
+    },
+    "active=inactive": {
+      "model": "idealland:step_light_off"
+    }
+  }
+}

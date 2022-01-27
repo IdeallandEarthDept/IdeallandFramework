@@ -2,6 +2,10 @@ package com.somebody.idlframewok.entity.creatures.moroon;
 
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.entity.creatures.ideallandTeam.EntityIdeallandUnitBase;
+import com.somebody.idlframewok.item.ModItems;
+import com.somebody.idlframewok.potion.ModPotions;
+import com.somebody.idlframewok.init.ModConfig;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.monster.EntityZombie;
@@ -9,6 +13,7 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.DifficultyInstance;
@@ -17,11 +22,14 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
+import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
+
 public class EntityMoroonUnitBase extends EntityModUnit {
 
     int berserkGazeLv = 0;
     protected boolean inflictBerserkBuff = true;
     protected boolean autoArmor = false;
+
 
 //    protected float[] inventoryHandsDropChances = new float[2];
 //    /** Chances for armor dropping when this entity dies. */
@@ -76,24 +84,12 @@ public class EntityMoroonUnitBase extends EntityModUnit {
         return 1;
     }
 
-    public void ApplyGeneralLevelBoost(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
-    {
-        //with localDiff / 10 chance to lv up recursively
-        int level = getLevel();
-        int maxLv = getMaxLevel();
-        float localDifficulty = difficulty.getAdditionalDifficulty();
-        while (level < maxLv && ((getRNG().nextFloat()* 10f) <= localDifficulty))
-        {
-            level++;
-        }
-        setLevel(level);
-    }
+
 
     @Nullable
     @Override
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
         livingdata = super.onInitialSpawn(difficulty, livingdata);
-        ApplyGeneralLevelBoost(difficulty, livingdata);
 
         if (autoArmor)
         {
@@ -106,8 +102,6 @@ public class EntityMoroonUnitBase extends EntityModUnit {
 
     protected void applyGeneralAI()
     {
-
-
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIdeallandUnitBase.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityZombie.class, false));
@@ -119,11 +113,11 @@ public class EntityMoroonUnitBase extends EntityModUnit {
     @Override
     public void onUpdate() {
         super.onUpdate();
-//        EntityLivingBase target = getAttackTarget();
-//        if (inflictBerserkBuff && target != null && berserkGazeLv >= 0 && (world.getWorldTime() % TICK_PER_SECOND == 7) )
-//        {
-//            target.addPotionEffect(new PotionEffect(ModPotions.BERSERK, TICK_PER_SECOND + 1,  berserkGazeLv));
-//        }
+        EntityLivingBase target = getAttackTarget();
+        if (inflictBerserkBuff && target != null && berserkGazeLv >= 0 && (world.getWorldTime() % TICK_PER_SECOND == 7) )
+        {
+            target.addPotionEffect(new PotionEffect(ModPotions.BERSERK, TICK_PER_SECOND + 1,  berserkGazeLv));
+        }
     }
 
     /**
@@ -134,41 +128,35 @@ public class EntityMoroonUnitBase extends EntityModUnit {
         return this.world.getDifficulty() != EnumDifficulty.PEACEFUL && super.getCanSpawnHere();
     }
 
-    public boolean isPreventingPlayerRest(EntityPlayer playerIn)
-    {
-        return true;
-    }
-
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-        //IdlFramework.Log("dropLoot Called");
-//        dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
-//        if (rand.nextFloat() < 0.01f * getLevel())
-//        {
-//            dropItem(ModItems.RANDOM_SKILL, 1);
-//        }
-//
-//        if (rand.nextFloat() < 0.1f * getLevel())
-//        {
-//            dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
-//        }
-//
-//        if (rand.nextFloat() < 0.1f * getLevel())
-//        {
-//            dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
-//        }
-//
-//        if (rand.nextFloat() < 0.2f * getLevel())
-//        {
-//            dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
-//        }
-//
-//        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
-//        {
-//            dropItem(ModItems.itemNanoMender_128, 1);
-//        }
+        //Idealland.Log("dropLoot Called");
+        dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
+        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
+        {
+            dropItem(ModItems.RANDOM_SKILL, 1);
+        }
 
+        if (rand.nextFloat() < 0.1f * getLevel())
+        {
+            dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
+        }
+
+
+        if (rand.nextFloat() < 0.2f * getLevel())
+        {
+            dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
+        }
+
+        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
+        {
+            dropItem(ModItems.itemNanoMender_128, 1);
+        }
+//
+//        if (wasRecentlyHit) {
+//            dropItem(ModItems.ANTENNA, rand.nextInt(1 + lootingModifier));
+//        }
     }
 
     @Override

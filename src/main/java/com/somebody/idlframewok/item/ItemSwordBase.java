@@ -1,7 +1,6 @@
 package com.somebody.idlframewok.item;
 
-import com.somebody.idlframewok.IdlFramework;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.IHasModel;
@@ -20,9 +19,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
-
 public class ItemSwordBase extends ItemSword implements IHasModel {
+	public static final double SWORD_ATTR_ATK_SPD = -2.4000000953674316D;
 	private boolean overrideRarity = false;
 	private EnumRarity enumRarity = EnumRarity.COMMON;
 	protected boolean showGuaSocketDesc = false;
@@ -41,11 +39,17 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(ModCreativeTab.IDL_MISC);
+		setCreativeTab(ModCreativeTabsList.IDL_MISC);
 		toolMaterial = material;
 		ModItems.ITEMS.add(this);
 
 		InitItem();
+	}
+
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack)
+	{
+		return stack.isItemEnchanted() || glitters;
 	}
 
 	public ItemSwordBase setRarity(EnumRarity enumRarity)
@@ -87,7 +91,7 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 		//Particle;
 		super.onUsingTick(stack, living, count);
-		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
+		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
 
 		if (living.world.isRemote)
 		{
@@ -107,12 +111,6 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	public void serverUseTick(ItemStack stack, EntityLivingBase living, int count)
 	{
 
-	}
-
-	@Override
-	public void registerModels() 
-	{
-		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 
 	@SideOnly(Side.CLIENT)

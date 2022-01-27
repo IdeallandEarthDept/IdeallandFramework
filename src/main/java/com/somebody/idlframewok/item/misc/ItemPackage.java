@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.item.misc;
 
 import com.somebody.idlframewok.item.ItemBase;
+import com.somebody.idlframewok.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nonnull;
 
 public class ItemPackage extends ItemBase {
-    public Item[] validItems = new Item[]{};
+    public Item[] validItems = new Item[]{ModItems.YANG_SIGN, ModItems.YIN_SIGN};
     int pick = 1;
 
     public ItemPackage(String name, Item[] validItems) {
@@ -39,7 +40,7 @@ public class ItemPackage extends ItemBase {
 
             player.addItemStackToInventory(new ItemStack(validItems[player.getRNG().nextInt(validItems.length)]));
             player.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1f, 1f);
-            player.addExperience(10);
+            //player.addExperience(10);
 
             //	Must do shrink AFTER addItemStackToInventory,
             //or it would make the addItemStackToInventory fail if the new thing were to be in the new place.

@@ -1,0 +1,21 @@
+{
+    "display": {
+        "icon": {
+            "item": "idealland:skill_sj_teleport_grand"
+        },
+        "title": {
+            "translate": "idealland.advancements.root_m.title"
+        },
+        "description": {
+            "translate": "idealland.advancements.root_m.description"
+        },
+        "background": "idealland:textures/blocks/grid_lamp.png",
+        "show_toast": true,
+        "announce_to_chat": true
+    },
+    "criteria": {
+        "impossible": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

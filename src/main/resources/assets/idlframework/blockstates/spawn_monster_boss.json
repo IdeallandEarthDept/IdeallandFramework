@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {
+      "model": "idealland:spawn_monster_boss"
+    }
+  }
+}

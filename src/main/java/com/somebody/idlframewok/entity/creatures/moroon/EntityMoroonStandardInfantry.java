@@ -1,13 +1,18 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
 import com.somebody.idlframewok.entity.creatures.ai.EntityAIStrafeRangedAttack;
+import com.somebody.idlframewok.entity.projectiles.EntityMoroonBullet;
+import com.somebody.idlframewok.entity.projectiles.ProjectileArgs;
+import com.somebody.idlframewok.item.ModItems;
 import com.somebody.idlframewok.util.CommonFunctions;
+import com.somebody.idlframewok.util.EntityUtil;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -36,7 +41,12 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         if (wasRecentlyHit) {
             if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
             {
-                //dropItem (ModItems.MOROON_RIFLE, 1);
+                dropItem (ModItems.MOROON_RIFLE, 1);
+            }
+
+            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
+            {
+                dropItem (ModItems.ITEM_IDL_ORDER_1, 1);
             }
         }
     }
@@ -74,11 +84,11 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         }
     };
 
-    protected void initEntityAI()
+    protected void firstTickAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
        // this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityTNTPrimed.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -106,7 +116,13 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
     {
         super.setEquipmentBasedOnDifficulty(difficulty);
-        //this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
+        if (this.getRNG().nextFloat() < 0.5f)
+        {
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.ITEM_MOR_ORI_SWORD));
+        }else {
+            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
+        }
+
     }
 
     public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)
@@ -159,14 +175,14 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         float dist =  MathHelper.sqrt(MathHelper.sqrt(d0));
         float estimateHitTime = MathHelper.sqrt(2 * bulletAccel * dist);
 
-//        EntityMoroonBullet entityIdlProjectile = new EntityMoroonBullet(this.world, new ProjectileArgs((float) EntityUtil.getAttack(this)), this,
-//                d1 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionX,
-//                d2 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionY,
-//                d3 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionZ,
-//                bulletAccel);
-//
-//        playSound(SoundEvents.BLOCK_PISTON_EXTEND, 1f, 2f);
-//        world.spawnEntity(entityIdlProjectile);
+        EntityMoroonBullet entityIdlProjectile = new EntityMoroonBullet(this.world, new ProjectileArgs((float) EntityUtil.getAttack(this)), this,
+                d1 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionX,
+                d2 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionY,
+                d3 + this.getRNG().nextGaussian() * (double)errorModifier + estimateHitTime * target.motionZ,
+                bulletAccel);
+
+        playSound(SoundEvents.BLOCK_PISTON_EXTEND, 1f, 2f);
+        world.spawnEntity(entityIdlProjectile);
     }
 
     @Override

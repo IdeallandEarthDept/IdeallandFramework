@@ -100,13 +100,13 @@ public class ItemSmashShield extends ItemAdaptingBase {
 
         if (equipmentSlot == EntityEquipmentSlot.OFFHAND )
         {
-            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(OFF_HAND_MODIFIER, "Weapon modifier", (double)getPower(stack), 0));
+            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(OFF_HAND_MODIFIER, "Weapon modifier", (double) getVal(stack), 0));
         }
 
         if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(MAIN_HAND_MODIFIER, "Weapon modifier", (double)getPower(stack), 0));
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(MAIN_HAND_MODIFIER, "Weapon modifier", (double)getPower(stack) / 2f, 0));
+            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(MAIN_HAND_MODIFIER, "Weapon modifier", (double) getVal(stack), 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(MAIN_HAND_MODIFIER, "Weapon modifier", (double) getVal(stack) / 2f, 0));
         }
 
         return multimap;

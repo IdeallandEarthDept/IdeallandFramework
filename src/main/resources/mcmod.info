@@ -1,14 +1,14 @@
 [
 {
-  "modid": "untitled",
-  "name": "Idealland Framework",
-  "description": "A modding framework presented by Idealland.",
+  "modid": "idealland",
+  "name": "Idealland",
+  "description": "Taoism DeepLake's main mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.mcmod.cn/class/2421.html",
   "updateUrl": "",
   "authorList": ["Taoism DeepLake"],
-  "credits": "Idealland - they provided this framework.",
+  "credits": "Idealland, including memes everywhere.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -1,0 +1,2 @@
+lua GenLootTable.lua
+pause

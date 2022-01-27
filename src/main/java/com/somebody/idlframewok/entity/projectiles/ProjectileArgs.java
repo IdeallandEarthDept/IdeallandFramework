@@ -7,6 +7,8 @@ public class ProjectileArgs {
     public float explosion_power = 0f;
     public float speed = 1f;
     public boolean burning = false;
+    public int ttl = 9999;
+    public boolean bypassArmor = false;
 
     public ProjectileArgs(float damage, float explosion_power, float speed, boolean burning) {
         this.damage = damage;
@@ -17,6 +19,26 @@ public class ProjectileArgs {
 
     public ProjectileArgs(float damage) {
         this.damage = damage;
+    }
+
+    public ProjectileArgs setBypassArmor(boolean bypassArmor) {
+        this.bypassArmor = bypassArmor;
+        return this;
+    }
+
+    public ProjectileArgs setBlast(float blastPower) {
+        this.explosion_power = damage;
+        return this;
+    }
+
+    public ProjectileArgs setTTL(int tick) {
+        this.ttl = tick;
+        return this;
+    }
+
+    public ProjectileArgs setDamage(float damage) {
+        this.damage = damage;
+        return this;
     }
 
     public void writeEntityToNBT(NBTTagCompound compound)
@@ -33,6 +55,5 @@ public class ProjectileArgs {
         this.explosion_power = compound.getFloat("explosion_power");
         this.burning = compound.getBoolean("burning");
         this.explosion_power = compound.getFloat("explosion_power");
-
     }
 }

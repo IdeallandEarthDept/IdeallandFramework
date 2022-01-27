@@ -38,7 +38,7 @@ public class BuilderActionBlockBrutal extends BuilderActionBase {
     @Override
     public boolean Execute(World world, BlockPos ori_pos){
 //        if (relativePos.lengthSquared() < 1) {
-//            //IdlFramework.LogWarning("Trying to build a block at self-pos.");
+//            //Idealland.LogWarning("Trying to build a block at self-pos.");
 //            //return true;
 //        }
 

@@ -1,7 +1,7 @@
-package com.somebody.idlframewok.blocks.Furnitures;
+package com.somebody.idlframewok.blocks.furnitures;
 
 import com.somebody.idlframewok.blocks.BlockBase;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -32,7 +32,7 @@ public class BlockExtractionDoorTest extends BlockBase {
         setLightOpacity(1);
 
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.NORTH).withProperty(POWERED, Boolean.valueOf(false)));
-        this.setCreativeTab(ModCreativeTab.IDL_MISC);
+        this.setCreativeTab(ModCreativeTabsList.IDL_BUILDING);
     }
 
     public static final PropertyEnum<BlockExtractionDoorTest.EnumOrientation> FACING = PropertyEnum.create("facing", BlockExtractionDoorTest.EnumOrientation.class);
@@ -70,7 +70,7 @@ public class BlockExtractionDoorTest extends BlockBase {
      */
     public boolean isOpaqueCube(IBlockState state)
     {
-        return !state.getValue(POWERED);
+        return false;
     }
 
     public boolean isFullCube(IBlockState state)
@@ -84,7 +84,7 @@ public class BlockExtractionDoorTest extends BlockBase {
     }
 
     /**
-     * Check whether this Block can be placed at pos, while aiming at the specified side of an adjacent block
+     * Check whether this BlockPhasingOre can be placed at pos, while aiming at the specified side of an adjacent block
      */
     public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side)
     {
@@ -262,7 +262,7 @@ public class BlockExtractionDoorTest extends BlockBase {
     }
 
     /**
-     * Get the Item that this Block should drop when harvested.
+     * Get the Item that this BlockPhasingOre should drop when harvested.
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
@@ -278,7 +278,7 @@ public class BlockExtractionDoorTest extends BlockBase {
     }
 
     /**
-     * Convert the given metadata into a BlockState for this Block
+     * Convert the given metadata into a BlockState for this BlockPhasingOre
      */
     public IBlockState getStateFromMeta(int meta)
     {
@@ -302,7 +302,7 @@ public class BlockExtractionDoorTest extends BlockBase {
     }
 
     /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
+     * Returns the blockstate with the given rotationIn from the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
     public IBlockState withRotation(IBlockState state, Rotation rot)
@@ -375,7 +375,7 @@ public class BlockExtractionDoorTest extends BlockBase {
     }
 
     /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
+     * Returns the blockstate with the given mirrorIn of the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)

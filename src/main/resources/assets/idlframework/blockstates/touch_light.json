@@ -1,0 +1,14 @@
+{
+	"variants": {
+		"active=active,facing=up": { "model": "idealland:touch_light" },
+		"active=active,facing=east": { "model": "idealland:touch_light" },
+		"active=active,facing=south": { "model": "idealland:touch_light", "y": 90 },
+		"active=active,facing=west": { "model": "idealland:touch_light", "y": 180 },
+		"active=active,facing=north": { "model": "idealland:touch_light", "y": 270 },
+		"active=inactive,facing=up": { "model": "idealland:touch_light" },
+		"active=inactive,facing=east": { "model": "idealland:touch_light" },
+		"active=inactive,facing=south": { "model": "idealland:touch_light", "y": 90 },
+		"active=inactive,facing=west": { "model": "idealland:touch_light", "y": 180 },
+		"active=inactive,facing=north": { "model": "idealland:touch_light", "y": 270 }
+	}
+}

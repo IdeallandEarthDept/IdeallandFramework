@@ -1,9 +1,15 @@
 package com.somebody.idlframewok.gui;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
+import com.somebody.idlframewok.blocks.container.ContainerModChest;
+import com.somebody.idlframewok.blocks.tileEntity.TileEntityChestCustom;
+import com.somebody.idlframewok.gui.containers.GuiContainerModChest;
 import com.somebody.idlframewok.gui.expOne.ContainerDemo;
 import com.somebody.idlframewok.gui.expOne.GuiContainerDemo;
+import com.somebody.idlframewok.gui.research.ContainerResearch;
+import com.somebody.idlframewok.gui.research.GuiContainerResearch;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -16,10 +22,11 @@ public class ModGuiElementLoader implements IGuiHandler {
 
     public static final int GUI_DEMO = 1;
     public static final int GUI_RESEARCH = 2;
+    public static final int GUI_CUSTOM_CHEST = 3;
 
     public ModGuiElementLoader()
     {
-        NetworkRegistry.INSTANCE.registerGuiHandler(IdlFramework.instance, this);
+        NetworkRegistry.INSTANCE.registerGuiHandler(Idealland.instance, this);
     }
 
     @Nullable
@@ -29,6 +36,10 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new ContainerDemo(player);
+            case GUI_RESEARCH:
+                return new ContainerResearch(player);
+            case GUI_CUSTOM_CHEST:
+                return new ContainerModChest(player.inventory, (TileEntityChestCustom) world.getTileEntity(new BlockPos(x,y,z)), player);
             default:
                 return null;
         }
@@ -41,6 +52,10 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new GuiContainerDemo(new ContainerDemo(player));
+            case GUI_RESEARCH:
+                return new GuiContainerResearch(new ContainerResearch(player));
+            case GUI_CUSTOM_CHEST:
+                return new GuiContainerModChest(player.inventory, (TileEntityChestCustom) world.getTileEntity(new BlockPos(x,y,z)), player);
             default:
                 return null;
         }

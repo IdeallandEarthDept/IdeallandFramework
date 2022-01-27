@@ -52,7 +52,7 @@ public class ItemSkillRepairArmor extends ItemSkillBase {
                 if (!playerIn.world.isRemote)
                 {
                     //Fix Dura
-                    CommonFunctions.RepairItem(itemstack1, (int) getVal(heldItem));
+                    CommonFunctions.repairItem(itemstack1, (int) getVal(heldItem));
 
                     //Copy Enchantment
                     for (int j = 0; j < nbttaglist.tagCount(); ++j)

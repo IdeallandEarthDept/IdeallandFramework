@@ -1,0 +1,2 @@
+lua GenPotionText.lua
+pause

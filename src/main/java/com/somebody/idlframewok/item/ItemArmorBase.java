@@ -1,7 +1,6 @@
 package com.somebody.idlframewok.item;
 
-import com.somebody.idlframewok.IdlFramework;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.IHasModel;
@@ -26,8 +25,6 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
-
 //try to sync with ItemBase
 public class ItemArmorBase extends ItemArmor implements IHasModel {
 	private boolean overrideRarity = false;
@@ -46,7 +43,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 		super(materialIn, renderIndexIn, equipmentSlotIn);
 		setUnlocalizedName(name);
 		setRegistryName(name);
-		setCreativeTab(ModCreativeTab.IDL_MISC);
+		setCreativeTab(ModCreativeTabsList.IDL_MISC);
 
 		ModItems.ITEMS.add(this);
 
@@ -89,7 +86,7 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 //	public void onUsingTick(ItemStack stack, EntityLivingBase living, int count) {
 //		//Particle;
 //		super.onUsingTick(stack, living, count);
-//		//IdlFramework.LogWarning(String.format("base onUsingTick %s",count));
+//		//Idealland.LogWarning(String.format("base onUsingTick %s",count));
 //
 //		if (living.world.isRemote)
 //		{
@@ -129,14 +126,6 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 	{
 		return null;
 	}
-
-
-	@Override
-	public void registerModels() 
-	{
-		IdlFramework.proxy.registerItemRenderer(this, 0, "inventory");
-	}
-
 
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -214,4 +203,67 @@ public class ItemArmorBase extends ItemArmor implements IHasModel {
 			return super.getAttributeModifiers(equipmentSlot, stack);
 		}
 	}
+
+
+	//used for renderArmorLayer
+
+	//still dont know how to get colored icons.
+
+//	/**
+//	 * Return the color for the specified armor ItemStack.
+//	 */
+//	public int getColor(ItemStack stack)
+//	{
+//		if (this.getArmorMaterial() != ItemArmor.ArmorMaterial.LEATHER)
+//		{
+//			return 16777215;
+//		}
+//		else
+//		{
+//			NBTTagCompound nbttagcompound = stack.getTagCompound();
+//
+//			if (nbttagcompound != null)
+//			{
+//				NBTTagCompound nbttagcompound1 = nbttagcompound.getCompoundTag("display");
+//
+//				if (nbttagcompound1 != null && nbttagcompound1.hasKey("color", 3))
+//				{
+//					return nbttagcompound1.getInteger("color");
+//				}
+//			}
+//
+//			return 10511680;
+//		}
+//	}
+//
+//
+//	/**
+//	 * Sets the color of the specified armor ItemStack
+//	 */
+//	public void setColor(ItemStack stack, int color)
+//	{
+//		if (this.getArmorMaterial() != ItemArmor.ArmorMaterial.LEATHER)
+//		{
+//			throw new UnsupportedOperationException("Can't dye non-leather!");
+//		}
+//		else
+//		{
+//			NBTTagCompound nbttagcompound = stack.getTagCompound();
+//
+//			if (nbttagcompound == null)
+//			{
+//				nbttagcompound = new NBTTagCompound();
+//				stack.setTagCompound(nbttagcompound);
+//			}
+//
+//			NBTTagCompound nbttagcompound1 = nbttagcompound.getCompoundTag("display");
+//
+//			if (!nbttagcompound.hasKey("display", 10))
+//			{
+//				nbttagcompound.setTag("display", nbttagcompound1);
+//			}
+//
+//			nbttagcompound1.setInteger("color", color);
+//		}
+//	}
 }

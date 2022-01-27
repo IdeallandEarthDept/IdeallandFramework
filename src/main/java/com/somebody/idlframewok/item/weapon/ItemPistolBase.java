@@ -16,7 +16,7 @@ public class ItemPistolBase extends ItemAdaptingBase {
         super(name);
         setRangedWeapon();
         useable = true;
-        base_cd = 1f;
+        cool_down = 1f;
     }
 
     @Override

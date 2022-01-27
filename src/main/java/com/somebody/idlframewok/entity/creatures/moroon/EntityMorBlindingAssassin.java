@@ -34,11 +34,11 @@ public class EntityMorBlindingAssassin extends EntityMoroonUnitBase {
         setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Items.FLINT_AND_STEEL));
     }
 
-    protected void initEntityAI()
+    protected void firstTickAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -58,13 +58,13 @@ public class EntityMorBlindingAssassin extends EntityMoroonUnitBase {
     {
         super.applyEntityAttributes();
 
-        setAttr(64, 0.4, 7, 2, 16);
+        setAttr(32, 0.4, 7, 2, 16);
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
             if (stealthCounter >= stealthNeedTick || this.world.isRainingAt(getPosition()))

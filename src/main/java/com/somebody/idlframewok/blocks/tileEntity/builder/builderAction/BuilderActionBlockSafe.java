@@ -1,10 +1,10 @@
 package com.somebody.idlframewok.blocks.tileEntity.builder.builderAction;
 
+import com.somebody.idlframewok.blocks.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class BuilderActionBlockSafe extends BuilderActionBlock {
 
-    public static Block block_req = Blocks.BRICK_BLOCK;
+    public static Block block_req = ModBlocks.CONSTRUCTION_SITE;
 
     public BuilderActionBlockSafe(Block _block, Block _req , int x, int y, int z) {
         super(_block, x, y, z);
@@ -40,7 +40,7 @@ public class BuilderActionBlockSafe extends BuilderActionBlock {
     @Override
     public boolean Execute(World world, BlockPos ori_pos){
         if (relativePos.lengthSquared() < 1) {
-            //IdlFramework.LogWarning("Trying to build a block at self-pos.");
+            //Idealland.LogWarning("Trying to build a block at self-pos.");
             return true;
         }
 

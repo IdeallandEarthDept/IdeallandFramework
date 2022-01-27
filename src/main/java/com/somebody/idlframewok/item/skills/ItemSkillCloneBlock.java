@@ -20,7 +20,7 @@ public class ItemSkillCloneBlock extends ItemSkillBase {
     }
 
     /**
-     * Called when a Block is right-clicked with this Item
+     * Called when a BlockPhasingOre is right-clicked with this Item
      */
     @Override
     public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {

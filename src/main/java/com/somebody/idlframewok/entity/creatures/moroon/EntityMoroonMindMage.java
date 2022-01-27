@@ -1,5 +1,8 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
+import com.somebody.idlframewok.item.ModItems;
+import com.somebody.idlframewok.item.armor.masks.ItemHelmSanity;
+import com.somebody.idlframewok.potion.ModPotions;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.IDLGeneral;
 import net.minecraft.entity.EntityLiving;
@@ -18,6 +21,8 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
+import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
+
 public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRangedAttackMob {
 
     public EntityMoroonMindMage(World worldIn) {
@@ -25,12 +30,12 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
         setItemStackToSlot(EntityEquipmentSlot.OFFHAND, new ItemStack(Blocks.LIT_PUMPKIN));
     }
 
-    protected void initEntityAI()
+    protected void firstTickAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 1.4D));
         //this.tasks.addTask(2, new EntityAIAttackRanged((IRangedAttackMob) this, 1.0D, 60, 10.0F));
-       // this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1.0D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1.0D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -48,15 +53,15 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-//        if (rand.nextFloat() < 0.1f * getLevel())
-//        {
-//            dropItem(ModItems.ITEM_HELM_SANITY, 1 + rand.nextInt(2 + lootingModifier));
-//        }
-//
-//        if (rand.nextFloat() < 0.01f * getLevel() * (1+lootingModifier))
-//        {
-//            dropItem(ModItems.ITEM_EL_PSY_CONGROO, 1);
-//        }
+        if (rand.nextFloat() < 0.1f * getLevel())
+        {
+            dropItem(ModItems.ITEM_HELM_SANITY, 1 + rand.nextInt(2 + lootingModifier));
+        }
+
+        if (rand.nextFloat() < 0.01f * getLevel() * (1+lootingModifier))
+        {
+            dropItem(ModItems.ITEM_EL_PSY_CONGROO, 1);
+        }
     }
 
     protected void applyEntityAttributes()
@@ -68,17 +73,17 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
-            //if (world.getWorldTime() % TICK_PER_SECOND == 1 && getActivePotionEffect(ModPotions.INTERFERENCE) == null)
+            if (world.getWorldTime() % TICK_PER_SECOND == 1 && getActivePotionEffect(ModPotions.INTERFERENCE) == null)
             {
                 float range = (float) getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).getAttributeValue();
 
                 if (getRank() > 1)
                 {
                     //strong mind mages resists mind magic, won't attack allies
-                    if (EntityUtil.getAttitude(this, getAttackTarget()) == EntityUtil.ATTITUDE.FRIEND)
+                    if (EntityUtil.getAttitude(this, getAttackTarget()) == EntityUtil.EnumAttitude.FRIEND)
                     {
                         setAttackTarget(null);
                     }
@@ -102,18 +107,17 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
                         }
                     }
 
-                    EntityUtil.ATTITUDE attitude = EntityUtil.getAttitude(this, living);
-                    if (attitude == EntityUtil.ATTITUDE.FRIEND) {
+                    EntityUtil.EnumAttitude attitude = EntityUtil.getAttitude(this, living);
+                    if (attitude == EntityUtil.EnumAttitude.FRIEND) {
                         ApplyMindControlToFriend(living);
-                    }
-                    else if (attitude == EntityUtil.ATTITUDE.HATE || living == getAttackTarget())
+                    } else if (attitude == EntityUtil.EnumAttitude.HATE || living == getAttackTarget())
                     {
                         ApplyMindControlToEnemy(living);
                     }
                     else if (living instanceof EntityLiving)
                     {
                         EntityLivingBase theirTarget = ((EntityLiving) living).getAttackTarget();
-                        if (EntityUtil.getAttitude(this, theirTarget) == EntityUtil.ATTITUDE.FRIEND)
+                        if (EntityUtil.getAttitude(this, theirTarget) == EntityUtil.EnumAttitude.FRIEND)
                         {
                             ApplyMindControlToEnemy(living);
                         }
@@ -139,10 +143,10 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
     public void ApplyMindControlToEnemy(EntityLivingBase livingBase)
     {
-//        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
-//        {
-//            return;
-//        }
+        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
+        {
+            return;
+        }
 
         if (getAttackTarget() == null)
         {
@@ -161,7 +165,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
         EntityUtil.TryRemoveGivenBuff(livingBase, MobEffects.INVISIBILITY);
         EntityUtil.TryRemoveGivenBuff(livingBase, MobEffects.NIGHT_VISION);
 
-        //EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_MINUS, getBuffLevel(), getSeconds());
+        EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_MINUS, getBuffLevel(), getSeconds());
         EntityUtil.ApplyBuff(livingBase, MobEffects.GLOWING, 0, getLevel());
         if (rank >= 2)
         {
@@ -179,10 +183,10 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
     public void ApplyMindControlToFriend(EntityLivingBase livingBase)
     {
-//        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
-//        {
-//            return;
-//        }
+        if (livingBase.getItemStackFromSlot(EntityEquipmentSlot.HEAD).getItem() instanceof ItemHelmSanity)
+        {
+            return;
+        }
 
         int level = getLevel();
         int rank = getRank();
@@ -194,7 +198,7 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
 
         if (rank >= 2)
         {
-            //EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_PLUS, getBuffLevel(), getSeconds());
+            EntityUtil.ApplyBuff(livingBase, ModPotions.CRIT_CHANCE_PLUS, getBuffLevel(), getSeconds());
             if (rank >= 3)
             {
                 EntityUtil.ApplyBuff(livingBase, MobEffects.HASTE, getBuffLevel(), getSeconds());
@@ -211,7 +215,8 @@ public class EntityMoroonMindMage extends EntityMoroonUnitBase implements IRange
             //change their targets
             EntityLiving entityLiving = (EntityLiving) livingBase;
             EntityLivingBase theirTarget = ((EntityLiving) livingBase).getAttackTarget();
-            if (EntityUtil.getAttitude(this, theirTarget) != EntityUtil.ATTITUDE.HATE)
+
+            if (theirTarget == null || EntityUtil.getAttitude(this, theirTarget) != EntityUtil.EnumAttitude.HATE)
             {
                 //try to make them attack only if the path ready
                 EntityLivingBase myTarget = getAttackTarget();

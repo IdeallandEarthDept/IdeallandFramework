@@ -1,0 +1,7 @@
+{
+  "variants":
+  {
+    "variant=earth": {"model": "idealland:example_earth"},
+    "variant=fire": {"model": "idealland:example_fire"}
+  }
+}

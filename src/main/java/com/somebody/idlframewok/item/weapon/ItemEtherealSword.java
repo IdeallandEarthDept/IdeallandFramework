@@ -4,21 +4,39 @@ import com.somebody.idlframewok.item.ItemSwordBase;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class ItemEtherealSword extends ItemSwordBase {
     public ItemEtherealSword(String name, ToolMaterial material) {
         super(name, material);
+        this.addPropertyOverride(new ResourceLocation("pic"), new IItemPropertyGetter() {
+            @SideOnly(Side.CLIENT)
+            public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
+                int count = getEnchantmentTotalLevelWeighted(stack);
+                float damage = count * getDamagePerEnch(stack) + 1;
+
+                return damage > 20 ? 2f :
+                        count > 1 ? 1f : 0f;
+            }
+        });
     }
 
     @Override
     public int getMaxDamage(ItemStack stack) {
-        return getEnchantmentTotalLevel(stack) * getDurabilityPerEnch(stack) + 100;
+        return getEnchantmentTotalLevelWeighted(stack) * getDurabilityPerEnch(stack) + 100;
     }
 
     public int getDurabilityPerEnch(ItemStack stack)
@@ -31,7 +49,7 @@ public class ItemEtherealSword extends ItemSwordBase {
         return 1f;
     }
 
-    int getEnchantmentTotalLevel(ItemStack stack)
+    int getEnchantmentTotalLevelWeighted(ItemStack stack)
     {
         int result = 0;
         NBTTagList nbttaglist = stack.getEnchantmentTagList();
@@ -45,7 +63,7 @@ public class ItemEtherealSword extends ItemSwordBase {
 
             if (enchantment != null)
             {
-                result += lvl;
+                result += lvl * (enchantment.getRarity().getWeight() >= 5 ? 2 : 1);
             }
         }
         return result;
@@ -57,7 +75,7 @@ public class ItemEtherealSword extends ItemSwordBase {
 
         if (equipmentSlot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 1f + getEnchantmentTotalLevel(stack) * getDamagePerEnch(stack), 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", 1f + getEnchantmentTotalLevelWeighted(stack) * getDamagePerEnch(stack), 0));
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
         }
 

@@ -1,0 +1,189 @@
+{
+	"pools": [
+		{
+			"name": "main",
+			"rolls": 1,
+			"entries": [
+				{"type": "item","name": "idealland:ethereal_ingot","weight": 100}
+			,			{"type": "item","name": "idealland:modders_ingot","weight": 100}
+			,			{"type": "item","name": "idealland:bio_bronze_ingot","weight": 100}
+			,			{"type": "item","name": "idealland:mask_dou_er_dun","weight": 100}
+			,			{"type": "item","name": "idealland:armor_qsh_1","weight": 100}
+			,			{"type": "item","name": "idealland:armor_qsh_2","weight": 100}
+			,			{"type": "item","name": "idealland:armor_qsh_3","weight": 100}
+			,			{"type": "item","name": "idealland:armor_qsh_4","weight": 100}
+			,			{"type": "item","name": "idealland:xie_geta","weight": 100}
+			,			{"type": "item","name": "idealland:underfoot_geta","weight": 100}
+			,			{"type": "item","name": "idealland:l_m_armor_1","weight": 100}
+			,			{"type": "item","name": "idealland:l_m_armor_2","weight": 100}
+			,			{"type": "item","name": "idealland:l_m_armor_3","weight": 100}
+			,			{"type": "item","name": "idealland:l_m_armor_4","weight": 100}
+			,			{"type": "item","name": "idealland:el_psy_congroo","weight": 100}
+			,			{"type": "item","name": "idealland:level_up_badge","weight": 100}
+			,			{"type": "item","name": "idealland:uno_card","weight": 100}
+			,			{"type": "item","name": "idealland:ethereal_sword","weight": 100}
+			,			{"type": "item","name": "idealland:mor_rifle","weight": 100}
+			,			{"type": "item","name": "idealland:healing_gun","weight": 100}
+			,			{"type": "item","name": "idealland:buff_sword","weight": 100}
+			,			{"type": "item","name": "idealland:royal_gear","weight": 100}
+			,			{"type": "item","name": "idealland:memory_bread","weight": 100}
+			,			{"type": "item","name": "idealland:nano_mender_greater","weight": 100}
+			,			{"type": "item","name": "idealland:skill_rule_of_survival","weight": 100}
+			,			{"type": "item","name": "idealland:skill_truesilver_slash","weight": 100}
+			,			{"type": "item","name": "idealland:saga_mother_praise","weight": 100}
+			,			{"type": "item","name": "idealland:skill_hate_detect","weight": 100}
+			,			{"type": "item","name": "idealland:skill_hate_detect_sniper","weight": 100}
+			,			{"type": "item","name": "idealland:skill_taunt_nearby","weight": 100}
+			,			{"type": "item","name": "idealland:skill_all_attack_target","weight": 100}
+			,			{"type": "item","name": "idealland:skill_leadership","weight": 100}
+			,			{"type": "item","name": "idealland:skill_windwalk","weight": 100}
+			,			{"type": "item","name": "idealland:skill_invincible","weight": 100}
+			,			{"type": "item","name": "idealland:skill_repair_armor","weight": 100}
+			,			{"type": "item","name": "idealland:skill_gambit","weight": 100}
+			,			{"type": "item","name": "idealland:skill_sheep_transform","weight": 100}
+			,			{"type": "item","name": "idealland:skill_xp_shield","weight": 100}
+			,			{"type": "item","name": "idealland:skill_xp_strike","weight": 100}
+			,			{"type": "item","name": "idealland:skill_sacrifice_2020","weight": 100}
+			,			{"type": "item","name": "idealland:skill_cd_cut_percent","weight": 100}
+			,			{"type": "item","name": "idealland:skill_cd_cut_fixed","weight": 100}
+			,			{"type": "item","name": "idealland:skill_merlin_illusion","weight": 100}
+			,			{"type": "item","name": "idealland:skill_mod_list_strike","weight": 100}
+			,			{"type": "item","name": "idealland:skill_knights_attack","weight": 100}
+			,			{"type": "item","name": "idealland:air_sphere","weight": 100}
+
+			]
+		},
+		{
+			"name": "secondary",
+			"rolls": {
+				"min": 1,
+				"max": 4
+			},
+			"entries": [
+				{
+					"type": "item",
+					"name": "minecraft:iron_ingot",
+					"weight": 10,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:gold_ingot",
+					"weight": 5,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:bread",
+					"weight": 20
+				},
+				{
+					"type": "item",
+					"name": "minecraft:wheat",
+					"weight": 20,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:bucket",
+					"weight": 10
+				},
+				{
+					"type": "item",
+					"name": "minecraft:redstone",
+					"weight": 15,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:coal",
+					"weight": 15,
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 1,
+								"max": 4
+							}
+						}
+					]
+				},
+				{
+					"type": "item",
+					"name": "minecraft:melon_seeds",
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 2,
+								"max": 4
+							}
+						}
+					],
+					"weight": 10
+				},
+				{
+					"type": "item",
+					"name": "minecraft:pumpkin_seeds",
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 2,
+								"max": 4
+							}
+						}
+					],
+					"weight": 10
+				},
+				{
+					"type": "item",
+					"name": "minecraft:beetroot_seeds",
+					"functions": [
+						{
+							"function": "set_count",
+							"count": {
+								"min": 2,
+								"max": 4
+							}
+						}
+					],
+					"weight": 10
+				}
+			]
+		}
+
+	]
+ }

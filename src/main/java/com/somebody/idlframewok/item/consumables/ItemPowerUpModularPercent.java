@@ -57,7 +57,7 @@ public class ItemPowerUpModularPercent extends ItemBase {
                         playerIn.swingArm(handIn);
                         target.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 1f, 1f);
                         stack.shrink(1);
-                        IDLNBTUtil.SetInt(target,MARK_TOTAL_COUNT, requireLv + 1);
+                        IDLNBTUtil.setInt(target, MARK_TOTAL_COUNT, requireLv + 1);
                         if (attrType == SharedMonsterAttributes.MAX_HEALTH)
                         {
                             target.heal((float) (valueAfter - valueBefore));

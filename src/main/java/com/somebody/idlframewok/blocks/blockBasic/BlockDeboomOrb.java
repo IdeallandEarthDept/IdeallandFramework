@@ -2,7 +2,7 @@ package com.somebody.idlframewok.blocks.blockBasic;
 
 import com.somebody.idlframewok.blocks.BlockBase;
 import com.somebody.idlframewok.blocks.tileEntity.orbs.TileEntityDeBoomOrb;
-import com.somebody.idlframewok.init.ModCreativeTab;
+import com.somebody.idlframewok.init.ModCreativeTabsList;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -19,13 +19,13 @@ public class BlockDeboomOrb extends BlockBase implements ITileEntityProvider {
 
 	public BlockDeboomOrb(String name, Material material) {
 		super(name, material);
-		this.hasTileEntity = true;
+		
 		setSoundType(SoundType.METAL);
 		setHardness(5.0F);
 		setResistance(1500.0F);
 		setHarvestLevel("pickaxe", 3);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTab.IDL_MISC);
+		setCreativeTab(ModCreativeTabsList.IDL_BUILDING);
 	}
 
 	//optional

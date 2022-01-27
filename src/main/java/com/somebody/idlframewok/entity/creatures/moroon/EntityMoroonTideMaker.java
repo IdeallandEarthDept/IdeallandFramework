@@ -32,14 +32,14 @@ public class EntityMoroonTideMaker extends EntityMoroonUnitBase {
         setAttr(16.0D, 0.5D, 5.0D, 0.0D, 64.0D);
     }
 
-    protected void initEntityAI()
+    protected void firstTickAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
 
         //this.tasks.addTask(1, new EntityAIAvoidEntity(this, EntityGolem.class, 8.0F, 0.6D, 0.6D));
 
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 0.6D));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -71,7 +71,7 @@ public class EntityMoroonTideMaker extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
             int i = MathHelper.floor(this.posX);

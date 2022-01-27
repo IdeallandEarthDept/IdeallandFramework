@@ -1,7 +1,5 @@
 package com.somebody.idlframewok.util.NBTStrDef;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,9 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 
-import java.util.*;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
-import static com.somebody.idlframewok.util.IDLNBT.*;
 import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.*;
 
 //on a server, strlen 65000 is ok, but 66000 will crash
@@ -124,16 +124,65 @@ public class IDLNBTUtil {
 		nbt.setLong(key, value);
 		return true;
 	}
-	public static boolean SetInt(ItemStack stack, String key, int value)
+
+	public static boolean SetState(ItemStack stack, int value)
+	{
+        return setInt(stack, STATE, value);
+    }
+
+    public static boolean setInt(ItemStack stack, String key, int value)
 	{
 		NBTTagCompound nbt = getNBT(stack);
 		nbt.setInteger(key, value);
 		return true;
 	}
-	public static boolean SetInt(Entity entity, String key, int value)
+	//Used for state on-off things.
+    public static boolean switchState(ItemStack stack)
+	{
+		NBTTagCompound nbt = getNBT(stack);
+		nbt.setInteger(STATE, nbt.getInteger(STATE) > 0 ? 0 : 1);
+		return true;
+	}
+
+    public static boolean setIntOptimized(ItemStack stack, String key, int value)
+	{
+		NBTTagCompound nbt = getNBT(stack);
+		if (nbt.getInteger(key) != value)
+		{
+			nbt.setInteger(key, value);
+		}
+		return true;
+	}
+
+    public static boolean setInt(Entity entity, String key, int value)
 	{
 		NBTTagCompound nbt = getNBT(entity);
 		nbt.setInteger(key, value);
+		return true;
+	}
+
+    public static boolean setIntAuto(Entity entity, String key, int value)
+	{
+		if (entity instanceof EntityPlayer)
+		{
+			setPlayerIdeallandTagSafe((EntityPlayer) entity, key, value);
+			return true;
+		}
+		NBTTagCompound nbt = getNBT(entity);
+		nbt.setInteger(key, value);
+		return true;
+	}
+
+    public static boolean addIntAuto(Entity entity, String key, int value)
+	{
+		int oldVal = GetIntAuto(entity, key, 0);
+        setIntAuto(entity, key, value + oldVal);
+        return true;
+    }
+
+    public static boolean addInt(ItemStack stack, String key, int value) {
+        int oldVal = GetInt(stack, key, 0);
+        setInt(stack, key, value + oldVal);
 		return true;
 	}
 
@@ -148,6 +197,29 @@ public class IDLNBTUtil {
 		{
 			return defaultVal;
 		}
+	}
+
+	public static int GetIntAuto(Entity entity, String key, int defaultVal)
+	{
+		if (entity instanceof EntityPlayer)
+		{
+			return getPlayerIdeallandIntSafe((EntityPlayer) entity, key);
+		}
+
+		if (EntityHasKey(entity, key))
+		{
+			NBTTagCompound nbt = getNBT(entity);
+			return nbt.getInteger(key);
+		}
+		else
+		{
+			return defaultVal;
+		}
+	}
+
+	public static int GetState(ItemStack stack)
+	{
+		return GetInt(stack, STATE);
 	}
 
 	public static int GetInt(ItemStack stack, String key, int defaultVal)
@@ -274,7 +346,7 @@ public class IDLNBTUtil {
 
 	public static void SetGuaEnhanceFree(ItemStack stack, int val)
 	{
-		SetInt(stack, GUA_FREE_SOCKET, val);
+        setInt(stack, GUA_FREE_SOCKET, val);
 	}
 
 	public static boolean GetIsLearned(EntityPlayer player, int skillID)
@@ -350,4 +422,118 @@ public class IDLNBTUtil {
 		IDLNBTUtil.SetDouble(stack, ANCHOR_Y_2, pos.getY());
 		IDLNBTUtil.SetDouble(stack, ANCHOR_Z_2, pos.getZ());
 	}
+
+    public static NBTTagCompound getTagSafe(NBTTagCompound tag, String key) {
+        if (tag == null) {
+            return new NBTTagCompound();
+        }
+
+        return tag.getCompoundTag(key);
+    }
+
+    public static NBTTagCompound getPlyrIdlTagSafe(EntityPlayer player) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getTagSafe(data, IDEALLAND);
+
+        return idl_data;
+    }
+
+    public static NBTTagCompound getPlayerIdeallandTagGroupSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getCompoundTag(key);
+    }
+
+    public static int[] getPlayerIdeallandIntArraySafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getIntArray(key);
+    }
+
+    public static long getPlayerIdeallandLongSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getLong(key);
+    }
+
+    public static int getPlayerIdeallandIntSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getInteger(key);
+    }
+
+    public static float getPlayerIdeallandFloatSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getFloat(key);
+    }
+
+    public static double getPlayerIdeallandDoubleSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getDouble(key);
+    }
+
+    public static boolean getPlayerIdeallandBoolSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getBoolean(key);
+    }
+
+    public static String getPlayerIdeallandStrSafe(EntityPlayer player, String key) {
+        return getPlyrIdlTagSafe(player).getString(key);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, int value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setInteger(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, int[] value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setIntArray(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, double value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setDouble(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, long value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setLong(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, boolean value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setBoolean(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
+
+    public static void setPlayerIdeallandTagSafe(EntityPlayer player, String key, String value) {
+        NBTTagCompound playerData = player.getEntityData();
+        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound idl_data = getPlyrIdlTagSafe(player);
+
+        idl_data.setString(key, value);
+
+        data.setTag(IDEALLAND, idl_data);
+        playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
+    }
 }

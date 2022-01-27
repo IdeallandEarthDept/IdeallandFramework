@@ -11,8 +11,8 @@ public class ItemAutoConsumeHeal extends ItemAutoConsumeBase {
     }
 
     @Override
-    public void OnConsume(ItemStack stack, World worldIn, EntityLivingBase entityIn, int itemSlot, boolean isSelected) {
-        super.OnConsume(stack, worldIn, entityIn, itemSlot, isSelected);
+    public void onConsume(ItemStack stack, World worldIn, EntityLivingBase entityIn, int itemSlot, boolean isSelected) {
+        super.onConsume(stack, worldIn, entityIn, itemSlot, isSelected);
         entityIn.heal(healAmount);
     }
 }

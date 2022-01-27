@@ -13,9 +13,9 @@ public class TileEntityNullifyOrbMor extends TileEntityNullifyOrb implements ITi
 
 	protected int range = 15;
 
-	void Init()
+	public void init()
 	{
-		super.Init();
+		super.init();
 		SetRange(range);
 	}
 
@@ -27,7 +27,7 @@ public class TileEntityNullifyOrbMor extends TileEntityNullifyOrb implements ITi
 			if (aabb.contains(new Vec3d(event.getX(), event.getY(), event.getZ())))
 			{
 				event.setResult(Event.Result.DENY);
-				//IdlFramework.Log("Stopped spawning:"+event.getEntityLiving().getName());
+				//Idealland.Log("Stopped spawning:"+event.getEntityLiving().getName());
 				return;
 			}
 		}

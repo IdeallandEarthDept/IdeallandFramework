@@ -1,0 +1,2 @@
+lua GenSPText.lua
+pause

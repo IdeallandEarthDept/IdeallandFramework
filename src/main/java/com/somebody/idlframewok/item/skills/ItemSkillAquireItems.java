@@ -1,7 +1,7 @@
 package com.somebody.idlframewok.item.skills;
 
+import com.somebody.idlframewok.item.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,7 +11,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class ItemSkillAquireItems extends ItemSkillBase {
-    public Item[] validItems = new Item[]{Items.PAPER};
+    public Item[] validItems = new Item[]{ModItems.YANG_SIGN, ModItems.YIN_SIGN};
 
     public ItemSkillAquireItems(String name, Item[] validItems) {
         super(name);

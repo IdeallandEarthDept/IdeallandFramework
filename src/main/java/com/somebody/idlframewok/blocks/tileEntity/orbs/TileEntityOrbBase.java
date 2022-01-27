@@ -1,30 +1,28 @@
 package com.somebody.idlframewok.blocks.tileEntity.orbs;
 
+import com.somebody.idlframewok.blocks.tileEntity.TileEntityBase;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Random;
 
-public class TileEntityOrbBase extends TileEntity implements ITickable {
+public class TileEntityOrbBase extends TileEntityBase implements ITickable {
 
 	public AxisAlignedBB aabb;
 	private int range = 7;
-	public boolean isReady = false;
+
 	public SoundEvent onLoadSound = SoundEvents.BLOCK_NOTE_CHIME;
 	public EnumParticleTypes particleType = EnumParticleTypes.CRIT_MAGIC;
 
 	public void SetRange(int newRange){
 		range = newRange;
-		Vec3d posInFloat = GetPosInFloat();
-		//IdlFramework.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
+		Vec3d posInFloat = getPosInFloat();
+		//Idealland.Log(String.format("SetRange:(%s,%s,%s) +- %s", posInFloat.x, posInFloat.y, posInFloat.z, newRange));
 		aabb = new AxisAlignedBB(posInFloat.x - range, posInFloat.y - range, posInFloat.z - range, posInFloat.x + range, posInFloat.y + range, posInFloat.z + range);
 
 	}
@@ -32,36 +30,6 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 	public int getRange()
 	{
 		return range;
-	}
-
-	public void onLoad()
-    {
-		Init();
-    }
-
-	@Override
-	public void invalidate() {
-		MinecraftForge.EVENT_BUS.unregister(this);
-		super.invalidate();
-	}
-
-    public Vec3d GetPosInFloat()
-	{
-		BlockPos myPos = this.pos;
-		Vec3d posInFloat = new Vec3d(myPos.getX() + 0.5, myPos.getY() + 0.5, myPos.getZ() + 0.5);
-		return posInFloat;
-	}
-
-	void Init()
-	{
-		MinecraftForge.EVENT_BUS.register(this);
-		isReady = true;
-		SetRange(range);
-		if (!world.isRemote)
-		{
-			//Init Success
-			PlaySoundHere();
-		}
 	}
 
 	public void PlaySoundHere()
@@ -74,7 +42,7 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 		if (world.isRemote && isReady)
 		{
 			Random random = new Random();
-			Vec3d myPos = GetPosInFloat();
+			Vec3d myPos = getPosInFloat();
 			float range = 2f;
 			float x = (random.nextFloat() - 0.5f) * range;
 			float y = (random.nextFloat() - 0.5f) * range;
@@ -82,6 +50,17 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 			float vFactor = -1f;
 
 			world.spawnParticle(particleType, myPos.x + x, myPos.y + y, myPos.z + z, x * vFactor, y * vFactor, z * vFactor);
+		}
+	}
+
+	public void init()
+	{
+		super.init();
+		SetRange(range);
+		if (!world.isRemote)
+		{
+			//init Success
+			PlaySoundHere();
 		}
 	}
 
@@ -105,7 +84,7 @@ public class TileEntityOrbBase extends TileEntity implements ITickable {
 //
 //		//Add drawing here
 //		int color =  Color.HSBtoRGB(0F, 0.6F, 1F);
-//		Vec3d posInFloat = GetPosInFloat();
+//		Vec3d posInFloat = getPosInFloat();
 //
 //        GlStateManager.scale(1F, 1F, 1F);
 //

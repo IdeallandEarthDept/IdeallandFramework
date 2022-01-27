@@ -1,16 +1,18 @@
 package com.somebody.idlframewok.recipe.special;
 
+import com.somebody.idlframewok.item.ModItems;
 import com.somebody.idlframewok.item.misc.ItemBasicBinary;
+import com.somebody.idlframewok.recipe.ModRecipeBase;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
 
-public class BasicGua8 extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
+public class BasicGua8 extends ModRecipeBase {
+
+	//private String pearlName = ModItems.SKY_CHARM.getUnlocalizedName();
 
 	@Override
 	public boolean isDynamic() {
@@ -73,9 +75,9 @@ public class BasicGua8 extends IForgeRegistryEntry.Impl<IRecipe> implements IRec
 			}
 		}
 
-//		if (guaValue >= 0 && guaValue <= ModItems.GUA.length) {
-//			return new ItemStack(ModItems.GUA[guaValue]);
-//		}
+		if (guaValue >= 0 && guaValue <= ModItems.GUA.length) {
+			return new ItemStack(ModItems.GUA[guaValue]);
+		}
 
 		return ItemStack.EMPTY;
 	}

@@ -15,7 +15,7 @@ public class ItemMirrorWork extends ItemSkillBase {
     public ItemMirrorWork(String name) {
         super(name);
         maxLevel = 10;
-        setCD(3600, 300);
+        setCD(360, 30);
         showDamageDesc = false;
     }
 

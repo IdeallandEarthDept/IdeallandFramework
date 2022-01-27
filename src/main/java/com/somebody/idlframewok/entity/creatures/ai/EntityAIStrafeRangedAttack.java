@@ -168,7 +168,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
                 this.entity.getLookHelper().setLookPositionWithEntity(entitylivingbase, 30.0F, 30.0F);
             }
 
-            //IdlFramework.Log("isHandActive = %s, uuid=%s", this.entity.isHandActive(), this.entity.getUniqueID());
+            //Idealland.Log("isHandActive = %s, uuid=%s", this.entity.isHandActive(), this.entity.getUniqueID());
             if (this.entity.isHandActive())
             {
                 if (!canSee && this.seeTime < -targetLostThreshold * TICK_PER_SECOND)

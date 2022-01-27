@@ -1,0 +1,8 @@
+{
+	"variants": {
+		"axis=y":  { "model": "idealland:xz_yellow" },
+		"axis=z":   { "model": "idealland:x_green", "x": 90 },
+		"axis=x":   { "model": "idealland:x_green", "x": 90, "y": 90 },
+		"axis=none": { "model": "idealland:x_green" }
+	}
+}

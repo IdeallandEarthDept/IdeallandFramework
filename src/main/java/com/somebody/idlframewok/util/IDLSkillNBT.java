@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.util;
 
 import com.somebody.idlframewok.item.IGuaEnhance;
+import com.somebody.idlframewok.item.ItemAdaptingBase;
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.client.resources.I18n;
@@ -170,7 +171,7 @@ public class IDLSkillNBT {
 
     public static void SetGuaEnhanceFree(ItemStack stack, int val)
     {
-        SetInt(stack, GUA_FREE_SOCKET, val);
+        setInt(stack, GUA_FREE_SOCKET, val);
     }
 
     @SideOnly(Side.CLIENT)
@@ -220,12 +221,22 @@ public class IDLSkillNBT {
         }
     }
 
+    public static int getXP(ItemStack stack)
+    {
+        return GetInt(stack, LV_EXP);
+    }
+
+    public static void setXP(ItemStack stack, int val)
+    {
+        setInt(stack, LV_EXP, val);
+    }
+
     public static int getLevel(ItemStack stack)
     {
-        if (!(stack.getItem() instanceof ItemSkillBase)) {
+        if (!(stack.getItem() instanceof ItemAdaptingBase)) {
             return 0;
         }
-        ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
+        ItemAdaptingBase skillBase = (ItemAdaptingBase) stack.getItem();
 
         int level = GetInt(stack, LEVEL_TAG);
 
@@ -252,7 +263,7 @@ public class IDLSkillNBT {
         ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
 
         if (count <= skillBase.GetLevelMax(stack)) {
-            SetInt(stack, LEVEL_TAG, count);
+            setInt(stack, LEVEL_TAG, count);
         }
     }
 
@@ -273,7 +284,7 @@ public class IDLSkillNBT {
         }
         ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
 
-        SetInt(stack, CUR_TIME_LEFT, (int) (count * INT_AS_FLOAT));
+        setInt(stack, CUR_TIME_LEFT, (int) (count * INT_AS_FLOAT));
     }
 
     public static void SetCharge(ItemStack stack, float count)
@@ -283,7 +294,7 @@ public class IDLSkillNBT {
         }
         ItemSkillBase skillBase = (ItemSkillBase) stack.getItem();
 
-        SetInt(stack, CUR_CHARGE, (int) (count * INT_AS_FLOAT));
+        setInt(stack, CUR_CHARGE, (int) (count * INT_AS_FLOAT));
     }
 
     public static float GetCharge(ItemStack stack)
@@ -316,10 +327,10 @@ public class IDLSkillNBT {
         int lvMax = skillBase.GetLevelMax(stack);
         int anticipatedCount = count + getLevel(stack);
         if (anticipatedCount <= lvMax ) {
-            SetInt(stack, LEVEL_TAG, anticipatedCount);
+            setInt(stack, LEVEL_TAG, anticipatedCount);
         }
         else {
-            SetInt(stack, LEVEL_TAG, lvMax);
+            setInt(stack, LEVEL_TAG, lvMax);
         }
     }
 }

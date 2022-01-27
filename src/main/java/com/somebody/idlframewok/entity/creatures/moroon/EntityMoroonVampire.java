@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
 import com.somebody.idlframewok.entity.creatures.ideallandTeam.EntityIdeallandUnitBase;
+import com.somebody.idlframewok.item.ModItems;
 import com.somebody.idlframewok.util.IDLGeneral;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,10 +38,8 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
     int summonBatCount = 4;
     float summonReqMP = 60f;
 
-
     float reviveConsumeRange = 16;
     int reviveConsumeCount = 2;
-
 
     @Override
     public boolean isEntityUndead() {
@@ -51,7 +50,7 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
         super(worldIn);
 
         spawn_without_darkness = false;
-        spawn_without_moroon_ground = true;
+        spawn_without_moroon_ground = false;
         MinecraftForge.EVENT_BUS.register(this);
         experienceValue = 40;
 
@@ -65,16 +64,16 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-//        if (wasRecentlyHit) {
-//            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
-//        }
+        if (wasRecentlyHit) {
+            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
+        }
     }
 
-    protected void initEntityAI()
+    protected void firstTickAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
-        //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 1d));
+        this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 8.0F, 0.6D, 1d));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -106,7 +105,7 @@ public class EntityMoroonVampire extends EntityMoroonUnitBase {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //IdlFramework.Log("Tick");
+        //Idealland.Log("Tick");
         if (!this.world.isRemote)
         {
             if (world.getWorldTime() % TICK_PER_SECOND == 0) {

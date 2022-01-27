@@ -37,6 +37,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     {
         super(worldIn);
         args = new ProjectileArgs(1f);
+        this.setSize(0.3125F, 0.3125F);
     }
 
     @Override
@@ -45,9 +46,9 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     }
 
     protected EntityIdlProjectile(World worldIn, ProjectileArgs args) {
-        super(worldIn);
+        this(worldIn);
         this.args = args;
-        //IdlFramework.Log("bullet created %s, args = %s", getUniqueID(), this.args);
+        //Idealland.Log("bullet created %s, args = %s", getUniqueID(), this.args);
     }
 
     /**
@@ -79,22 +80,52 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
 //        this.accelerationZ = accelZ / d0 * 0.1D;
 //    }
 
+    //no shooting entity
+    public EntityIdlProjectile(World worldIn, ProjectileArgs args, BlockPos shooter, double accelX, double accelY, double accelZ, float acceleration)
+    {
+        this(worldIn, args);
+        Vec3d shooterFacing = new Vec3d(accelX, accelY, accelZ).normalize();
+
+        this.setLocationAndAngles(shooter.getX()+ 0.5f + shooterFacing.x,
+                shooter.getY() + 0.5f + shooterFacing.y,
+                shooter.getZ() + 0.5f + shooterFacing.z,
+                0, 0);
+        this.setPosition(this.posX ,
+                this.posY,
+                this.posZ);
+//        this.motionX = 0.0D;
+//        this.motionY = 0.0D;
+//        this.motionZ = 0.0D;
+
+        //accelX = accelX + this.rand.nextGaussian() * 0.4D;
+        //accelY = accelY + this.rand.nextGaussian() * 0.4D;
+        //accelZ = accelZ + this.rand.nextGaussian() * 0.4D;
+        double accelLength = (double)MathHelper.sqrt(accelX * accelX + accelY * accelY + accelZ * accelZ);
+        this.accelerationX = accelX / accelLength * acceleration;
+        this.accelerationY = accelY / accelLength * acceleration;
+        this.accelerationZ = accelZ / accelLength * acceleration;
+    }
+
     public EntityIdlProjectile(World worldIn, ProjectileArgs args, EntityLivingBase shooter, double accelX, double accelY, double accelZ, float acceleration)
     {
         this(worldIn, args);
         this.shootingEntity = shooter;
-        this.setSize(0.3125F, 0.3125F);
-
         Vec3d shooterFacing = shooter.getLook(0f);
 
         this.setLocationAndAngles(shooter.posX + shooterFacing.x,
                 shooter.posY + shooter.getEyeHeight() + shooterFacing.y,
                 shooter.posZ + shooterFacing.z,
                 shooter.rotationYaw, shooter.rotationPitch);
-        this.setPosition(this.posX, this.posY, this.posZ);
-        this.motionX = 0.0D;
-        this.motionY = 0.0D;
-        this.motionZ = 0.0D;
+//        this.setPosition(this.posX + shooter.motionX,
+//                this.posY + shooter.motionY,
+//                this.posZ + shooter.motionZ);
+//        this.motionX = 0.0D;
+//        this.motionY = 0.0D;
+//        this.motionZ = 0.0D;
+
+        this.motionX = shooter.motionX;
+        this.motionY = shooter.motionY;
+        this.motionZ = shooter.motionZ;
         //accelX = accelX + this.rand.nextGaussian() * 0.4D;
         //accelY = accelY + this.rand.nextGaussian() * 0.4D;
         //accelZ = accelZ + this.rand.nextGaussian() * 0.4D;
@@ -114,7 +145,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
      */
     public void onUpdate()
     {
-        //IdlFramework.Log("Bullet pos update:%s", getPositionEyes(0));
+        //Idealland.Log("Bullet pos update:%s", getPositionEyes(0));
 
         if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.isDead) && this.world.isBlockLoaded(new BlockPos(this)))
         {
@@ -158,6 +189,11 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
             this.motionZ *= (double)f;
             //this.world.spawnParticle(this.getParticleType(), this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D);
             this.setPosition(this.posX, this.posY, this.posZ);
+
+            if (this.args.ttl < ticksInAir)
+            {
+                this.setDead();
+            }
         }
         else
         {
@@ -169,7 +205,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
     {
         if (args == null)
         {
-            //IdlFramework.LogWarning("Args not found for bullet");
+            //Idealland.LogWarning("Args not found for bullet");
             return false;
         }
         return args.burning;
@@ -180,17 +216,30 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
 //        return EnumParticleTypes.SMOKE_NORMAL;
 //    }
 
+
+
     /**
      * Called when this EntityIdlProjectile hits a block or entity.
      */
     protected void onImpact(RayTraceResult result)
     {
-        //IdlFramework.Log("bullet impact %s", getUniqueID());
+        //Idealland.Log("bullet impact %s", getUniqueID());
         if (!this.world.isRemote)
         {
             if (result.entityHit != null)
             {
-                result.entityHit.attackEntityFrom(DamageSource.causeIndirectDamage(this, this.shootingEntity).setProjectile(), args.damage);
+                DamageSource source = DamageSource.causeIndirectDamage(this, this.shootingEntity).setProjectile();
+                boolean hit = result.entityHit.attackEntityFrom(source.setDamageBypassesArmor(), args.damage);
+                if (!hit)
+                {
+                    return;
+                }
+                result.entityHit.hurtResistantTime = 0;
+
+                if (isBurning())
+                {
+                    result.entityHit.setFire(3);
+                }
                 this.applyEnchantments(this.shootingEntity, result.entityHit);
             }
 
@@ -198,6 +247,7 @@ public class EntityIdlProjectile extends Entity implements IProjectile {
             if (args.explosion_power > 0) {
                 this.world.newExplosion(null, posX, posY, posZ, args.explosion_power, flag, flag);
             }
+
             world.playSound(posX, posY, posZ, SoundEvents.BLOCK_LAVA_EXTINGUISH,
                     SoundCategory.NEUTRAL, 1f, 1f, false);
 

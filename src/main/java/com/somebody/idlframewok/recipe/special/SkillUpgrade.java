@@ -1,6 +1,9 @@
 package com.somebody.idlframewok.recipe.special;
 
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
+import com.somebody.idlframewok.item.skills.classfit.ItemSkillClassSpecific;
+import com.somebody.idlframewok.item.skills.classfit.ItemSkillCore;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -8,9 +11,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.SetLevel;
-import static com.somebody.idlframewok.util.IDLSkillNBT.getLevel;
 
 public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -30,6 +30,12 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 			if(!stack.isEmpty()) {
 				if(stack.getItem() instanceof ItemSkillBase)
 				{
+					if (stack.getItem() instanceof ItemSkillClassSpecific || stack.getItem() instanceof ItemSkillCore)
+					{
+						//these item use special upgrades
+						return false;
+					}
+
 					skillCount++;
 					if (skillCount > 2)
 					{
@@ -40,7 +46,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					{
 						stack1 = stack;
 						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
-						lv1 = getLevel(stack);
+						lv1 = IDLSkillNBT.getLevel(stack);
 						if (lv1 >= itemSkillBase.maxLevel)
 						{
 							return false;
@@ -48,7 +54,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					}
 					else {
 						stack2 = stack;
-						lv2 = getLevel(stack);
+						lv2 = IDLSkillNBT.getLevel(stack);
 					}
 				}
 				else
@@ -68,7 +74,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 		ItemStack stack1 = ItemStack.EMPTY, stack2 = ItemStack.EMPTY;
 		ItemStack stackResult = ItemStack.EMPTY;
 		int skillCount = 0;
-		int lv1 = 0, lv2 = 0;
+		int lv1 = 0;
 
 		for(int i = 0; i < var1.getSizeInventory(); i++) {
 			ItemStack stack = var1.getStackInSlot(i);
@@ -78,31 +84,36 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					skillCount++;
 					if (skillCount > 2)
 					{
-						return stackResult;
+						return ItemStack.EMPTY;
 					}
 
 					if (skillCount == 1)
 					{
-						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
 						stack1 = stack;
-						lv1 = getLevel(stack);
+						lv1 = IDLSkillNBT.getLevel(stack);
 						stackResult = stack1.copy();
-						SetLevel(stackResult, lv1 + 1);
+						IDLSkillNBT.SetLevel(stackResult, lv1 + 1);
+					}
+					else {
+						stack2 = stack;
 					}
 				}
 				else
 				{
-					return stackResult; //Found other.
+					return ItemStack.EMPTY; //Found other.
 				}
 			}
 		}
 
 		if (skillCount == 2 && (stack1.getItem() == stack2.getItem()))
 		{
-
+			return stackResult;
+		}
+		else {
+			return ItemStack.EMPTY;
 		}
 
-		return stackResult;
+
 	}
 
 	@Override

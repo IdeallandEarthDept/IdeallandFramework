@@ -56,7 +56,7 @@ public class ItemArmorLivingMetalBase extends ItemArmorBase implements IHasModel
                 // && stats.getSaturationLevel() > 0.0F &&
                 if (player.getHealth() >= player.getMaxHealth())
                 {
-                    CommonFunctions.RepairItem(stack, getRepairAmount(stack, entityIn));
+                    CommonFunctions.repairItem(stack, getRepairAmount(stack, entityIn));
                 }
             }
 		}
@@ -106,7 +106,7 @@ public class ItemArmorLivingMetalBase extends ItemArmorBase implements IHasModel
             ItemStack stack = livingBase.getItemStackFromSlot(slot);
             if (stack.getItem() instanceof ItemArmorLivingMetalBase)
             {
-                CommonFunctions.RepairItem(stack,Math.round(event.getAmount()));
+                CommonFunctions.repairItem(stack,Math.round(event.getAmount()));
             }
         }
     }

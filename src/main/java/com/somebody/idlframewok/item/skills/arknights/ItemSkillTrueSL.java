@@ -1,7 +1,10 @@
 package com.somebody.idlframewok.item.skills.arknights;
 
-import com.somebody.idlframewok.IdlFramework;
-import com.somebody.idlframewok.util.*;
+import com.somebody.idlframewok.Idealland;
+import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.util.EntityUtil;
+import com.somebody.idlframewok.util.IDLGeneral;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
@@ -45,7 +48,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
         //max_charge = new int[]{3};
         initPower = new int[]{50, 50, 50, 55, 55, 55, 60, 65, 70, 75};
         showDuraDesc = true;
-        CommonFunctions.addToEventBus(this);
+        //CommonFunctions.addToEventBus(this);
     }
 
 
@@ -64,8 +67,8 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
         {
             int level = IDLSkillNBT.getLevel(stack) - 1;
             //in arknights, the modifier is type 1, but it makes no sense for players.
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(uuid, "Truesilver Slash Modifier", atkPlus[level], 2));
-            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(uuid, "Truesilver Slash Modifier", defReduce, 2));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(uuid, "Truesilver Slash Modifier", atkPlus[level], 1));
+            multimap.put(SharedMonsterAttributes.ARMOR.getName(), new AttributeModifier(uuid, "Truesilver Slash Modifier", defReduce, 1));
         }
 
         return multimap;
@@ -125,7 +128,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
             List<EntityLivingBase> entities = world.getEntitiesWithinAABB(EntityLivingBase.class, IDLGeneral.ServerAABB(basePos.addVector(-base_range, -base_range, -base_range), basePos.addVector(base_range, base_range, base_range)));
             for (EntityLivingBase living: entities
             ) {
-                if (EntityUtil.getAttitude(player, living) == EntityUtil.ATTITUDE.HATE)
+                if (EntityUtil.getAttitude(player, living) == EntityUtil.EnumAttitude.HATE)
                 {
                     boolean isForwad = player.getForward().dotProduct(living.getPositionVector().subtract(player.getPositionVector())) >= 0;
                     if (isForwad)
@@ -138,7 +141,7 @@ public class ItemSkillTrueSL extends ItemArknightsSkillBase {
                         }
                     }
                     else {
-                        IdlFramework.Log("%s is not in front");
+                        Idealland.Log("%s is not in front");
                     }
                 }
             }

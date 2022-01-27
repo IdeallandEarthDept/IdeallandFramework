@@ -90,7 +90,7 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
                 {
                     ItemSkillGuaPalm palm = (ItemSkillGuaPalm) stack.getItem();
                     float dmg = evt.getAmount();
-                    //IdlFramework.Log("Damage reduct: %f -> %f", dmg, (1f - GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
+                    //Idealland.Log("Damage reduct: %f -> %f", dmg, (1f - GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
                     evt.setAmount((1f - GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
                 }
             }
@@ -175,13 +175,13 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
     public BuffTuple GetWaterBuff(ItemStack stack)
     {
         int water = GetGuaEnhance(stack, 2);
-        return new BuffTuple(water / 4, TICK_PER_SECOND * water * 2);
+        return new BuffTuple(water == 0 ? -1 : water / 4 , TICK_PER_SECOND * water * 2);
     }
 
     public BuffTuple GetMountainBuff(ItemStack stack)
     {
         int gua = GetGuaEnhance(stack, 4);
-        return new BuffTuple(gua / 4, TICK_PER_SECOND * gua * 2);
+        return new BuffTuple(gua == 0 ? -1 : gua / 4, TICK_PER_SECOND * gua * 2);
     }
 
     @SideOnly(Side.CLIENT)

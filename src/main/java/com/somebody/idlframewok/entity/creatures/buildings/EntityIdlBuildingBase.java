@@ -1,13 +1,12 @@
 package com.somebody.idlframewok.entity.creatures.buildings;
 
+import com.somebody.idlframewok.blocks.ModBlocks;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.somebody.idlframewok.entity.BuildingCore;
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -52,7 +51,7 @@ public class EntityIdlBuildingBase extends EntityModUnit {
 
     void InitTaskQueue()
     {
-        AddTaskBuild(getPosition().add(0,-1,0), Blocks.BRICK_BLOCK.getDefaultState());
+        AddTaskBuild(getPosition().add(0,-1,0), ModBlocks.CONSTRUCTION_SITE.getDefaultState());
         //AddTaskBuildWallWithBlockCentered(origin.add(-floorReach,2,0), 0, windowHeight, 1, windowMaterial);
     }
 
@@ -69,7 +68,7 @@ public class EntityIdlBuildingBase extends EntityModUnit {
         super.onUpdate();
         buildingCore.update(this.getPosition());
 
-        if (!world.isRemote && suicide_after_finish && buildingCore.GetProgress() >= 1f)
+        if (!getEntityWorld().isRemote && suicide_after_finish && buildingCore.GetProgress() >= 1f)
         {
             attackEntityFrom(DamageSource.OUT_OF_WORLD, getMaxHealth() * 100f);
         }

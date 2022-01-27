@@ -1,6 +1,6 @@
 package com.somebody.idlframewok.enchantments;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -24,14 +24,17 @@ public class ModEnchantmentBase extends Enchantment {
     private float rarityBaseMultiplier = 1f;
     private float rarityDeltaMultiplier = 1f;
 
+    private int greatLevel = 5;
+    private float modifierPerGreatLevel = 1f;
+
     private Enchantment[] conflicts = new Enchantment[]{};
 
-    private boolean isHidden = false;
+    private boolean isHidden = false;//treasure still can get it
 
     private boolean isCurseEnch = false;
 
     //make this accessible
-    protected final EntityEquipmentSlot[] applicableEquipmentTypesOpen;
+    public final EntityEquipmentSlot[] applicableEquipmentTypesOpen;
 
     //failed attempt to inter-mod compatible
     //private Enchantment shareConflicts = null;
@@ -67,6 +70,7 @@ public class ModEnchantmentBase extends Enchantment {
 
     public ModEnchantmentBase setConflicts(Enchantment[] conflicts)
     {
+        //todo: support multi groups
         this.conflicts = conflicts;
         return this;
     }
@@ -85,6 +89,13 @@ public class ModEnchantmentBase extends Enchantment {
         return this;
     }
 
+    public ModEnchantmentBase setValueAdvanced(int level_count, float per_level)
+    {
+        this.modifierPerGreatLevel = per_level;
+        this.greatLevel = level_count;
+        return this;
+    }
+
     @Override
     public boolean isCurse() {
         return isCurseEnch;
@@ -96,7 +107,16 @@ public class ModEnchantmentBase extends Enchantment {
         {
             return 0;
         }
-        return base_val + (level - 1) * per_level;
+
+        float result = base_val + (level - 1) * per_level;
+
+        if (greatLevel > 1)
+        {
+            //noinspection IntegerDivisionInFloatingPointContext
+            result += (level / greatLevel) * modifierPerGreatLevel;
+        }
+
+        return result;
     }
 
     public float getValue(EntityLivingBase creature)
@@ -126,13 +146,13 @@ public class ModEnchantmentBase extends Enchantment {
     public ModEnchantmentBase(String name, Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot[] slots)
     {
         super(rarityIn, typeIn, slots);
-        setRegistryName(IdlFramework.MODID, name);
+        setRegistryName(Idealland.MODID, name);
         setName(name);
         ModEnchantmentInit.ENCHANTMENT_LIST.add(this);
         applicableEquipmentTypesOpen = slots;
         //note this slots arguments. Only enchantments in those slots will be counted!
 
-        //additional enchantments: (modified level + 1) / 50, after applying,
+        //additional enchantments: (modified level + 1) / 50, after applyingEffects,
         //modified level /= 2. This don't change the list, but only changes the chance of going on.
 
         //rarity:
@@ -169,7 +189,7 @@ public class ModEnchantmentBase extends Enchantment {
 
     @Override
     public int getMaxEnchantability(int enchantmentLevel) {
-        return (int) (getMinEnchantability(enchantmentLevel) * rarityBaseMultiplier + 50 * rarityDeltaMultiplier);
+        return (int) (getMinEnchantability(enchantmentLevel) + 50 * rarityDeltaMultiplier);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.util;
 
+import com.somebody.idlframewok.item.ModItems;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -7,6 +8,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.Vec3d;
+
+import static com.somebody.idlframewok.util.CommonDef.GUA_TYPES;
 
 public class IDLGeneral {
     //server side dont have this constructor.
@@ -35,13 +38,13 @@ public class IDLGeneral {
     public static int returnGuaIndex(ItemStack stack)
     {
         Item item = stack.getItem();
-//        for (int i = 0; i < GUA_TYPES; i++)
-//        {
-//            if (item == ModItems.GUA[i])
-//            {
-//                return i;
-//            }
-//        }
+        for (int i = 0; i < GUA_TYPES; i++)
+        {
+            if (item == ModItems.GUA[i])
+            {
+                return i;
+            }
+        }
         return -1;
     }
 }

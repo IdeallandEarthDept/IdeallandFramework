@@ -16,9 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLNBT.getTagSafe;
 import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.*;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.P2W_EXP;
+import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil.getTagSafe;
 
 public class ItemGobletBase extends ItemBase {
 
@@ -31,7 +30,7 @@ public class ItemGobletBase extends ItemBase {
 
     public void SetPayingEXP(ItemStack stack, int val)
     {
-        IDLNBTUtil.SetInt(stack, P2W_PAYING_EXP, val);
+        IDLNBTUtil.setInt(stack, P2W_PAYING_EXP, val);
     }
 
     public int GetPayingEXP(ItemStack stack)
@@ -41,7 +40,7 @@ public class ItemGobletBase extends ItemBase {
 
     public void SetCacheEXP(ItemStack stack, int val)
     {
-        IDLNBTUtil.SetInt(stack, P2W_CACHE_EXP, val);
+        IDLNBTUtil.setInt(stack, P2W_CACHE_EXP, val);
     }
 
     public static int GetCacheEXP(ItemStack stack)
@@ -122,7 +121,7 @@ public class ItemGobletBase extends ItemBase {
                 SetCacheEXP(stack, playerXP);
                 //stack.writeToNBT()
             }
-            //IdlFramework.Log(playerXP + " " + getUnlocalizedName(stack));
+            //Idealland.Log(playerXP + " " + getUnlocalizedName(stack));
         }
     }
 

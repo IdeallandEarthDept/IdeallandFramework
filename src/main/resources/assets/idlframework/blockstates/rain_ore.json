@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "state=0": {
+      "model": "minecraft:stone"
+    },
+    "state=1": {
+      "model": "idealland:rain_ore_on"
+    }
+  }
+}

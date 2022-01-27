@@ -1,15 +1,15 @@
 package com.somebody.idlframewok.item.skills.arknights;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -117,7 +117,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
                     dura = 0;
                     IDLSkillNBT.SetCasting(stack, false);
                     activateCoolDownArknights(stack);
-                    IdlFramework.Log("%s casting complete.", entityIn);
+                    Idealland.Log("%s casting complete.", entityIn);
                 }
 
                 IDLSkillNBT.SetDura(stack, dura);
@@ -163,9 +163,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
     }
 
     @Override
-    public boolean canCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn) {
-        ItemStack stack = livingBase.getHeldItem(handIn);
-
+    public boolean canCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot, boolean showMsg) {
         boolean casting = IDLSkillNBT.IsCasting(stack);
         if (casting)
         {
@@ -177,7 +175,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
 
         if (charge >= curMaxCharge)
         {
-            return super.canCast(worldIn, livingBase, handIn);
+            return super.canCast(worldIn, livingBase, stack, slot, showMsg);
         }
         else {
             return false;
@@ -185,9 +183,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
     }
 
     @Override
-    public boolean tryCast(World worldIn, EntityLivingBase livingBase, EnumHand handIn) {
-
-        ItemStack stack = livingBase.getHeldItem(handIn);
+    public boolean applyCast(World worldIn, EntityLivingBase livingBase, ItemStack stack, EntityEquipmentSlot slot) {
         IDLSkillNBT.SetCasting(stack, true);
         IDLSkillNBT.SetCharge(stack, 0);
         IDLSkillNBT.SetDura(stack, getDurationMax(stack));

@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.item.skills;
 
+import com.somebody.idlframewok.item.IWIP;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemSkillTimeCutPercent extends ItemSkillBase {
+public class ItemSkillTimeCutPercent extends ItemSkillBase implements IWIP {
 
     public ItemSkillTimeCutPercent(String name) {
         super(name);

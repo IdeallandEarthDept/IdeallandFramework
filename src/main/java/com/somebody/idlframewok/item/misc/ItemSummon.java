@@ -1,6 +1,6 @@
 package com.somebody.idlframewok.item.misc;
 
-import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.Idealland;
 import com.somebody.idlframewok.item.ItemBase;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -45,7 +45,7 @@ public class ItemSummon extends ItemBase {
             {
                 EntityLivingBase entityLivingBase = (EntityLivingBase) entity;
                 entityLivingBase.setPosition(pos.getX() + 0.5f,pos.getY() + 1f,pos.getZ() + 0.5f);
-                IdlFramework.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
+                //Idealland.Log("Spawned: %s @ %s", entityLivingBase.getName(), entityLivingBase.getPosition());
                 worldIn.spawnEntity(entityLivingBase);
 //                if (entityLivingBase instanceof EntityLiving)
 //                {
@@ -54,8 +54,10 @@ public class ItemSummon extends ItemBase {
             }
             else {
                 if (doWarn)
-                    IdlFramework.LogWarning("Trying to summon a non-living entity");
+                    Idealland.LogWarning("Trying to summon a non-living entity");
             }
+
+
         }
 
         return super.onItemUse(playerIn, worldIn, pos, handIn, facing, hitX, hitY, hitZ);

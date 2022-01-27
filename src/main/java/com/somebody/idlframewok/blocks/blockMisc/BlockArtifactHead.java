@@ -1,7 +1,6 @@
 package com.somebody.idlframewok.blocks.blockMisc;
 
 import com.google.common.base.Predicate;
-import javax.annotation.Nullable;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.MapColor;
@@ -26,6 +25,8 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class BlockArtifactHead extends BlockHorizontal
 {
@@ -147,7 +148,7 @@ public class BlockArtifactHead extends BlockHorizontal
     }
 
     /**
-     * Returns the blockstate with the given rotation from the passed blockstate. If inapplicable, returns the passed
+     * Returns the blockstate with the given rotationIn from the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
     public IBlockState withRotation(IBlockState state, Rotation rot)
@@ -156,7 +157,7 @@ public class BlockArtifactHead extends BlockHorizontal
     }
 
     /**
-     * Returns the blockstate with the given mirror of the passed blockstate. If inapplicable, returns the passed
+     * Returns the blockstate with the given mirrorIn of the passed blockstate. If inapplicable, returns the passed
      * blockstate.
      */
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
@@ -174,7 +175,7 @@ public class BlockArtifactHead extends BlockHorizontal
     }
 
     /**
-     * Convert the given metadata into a BlockState for this Block
+     * Convert the given metadata into a BlockState for this BlockPhasingOre
      */
     public IBlockState getStateFromMeta(int meta)
     {

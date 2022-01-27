@@ -75,7 +75,7 @@ public class GobletFill extends IForgeRegistryEntry.Impl<IRecipe> implements IRe
 				{
 					payingXP+=9;
 				}
-				//IdlFramework.Log(stack.getItem().getUnlocalizedName() + " vs " + ItemBlock.getItemFromBlock(Blocks.GOLD_BLOCK).getUnlocalizedName());
+				//Idealland.Log(stack.getItem().getUnlocalizedName() + " vs " + ItemBlock.getItemFromBlock(Blocks.GOLD_BLOCK).getUnlocalizedName());
 			}
 		}
 

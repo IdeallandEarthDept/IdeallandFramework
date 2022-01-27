@@ -37,7 +37,7 @@ public class ItemSkillSheepTransform extends ItemSkillBase {
                     target.setDead();
 
                     world.spawnEntity(elk);
-                    world.spawnParticle(EnumParticleTypes.MOB_APPEARANCE, target.posX, target.posY, target.posZ, 0,0,0);
+                    world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, target.posX, target.posY, target.posZ, 0,0,0);
                     world.playSound(null, target.getPosition(), SoundEvents.ENTITY_WITCH_AMBIENT, SoundCategory.PLAYERS,1f,1f);
                     //TryGrantAchv(playerIn, AchvDef.ELK_TRANSFORM);
                 }

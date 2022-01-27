@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.entity.creatures.ideallandTeam;
 
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
+import com.somebody.idlframewok.util.CommonFunctions;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.DifficultyInstance;
@@ -15,6 +16,7 @@ public class EntityIdeallandUnitBase extends EntityModUnit {
         isMoroon = false;
         isIdealland = true;
         dontDespawn = true;
+        CommonFunctions.addToEventBus(this);
     }
 
     public int getRank()
@@ -35,6 +37,7 @@ public class EntityIdeallandUnitBase extends EntityModUnit {
         return 1;
     }
 
+    //在简单难度中区域难度的范围是0.75–1.5，在普通难度时为1.5–4.0，在困难难度时为2.25–6.75。
     public void ApplyGeneralLevelBoost(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata)
     {
         //with localDiff / 10 chance to lv up recursively
@@ -69,4 +72,6 @@ public class EntityIdeallandUnitBase extends EntityModUnit {
 
         ((PathNavigateGround)this.getNavigator()).setEnterDoors(true);
     }
+
+
 }
