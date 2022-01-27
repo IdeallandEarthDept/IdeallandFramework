@@ -1,7 +1,7 @@
-package com.deeplake.idlframewok.entity.creatures.ideallandTeam;
+package com.somebody.idlframewok.entity.creatures.ideallandTeam;
 
-import com.deeplake.idlframewok.entity.creatures.EntityModUnit;
-import com.deeplake.idlframewok.util.CommonFunctions;
+import com.somebody.idlframewok.entity.creatures.EntityModUnit;
+import com.somebody.idlframewok.util.CommonFunctions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
