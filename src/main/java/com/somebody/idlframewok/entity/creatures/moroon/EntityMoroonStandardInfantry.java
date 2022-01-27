@@ -39,15 +39,15 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
         if (wasRecentlyHit) {
-            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
-            {
-                dropItem (ModItems.MOROON_RIFLE, 1);
-            }
-
-            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
-            {
-                dropItem (ModItems.ITEM_IDL_ORDER_1, 1);
-            }
+//            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
+//            {
+//                dropItem (ModItems.MOROON_RIFLE, 1);
+//            }
+//
+//            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
+//            {
+//                dropItem (ModItems.ITEM_IDL_ORDER_1, 1);
+//            }
         }
     }
 
@@ -100,7 +100,6 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
     protected void applyEntityAI()
     {
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 0.5D, false));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[] {EntityMoroonTainter.class}));
         applyGeneralAI();
     }
 
@@ -116,13 +115,12 @@ public class EntityMoroonStandardInfantry extends EntityMoroonUnitBase implement
     protected void setEquipmentBasedOnDifficulty(DifficultyInstance difficulty)
     {
         super.setEquipmentBasedOnDifficulty(difficulty);
-        if (this.getRNG().nextFloat() < 0.5f)
-        {
-            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.ITEM_MOR_ORI_SWORD));
-        }else {
-            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
-        }
-
+//        if (this.getRNG().nextFloat() < 0.5f)
+//        {
+//            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.ITEM_MOR_ORI_SWORD));
+//        }else {
+//            this.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(ModItems.MOROON_RIFLE));
+//        }
     }
 
     public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)

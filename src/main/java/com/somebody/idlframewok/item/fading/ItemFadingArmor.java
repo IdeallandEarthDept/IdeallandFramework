@@ -19,7 +19,7 @@ import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 public class ItemFadingArmor extends ItemArmorBase {
     public ItemFadingArmor(String name, ArmorMaterial materialIn, int renderIndexIn, EntityEquipmentSlot equipmentSlotIn) {
         super(name, materialIn, renderIndexIn, equipmentSlotIn);
-        setCreativeTab(ModCreativeTabsList.IDL_FADE);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
     // private static final int[] MAX_DAMAGE_ARRAY = new int[] {13, 15, 16, 11};
 

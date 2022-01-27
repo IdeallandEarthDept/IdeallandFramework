@@ -132,28 +132,28 @@ public class EntityMoroonUnitBase extends EntityModUnit {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
         //Idealland.Log("dropLoot Called");
-        dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
-        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
-        {
-            dropItem(ModItems.RANDOM_SKILL, 1);
-        }
-
-        if (rand.nextFloat() < 0.1f * getLevel())
-        {
-            dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
-        }
-
-
-        if (rand.nextFloat() < 0.2f * getLevel())
-        {
-            dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
-        }
-
-        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
-        {
-            dropItem(ModItems.itemNanoMender_128, 1);
-        }
+//        dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
+//        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
+//        {
+//            dropItem(ModItems.RANDOM_SKILL, 1);
+//        }
 //
+//        if (rand.nextFloat() < 0.1f * getLevel())
+//        {
+//            dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
+//        }
+//
+//
+//        if (rand.nextFloat() < 0.2f * getLevel())
+//        {
+//            dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
+//        }
+//
+//        if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel())
+//        {
+//            dropItem(ModItems.itemNanoMender_128, 1);
+//        }
+////
 //        if (wasRecentlyHit) {
 //            dropItem(ModItems.ANTENNA, rand.nextInt(1 + lootingModifier));
 //        }

@@ -41,7 +41,7 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
         MinecraftForge.EVENT_BUS.register(this);
         experienceValue = 15;
         setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BOW));
-        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.helmetSniper));
+//        setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(ModItems.helmetSniper));
         setSneaking(true);
         inflictBerserkBuff = false;
         if (ModConfig.DEBUG_CONF.ERASE_SNIPERS)
@@ -59,19 +59,19 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        if (wasRecentlyHit) {
-            if (lootingModifier >= rand.nextInt(10))
-            {
-                dropItem(ModItems.skill_hate_detect_sniper, 1);
-            }
-
-            if (lootingModifier >= rand.nextInt(10))
-            {
-                dropItem(ModItems.helmetSniper, 1);
-            }
-
-            //dropItem(ModItems.skillFireBall, rand.nextInt(1 + lootingModifier));
-        }
+//        if (wasRecentlyHit) {
+//            if (lootingModifier >= rand.nextInt(10))
+//            {
+//                dropItem(ModItems.skill_hate_detect_sniper, 1);
+//            }
+//
+//            if (lootingModifier >= rand.nextInt(10))
+//            {
+//                dropItem(ModItems.helmetSniper, 1);
+//            }
+//
+//            //dropItem(ModItems.skillFireBall, rand.nextInt(1 + lootingModifier));
+//        }
     }
 
     protected void firstTickAI()

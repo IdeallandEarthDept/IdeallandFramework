@@ -103,14 +103,14 @@ public class EntityMoroonBombBeacon extends EntityMoroonUnitBase {
 
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-        dropItem(ModItems.MOR_FRAG, 1 + rand.nextInt(2 + lootingModifier));
-
-        if (wasRecentlyHit) {
-            if (rand.nextInt(4) + lootingModifier >= 3)
-            {
-                dropItem(ModItems.ANTENNA, 1);
-            }
-        }
+//        dropItem(ModItems.MOR_FRAG, 1 + rand.nextInt(2 + lootingModifier));
+//
+//        if (wasRecentlyHit) {
+//            if (rand.nextInt(4) + lootingModifier >= 3)
+//            {
+//                dropItem(ModItems.ANTENNA, 1);
+//            }
+//        }
     }
 
 }

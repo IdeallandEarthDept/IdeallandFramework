@@ -37,10 +37,10 @@ public class ComponentDungeonRoomBase extends ComponentBase {
     protected int sizeXZ;
     protected int sizeY;
 
-    private IBlockState wallState = ModBlocks.MJDS_WALL.getDefaultState();
-    private IBlockState wall2 = ModBlocks.MJDS_FLOOR.getDefaultState();
-    private IBlockState floor = ModBlocks.MJDS_FLOOR.getDefaultState();
-    private IBlockState STEP_LIGHT = ModBlocks.STEP_LIGHT.getDefaultState();
+    private IBlockState wallState = Blocks.BRICK_BLOCK.getDefaultState();
+    private IBlockState wall2 = Blocks.BRICK_BLOCK.getDefaultState();
+    private IBlockState floor = Blocks.BRICK_BLOCK.getDefaultState();
+    private IBlockState STEP_LIGHT = Blocks.BRICK_BLOCK.getDefaultState();
     private IBlockState GLASS_WHITE = Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockStainedGlass.COLOR, EnumDyeColor.WHITE);
     IBlockState WEB = Blocks.WEB.getDefaultState();
 
@@ -339,10 +339,10 @@ public class ComponentDungeonRoomBase extends ComponentBase {
 
     public static class BlockSelectorDecoFloor extends BlockSelector {
         //caching is ok
-        IBlockState normal = ModBlocks.MJDS_FLOOR.getDefaultState();
-        IBlockState light = ModBlocks.STEP_LIGHT.getDefaultState();
+        IBlockState normal = Blocks.BRICK_BLOCK.getDefaultState();
+        IBlockState light = Blocks.BRICK_BLOCK.getDefaultState();
 
-        IBlockState state = ModBlocks.STEP_LIGHT.getDefaultState();
+        IBlockState state = Blocks.BRICK_BLOCK.getDefaultState();
 
         /**
          * picks Block Ids and Metadata

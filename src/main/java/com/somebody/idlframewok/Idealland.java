@@ -5,13 +5,12 @@ import com.somebody.idlframewok.gui.ModGuiElementLoader;
 import com.somebody.idlframewok.init.ModConfig;
 import com.somebody.idlframewok.init.ModSpawn;
 import com.somebody.idlframewok.init.RegistryHandler;
-import com.somebody.idlframewok.util.MetaUtil;
 import com.somebody.idlframewok.network.NetworkHandler;
-import com.somebody.idlframewok.util.proxy.ProxyBase;
 import com.somebody.idlframewok.recipe.ModRecipes;
-import com.somebody.idlframewok.designs.research.IDLResearchTree;
 import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.util.MetaUtil;
 import com.somebody.idlframewok.util.Reference;
+import com.somebody.idlframewok.util.proxy.ProxyBase;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -86,8 +85,6 @@ public class Idealland
         MetaUtil.isLoaded_GOG = Loader.isModLoaded(CommonDef.MOD_NAME_GOG);
 
         TrashTalking();
-
-        IDLResearchTree.InitTree();
 
         RegistryHandler.postInitReg();
     }

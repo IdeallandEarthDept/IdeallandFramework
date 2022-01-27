@@ -51,62 +51,23 @@ public class InitPotionTypes {
     static void init()
     {
         //Vanilla Fixing
-        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(ModBlocks.FLESH_BLOCK_EYE), BLINDNESS);
-
-        PotionHelper.addMix(AWKWARD, ModItems.CLOVER, LUCKY);
-        final Item DEGREATOR = Items.FERMENTED_SPIDER_EYE;
-        PotionHelper.addMix(LUCKY, DEGREATOR, UNLUCKY);
-
-        PotionHelper.addMix(AWKWARD, Items.STONE_PICKAXE, HASTE);
-        PotionHelper.addMix(AWKWARD, Items.SHIELD, RESISTANCE);
-        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.SOUL_SAND), WITHER);
-        PotionHelper.addMix(AWKWARD, ModItems.FLOAT_FOOD, LEVITATION);
-        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.TORCH), GLOWING);
+//        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(ModBlocks.FLESH_BLOCK_EYE), BLINDNESS);
+//
+//        PotionHelper.addMix(AWKWARD, ModItems.CLOVER, LUCKY);
+//        final Item DEGREATOR = Items.FERMENTED_SPIDER_EYE;
+//        PotionHelper.addMix(LUCKY, DEGREATOR, UNLUCKY);
+//
+//        PotionHelper.addMix(AWKWARD, Items.STONE_PICKAXE, HASTE);
+//        PotionHelper.addMix(AWKWARD, Items.SHIELD, RESISTANCE);
+//        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.SOUL_SAND), WITHER);
+//        PotionHelper.addMix(AWKWARD, ModItems.FLOAT_FOOD, LEVITATION);
+//        PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.TORCH), GLOWING);
 
         //Modded potion effects
 //        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.DEADLY.getPotionType());
 //        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.ZEN_HEART.getPotionType());
 //        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.VIRUS_ONE.getPotionType());
-        PotionHelper.addMix(AWKWARD, Items.ROTTEN_FLESH, ModPotions.UNDYING.getPotionType());
-        PotionHelper.addMix(ModPotions.RIP.getPotionType(), DEGREATOR, ModPotions.UNDYING.getPotionType());
-          PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.LAPIS_BLOCK), ModPotions.MAGIC_RESIST.getPotionType());
-          PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.OBSIDIAN), ModPotions.BLAST_RESIST.getPotionType());
-          PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(Blocks.SAND), ModPotions.KB_RESIST.getPotionType());
-          PotionHelper.addMix(AWKWARD, ModItems.HELL_COIN, ModPotions.RIP.getPotionType());
-          PotionHelper.addMix(AWKWARD, Items.SLIME_BALL, ModPotions.EROSION.getPotionType());
-          PotionHelper.addMix(AWKWARD, Item.getItemFromBlock(ModBlocks.SKYLAND_BLANK_RUNESTONE), ModPotions.INVINCIBLE.getPotionType());
-//
-          PotionHelper.addMix(AWKWARD, ModItems.ANTENNA, ModPotions.INTERFERENCE.getPotionType());
-          PotionHelper.addMix(AWKWARD, ModItems.FIGHT_BREAD, ModPotions.NOTICED_BY_MOR.getPotionType());
-
-          PotionHelper.addMix(AWKWARD, Items.GOLDEN_SWORD, ModPotions.CRIT_CHANCE_PLUS.getPotionType());
-        PotionHelper.addMix(ModPotions.CRIT_CHANCE_PLUS.getPotionType(), DEGREATOR, ModPotions.CRIT_CHANCE_MINUS.getPotionType());
-        PotionHelper.addMix(AWKWARD, Items.GOLDEN_AXE, ModPotions.CRIT_DMG_PLUS.getPotionType());
-        PotionHelper.addMix(ModPotions.CRIT_DMG_PLUS.getPotionType(), DEGREATOR, ModPotions.CRIT_DMG_MINUS.getPotionType());
-
-        PotionHelper.addMix(AWKWARD, ModItems.MOR_FRAG, ModPotions.BERSERK.getPotionType());
-
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.HOT.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.COLD.getPotionType());
-        PotionHelper.addMix(AWKWARD, Items.MELON_SEEDS, ModPotions.HEAL_PLUS.getPotionType());
-        PotionHelper.addMix(ModPotions.HEAL_PLUS.getPotionType(), DEGREATOR, ModPotions.HEAL_MINUS.getPotionType());
-
-        PotionHelper.addMix(AWKWARD, Items.PUMPKIN_SEEDS, ModPotions.SPELL_PLUS.getPotionType());
-        PotionHelper.addMix(ModPotions.SPELL_PLUS.getPotionType(), DEGREATOR, ModPotions.SPELL_MINUS.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.WATER_BLESS.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.OOW_BLESS.getPotionType());
-            PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.BURN.getPotionType());
-            PotionHelper.addMix(AWKWARD, Items.COAL, ModPotions.BURN.getPotionType());
-            PotionHelper.addMix(PotionTypes.FIRE_RESISTANCE, DEGREATOR, ModPotions.BURN.getPotionType());
-        PotionHelper.addMix(ModPotions.PLUS_ARMOR_PERCENTAGE.getPotionType(), DEGREATOR, ModPotions.MINUS_ARMOR_PERCENTAGE.getPotionType());
-        PotionHelper.addMix(AWKWARD, Items.GOLDEN_HELMET, ModPotions.PLUS_ARMOR_PERCENTAGE.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.FROZEN.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.HAPPINESS.getPotionType());
-//
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.ANGER.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.SADNESS.getPotionType());
-//        PotionHelper.addMix(AWKWARD, ModItems.CHILLI, ModPotions.FEAR.getPotionType());
-          PotionHelper.addMix(AWKWARD, Items.FISH, ModPotions.STINK.getPotionType());
+//        PotionHelper.addMix(AWKWARD, Items.ROTTEN_FLESH, ModPotions.UNDYING.getPotionType());
 
         //-----------------------------Types
 

@@ -68,7 +68,7 @@ public class BuildingCore {
                 list.add(reserved_first_tasks_count, new BuilderActionBlock(newState, pos));
                 reserved_first_tasks_count++;
             }else {
-                list.add(reserved_first_tasks_count, new BuilderActionBlock(ModBlocks.CONSTRUCTION_SITE, pos));
+                list.add(reserved_first_tasks_count, new BuilderActionBlock(Blocks.IRON_BARS, pos));
                 list.add(new BuilderActionBlockSafe(newState, pos));
             }
         } else {

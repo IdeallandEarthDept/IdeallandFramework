@@ -756,7 +756,7 @@ public class EntityModUnit extends EntityCreature {
             if (!player.getEntityWorld().isRemote && player.isCreative()) {
                 ItemStack stack = player.getHeldItem(hand);
                 ICustomFaction faction = (ICustomFaction) this;
-                if (stack.getItem() == ModItems.MOR_FRAG) {
+                if (stack.getItem() == Items.END_CRYSTAL) {
                     faction.setFaction(EntityUtil.EnumFaction.MOROON);
                 } else if (stack.getItem() == Items.BONE) {
                     faction.setFaction(EntityUtil.EnumFaction.MOB_VANILLA);
@@ -764,8 +764,8 @@ public class EntityModUnit extends EntityCreature {
                     faction.setFaction(EntityUtil.EnumFaction.MOB_VAN_ZOMBIE);
                 } else if (stack.getItem() == Items.GOLDEN_APPLE) {
                     faction.setFaction(EntityUtil.EnumFaction.PLAYER);
-                } else if (stack.getItem() == ModItems.ITEM_IDL_ORDER_1) {
-                    faction.setFaction(EntityUtil.EnumFaction.IDEALLAND);
+//                } else if (stack.getItem() == ModItems.ITEM_IDL_ORDER_1) {
+//                    faction.setFaction(EntityUtil.EnumFaction.IDEALLAND);
                 } else {
                     return false;
                 }

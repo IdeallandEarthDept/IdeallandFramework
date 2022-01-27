@@ -18,23 +18,9 @@ import java.util.Random;
 
 public class WorldGenCustomStructures implements IWorldGenerator {
 
-//    public static final WorldGenStructure TEST_APARTMENT = new WorldGenStructure("test_apartment");
-
-    public static final IDFGenStructure MEK_1 = new IDFGenStructure("mek_go_simple").setyOffset(4);
-    public static final IDFGenStructure PILLAR = new IDFGenStructure("pillar");
-    public static final IDFGenStructure FAKE_HOUSE = new IDFGenStructure("fake_player_house");
-    public static final IDFGenStructure MEK_FIREWORKS = new IDFGenStructure("mek_firework");
-    public static final IDFGenStructure RAIL_WAY = new IDFGenStructure("quadstone/quad_rail_way");
-    public static final IDFGenStructure RAIL_STOP = new IDFGenStructure("quadstone/quad_rail_stop");
-
-    public static final IDFGenStructure GOD_1 = new IDFGenStructure("gods/temple/temple_god_1");
-
-    public static final IDFGenStructure BOAT = new IDFGenStructure("aqua/boat_1").setyOffset(-2);
-    public static final IDFGenStructure IRON_BOAT = new IDFGenStructure32("aqua/boat_iron_enemy_1", 2, 2).setyOffset(-3);
-
-//    static final float WHATNOT_CHANCE = 0.001f;
-
-    public static final WorldGenDungeonTower DUNGEON_TOWER = new WorldGenDungeonTower("tower_dungeon_floor","tower_dungeon_1f","tower_dungeon_top");
+//    public static final IDFGenStructure MEK_1 = new IDFGenStructure("mek_go_simple").setyOffset(4);
+//    public static final IDFGenStructure BOAT = new IDFGenStructure("aqua/boat_1").setyOffset(-2);
+//    public static final IDFGenStructure IRON_BOAT = new IDFGenStructure32("aqua/boat_iron_enemy_1", 2, 2).setyOffset(-3);
 
     boolean generateStructure(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, float chance, Block topBlock)
     {

@@ -36,11 +36,17 @@ public class ChunkFleshLand extends WorldChunkBase {
     public IBlockState BONE_Y = Blocks.BONE_BLOCK.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Y);
     public IBlockState BONE_Z = Blocks.BONE_BLOCK.getDefaultState().withProperty(BlockRotatedPillar.AXIS, EnumFacing.Axis.Z);
 
-    public IBlockState SKIN = ModBlocks.FLESH_BLOCK_0.getDefaultState();
-    public IBlockState SKIN_SCAR = ModBlocks.FLESH_BLOCK_SCAR.getDefaultState();
-    public IBlockState SKIN_BRAIN = ModBlocks.FLESH_BLOCK_BRAIN.getDefaultState();
-    public IBlockState SKIN_EYE = ModBlocks.FLESH_BLOCK_EYE.getDefaultState();
-    public IBlockState SKIN_MOUTH = ModBlocks.FLESH_BLOCK_MOUTH.getDefaultState();
+    public IBlockState SKIN = Blocks.AIR.getDefaultState();
+    public IBlockState SKIN_SCAR = Blocks.AIR.getDefaultState();
+    public IBlockState SKIN_BRAIN = Blocks.AIR.getDefaultState();
+    public IBlockState SKIN_EYE = Blocks.AIR.getDefaultState();
+    public IBlockState SKIN_MOUTH = Blocks.AIR.getDefaultState();
+
+//    public IBlockState SKIN = ModBlocks.FLESH_BLOCK_0.getDefaultState();
+//    public IBlockState SKIN_SCAR = ModBlocks.FLESH_BLOCK_SCAR.getDefaultState();
+//    public IBlockState SKIN_BRAIN = ModBlocks.FLESH_BLOCK_BRAIN.getDefaultState();
+//    public IBlockState SKIN_EYE = ModBlocks.FLESH_BLOCK_EYE.getDefaultState();
+//    public IBlockState SKIN_MOUTH = ModBlocks.FLESH_BLOCK_MOUTH.getDefaultState();
 
     public IBlockState VEIN = Blocks.STAINED_GLASS.getDefaultState().withProperty(BlockColored.COLOR, EnumDyeColor.RED);
     public IBlockState LAVA = Blocks.FLOWING_LAVA.getDefaultState();

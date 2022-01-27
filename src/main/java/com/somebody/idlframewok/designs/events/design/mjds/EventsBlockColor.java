@@ -45,15 +45,15 @@ public class EventsBlockColor {
     public static void registerColor(ColorHandlerEvent.Block event) {
         //only works for particles, why? because you need to rewrite the json like leaves do.
         //more, -3%16 is negative.
-        event.getBlockColors().registerBlockColorHandler(new IBlockColor() {
-            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-                if (pos != null && worldIn != null) {
-                    return Color16Def.getGodColor((pos.getY() / CommonDef.CHUNK_SIZE));
-                } else {
-                    return -1;
-                }
-            }
-        }, ModBlocks.MJDS_WALL);
+//        event.getBlockColors().registerBlockColorHandler(new IBlockColor() {
+//            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
+//                if (pos != null && worldIn != null) {
+//                    return Color16Def.getGodColor((pos.getY() / CommonDef.CHUNK_SIZE));
+//                } else {
+//                    return -1;
+//                }
+//            }
+//        }, ModBlocks.MJDS_WALL);
         Idealland.Log("Registered block color handler");
     }
 }

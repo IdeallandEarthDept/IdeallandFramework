@@ -1,6 +1,5 @@
 package com.somebody.idlframewok.designs.events.design;
 
-import com.somebody.idlframewok.entity.creatures.moroon.EntityMoroonTainter;
 import com.somebody.idlframewok.init.ModConfig;
 import com.somebody.idlframewok.potion.ModPotions;
 import com.somebody.idlframewok.util.EntityUtil;

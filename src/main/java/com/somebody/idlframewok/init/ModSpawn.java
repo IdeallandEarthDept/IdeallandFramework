@@ -72,33 +72,7 @@ public class ModSpawn {
 
     private static void addNormalSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_M_O_B, EntityMoroonBombBeacon.class, 1, 1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_BASTION, EntityMoroonBastionWalker.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_FLICKER, EntityMoroonFlickFighter.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_ASSASSIN, EntityMorBlindingAssassin.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_SNIPER, EntityMoroonGhostArcher.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_MARTIAL, EntityMoroonEliteMartialist.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_VAMPIRE, EntityMoroonVampire.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_MIND_MAGE, EntityMoroonMindMage.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_ID_THIEF, EntityIdentityThief.class, 1,1);
-
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_STONE_ELEM, EntityStoneElemental.class, 1,4);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_STONE_ELEM, EntityDarkElemental.class, 1,2);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_STONE_ELEM, EntityPeaceKeeper.class, 1,4);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_STONE_ELEM, EntityWarManiac.class, 1,4);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_EARTHLIN, EntityEarthlin.class, 1,4);
-
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_SHADE_OTHERWORLD, EntityShadeOtherworld.class, 1,1);
-            add(biome, ModConfig.SPAWN_CONF.SPAWN_VANILLA_MOB_ZEALOT, EntityVanillaZealot.class, 4,8);
-//            if (BiomeManager.oceanBiomes.contains(biome))
-//            {
-//                //todo find why creatures can't generate
-//                //Idealland.Log("register ocean:" + biome.getBiomeName());
-//              //  add_water(biome, ModConfig.SPAWN_CONF.SPAWN_MOR_SQUID, EntityMoroonSquid.class, 4,4);
-//                add_water(biome, 15, EntitySquidBase.class, 1,4);
-//            }
-//            add_water(biome, 80, EntityVanSquid.class, 1,4);
+//            add(biome, ModConfig.SPAWN_CONF.SPAWN_TAINTER, EntityMoroonTainter.class, 1, 4);
         }
     }
 

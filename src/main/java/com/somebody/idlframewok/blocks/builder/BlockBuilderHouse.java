@@ -14,7 +14,7 @@ public class BlockBuilderHouse extends BlockBase implements ITileEntityProvider 
 
     public BlockBuilderHouse(String name, Material material) {
         super(name, material);
-        setCreativeTab(ModCreativeTabsList.IDL_BUILDER);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         setSoundType(SoundType.METAL);
         setHardness(5.0F);
         setResistance(15.0F);

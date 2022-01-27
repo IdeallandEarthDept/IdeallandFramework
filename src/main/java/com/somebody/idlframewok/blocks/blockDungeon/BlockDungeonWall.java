@@ -23,7 +23,7 @@ public class BlockDungeonWall extends BlockBase {
         super(name, material);
         setHardness(-1);
         setLightOpacity(255);
-        setCreativeTab(ModCreativeTabsList.IDL_DUNGEON);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
 
     public BlockDungeonWall setAlternative(IBlockState disenchanted_state)

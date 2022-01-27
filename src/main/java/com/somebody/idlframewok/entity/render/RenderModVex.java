@@ -2,7 +2,6 @@ package com.somebody.idlframewok.entity.render;
 
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.entity.creatures.mobs.skyland.EntityCatharVex;
-import com.somebody.idlframewok.entity.render.model.ModelModVex;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;

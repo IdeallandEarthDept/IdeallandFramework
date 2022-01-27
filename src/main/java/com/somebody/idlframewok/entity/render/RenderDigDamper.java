@@ -1,7 +1,6 @@
 package com.somebody.idlframewok.entity.render;
 
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
-import com.somebody.idlframewok.entity.render.model.ModelDigDamper;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

@@ -111,7 +111,7 @@ public class Init16Gods {
             GODS[i].tributeReward.AddTuple(100, new ItemStack(Items.DYE, 1, i));
             GODS[i].tributeReward.AddTuple(100, new ItemStack(Blocks.WOOL, 1, CHUNK_SIZE - i));
             GODS[i].tributeReward.AddTuple(100, new ItemStack(Blocks.CARPET, i, CHUNK_SIZE - i));
-            GODS[i].tributeReward.AddTuple(1, new ItemStack(ModBlocks.SKYLAND_GOD_RUNSTONES[i], 1));
+//            GODS[i].tributeReward.AddTuple(1, new ItemStack(ModBlocks.SKYLAND_GOD_RUNSTONES[i], 1));
         }
 
         GODS[0].tributeReward.AddTuple(1, new ItemStack(Blocks.BEDROCK, 1));

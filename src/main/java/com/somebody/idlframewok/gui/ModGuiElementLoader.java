@@ -6,8 +6,6 @@ import com.somebody.idlframewok.blocks.tileEntity.TileEntityChestCustom;
 import com.somebody.idlframewok.gui.containers.GuiContainerModChest;
 import com.somebody.idlframewok.gui.expOne.ContainerDemo;
 import com.somebody.idlframewok.gui.expOne.GuiContainerDemo;
-import com.somebody.idlframewok.gui.research.ContainerResearch;
-import com.somebody.idlframewok.gui.research.GuiContainerResearch;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -36,8 +34,6 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new ContainerDemo(player);
-            case GUI_RESEARCH:
-                return new ContainerResearch(player);
             case GUI_CUSTOM_CHEST:
                 return new ContainerModChest(player.inventory, (TileEntityChestCustom) world.getTileEntity(new BlockPos(x,y,z)), player);
             default:
@@ -52,8 +48,6 @@ public class ModGuiElementLoader implements IGuiHandler {
         {
             case GUI_DEMO:
                 return new GuiContainerDemo(new ContainerDemo(player));
-            case GUI_RESEARCH:
-                return new GuiContainerResearch(new ContainerResearch(player));
             case GUI_CUSTOM_CHEST:
                 return new GuiContainerModChest(player.inventory, (TileEntityChestCustom) world.getTileEntity(new BlockPos(x,y,z)), player);
             default:

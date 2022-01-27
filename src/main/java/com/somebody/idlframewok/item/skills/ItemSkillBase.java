@@ -41,7 +41,7 @@ public class ItemSkillBase extends ItemAdaptingBase implements ICastable {
         super(name);
         setMaxStackSize(1);
         setNoRepair();
-        setCreativeTab(ModCreativeTabsList.IDL_SKILL);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         offHandCast = true;
         mainHandCast = true;
     }

@@ -11,6 +11,6 @@ public class BlockGargoyleBase extends BlockBase {
         super(name, material);
         setHardness(1000f);
         setHarvestThis(IDLNBTDef.TOOL_PICKAXE, EnumHarvestLevel.IRON.level);
-        setCreativeTab(ModCreativeTabsList.IDL_CIRCUIT);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
 }

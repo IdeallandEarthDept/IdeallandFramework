@@ -7,6 +7,7 @@ import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -51,7 +52,7 @@ public class EntityIdlBuildingBase extends EntityModUnit {
 
     void InitTaskQueue()
     {
-        AddTaskBuild(getPosition().add(0,-1,0), ModBlocks.CONSTRUCTION_SITE.getDefaultState());
+        AddTaskBuild(getPosition().add(0,-1,0), Blocks.BRICK_BLOCK.getDefaultState());
         //AddTaskBuildWallWithBlockCentered(origin.add(-floorReach,2,0), 0, windowHeight, 1, windowMaterial);
     }
 

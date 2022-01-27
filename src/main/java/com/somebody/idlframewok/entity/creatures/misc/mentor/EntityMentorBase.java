@@ -92,11 +92,11 @@ public class EntityMentorBase extends EntityModUnit {
     @Override
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
-        if (wasRecentlyHit) {
-            ItemStack stack = new ItemStack(ModItems.ITEM_SPELL_SELF);
-            ModItems.ITEM_SPELL_SELF.randomActivate(stack, 1);
-            entityDropItem(stack, 1f);
-        }
+//        if (wasRecentlyHit) {
+//            ItemStack stack = new ItemStack(ModItems.ITEM_SPELL_SELF);
+//            ModItems.ITEM_SPELL_SELF.randomActivate(stack, 1);
+//            entityDropItem(stack, 1f);
+//        }
     }
 
     protected void applyEntityAttributes()

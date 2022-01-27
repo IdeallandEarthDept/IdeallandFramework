@@ -3,6 +3,7 @@ package com.somebody.idlframewok.entity.projectiles;
 import com.somebody.idlframewok.blocks.ModBlocks;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IProjectile;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -47,7 +48,7 @@ public class EntityProjectileBuilder extends EntityIdlProjectile implements IPro
                 this.applyEnchantments(this.shootingEntity, result.entityHit);
             }
 
-           world.setBlockState(new BlockPos(posX, posY, posZ), ModBlocks.GRID_NORMAL.getDefaultState());
+           world.setBlockState(new BlockPos(posX, posY, posZ), Blocks.DIRT.getDefaultState());
 
             world.playSound(posX, posY, posZ, SoundEvents.BLOCK_LAVA_EXTINGUISH,
                     SoundCategory.NEUTRAL, 1f, 1f, false);

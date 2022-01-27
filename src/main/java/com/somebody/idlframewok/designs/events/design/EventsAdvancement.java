@@ -26,14 +26,5 @@ public class EventsAdvancement {
         {
             return;
         }
-
-//        task\ chall \ goal. which is which
-        if (event.getAdvancement().getDisplay().getFrame() == FrameType.CHALLENGE)
-        {
-            PlayerUtil.giveToPlayer(player, new ItemStack(ModItems.ITEM_IDL_ORDER_2));
-        }else {
-            PlayerUtil.giveToPlayer(player, new ItemStack(ModItems.ITEM_IDL_ORDER_1));
-        }
-
     }
 }

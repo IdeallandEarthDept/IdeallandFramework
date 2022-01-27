@@ -27,8 +27,8 @@ public class ItemSkillScry extends ItemSkillBase {
 
         if (!worldIn.isRemote)
         {
-            playerIn.addItemStackToInventory(new ItemStack(ModItems.GUA[playerIn.getRNG().nextInt(GUA_TYPES)]));
-            playerIn.addItemStackToInventory(new ItemStack(ModItems.GUA[playerIn.getRNG().nextInt(GUA_TYPES)]));
+//            playerIn.addItemStackToInventory(new ItemStack(ModItems.GUA[playerIn.getRNG().nextInt(GUA_TYPES)]));
+//            playerIn.addItemStackToInventory(new ItemStack(ModItems.GUA[playerIn.getRNG().nextInt(GUA_TYPES)]));
             worldIn.playSound(playerIn, playerIn.getPosition(), SoundEvents.BLOCK_NOTE_HARP, SoundCategory.PLAYERS, 1f, 3f);
             activateCoolDown(playerIn, stack);
         }

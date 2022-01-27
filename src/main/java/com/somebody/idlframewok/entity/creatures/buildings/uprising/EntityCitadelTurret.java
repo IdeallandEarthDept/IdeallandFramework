@@ -399,20 +399,20 @@ public class EntityCitadelTurret extends EntityModUnit implements ICustomFaction
 
     @Override
     protected boolean processInteract(EntityPlayer player, EnumHand hand) {
-        if (!player.getEntityWorld().isRemote && player.isCreative()) {
-            ItemStack stack = player.getHeldItem(hand);
-            if (stack.getItem() == ModItems.MOR_FRAG) {
-                setFaction(EntityUtil.EnumFaction.MOROON);
-            } else if (stack.getItem() == Items.ROTTEN_FLESH) {
-                setFaction(EntityUtil.EnumFaction.MOB_VAN_ZOMBIE);
-            } else if (stack.getItem() == Items.GOLDEN_APPLE) {
-                setFaction(EntityUtil.EnumFaction.PLAYER);
-            } else if (stack.getItem() == ModItems.ITEM_IDL_ORDER_1) {
-                setFaction(EntityUtil.EnumFaction.IDEALLAND);
-            }
-
-            PlayerUtil.setCoolDown(player, hand);
-        }
+//        if (!player.getEntityWorld().isRemote && player.isCreative()) {
+//            ItemStack stack = player.getHeldItem(hand);
+//            if (stack.getItem() == ModItems.MOR_FRAG) {
+//                setFaction(EntityUtil.EnumFaction.MOROON);
+//            } else if (stack.getItem() == Items.ROTTEN_FLESH) {
+//                setFaction(EntityUtil.EnumFaction.MOB_VAN_ZOMBIE);
+//            } else if (stack.getItem() == Items.GOLDEN_APPLE) {
+//                setFaction(EntityUtil.EnumFaction.PLAYER);
+//            } else if (stack.getItem() == ModItems.ITEM_IDL_ORDER_1) {
+//                setFaction(EntityUtil.EnumFaction.IDEALLAND);
+//            }
+//
+//            PlayerUtil.setCoolDown(player, hand);
+//        }
         return super.processInteract(player, hand);
     }
 

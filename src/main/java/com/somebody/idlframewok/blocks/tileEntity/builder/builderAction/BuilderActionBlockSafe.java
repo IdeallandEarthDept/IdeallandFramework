@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class BuilderActionBlockSafe extends BuilderActionBlock {
 
-    public static Block block_req = ModBlocks.CONSTRUCTION_SITE;
+    public static Block block_req = Blocks.BRICK_BLOCK;
 
     public BuilderActionBlockSafe(Block _block, Block _req , int x, int y, int z) {
         super(_block, x, y, z);

@@ -126,16 +126,8 @@ public class RegistryHandler {
 
     public static void RegisterTileEntity()
 	{
-		GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(Idealland.MODID, "deboom_orb_basic"));
-		GameRegistry.registerTileEntity(TileEntityNullifyOrb.class, new ResourceLocation(Idealland.MODID, "nullify_orb_basic"));
-		GameRegistry.registerTileEntity(TileEntityNullifyOrbMor.class, new ResourceLocation(Idealland.MODID, "nullify_orb_mor"));
-		GameRegistry.registerTileEntity(TileEntityEarthMender.class, new ResourceLocation(Idealland.MODID, "earth_mender_basic"));
-		GameRegistry.registerTileEntity(TileEntityDeArrowOrb.class, new ResourceLocation(Idealland.MODID, "de_arrow_orb"));
-		GameRegistry.registerTileEntity(TileEntityDeWaterOrb.class, new ResourceLocation(Idealland.MODID, "de_water_orb"));
-		GameRegistry.registerTileEntity(TileEntityChestCustom.class, new ResourceLocation(Idealland.MODID, "chest_custom"));
-		GameRegistry.registerTileEntity(TileEntityTrafficLight.class, new ResourceLocation(Idealland.MODID, "te_traffic_light"));
-		GameRegistry.registerTileEntity(TileEntityTrapTickBase.class, new ResourceLocation(Idealland.MODID, "te_trap_tick_basic"));
-		GameRegistry.registerTileEntity(TileEntityInfoHolder.class, new ResourceLocation(Idealland.MODID, "te_info_holder"));
+//		GameRegistry.registerTileEntity(TileEntityDeBoomOrb.class, new ResourceLocation(Idealland.MODID, "deboom_orb_basic"));
+
 
 		//GameRegistry.registerTileEntity(TileEntityBuilderFarm.class, new ResourceLocation(MODID, "builder_farm_basic"));
 		//GameRegistry.registerTileEntity(TileEntityBuilderOne.class, new ResourceLocation(MODID, "builder.builder_one"));

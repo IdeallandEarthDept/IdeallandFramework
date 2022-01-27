@@ -1048,10 +1048,10 @@ public class EntityUtil {
 
     public static boolean canReflectGaze(ItemStack stack)
     {
-        if (stack.getItem() == ModItems.ITEM_DRESSING_MIRROR)
-        {
-            return true;
-        }
+//        if (stack.getItem() == ModItems.ITEM_DRESSING_MIRROR)
+//        {
+//            return true;
+//        }
         return false;
     }
 

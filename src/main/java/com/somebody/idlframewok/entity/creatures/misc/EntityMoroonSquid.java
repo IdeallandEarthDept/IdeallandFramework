@@ -43,38 +43,38 @@ public class EntityMoroonSquid extends EntitySquidBase implements IMob {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        if (wasRecentlyHit) {
-            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
-            {
-                dropItem (ModItems.ANTENNA, 1);
-            }
-
-            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
-            {
-                dropItem (ModItems.ITEM_IDL_ORDER_1, 1);
-            }
-
-            dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
-            if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel() / 5f)
-            {
-                dropItem(ModItems.RANDOM_SKILL, 1);
-            }
-
-            if (rand.nextFloat() < 0.1f * getLevel())
-            {
-                dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
-            }
-
-            if (rand.nextFloat() < 0.2f * getLevel())
-            {
-                dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
-            }
-
-            if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel() / 5f)
-            {
-                dropItem(ModItems.itemNanoMender_128, 1);
-            }
-        }
+//        if (wasRecentlyHit) {
+//            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
+//            {
+//                dropItem (ModItems.ANTENNA, 1);
+//            }
+//
+//            if (getRNG().nextFloat() < 0.1f * (1 + lootingModifier))
+//            {
+//                dropItem (ModItems.ITEM_IDL_ORDER_1, 1);
+//            }
+//
+//            dropItem(ModItems.MOR_FRAG, 2 + rand.nextInt(2 + lootingModifier));
+//            if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel() / 5f)
+//            {
+//                dropItem(ModItems.RANDOM_SKILL, 1);
+//            }
+//
+//            if (rand.nextFloat() < 0.1f * getLevel())
+//            {
+//                dropItem(ModItems.itemNanoMender_16, 1 + rand.nextInt(2 + lootingModifier));
+//            }
+//
+//            if (rand.nextFloat() < 0.2f * getLevel())
+//            {
+//                dropItem(ModItems.FIGHT_BREAD, 1 + rand.nextInt(2 + lootingModifier));
+//            }
+//
+//            if (rand.nextFloat() < ModConfig.GeneralConf.SKILL_RATE * getLevel() / 5f)
+//            {
+//                dropItem(ModItems.itemNanoMender_128, 1);
+//            }
+//        }
     }
 
 

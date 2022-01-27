@@ -66,9 +66,9 @@ public class ModAnvilEvents {
 
     @SubscribeEvent
     public static void onAnvilUpdate(AnvilUpdateEvent event) {
-        checkNormalSocket(event, ModItems.CYCLE_STONE, CYCLE_SOCKET);
-        checkNormalSocketArmorOnly(event, ModItems.JADE, JADE_SOCKET);
-        checkNormalSocket(event, ModItems.MISC, 0, FLESH_SOCKET);
+//        checkNormalSocket(event, ModItems.CYCLE_STONE, CYCLE_SOCKET);
+//        checkNormalSocketArmorOnly(event, ModItems.JADE, JADE_SOCKET);
+//        checkNormalSocket(event, ModItems.MISC, 0, FLESH_SOCKET);
         checkGuaImbue(event);
         checkEasyRepair(event);
     }
@@ -135,137 +135,137 @@ public class ModAnvilEvents {
 
     public static void checkGuaImbue(AnvilUpdateEvent event)
     {
-        if (event.getLeft() != ItemStack.EMPTY && event.getRight() != ItemStack.EMPTY  &&
-                !(event.getLeft().getItem() instanceof IGuaEnhance)) {
-            ItemStack left = event.getLeft();
-            ItemStack right = event.getRight();
-
-            int level = 0;
-            int material_cost = 0;
-            int exp_cost = 0;
-
-            int cost_per_level = 4;
-            int exp_cost_per_level = 4;
-            int maxLv = 3;
-
-            if (right.getItem() instanceof ItemBasicGua) {
-                level = Math.min(maxLv, right.getCount() / cost_per_level);
-                material_cost = level * cost_per_level;
-                exp_cost = level * exp_cost_per_level;
-            }
-
-            if (left.isItemEnchantable() && level > 0) {
-                boolean hasResult = true;
-                ItemStack swordResult = left.copy();
-                if (left.getItem() instanceof ItemSword || left.getItem() instanceof ItemBow) {
-                    if (right.getItem() == ModItems.GUA[G_FIRE])//fire
-                    {
-                        //fire_aspect:20; flame:50
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 20 : 50), level);//fire_aspect
-                    } else if (right.getItem() == ModItems.GUA[G_WIND])//wind
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 19 : 49), level);//19-knockback  49-punch
-                    } else if (right.getItem() == ModItems.GUA[CommonDef.G_EARTH]) {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(34), level);//unbreaking
-                    } else if (right.getItem() == ModItems.GUA[CommonDef.G_SKY]) {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 16 : 48), level);//sharp & power
-                    } else if (right.getItem() == ModItems.GUA[G_LAKE])
-                    {
-                        if (left.getItem() instanceof ItemSword)
-                        {
-                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(21), level);//looting
-                        }
-                        else {
-                            cost_per_level = 4;
-                            exp_cost_per_level = 20;
-                            maxLv = 1;
-
-                            level = Math.min(maxLv, right.getCount() / cost_per_level);
-                            material_cost = level * cost_per_level;
-                            exp_cost = level * exp_cost_per_level;
-
-                            hasResult = level > 0;
-                            if (hasResult)
-                            {
-                                swordResult.addEnchantment(Enchantment.getEnchantmentByID(51), level);//infinity
-                            }
-                        }
-                    }
-                    else {
-                        hasResult = false;
-                    }
-                }
-                 else if (left.getItem() instanceof ItemArmor) {
-                    if (right.getItem() == ModItems.GUA[G_FIRE])//fire
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(1), level);//fire_protection
-                    }
-                    else if (right.getItem() == ModItems.GUA[G_WATER])
-                    {
-                        if ((left.getItem()).getEquipmentSlot(left) == FEET)
-                        {
-                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(8), level);//depth_strider
-                        }
-                        else if ((left.getItem()).getEquipmentSlot(left) == HEAD)
-                        {
-                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(5), level);//respiration
-                        }
-                        else
-                        {
-                            hasResult = false;
-                        }
-                    }
-                    else if (right.getItem() == ModItems.GUA[G_LAKE])
-                    {
-                        if ((left.getItem()).getEquipmentSlot(left) == HEAD)
-                        {
-                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(6), level);//aqua_affinity
-                        }
-                        else
-                        {
-                            hasResult = false;
-                        }
-                    }
-                    else if (right.getItem() == ModItems.GUA[G_MOUNTAIN])
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(4), level);//projectile_protection
-                    }
-                    else if (right.getItem() == ModItems.GUA[CommonDef.G_EARTH])
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(34), level);//unbreaking
-                    }
-                    else if (right.getItem() == ModItems.GUA[CommonDef.G_SKY])
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(0), level);//protection
-                    }
-                    else if (right.getItem() == ModItems.GUA[G_THUNDER])
-                    {
-                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(3), level);//blast_protection
-                    }
-                    else if (right.getItem() == ModItems.GUA[G_WIND])//wind
-                    {
-                        if ((left.getItem()).getEquipmentSlot(left) == FEET)
-                        {
-                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(6), level);//feather_falling
-                        }
-                        else
-                        {
-                            hasResult = false;
-                        }
-                    }
-                    else {
-                        hasResult = false;
-                    }
-                }
-                if (hasResult) {
-                    event.setMaterialCost(material_cost);
-                    event.setCost(exp_cost);
-                    event.setOutput(swordResult);
-                }
-            }
-
-
-        }
+//        if (event.getLeft() != ItemStack.EMPTY && event.getRight() != ItemStack.EMPTY  &&
+//                !(event.getLeft().getItem() instanceof IGuaEnhance)) {
+//            ItemStack left = event.getLeft();
+//            ItemStack right = event.getRight();
+//
+//            int level = 0;
+//            int material_cost = 0;
+//            int exp_cost = 0;
+//
+//            int cost_per_level = 4;
+//            int exp_cost_per_level = 4;
+//            int maxLv = 3;
+//
+//            if (right.getItem() instanceof ItemBasicGua) {
+//                level = Math.min(maxLv, right.getCount() / cost_per_level);
+//                material_cost = level * cost_per_level;
+//                exp_cost = level * exp_cost_per_level;
+//            }
+//
+//            if (left.isItemEnchantable() && level > 0) {
+//                boolean hasResult = true;
+//                ItemStack swordResult = left.copy();
+//                if (left.getItem() instanceof ItemSword || left.getItem() instanceof ItemBow) {
+//                    if (right.getItem() == ModItems.GUA[G_FIRE])//fire
+//                    {
+//                        //fire_aspect:20; flame:50
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 20 : 50), level);//fire_aspect
+//                    } else if (right.getItem() == ModItems.GUA[G_WIND])//wind
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 19 : 49), level);//19-knockback  49-punch
+//                    } else if (right.getItem() == ModItems.GUA[CommonDef.G_EARTH]) {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(34), level);//unbreaking
+//                    } else if (right.getItem() == ModItems.GUA[CommonDef.G_SKY]) {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(left.getItem() instanceof ItemSword ? 16 : 48), level);//sharp & power
+//                    } else if (right.getItem() == ModItems.GUA[G_LAKE])
+//                    {
+//                        if (left.getItem() instanceof ItemSword)
+//                        {
+//                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(21), level);//looting
+//                        }
+//                        else {
+//                            cost_per_level = 4;
+//                            exp_cost_per_level = 20;
+//                            maxLv = 1;
+//
+//                            level = Math.min(maxLv, right.getCount() / cost_per_level);
+//                            material_cost = level * cost_per_level;
+//                            exp_cost = level * exp_cost_per_level;
+//
+//                            hasResult = level > 0;
+//                            if (hasResult)
+//                            {
+//                                swordResult.addEnchantment(Enchantment.getEnchantmentByID(51), level);//infinity
+//                            }
+//                        }
+//                    }
+//                    else {
+//                        hasResult = false;
+//                    }
+//                }
+//                 else if (left.getItem() instanceof ItemArmor) {
+//                    if (right.getItem() == ModItems.GUA[G_FIRE])//fire
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(1), level);//fire_protection
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[G_WATER])
+//                    {
+//                        if ((left.getItem()).getEquipmentSlot(left) == FEET)
+//                        {
+//                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(8), level);//depth_strider
+//                        }
+//                        else if ((left.getItem()).getEquipmentSlot(left) == HEAD)
+//                        {
+//                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(5), level);//respiration
+//                        }
+//                        else
+//                        {
+//                            hasResult = false;
+//                        }
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[G_LAKE])
+//                    {
+//                        if ((left.getItem()).getEquipmentSlot(left) == HEAD)
+//                        {
+//                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(6), level);//aqua_affinity
+//                        }
+//                        else
+//                        {
+//                            hasResult = false;
+//                        }
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[G_MOUNTAIN])
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(4), level);//projectile_protection
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[CommonDef.G_EARTH])
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(34), level);//unbreaking
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[CommonDef.G_SKY])
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(0), level);//protection
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[G_THUNDER])
+//                    {
+//                        swordResult.addEnchantment(Enchantment.getEnchantmentByID(3), level);//blast_protection
+//                    }
+//                    else if (right.getItem() == ModItems.GUA[G_WIND])//wind
+//                    {
+//                        if ((left.getItem()).getEquipmentSlot(left) == FEET)
+//                        {
+//                            swordResult.addEnchantment(Enchantment.getEnchantmentByID(6), level);//feather_falling
+//                        }
+//                        else
+//                        {
+//                            hasResult = false;
+//                        }
+//                    }
+//                    else {
+//                        hasResult = false;
+//                    }
+//                }
+//                if (hasResult) {
+//                    event.setMaterialCost(material_cost);
+//                    event.setCost(exp_cost);
+//                    event.setOutput(swordResult);
+//                }
+//            }
+//
+//
+//        }
     }
 
     public static void checkEasyRepair(AnvilUpdateEvent event) {
@@ -311,29 +311,6 @@ public class ModAnvilEvents {
                     event.setOutput(ItemStack.EMPTY);
                     //Idealland.Log("right is not gua");
                 }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void checkEdictCraft(AnvilUpdateEvent event)
-    {
-        if (!ModConfig.GeneralConf.EDICT_CRAFTABLE)
-        {
-            return;
-        }
-
-        if (event.getLeft() != ItemStack.EMPTY && event.getRight() != ItemStack.EMPTY ) {
-            ItemStack left = event.getLeft();
-            ItemStack right = event.getRight();
-
-            if (left.getItem() == Items.PAPER && right.getItem() == Item.getItemFromBlock(Blocks.GOLD_BLOCK))
-            {
-                event.setMaterialCost(1);
-                event.setCost(30);
-
-                ItemStack result = new ItemStack(ModItems.RANDOM_EDICT);
-                event.setOutput(result);
             }
         }
     }

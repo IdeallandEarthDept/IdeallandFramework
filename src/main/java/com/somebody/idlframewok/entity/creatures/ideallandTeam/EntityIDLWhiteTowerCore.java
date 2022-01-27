@@ -176,7 +176,7 @@ public class EntityIDLWhiteTowerCore extends EntityIdeallandUnitBase {
                                 type == Blocks.FLOWING_LAVA)
                         {
                             TakeDamage(0.1f);
-                            worldIn.setBlockState(target, ModBlocks.CONSTRUCTION_SITE.getDefaultState());
+//                            worldIn.setBlockState(target, ModBlocks.CONSTRUCTION_SITE.getDefaultState());
                             maxDone--;
 
                             //otherwise the tower will be soon destroyed

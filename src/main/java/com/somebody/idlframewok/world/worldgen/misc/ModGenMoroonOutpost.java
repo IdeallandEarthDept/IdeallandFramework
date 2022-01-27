@@ -66,7 +66,7 @@ public class ModGenMoroonOutpost implements IWorldGenerator {
                     }else {
                         if (x != 0 && z != 0)
                         {
-                            world.setBlockState(basePos, ModBlocks.MORON_BLOCK.getDefaultState(), 2);
+                            world.setBlockState(basePos, Blocks.PURPUR_BLOCK.getDefaultState(), 2);
                         }else {
                             world.setBlockState(basePos, Blocks.OBSIDIAN.getDefaultState(), 2);
                         }
