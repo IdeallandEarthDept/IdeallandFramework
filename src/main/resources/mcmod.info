@@ -1,8 +1,8 @@
 [
 {
-  "modid": "idealland",
-  "name": "Idealland",
-  "description": "Taoism DeepLake's main mod.",
+  "modid": "untitled",
+  "name": "Idealland Framework",
+  "description": "Modding framework.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.mcmod.cn/class/2421.html",

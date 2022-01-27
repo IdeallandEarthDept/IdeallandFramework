@@ -43,22 +43,6 @@ public class ModStarterEvents {
 		  if(lastStarterVer < CUR_STARTER_KIT_VERSION) {
               IDLNBTUtil.setPlayerIdeallandTagSafe(player, STARTER_KIT_VERSION_TAG, CUR_STARTER_KIT_VERSION);
 
-			  ItemStack scry = new ItemStack(ModItems.skillScry);
-			  //ItemStack guaPalm = new ItemStack(ModItems.skillGuaPalm);
-			  ItemStack commands = new ItemStack(ModItems.ITEM_IDL_ORDER_1, 16);
-			  //IDLSkillNBT.SetGuaEnhanceFree(guaPalm, 3);
-			  player.addItemStackToInventory(scry);
-			  //player.addItemStackToInventory(guaPalm);
-			  player.addItemStackToInventory(commands);
-			  player.addItemStackToInventory(new ItemStack(ModBlocks.CLIMB_PILLAR, 32));
-
-			  if (player.getItemStackFromSlot(EntityEquipmentSlot.FEET).isEmpty())
-			  {
-				  ItemStack geta = new ItemStack(ModItems.ITEM_ARMOR_UNDERFOOT_GETA);
-				  IDLSkillNBT.SetGuaEnhanceFree(geta, 1);
-				  player.setItemStackToSlot(EntityEquipmentSlot.FEET, geta);
-			  }
-
 			  if (player instanceof EntityPlayerMP) {
 				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idlframewok.msg.starter_kit_given", TextFormatting.AQUA);
 

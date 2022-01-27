@@ -103,35 +103,12 @@ public class WorldGenCustomStructures implements IWorldGenerator {
                 //generateStructure(DUNGEON_TOWER, world,random,chunkX,chunkZ, 0.001f, Blocks.AIR);
             }
 
-            generateStructure(MEK_1, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.SAND, true);
-            generateStructure(PILLAR, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.GRASS, true);
-            generateStructure(FAKE_HOUSE, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.GRASS, true);
-            generateStructure(MEK_FIREWORKS, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.AIR, true);
-
-            switch ((chunkX + chunkZ) % 16)
-            {
-                case Color16Def.FIRE:
-                    generateStructure(GOD_1, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.AIR, true);
-                    break;
-                default:
-//                    throw new IllegalStateException("Unexpected value: " + (chunkX + chunkZ) % 16);
-            }
-
-            int seaLevel = world.getSeaLevel();
-            IDFGenStructure structureNow = RAIL_WAY;
-            if (chunkZ % ModConfig.WORLD_GEN_CONF.RAIL_STOP_WAVELENGTH == 0) {
-                structureNow = RAIL_STOP;
-            }
-
-            if (chunkX == 0) {
-                generateStructure(structureNow, world, random, chunkX, chunkZ, seaLevel, 1, false);
-            }
+//            generateStructure(MEK_1, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.SAND, true);
 
             //but will be overlayed by the following.
 
             if (BiomeManager.oceanBiomes.contains(biome)) {
-                generateStructure(BOAT, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.WATER, false);
-                generateStructure(IRON_BOAT, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.WATER, false);
+//                generateStructure(BOAT, world, random, chunkX, chunkZ, WHATNOT_CHANCE(), Blocks.WATER, false);
             }
         }
     }

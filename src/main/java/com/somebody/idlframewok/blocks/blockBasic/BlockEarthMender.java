@@ -32,7 +32,7 @@ public class BlockEarthMender extends BlockBase implements ITileEntityProvider {
 		setHarvestLevel("pickaxe", 1);
 		setLightLevel(0f);
 		setLightOpacity(1);
-		setCreativeTab(ModCreativeTabsList.IDL_BUILDING);
+		setCreativeTab(ModCreativeTabsList.IDL_MISC);
 		setTickRandomly(false);
 	}
 

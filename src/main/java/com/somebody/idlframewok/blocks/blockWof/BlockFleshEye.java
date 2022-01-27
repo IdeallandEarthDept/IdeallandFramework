@@ -27,7 +27,7 @@ public class BlockFleshEye extends BlockBase {
         super.onEntityWalk(worldIn, pos, entityIn);
         if (!worldIn.isRemote)
         {
-            worldIn.setBlockState(pos, ModBlocks.FLESH_BLOCK_SCAR.getDefaultState());
+//            worldIn.setBlockState(pos, ModBlocks.FLESH_BLOCK_SCAR.getDefaultState());
             entityIn.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1f,1f);
         }
     }

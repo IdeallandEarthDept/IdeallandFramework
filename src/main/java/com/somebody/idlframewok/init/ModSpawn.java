@@ -1,11 +1,5 @@
 package com.somebody.idlframewok.init;
 
-import com.somebody.idlframewok.entity.creatures.misc.EntityAutumnRiderGroup;
-import com.somebody.idlframewok.entity.creatures.misc.EntityShadeOtherworld;
-import com.somebody.idlframewok.entity.creatures.mobs.elemental.EntityEarthlin;
-import com.somebody.idlframewok.entity.creatures.mobs.EntityIdentityThief;
-import com.somebody.idlframewok.entity.creatures.mobs.skyland.*;
-import com.somebody.idlframewok.entity.creatures.moroon.*;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.Biome;
@@ -79,8 +73,7 @@ public class ModSpawn {
     private static void addOpenGroundSpawn(Map<Type, Set<Biome>> biomeMap) {
         for (Biome biome : Biome.REGISTRY) {
             if (!BiomeDictionary.hasType(biome, Type.DENSE)) {
-                add(biome, ModConfig.SPAWN_CONF.SPAWN_SKELETON_TOWER, EntitySpawnTower.class, 1, 1);
-                add(biome, ModConfig.SPAWN_CONF.SPAWN_SHADE_OTHERWORLD, EntityAutumnRiderGroup.class, 1,1);
+
             }
         }
     }
@@ -89,7 +82,7 @@ public class ModSpawn {
         for (Biome biome : Biome.REGISTRY) {
             if (BiomeDictionary.hasType(biome, Type.WET) || (BiomeDictionary.hasType(biome, Type.WATER)))
             {
-                add(biome, ModConfig.SPAWN_CONF.SPAWN_TIDE_MAKER, EntityMoroonTideMaker.class, 1, 1);
+
             }
         }
     }

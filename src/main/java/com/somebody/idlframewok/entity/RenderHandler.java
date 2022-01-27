@@ -1,7 +1,6 @@
 package com.somebody.idlframewok.entity;
 
 import com.somebody.idlframewok.entity.creatures.mobs.skyland.EntityCatharVex;
-import com.somebody.idlframewok.entity.render.RenderModVex;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -20,8 +19,8 @@ public class RenderHandler {
 
         //RenderingRegistry.registerEntityRenderingHandler(EntityTurretPrototype.class, manager -> new RenderTurret(manager));
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityCatharVex.class, renderManager -> new RenderModVex(renderManager,
-                new ResourceLocation(Reference.MOD_ID + ":textures/entity/cathar_vex.png"),
-                new ResourceLocation(Reference.MOD_ID + ":textures/entity/cathar_vex_charging.png")));
+//        RenderingRegistry.registerEntityRenderingHandler(EntityCatharVex.class, renderManager -> new RenderModVex(renderManager,
+//                new ResourceLocation(Reference.MOD_ID + ":textures/entity/cathar_vex.png"),
+//                new ResourceLocation(Reference.MOD_ID + ":textures/entity/cathar_vex_charging.png")));
     }
 }

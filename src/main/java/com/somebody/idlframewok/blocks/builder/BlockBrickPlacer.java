@@ -19,7 +19,7 @@ public class BlockBrickPlacer extends BlockBase {
 
     public BlockBrickPlacer(String name, Material material, Block blockToPlace){
         super(name, material);
-        setCreativeTab(ModCreativeTabsList.IDL_BUILDER);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         this.blockToPlace = blockToPlace;
     }
 

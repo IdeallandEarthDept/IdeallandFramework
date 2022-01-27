@@ -11,9 +11,6 @@ public class BiomeOne extends BiomeBase {
     public BiomeOne() {
         super(new BiomePropertiesModified("biome_one").setBaseHeight(-1.5f).setHeightVariation(0.4f).setTemperature(0.5f).setWaterColor(0xff3333));
 
-        topBlock = ModBlocks.GRID_NORMAL.getDefaultState();
-        fillerBlock = ModBlocks.GRID_BLOCK_2.getDefaultState();
-
         decorator.coalGen = new WorldGenMinable(Blocks.PLANKS.getDefaultState(), 10);
 
         decorator.treesPerChunk = 2;

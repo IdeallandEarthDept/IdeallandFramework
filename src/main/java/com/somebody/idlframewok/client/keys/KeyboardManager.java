@@ -65,35 +65,35 @@ public class KeyboardManager {
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    static void checkCast(boolean cast, EntityEquipmentSlot slot)
-    {
-        Minecraft mc = Minecraft.getMinecraft();
-        if (cast) {
-            EntityPlayerSP player = mc.player;
-
-            Idealland.Log("pressed key cast :" + slot);
-
-            ItemStack item = player.getItemStackFromSlot(slot);
-            if(item.isEmpty())
-            {
-                Idealland.LogWarning("Trying to cast an empty item");
-            }
-
-            if(item.getItem() instanceof ICastable)
-            {
-                ICastable skill = (ICastable) item.getItem();
-                if (skill.canCast(player.world, player, item, slot))
-                {
-                    NetworkHandler.SendToServer(new PacketCast(slot.ordinal()));
-                    skill.applyCast(player.world, player, item, slot);
-                }
-                else {
-                    player.playSound(SoundEvents.UI_BUTTON_CLICK, 1f, 0.5f);
-                }
-            }
-        }
-    }
+//    @SideOnly(Side.CLIENT)
+//    static void checkCast(boolean cast, EntityEquipmentSlot slot)
+//    {
+//        Minecraft mc = Minecraft.getMinecraft();
+//        if (cast) {
+//            EntityPlayerSP player = mc.player;
+//
+//            Idealland.Log("pressed key cast :" + slot);
+//
+//            ItemStack item = player.getItemStackFromSlot(slot);
+//            if(item.isEmpty())
+//            {
+//                Idealland.LogWarning("Trying to cast an empty item");
+//            }
+//
+//            if(item.getItem() instanceof ICastable)
+//            {
+//                ICastable skill = (ICastable) item.getItem();
+//                if (skill.canCast(player.world, player, item, slot))
+//                {
+//                    NetworkHandler.SendToServer(new PacketCast(slot.ordinal()));
+//                    skill.applyCast(player.world, player, item, slot);
+//                }
+//                else {
+//                    player.playSound(SoundEvents.UI_BUTTON_CLICK, 1f, 0.5f);
+//                }
+//            }
+//        }
+//    }
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
@@ -105,8 +105,8 @@ public class KeyboardManager {
         if(!mc.inGameHasFocus) return;
         if(mc.currentScreen != null) return;
 
-        checkCast(ClientProxy.CAST_HELMET.isPressed(), EntityEquipmentSlot.HEAD);
-        checkCast(ClientProxy.CAST_MAINHAND.isPressed(), EntityEquipmentSlot.MAINHAND);
-        checkCast(ClientProxy.CAST_OFFHAND.isPressed(), EntityEquipmentSlot.OFFHAND);
+//        checkCast(ClientProxy.CAST_HELMET.isPressed(), EntityEquipmentSlot.HEAD);
+//        checkCast(ClientProxy.CAST_MAINHAND.isPressed(), EntityEquipmentSlot.MAINHAND);
+//        checkCast(ClientProxy.CAST_OFFHAND.isPressed(), EntityEquipmentSlot.OFFHAND);
     }
 }

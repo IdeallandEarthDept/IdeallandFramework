@@ -45,7 +45,7 @@ public abstract class BlockTickMorphOre extends BlockPhasingOre {
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         if (state.getBlock() == this && isActive(state)) {
-            return ModItems.RAIN_RUNE;
+//            return ModItems.RAIN_RUNE;
         }
         //If you call this with a non-this-block state, will cause dead-loop if unhandled!
         return super.getItemDropped(state, rand, fortune);

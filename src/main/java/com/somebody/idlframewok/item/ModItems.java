@@ -1,6 +1,8 @@
 package com.somebody.idlframewok.item;
 
+import net.minecraft.entity.passive.HorseArmorType;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 import java.util.List;

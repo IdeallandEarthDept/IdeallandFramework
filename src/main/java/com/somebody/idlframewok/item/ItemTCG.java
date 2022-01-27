@@ -55,7 +55,7 @@ public class ItemTCG extends ItemBase {
     public ItemTCG(int index) {
         super("tcg_"+index);
         this.index = index;
-        setCreativeTab(ModCreativeTabsList.IDL_TCG);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         LIST_C.add(this);
     }
 

@@ -70,11 +70,11 @@ public class BlockDungeonCustomizedTrap extends BlockDungeonTrapBase implements 
 
         if (active)
         {
-            worldIn.setBlockState(pos, ModBlocks.BASE_TICK_TRAP.getDefaultState().withProperty(ACTIVE_PROPERTY_ENUM, EnumActive.ACTIVE), 3);
+//            worldIn.setBlockState(pos, ModBlocks.BASE_TICK_TRAP.getDefaultState().withProperty(ACTIVE_PROPERTY_ENUM, EnumActive.ACTIVE), 3);
         }
         else
         {
-            worldIn.setBlockState(pos, ModBlocks.BASE_TICK_TRAP.getDefaultState().withProperty(ACTIVE_PROPERTY_ENUM, EnumActive.INACTIVE), 3);
+//            worldIn.setBlockState(pos, ModBlocks.BASE_TICK_TRAP.getDefaultState().withProperty(ACTIVE_PROPERTY_ENUM, EnumActive.INACTIVE), 3);
         }
 
         keepTileEntity = false;

@@ -289,30 +289,30 @@ public class ModAnvilEvents {
     @SubscribeEvent
     public static void checkGuaEnhance(AnvilUpdateEvent event)
     {
-        if (event.getLeft() != ItemStack.EMPTY && event.getRight() != ItemStack.EMPTY ) {
-            ItemStack left = event.getLeft();
-            ItemStack right = event.getRight();
-
-            if (left.getItem() instanceof IGuaEnhance)
-            {
-                IGuaEnhance leftItem = (IGuaEnhance) left.getItem();
-                int guaIndex = IDLGeneral.returnGuaIndex(right);
-                if (guaIndex >= 0 && leftItem.acceptGuaIndex(guaIndex))
-                {
-                    int curCount = IDLSkillNBT.GetGuaEnhanceTotal(left);
-                    event.setMaterialCost(left.getCount());
-                    event.setCost((curCount + 1)*left.getCount());
-
-                    ItemStack result = left.copy();
-                    IDLSkillNBT.AddGuaEnhance(result, guaIndex, 1);
-                    event.setOutput(result);
-                }
-                else {
-                    event.setOutput(ItemStack.EMPTY);
-                    //Idealland.Log("right is not gua");
-                }
-            }
-        }
+//        if (event.getLeft() != ItemStack.EMPTY && event.getRight() != ItemStack.EMPTY ) {
+//            ItemStack left = event.getLeft();
+//            ItemStack right = event.getRight();
+//
+//            if (left.getItem() instanceof IGuaEnhance)
+//            {
+//                IGuaEnhance leftItem = (IGuaEnhance) left.getItem();
+//                int guaIndex = IDLGeneral.returnGuaIndex(right);
+//                if (guaIndex >= 0 && leftItem.acceptGuaIndex(guaIndex))
+//                {
+//                    int curCount = IDLSkillNBT.GetGuaEnhanceTotal(left);
+//                    event.setMaterialCost(left.getCount());
+//                    event.setCost((curCount + 1)*left.getCount());
+//
+//                    ItemStack result = left.copy();
+//                    IDLSkillNBT.AddGuaEnhance(result, guaIndex, 1);
+//                    event.setOutput(result);
+//                }
+//                else {
+//                    event.setOutput(ItemStack.EMPTY);
+//                    //Idealland.Log("right is not gua");
+//                }
+//            }
+//        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

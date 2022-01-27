@@ -36,8 +36,8 @@ public class EntityMoroonEliteMartialist extends EntityMoroonUnitBase {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
         if (wasRecentlyHit) {
-            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
-            dropItem(ModItems.skillMartialSlam, rand.nextInt(1 + lootingModifier));
+//            dropItem(ModItems.skillAttack1, rand.nextInt(1 + lootingModifier));
+//            dropItem(ModItems.skillMartialSlam, rand.nextInt(1 + lootingModifier));
         }
     }
 

@@ -22,7 +22,7 @@ public class ModBlockRailBase extends BlockRailBase implements IHasModel {
         super(true);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setCreativeTab(ModCreativeTabsList.IDL_WORLD);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         this.setDefaultState(this.blockState.getBaseState().withProperty(SHAPE, BlockRailBase.EnumRailDirection.NORTH_SOUTH));
         ModBlocks.BLOCKS.add(this);
         addToItems();

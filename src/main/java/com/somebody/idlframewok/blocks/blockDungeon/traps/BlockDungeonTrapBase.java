@@ -8,6 +8,6 @@ public class BlockDungeonTrapBase extends BlockBase {
     //note that those blocks won't hurt you in peaceful difficulties
     public BlockDungeonTrapBase(String name, Material material) {
         super(name, material);
-        setCreativeTab(ModCreativeTabsList.IDL_DUNGEON);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
 }

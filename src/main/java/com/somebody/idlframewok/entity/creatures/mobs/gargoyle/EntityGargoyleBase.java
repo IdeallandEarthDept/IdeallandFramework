@@ -78,10 +78,10 @@ public class EntityGargoyleBase extends EntityGeneralMob {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        for (int i = 1; i <= dropConduitAttempts; i++) {
-            if (rand.nextInt(dropFactor) < (lootingModifier + 1))
-                dropItem(ModItems.BASIC_CONDUIT, 1);
-        }
+//        for (int i = 1; i <= dropConduitAttempts; i++) {
+//            if (rand.nextInt(dropFactor) < (lootingModifier + 1))
+//                dropItem(ModItems.BASIC_CONDUIT, 1);
+//        }
 
         if (rand.nextInt(dropFactor) < (lootingModifier + 1))
             dropItem(Items.DIAMOND, 1);

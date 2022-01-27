@@ -40,7 +40,7 @@ public class BlockPlantBase extends BlockBush implements net.minecraftforge.comm
 
         setUnlocalizedName(name);
         setRegistryName(name);
-        setCreativeTab(ModCreativeTabsList.IDL_WORLD);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
 
         ModBlocks.BLOCKS.add(this);
         addToItems();

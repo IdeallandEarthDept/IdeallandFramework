@@ -34,17 +34,4 @@ public class IDLGeneral {
         PotionEffect effect = livingBase.getActivePotionEffect(buff);
         return effect == null ? -1 : effect.getDuration();
     }
-
-    public static int returnGuaIndex(ItemStack stack)
-    {
-        Item item = stack.getItem();
-        for (int i = 0; i < GUA_TYPES; i++)
-        {
-            if (item == ModItems.GUA[i])
-            {
-                return i;
-            }
-        }
-        return -1;
-    }
 }

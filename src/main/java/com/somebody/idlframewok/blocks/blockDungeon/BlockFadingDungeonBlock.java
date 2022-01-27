@@ -15,7 +15,7 @@ public class BlockFadingDungeonBlock extends BlockDungeonWall {
         super(name, material);
         setHardness(-1);
         setLightOpacity(255);
-        setCreativeTab(ModCreativeTabsList.IDL_DUNGEON);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
         setTickRandomly(true);
     }
 

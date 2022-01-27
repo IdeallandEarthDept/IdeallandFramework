@@ -28,15 +28,16 @@ public class DimensionUniversal extends WorldProviderSurface {
         return new ChunkGenUniversal(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled(), world.getWorldInfo().getGeneratorOptions());
     }
 
+    //Need override
+//    @Override
+//    public DimensionType getDimensionType() {
+//        return InitDimension.DIM_UNIV;
+//    }
+
     //----------trivial
     @Override
     public int getAverageGroundLevel() {
         return 128;
-    }
-
-    @Override
-    public DimensionType getDimensionType() {
-        return InitDimension.DIM_UNIV;
     }
 
     @Override

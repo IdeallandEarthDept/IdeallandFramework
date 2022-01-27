@@ -22,8 +22,6 @@ public class BiomeSkylandBase extends BiomeBase implements GodBelieverSingle {
     public BiomeSkylandBase(int index) {
         super(new BiomePropertiesModified("skyland_"+index).setBaseHeight(0f).setHeightVariation(0.4f).setTemperature(temperature[index]).setWaterColor(Color16Def.getGodColor(index)));
         this.index = index;
-        topBlock = ModBlocks.GRID_NORMAL.getDefaultState();
-        fillerBlock = ModBlocks.GRID_BLOCK_2.getDefaultState();
 
         this.decorator.treesPerChunk = 1;
         this.decorator.flowersPerChunk = 5;

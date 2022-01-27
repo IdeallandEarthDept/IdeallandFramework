@@ -12,6 +12,6 @@ public class ItemHorseArmor extends ItemBase {
 
     @Override
     public HorseArmorType getHorseArmorType(ItemStack stack) {
-        return ModItems.TEST_TYPE;
+        return HorseArmorType.GOLD;
     }
 }

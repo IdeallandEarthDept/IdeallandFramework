@@ -11,7 +11,7 @@ public class BiomeMoroon extends BiomeBase {
     public BiomeMoroon() {
         super(new BiomePropertiesModified("moroon_base").setBaseHeight(0.4f).setHeightVariation(0.4f).setTemperature(0.5f).setWaterColor(0xff3333));
 
-        topBlock = ModBlocks.MORON_BLOCK.getDefaultState();
+//        topBlock = ModBlocks.MORON_BLOCK.getDefaultState();
         fillerBlock = Blocks.IRON_BLOCK.getDefaultState();
 
         decorator.coalGen = new WorldGenMinable(Blocks.DIAMOND_BLOCK.getDefaultState(), 10);

@@ -24,7 +24,7 @@ public abstract class ItemTrapToolBase extends ItemBase implements ILinearModule
     public ItemTrapToolBase(String name, int defaultVal) {
         super(name);
         this.defaultVal = defaultVal;
-        setCreativeTab(ModCreativeTabsList.IDL_DUNGEON);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
 
     public int getState(ItemStack stack)

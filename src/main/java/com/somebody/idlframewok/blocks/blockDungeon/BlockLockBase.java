@@ -20,7 +20,7 @@ public abstract class BlockLockBase extends BlockBase {
         this.isOn = isOn;
         setLightLevel(isOn ? 0.5f : 0.0f);
         setHardness(-1);
-        setCreativeTab(ModCreativeTabsList.IDL_DUNGEON);
+        setCreativeTab(ModCreativeTabsList.IDL_MISC);
     }
 
     public BlockLockBase setAlternative(BlockLockBase blockLockBase)

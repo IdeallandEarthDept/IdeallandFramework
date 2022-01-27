@@ -153,9 +153,8 @@ public class Teleport implements net.minecraftforge.common.util.ITeleporter {
                     }
                 }
 
-                world.setBlockState(blockpos$mutableblockpos.setPos(x, yAir - 1, z), ModBlocks.RANDOM_TP.getDefaultState());
-
-
+                //returning teleport
+//                world.setBlockState(blockpos$mutableblockpos.setPos(x, yAir - 1, z), ModBlocks.RANDOM_TP.getDefaultState());
 
                 Idealland.LogWarning("Set %s to random_tp for teleportation", blockpos$mutableblockpos);
                 if (entity instanceof EntityPlayerMP)
