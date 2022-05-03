@@ -11,7 +11,7 @@ public class ModItems {
 
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 //
-//    //	public static final ItemBase BIO_METAL_INGOT_1 = new ItemBase("bio_bronze_ingot");
+    public static final ItemBase BIO_METAL_INGOT_1 = new ItemAntiBoomBase("yi_jian_mei");
 //    public static final ItemBase BIO_METAL_INGOT_1 = new ItemUseDemo("bio_bronze_ingot");
 //	public static final ItemBase MOROON_INGOT = new ItemBase("moroon_ingot");
 //
