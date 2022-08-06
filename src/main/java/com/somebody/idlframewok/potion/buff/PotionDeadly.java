@@ -1,8 +1,8 @@
 package com.somebody.idlframewok.potion.buff;
 
-import net.minecraft.entity.EntityLivingBase;
-
 import javax.annotation.Nonnull;
+
+import net.minecraft.entity.EntityLivingBase;
 
 public class PotionDeadly extends BasePotion {
 

@@ -5,13 +5,15 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static net.minecraft.util.DamageSource.FALL;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemSkillBlessedArmor extends ItemSkillBase {
@@ -37,7 +39,7 @@ public class ItemSkillBlessedArmor extends ItemSkillBase {
     public static void onCreatureDamaged(LivingDamageEvent evt) {
         World world = evt.getEntity().getEntityWorld();
         EntityLivingBase hurtOne = evt.getEntityLiving();
-        if (evt.getSource() == FALL && hurtOne instanceof EntityPlayer)
+        if (evt.getSource() == DamageSource.FALL && hurtOne instanceof EntityPlayer)
         {
             EntityPlayer player = (EntityPlayer)hurtOne;
             ItemStack stack = AttemptPlayerHand(player, EnumHand.MAIN_HAND);

@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.potion.buff;
 
+import java.util.Collection;
+
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
@@ -7,8 +9,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Collection;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class PotionMagicResist extends BasePotion {

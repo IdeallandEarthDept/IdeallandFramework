@@ -1,6 +1,12 @@
 package com.somebody.idlframewok.entity;
 
-import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.*;
+import java.util.Vector;
+
+import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
+import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlock;
+import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlockBrutal;
+import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlockSafe;
+import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionSummonEntity;
 import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import net.minecraft.block.state.IBlockState;
@@ -11,8 +17,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-
-import java.util.Vector;
 
 public class BuildingCore {
 

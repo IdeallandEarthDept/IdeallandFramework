@@ -1,8 +1,11 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.item.ItemBase;
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.MessageDef;
@@ -22,14 +25,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.G_SKY;
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.CommonFunctions.SendMsgToPlayer;
-import static com.somebody.idlframewok.util.CommonFunctions.isShiftPressed;
-import static com.somebody.idlframewok.util.MessageDef.getSkillCastKey;
 
 enum SKILL_MSG_TYPE
 {
@@ -57,7 +52,7 @@ public class ItemSkillBase extends ItemBase {
 
     public int maxLevel = 5;
 
-    public int gua_index = G_SKY;
+    public int gua_index = CommonDef.G_SKY;
 
     public boolean showCDDesc = true;
     public boolean showDamageDesc = true;
@@ -72,7 +67,7 @@ public class ItemSkillBase extends ItemBase {
     protected int maxDialogues = 0;
 
     protected int GetMaxTick(ItemStack stack) {
-        return (int) (getCoolDown(stack) * TICK_PER_SECOND);
+        return (int) (getCoolDown(stack) * CommonDef.TICK_PER_SECOND);
     }
 
     public ItemSkillBase(String name) {
@@ -153,9 +148,9 @@ public class ItemSkillBase extends ItemBase {
         switch (msg_type)
         {
             case CD:
-                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.IN_CD_DESC_KEY);
+                CommonFunctions.SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.IN_CD_DESC_KEY);
             case SUCCESS:
-                SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.SUCCESS_DESC_KEY);
+                CommonFunctions.SendMsgToPlayer((EntityPlayerMP)player, stack.getUnlocalizedName()+ IDLSkillNBT.SUCCESS_DESC_KEY);
                 default:
                     break;
         }
@@ -285,7 +280,7 @@ public class ItemSkillBase extends ItemBase {
     @Override
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
-        boolean shiftPressed = !shiftToShowDesc || isShiftPressed();
+        boolean shiftPressed = !shiftToShowDesc || CommonFunctions.isShiftPressed();
         if (shiftPressed)
         {
             if (showCDDesc)
@@ -342,7 +337,7 @@ public class ItemSkillBase extends ItemBase {
             int index = livingBase.getRNG().nextInt(maxDialogues);
             if (livingBase instanceof EntityPlayer)
             {
-                CommonFunctions.SafeSendMsgToPlayer((EntityPlayer) livingBase, getSkillCastKey(stack, index));
+                CommonFunctions.SafeSendMsgToPlayer((EntityPlayer) livingBase, MessageDef.getSkillCastKey(stack, index));
             }
         }
     }

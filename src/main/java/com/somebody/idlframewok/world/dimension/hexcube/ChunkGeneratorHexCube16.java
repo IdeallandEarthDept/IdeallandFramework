@@ -1,6 +1,15 @@
 package com.somebody.idlframewok.world.dimension.hexcube;
 
-import com.somebody.idlframewok.world.dimension.hexcube.structure.*;
+import java.util.List;
+import java.util.Random;
+import javax.annotation.Nullable;
+
+import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.world.dimension.hexcube.structure.GenCubeBase;
+import com.somebody.idlframewok.world.dimension.hexcube.structure.GenCubeSoilRoom;
+import com.somebody.idlframewok.world.dimension.hexcube.structure.GenCubeTorchRoom;
+import com.somebody.idlframewok.world.dimension.hexcube.structure.GenCubeTreasure;
+import com.somebody.idlframewok.world.dimension.hexcube.structure.GenCubeWoodRoom;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EnumCreatureType;
@@ -13,12 +22,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Random;
-
-import static com.somebody.idlframewok.util.CommonDef.CHUNK_SIZE;
 
 public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
@@ -92,7 +95,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     public void buildChunk(int x, int z, ChunkPrimer primer) {
 
         if (chunkUsed(x, z)) {
-            for (int y = 0; y < heightLimit; y+=CHUNK_SIZE) {
+            for (int y = 0; y < heightLimit; y+= CommonDef.CHUNK_SIZE) {
                 genCubeHalf(primer, x, y, z);
             }
         }
@@ -106,11 +109,11 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
     }
 
     private void GenerateFloor(ChunkPrimer primer) {
-        for (int dx = 0; dx < CHUNK_SIZE; dx++)
+        for (int dx = 0; dx < CommonDef.CHUNK_SIZE; dx++)
         {
             //for (int dy = 0; dy < CommonDef.CHUNK_SIZE; dy++)
             {
-                for (int dz = 0; dz < CHUNK_SIZE; dz++)
+                for (int dz = 0; dz < CommonDef.CHUNK_SIZE; dz++)
                 {
                     //BlockPos curPos = new BlockPos(x+dx, y+dy, z+dz);
                     primer.setBlockState(dx, 0, dz,
@@ -155,11 +158,11 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
         boolean hasLight = hasLight(x, y, z);
 
         IBlockState wallState =  getWall(x, y, z);
-        for (int dx = 0; dx < CHUNK_SIZE; dx++)
+        for (int dx = 0; dx < CommonDef.CHUNK_SIZE; dx++)
         {
-            for (int dy = 0; dy < CHUNK_SIZE; dy++)
+            for (int dy = 0; dy < CommonDef.CHUNK_SIZE; dy++)
             {
-                for (int dz = 0; dz < CHUNK_SIZE; dz++)
+                for (int dz = 0; dz < CommonDef.CHUNK_SIZE; dz++)
                 {
                     //BlockPos curPos = new BlockPos(x+dx, y+dy, z+dz);
 
@@ -237,7 +240,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
         if (hasLight)
         {
             int min = 1;
-            int max = CHUNK_SIZE -1;
+            int max = CommonDef.CHUNK_SIZE -1;
             primer.setBlockState(min, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
             primer.setBlockState(min, y+min, max, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
             primer.setBlockState(max, y+min, min, Blocks.LIT_REDSTONE_LAMP.getDefaultState());
@@ -314,7 +317,7 @@ public class ChunkGeneratorHexCube16 implements IChunkGenerator {
 
         net.minecraftforge.event.ForgeEventFactory.onChunkPopulate(true, this, this.world, this.rand, chunkX, chunkZ, false);
 
-        for (int y = 0; y < heightLimit; y+=CHUNK_SIZE) {
+        for (int y = 0; y < heightLimit; y+= CommonDef.CHUNK_SIZE) {
 
             EnumRoomType type = getRoomType(x,y,z);
 

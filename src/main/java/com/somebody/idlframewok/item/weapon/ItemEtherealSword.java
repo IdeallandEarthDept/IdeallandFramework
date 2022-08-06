@@ -1,8 +1,8 @@
 package com.somebody.idlframewok.item.weapon;
 
-import com.somebody.idlframewok.item.ItemSwordBase;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.somebody.idlframewok.item.ItemSwordBase;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;

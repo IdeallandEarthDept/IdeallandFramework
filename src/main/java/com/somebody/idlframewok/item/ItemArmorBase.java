@@ -1,5 +1,11 @@
 package com.somebody.idlframewok.item;
 
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.util.CommonFunctions;
@@ -7,8 +13,6 @@ import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.IHasModel;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -21,12 +25,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
 
 //try to sync with ItemBase
 public class ItemArmorBase extends ItemArmor implements IHasModel {

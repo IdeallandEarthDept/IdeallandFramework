@@ -1,25 +1,23 @@
 package com.somebody.idlframewok.item.misc;
 
+import java.util.List;
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.item.ItemBase;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.EntityUtil;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nonnull;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.*;
 
 public class ItemSpaceAnchor extends ItemBase {
     public int chargeTickDefault = 20;
@@ -76,7 +74,7 @@ public class ItemSpaceAnchor extends ItemBase {
         if (!world.isRemote) {
             if (getMaxItemUseDuration(stack) - time >= chargeNeedTick(stack))
             {
-                if (IDLNBTUtil.GetBoolean(stack, ANCHOR_READY, false))
+                if (IDLNBTUtil.GetBoolean(stack, IDLNBTDef.ANCHOR_READY, false))
                 {
                     BlockPos pos = IDLNBTUtil.getMarkedPos(stack);
                     if (living.attemptTeleport(pos.getX(), pos.getY(), pos.getZ()))

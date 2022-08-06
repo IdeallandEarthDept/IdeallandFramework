@@ -1,15 +1,8 @@
 package com.somebody.idlframewok.keys;
 
 import com.somebody.idlframewok.IdlFramework;
-import com.somebody.idlframewok.item.skills.ItemSkillBase;
-import com.somebody.idlframewok.network.NetworkHandler;
-import com.somebody.idlframewok.network.protocols.PacketTest;
 import com.somebody.idlframewok.proxy.ClientProxy;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumHand;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

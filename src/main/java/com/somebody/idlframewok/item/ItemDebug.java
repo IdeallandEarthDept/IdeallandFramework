@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.entity.projectiles.EntityIdlProjectile;
 import com.somebody.idlframewok.entity.projectiles.ProjectileArgs;
@@ -19,10 +21,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
 
 public class ItemDebug extends ItemBase{
     int index = 0;

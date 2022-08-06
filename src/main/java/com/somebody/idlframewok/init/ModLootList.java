@@ -1,15 +1,14 @@
 package com.somebody.idlframewok.init;
 
-import com.google.common.collect.Sets;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootTable;
-import net.minecraft.world.storage.loot.LootTableManager;
-
 import java.io.File;
 import java.util.Collections;
 import java.util.Set;
 
-import static com.somebody.idlframewok.util.Reference.MOD_ID;
+import com.google.common.collect.Sets;
+import com.somebody.idlframewok.util.Reference;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.storage.loot.LootTable;
+import net.minecraft.world.storage.loot.LootTableManager;
 
 public class ModLootList {
 
@@ -21,7 +20,7 @@ public class ModLootList {
 
         private static ResourceLocation register(String id)
         {
-            return register(new ResourceLocation(MOD_ID, "loot_table/" + id));
+            return register(new ResourceLocation(Reference.MOD_ID, "loot_table/" + id));
         }
 
         public static ResourceLocation register(ResourceLocation id)

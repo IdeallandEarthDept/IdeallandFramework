@@ -1,18 +1,17 @@
 package com.somebody.idlframewok.util.NBTStrDef;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.annotation.Nullable;
 
+import com.somebody.idlframewok.util.IDLNBT;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-
-import java.util.*;
-
-import static com.somebody.idlframewok.util.IDLNBT.*;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.*;
 
 //on a server, strlen 65000 is ok, but 66000 will crash
 public class IDLNBTUtil {
@@ -274,12 +273,12 @@ public class IDLNBTUtil {
 
 	public static void SetGuaEnhanceFree(ItemStack stack, int val)
 	{
-		SetInt(stack, GUA_FREE_SOCKET, val);
+		SetInt(stack, IDLNBTDef.GUA_FREE_SOCKET, val);
 	}
 
 	public static boolean GetIsLearned(EntityPlayer player, int skillID)
 	{
-		int[] learnt = getPlayerIdeallandIntArraySafe(player, STARTER_KIT_VERSION_TAG);
+		int[] learnt = IDLNBT.getPlayerIdeallandIntArraySafe(player, IDLNBTDef.STARTER_KIT_VERSION_TAG);
 		if (Arrays.binarySearch(learnt, skillID) >= 0)
 		{
 			return true;
@@ -289,7 +288,7 @@ public class IDLNBTUtil {
 
 	public static void SetIsLearned(EntityPlayer player, int skillID, boolean val)
 	{
-		int[] learnt = getPlayerIdeallandIntArraySafe(player, LEARNING_DONE);
+		int[] learnt = IDLNBT.getPlayerIdeallandIntArraySafe(player, IDLNBTDef.LEARNING_DONE);
 		int oldIndex = Arrays.binarySearch(learnt, skillID);
 		if (oldIndex >= 0)
 		{
@@ -313,7 +312,7 @@ public class IDLNBTUtil {
 				Collections.sort(list);
 
 				int[] newLearnt = list.stream().mapToInt(Integer::valueOf).toArray();
-				setPlayerIdeallandTagSafe(player, LEARNING_DONE, newLearnt);
+				IDLNBT.setPlayerIdeallandTagSafe(player, IDLNBTDef.LEARNING_DONE, newLearnt);
 			}else {
 				return;
 			}
@@ -326,28 +325,28 @@ public class IDLNBTUtil {
 	public static BlockPos getMarkedPos(ItemStack stack)
 	{
 		NBTTagCompound NBT = IDLNBTUtil.getNBT(stack);
-		return new BlockPos(NBT.getDouble(ANCHOR_X), NBT.getDouble(ANCHOR_Y), NBT.getDouble(ANCHOR_Z));
+		return new BlockPos(NBT.getDouble(IDLNBTDef.ANCHOR_X), NBT.getDouble(IDLNBTDef.ANCHOR_Y), NBT.getDouble(IDLNBTDef.ANCHOR_Z));
 	}
 
 	public static BlockPos getMarkedPos2(ItemStack stack)
 	{
 		NBTTagCompound NBT = IDLNBTUtil.getNBT(stack);
-		return new BlockPos(NBT.getDouble(ANCHOR_X_2), NBT.getDouble(ANCHOR_Y_2), NBT.getDouble(ANCHOR_Z_2));
+		return new BlockPos(NBT.getDouble(IDLNBTDef.ANCHOR_X_2), NBT.getDouble(IDLNBTDef.ANCHOR_Y_2), NBT.getDouble(IDLNBTDef.ANCHOR_Z_2));
 	}
 
 	public static void markPosToStack(ItemStack stack, BlockPos pos)
 	{
-		IDLNBTUtil.SetBoolean(stack, ANCHOR_READY, true);
-		IDLNBTUtil.SetDouble(stack, ANCHOR_X, pos.getX());
-		IDLNBTUtil.SetDouble(stack, ANCHOR_Y, pos.getY());
-		IDLNBTUtil.SetDouble(stack, ANCHOR_Z, pos.getZ());
+		IDLNBTUtil.SetBoolean(stack, IDLNBTDef.ANCHOR_READY, true);
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_X, pos.getX());
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_Y, pos.getY());
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_Z, pos.getZ());
 	}
 
 	public static void markPosToStack2(ItemStack stack, BlockPos pos)
 	{
-		IDLNBTUtil.SetBoolean(stack, ANCHOR_READY_2, true);
-		IDLNBTUtil.SetDouble(stack, ANCHOR_X_2, pos.getX());
-		IDLNBTUtil.SetDouble(stack, ANCHOR_Y_2, pos.getY());
-		IDLNBTUtil.SetDouble(stack, ANCHOR_Z_2, pos.getZ());
+		IDLNBTUtil.SetBoolean(stack, IDLNBTDef.ANCHOR_READY_2, true);
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_X_2, pos.getX());
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_Y_2, pos.getY());
+		IDLNBTUtil.SetDouble(stack, IDLNBTDef.ANCHOR_Z_2, pos.getZ());
 	}
 }

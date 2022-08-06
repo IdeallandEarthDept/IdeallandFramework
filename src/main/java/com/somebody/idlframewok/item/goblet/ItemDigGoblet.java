@@ -1,7 +1,9 @@
 package com.somebody.idlframewok.item.goblet;
 
-import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
+import java.util.List;
+
 import com.google.common.primitives.Ints;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,8 +15,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.ASSIGNED_BLOCK_NAME;
 

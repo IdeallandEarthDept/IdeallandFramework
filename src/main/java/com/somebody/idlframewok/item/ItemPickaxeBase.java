@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.util.CommonFunctions;
@@ -16,8 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemPickaxeBase extends ItemPickaxe implements IHasModel {
 	private boolean overrideRarity = false;

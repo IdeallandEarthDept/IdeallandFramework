@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.item.skills;
 
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
@@ -7,8 +8,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class ItemMirrorWork extends ItemSkillBase {
 
@@ -25,7 +24,7 @@ public class ItemMirrorWork extends ItemSkillBase {
 
         if (!worldIn.isRemote && handIn == EnumHand.MAIN_HAND)
         {
-            playerIn.setFire(5 * TICK_PER_SECOND);
+            playerIn.setFire(5 * CommonDef.TICK_PER_SECOND);
             playerIn.addItemStackToInventory(playerIn.getHeldItemOffhand().copy());
             activateCoolDown(playerIn, stack);
         }

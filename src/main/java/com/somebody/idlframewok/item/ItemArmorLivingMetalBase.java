@@ -1,10 +1,12 @@
 package com.somebody.idlframewok.item;
 
+import com.google.common.collect.Multimap;
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IHasModel;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import com.somebody.idlframewok.util.Reference;
-import com.google.common.collect.Multimap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -19,9 +21,6 @@ import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.BIOMETAL_WARNED;
 
 //try to sync with ItemBase
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
@@ -47,7 +46,7 @@ public class ItemArmorLivingMetalBase extends ItemArmorBase implements IHasModel
 		super.onUpdateWearing(stack, worldIn, entityIn, itemSlot, isSelected);
 		EntityPlayer player = (EntityPlayer) entityIn;
 
-		if (worldIn.getWorldTime() % TICK_PER_SECOND == 0)
+		if (worldIn.getWorldTime() % CommonDef.TICK_PER_SECOND == 0)
 		{
             boolean flagRule = player.world.getGameRules().getBoolean("naturalRegeneration");
             FoodStats stats = player.getFoodStats();
@@ -65,13 +64,13 @@ public class ItemArmorLivingMetalBase extends ItemArmorBase implements IHasModel
         {
             if (((float)stack.getItemDamage() / stack.getMaxDamage()) >= 0.9f)
             {
-                if (worldIn.getWorldTime() % TICK_PER_SECOND == 0 && !IDLNBTUtil.GetBoolean(stack, BIOMETAL_WARNED, false)) {
-                    IDLNBTUtil.SetBoolean(stack, BIOMETAL_WARNED, true);
+                if (worldIn.getWorldTime() % CommonDef.TICK_PER_SECOND == 0 && !IDLNBTUtil.GetBoolean(stack, IDLNBTDef.BIOMETAL_WARNED, false)) {
+                    IDLNBTUtil.SetBoolean(stack, IDLNBTDef.BIOMETAL_WARNED, true);
                     CommonFunctions.SendMsgToPlayer((EntityPlayerMP) player, "idlframewok.msg.low_dura", stack.getDisplayName());
                 }
             }
             else {
-                IDLNBTUtil.SetBoolean(stack, BIOMETAL_WARNED, false);
+                IDLNBTUtil.SetBoolean(stack, IDLNBTDef.BIOMETAL_WARNED, false);
             }
         }
 

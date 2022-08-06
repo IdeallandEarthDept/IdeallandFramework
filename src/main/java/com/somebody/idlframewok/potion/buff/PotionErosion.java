@@ -1,10 +1,10 @@
 package com.somebody.idlframewok.potion.buff;
 
+import javax.annotation.Nonnull;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
-
-import javax.annotation.Nonnull;
 
 public class PotionErosion extends BaseSimplePotion {
     public PotionErosion(boolean isBadEffectIn, int liquidColorIn, String name, int icon) {

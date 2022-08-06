@@ -1,11 +1,8 @@
 package com.somebody.idlframewok.util;
 
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.IDEALLAND;
 
 public class IDLNBT {
 	public int pearlCount;
@@ -81,7 +78,7 @@ public class IDLNBT {
 	public static NBTTagCompound getPlyrIdlTagSafe(EntityPlayer player) {
 		NBTTagCompound playerData = player.getEntityData();
 		NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
-		NBTTagCompound idl_data = getTagSafe(data, IDEALLAND);
+		NBTTagCompound idl_data = getTagSafe(data, IDLNBTDef.IDEALLAND);
 
 		return idl_data;
 	}
@@ -117,7 +114,7 @@ public class IDLNBT {
 
 		idl_data.setInteger(key, value);
 
-		data.setTag(IDEALLAND, idl_data);
+		data.setTag(IDLNBTDef.IDEALLAND, idl_data);
 		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
 	}
 
@@ -128,7 +125,7 @@ public class IDLNBT {
 
 		idl_data.setIntArray(key, value);
 
-		data.setTag(IDEALLAND, idl_data);
+		data.setTag(IDLNBTDef.IDEALLAND, idl_data);
 		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
 	}
 
@@ -139,7 +136,7 @@ public class IDLNBT {
 
 		idl_data.setDouble(key, value);
 
-		data.setTag(IDEALLAND, idl_data);
+		data.setTag(IDLNBTDef.IDEALLAND, idl_data);
 		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
 	}
 
@@ -150,7 +147,7 @@ public class IDLNBT {
 
 		idl_data.setBoolean(key, value);
 
-		data.setTag(IDEALLAND, idl_data);
+		data.setTag(IDLNBTDef.IDEALLAND, idl_data);
 		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
 	}
 
@@ -161,7 +158,7 @@ public class IDLNBT {
 
 		idl_data.setString(key, value);
 
-		data.setTag(IDEALLAND, idl_data);
+		data.setTag(IDLNBTDef.IDEALLAND, idl_data);
 		playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
 	}
 }

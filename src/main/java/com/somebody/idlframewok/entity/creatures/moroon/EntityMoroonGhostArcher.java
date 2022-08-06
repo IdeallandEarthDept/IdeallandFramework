@@ -1,8 +1,14 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackRanged;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityTippedArrow;
@@ -20,12 +26,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE;
-
 public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRangedAttackMob {
     private int stationaryCounter = 0;
-    private int stationaryToInvisible = TICK_PER_SECOND * 5;
+    private int stationaryToInvisible = CommonDef.TICK_PER_SECOND * 5;
 
     //A creatures that does ranged attack and becomes invisible
     public EntityMoroonGhostArcher(World worldIn) {
@@ -67,7 +70,7 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
     protected void initEntityAI()
     {
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIAttackRanged(this, 0.3f, TICK_PER_SECOND * 2, 32.0F));
+        this.tasks.addTask(1, new EntityAIAttackRanged(this, 0.3f, CommonDef.TICK_PER_SECOND * 2, 32.0F));
         //this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false));
         //this.tasks.addTask(3, new EntityAIAvoidEntity(this, EntityMoroonBombBeacon.class, 16.0F, 0.6D, 1D));
 //        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
@@ -182,7 +185,7 @@ public class EntityMoroonGhostArcher extends EntityMoroonUnitBase implements IRa
         double d3 = target.posZ - this.posZ;
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.1F;
         entityArrow.shoot(d1, d2 + (double)f, d3, 2F, (float)(f + 7 - this.world.getDifficulty().getDifficultyId() * 2));
-        double damage = this.getEntityAttribute(ATTACK_DAMAGE).getAttributeValue();
+        double damage = this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
         if (target.isSneaking())
         {
             damage /= 5f;

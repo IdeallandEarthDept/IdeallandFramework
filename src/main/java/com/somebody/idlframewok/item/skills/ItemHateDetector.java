@@ -1,7 +1,12 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLGeneral;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,19 +14,13 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
-import java.util.List;
-
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.STATE;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil.GetInt;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil.SetInt;
 
 public class ItemHateDetector extends ItemSkillBase {
 
@@ -41,7 +40,7 @@ public class ItemHateDetector extends ItemSkillBase {
         showCDDesc = false;
         showDamageDesc = false;
         showRangeDesc = true;
-        this.addPropertyOverride(new ResourceLocation(STATE), new IItemPropertyGetter()
+        this.addPropertyOverride(new ResourceLocation(IDLNBTDef.STATE), new IItemPropertyGetter()
         {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn)
@@ -58,7 +57,7 @@ public class ItemHateDetector extends ItemSkillBase {
 //                    }
 //                    int state = GetInt(stack, STATE);
                     //IdlFramework.Log("State = " + state);
-                    return (float)GetInt(stack, STATE);
+                    return (float) IDLNBTUtil.GetInt(stack, IDLNBTDef.STATE);
                 }
             }
         });
@@ -88,10 +87,10 @@ public class ItemHateDetector extends ItemSkillBase {
                 }
             }
 
-            int detectionPre = GetInt(stack, STATE);
+            int detectionPre = IDLNBTUtil.GetInt(stack, IDLNBTDef.STATE);
             if (detectionPre != detection)//optimize
             {
-                SetInt(stack, STATE, detection);
+                IDLNBTUtil.SetInt(stack, IDLNBTDef.STATE, detection);
                 if (detectionPre == 0)
                 {
                     CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) entityIn, msgKey, TextFormatting.YELLOW);

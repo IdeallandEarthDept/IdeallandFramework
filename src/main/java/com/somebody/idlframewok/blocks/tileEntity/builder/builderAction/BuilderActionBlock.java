@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.blocks.tileEntity.builder.builderAction;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -9,8 +11,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class BuilderActionBlock extends BuilderActionBase {
 

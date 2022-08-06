@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -12,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemSkillExperienceDamageAbsorption extends ItemSkillBase {

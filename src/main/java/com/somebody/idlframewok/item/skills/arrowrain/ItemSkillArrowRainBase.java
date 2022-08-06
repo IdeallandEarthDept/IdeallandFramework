@@ -2,8 +2,10 @@ package com.somebody.idlframewok.item.skills.arrowrain;
 
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.*;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
@@ -11,8 +13,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-
-import static net.minecraft.entity.SharedMonsterAttributes.ATTACK_DAMAGE;
 
 public class ItemSkillArrowRainBase extends ItemSkillBase {
     public float KBPower = 1f;
@@ -63,12 +63,12 @@ public class ItemSkillArrowRainBase extends ItemSkillBase {
         double d3 = target.posZ - shooter.posZ;
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         entityArrow.shoot(d1, d2 + (double)f, d3, 1.6F, 12.0F);
-        double damage = shooter.getEntityAttribute(ATTACK_DAMAGE).getAttributeValue();
+        double damage = shooter.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
         if (target.isSneaking())
         {
             damage /= 5f;
         }
-        entityArrow.setDamage(shooter.getEntityAttribute(ATTACK_DAMAGE).getAttributeValue());
+        entityArrow.setDamage(shooter.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
         shooter.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0F, 1.0F / (shooter.getRNG().nextFloat() * 0.4F + 0.8F));
         shooter.world.spawnEntity(entityArrow);
     }

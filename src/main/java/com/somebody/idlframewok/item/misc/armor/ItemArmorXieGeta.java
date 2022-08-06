@@ -1,9 +1,12 @@
 package com.somebody.idlframewok.item.misc.armor;
 
+import java.util.List;
+
 import com.somebody.idlframewok.item.IGuaEnhance;
 import com.somebody.idlframewok.item.ItemArmorBase;
 import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.IDLSkillNBT;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.client.resources.I18n;
@@ -29,12 +32,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.MODE;
-
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
 
@@ -58,16 +55,16 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
             EntityLivingBase living = (EntityLivingBase) entityIn;
 
             int buffPower = getBuffPower(stack);
-            switch ((IDLNBTUtil.GetInt(stack, MODE)))
+            switch ((IDLNBTUtil.GetInt(stack, IDLNBTDef.MODE)))
             {
                 case UP_HILL:
-                    living.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, TICK_PER_SECOND, buffPower));
+                    living.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, CommonDef.TICK_PER_SECOND, buffPower));
                     break;
                 case FLAT_WALK:
-                    living.addPotionEffect(new PotionEffect(MobEffects.SPEED, TICK_PER_SECOND, buffPower));
+                    living.addPotionEffect(new PotionEffect(MobEffects.SPEED, CommonDef.TICK_PER_SECOND, buffPower));
                     break;
                 default:
-                    living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, TICK_PER_SECOND, 0));
+                    living.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, CommonDef.TICK_PER_SECOND, 0));
                     break;
             }
         }
@@ -81,7 +78,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
     static float basicReduction = 2f;
     public static float GetDamageReductionFall(ItemStack stack)
     {
-        if (IDLNBTUtil.GetInt(stack, MODE) != DOWN_HILL)
+        if (IDLNBTUtil.GetInt(stack, IDLNBTDef.MODE) != DOWN_HILL)
         {
             return 0;
         }
@@ -117,16 +114,16 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand handIn, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
         ItemStack stack = playerIn.getHeldItem(handIn);
-        int mode = IDLNBTUtil.GetInt(stack, MODE);
+        int mode = IDLNBTUtil.GetInt(stack, IDLNBTDef.MODE);
         if (!worldIn.isRemote)
         {
             if (mode == MAX_MODE)
             {
-                IDLNBTUtil.SetInt(stack, MODE, 0);
+                IDLNBTUtil.SetInt(stack, IDLNBTDef.MODE, 0);
             }
             else
             {
-                IDLNBTUtil.SetInt(stack, MODE, mode + 1);
+                IDLNBTUtil.SetInt(stack, IDLNBTDef.MODE, mode + 1);
             }
         }
         else {
@@ -167,7 +164,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
             float reduction = ItemArmorXieGeta.GetDamageReductionFall(stack);
             int buffPower = getBuffPower(stack);
 
-            int mode = IDLNBTUtil.GetInt(stack, MODE);
+            int mode = IDLNBTUtil.GetInt(stack, IDLNBTDef.MODE);
             if (mode == DOWN_HILL)
             {
                 return I18n.format(key,  reduction);
@@ -183,7 +180,7 @@ public class ItemArmorXieGeta extends ItemArmorBase implements IGuaEnhance {
     @SideOnly(Side.CLIENT)
     public String getNameKey(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flag)
     {
-        int mode = IDLNBTUtil.GetInt(stack, MODE);
+        int mode = IDLNBTUtil.GetInt(stack, IDLNBTDef.MODE);
         return stack.getUnlocalizedName() + ".desc." + String.valueOf(mode);
     }
 }

@@ -1,12 +1,11 @@
 package com.somebody.idlframewok.world.dimension.hexcube.structure;
 
-import net.minecraft.block.BlockLog;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-
 import java.util.Random;
 
-import static net.minecraft.init.Blocks.LOG;
+import net.minecraft.block.BlockLog;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public class GenCubeWoodRoom extends GenCubeBase {
 
@@ -43,7 +42,7 @@ public class GenCubeWoodRoom extends GenCubeBase {
 
     void CreateLogAt(World worldIn, BlockPos pos)
     {
-        this.setBlockAndNotifyAdequately(worldIn, pos, LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y));
+        this.setBlockAndNotifyAdequately(worldIn, pos, Blocks.LOG.getDefaultState().withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y));
     }
 
 

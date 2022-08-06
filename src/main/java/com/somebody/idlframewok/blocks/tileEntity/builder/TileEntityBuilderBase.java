@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.blocks.tileEntity.builder;
 
+import java.util.Vector;
+
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlock;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlockSafe;
@@ -15,8 +17,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-
-import java.util.Vector;
 
 public class TileEntityBuilderBase extends TileEntity implements ITickable {
 	private SoundEvent onLoadSound = SoundEvents.BLOCK_NOTE_CHIME;

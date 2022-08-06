@@ -1,11 +1,14 @@
 package com.somebody.idlframewok.item;
 
+import java.util.List;
+import java.util.UUID;
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.IHasModel;
-
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
@@ -21,12 +24,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.UUID;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
 
 public class ItemBase extends Item implements IHasModel {
 	private boolean overrideRarity = false;

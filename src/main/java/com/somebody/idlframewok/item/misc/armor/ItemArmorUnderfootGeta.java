@@ -1,12 +1,15 @@
 package com.somebody.idlframewok.item.misc.armor;
 
+import java.util.Collection;
+import java.util.List;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import com.somebody.idlframewok.item.IGuaEnhance;
 import com.somebody.idlframewok.item.ItemArmorBase;
 import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.Reference;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -24,11 +27,6 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.Collection;
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemArmorUnderfootGeta extends ItemArmorBase implements IGuaEnhance {
@@ -88,7 +86,7 @@ public class ItemArmorUnderfootGeta extends ItemArmorBase implements IGuaEnhance
 
     public static float GetDebuffPeriod(ItemStack stack)
     {
-        return Math.max(1f - (float)IDLSkillNBT.GetGuaEnhance(stack, CommonDef.G_EARTH) / (float)maxEnhance, 1f/TICK_PER_SECOND);
+        return Math.max(1f - (float)IDLSkillNBT.GetGuaEnhance(stack, CommonDef.G_EARTH) / (float)maxEnhance, 1f/ CommonDef.TICK_PER_SECOND);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGH)

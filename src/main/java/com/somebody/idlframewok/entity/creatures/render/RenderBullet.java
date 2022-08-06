@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.entity.creatures.render;
 
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.entity.projectiles.EntityIdlProjectile;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
@@ -8,8 +10,6 @@ import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nullable;
 
 public class RenderBullet<T extends EntityIdlProjectile> extends Render<T> {
 

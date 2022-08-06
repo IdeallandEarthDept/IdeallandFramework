@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.weapon;
 
+import java.util.List;
+
 import com.somebody.idlframewok.item.ItemAdaptingBase;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.IDLGeneral;
@@ -9,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class ItemHealingGun extends ItemAdaptingBase {
     public ItemHealingGun(String name) {

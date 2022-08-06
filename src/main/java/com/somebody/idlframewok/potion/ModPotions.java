@@ -1,5 +1,9 @@
 package com.somebody.idlframewok.potion;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.potion.Potion;
@@ -7,10 +11,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ModPotions {

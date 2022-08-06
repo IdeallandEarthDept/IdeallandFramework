@@ -1,17 +1,16 @@
 package com.somebody.idlframewok.recipe.special;
 
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.item.goblet.ItemP2WGoblet;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import javax.annotation.Nonnull;
-
-import static net.minecraft.init.Items.GOLD_INGOT;
 
 public class GobletFill extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -35,7 +34,7 @@ public class GobletFill extends IForgeRegistryEntry.Impl<IRecipe> implements IRe
 					}
 					foundCup = true;
 				}
-				else if (stack.getItem() == GOLD_INGOT)
+				else if (stack.getItem() == Items.GOLD_INGOT)
 				{//found a xp item
 					foundGoldXP++;
 				}
@@ -67,7 +66,7 @@ public class GobletFill extends IForgeRegistryEntry.Impl<IRecipe> implements IRe
 					sword = stack;
 					payingXP += ((ItemP2WGoblet)(sword.getItem())).GetPayingEXP(stack);
 				}
-				else if(stack.getItem() == GOLD_INGOT)
+				else if(stack.getItem() == Items.GOLD_INGOT)
 				{
 					payingXP++;
 				}

@@ -1,7 +1,11 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.IDLGeneral;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -13,11 +17,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_TURN;
-import static com.somebody.idlframewok.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillAttackBoost extends ItemSkillBase {
     public ItemSkillAttackBoost(String name) {
@@ -39,7 +38,7 @@ public class ItemSkillAttackBoost extends ItemSkillBase {
                 ) {
                     if (EntityUtil.getAttitude(playerIn, living) == EntityUtil.ATTITUDE.FRIEND)
                     {
-                        living.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 3*TICK_PER_TURN, getLevel(stack) - 1));
+                        living.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 3* CommonDef.TICK_PER_TURN, IDLSkillNBT.getLevel(stack) - 1));
                     }
                 }
                 playerIn.swingArm(handIn);

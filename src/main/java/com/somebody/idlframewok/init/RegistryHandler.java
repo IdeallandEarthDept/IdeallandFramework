@@ -1,12 +1,10 @@
 package com.somebody.idlframewok.init;
 
-import com.somebody.idlframewok.command.CommandDimTeleport;
-import com.somebody.idlframewok.enchantments.ModEnchantmentInit;
-import com.somebody.idlframewok.entity.RenderHandler;
 import com.somebody.idlframewok.blocks.ModBlocks;
+import com.somebody.idlframewok.enchantments.ModEnchantmentInit;
 import com.somebody.idlframewok.entity.ModEntityInit;
+import com.somebody.idlframewok.entity.RenderHandler;
 import com.somebody.idlframewok.item.ModItems;
-
 import com.somebody.idlframewok.util.IHasModel;
 import com.somebody.idlframewok.util.ModSoundHandler;
 import net.minecraft.block.Block;

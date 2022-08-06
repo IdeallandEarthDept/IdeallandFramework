@@ -5,12 +5,11 @@ import com.somebody.idlframewok.entity.projectiles.ProjectileArgs;
 import com.somebody.idlframewok.util.EntityUtil;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
-
-import static net.minecraft.entity.SharedMonsterAttributes.ATTACK_SPEED;
 
 public class EntityAITurretAttack extends EntityAIBase {
 
@@ -86,7 +85,7 @@ public class EntityAITurretAttack extends EntityAIBase {
                 {
                     if (this.curCoolDown <= 0)
                     {
-                        IAttributeInstance attribute = self.getEntityAttribute(ATTACK_SPEED);
+                        IAttributeInstance attribute = self.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
                         double speedFactor = ((attribute == null) || (attribute.getAttributeValue() == 0)) ? 1 : attribute.getBaseValue() / attribute.getAttributeValue();
 
                         this.curCoolDown = (int) ((coolDownMin + self.getRNG().nextInt(coolDownDelta)) * speedFactor);

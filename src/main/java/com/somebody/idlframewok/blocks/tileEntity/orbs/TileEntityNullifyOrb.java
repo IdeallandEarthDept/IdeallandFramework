@@ -9,7 +9,6 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-
 public class TileEntityNullifyOrb extends TileEntityOrbBase implements ITickable {
 
 	@SubscribeEvent

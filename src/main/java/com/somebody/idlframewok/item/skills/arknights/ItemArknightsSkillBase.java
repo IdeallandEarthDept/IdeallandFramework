@@ -2,6 +2,7 @@ package com.somebody.idlframewok.item.skills.arknights;
 
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.entity.Entity;
@@ -14,8 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class ItemArknightsSkillBase extends ItemSkillBase {
 
@@ -94,7 +93,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
 
     public void upkeep(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
     {
-        if (worldIn.isRemote || worldIn.getWorldTime() % TICK_PER_SECOND != 0)
+        if (worldIn.isRemote || worldIn.getWorldTime() % CommonDef.TICK_PER_SECOND != 0)
         {
             return;
         }
@@ -107,7 +106,7 @@ public class ItemArknightsSkillBase extends ItemSkillBase {
             if (casting)
             {
                 float dura = IDLSkillNBT.GetDura(stack);
-                if (worldIn.getWorldTime() % TICK_PER_SECOND == 0)
+                if (worldIn.getWorldTime() % CommonDef.TICK_PER_SECOND == 0)
                 {
                     dura -= 1f;
                 }

@@ -1,7 +1,11 @@
 package com.somebody.idlframewok.item.skills.martial;
 
+import java.util.List;
+
 import com.somebody.idlframewok.item.IGuaEnhance;
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
+import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -20,11 +24,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnhance {
@@ -59,14 +58,14 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
 
     @Override
     public float getVal(ItemStack stack) {
-        return super.getVal(stack) + GetGuaEnhance(stack,5) + GetGuaEnhance(stack,1);
+        return super.getVal(stack) + IDLSkillNBT.GetGuaEnhance(stack,5) + IDLSkillNBT.GetGuaEnhance(stack,1);
     }
 
     //Gua
     //Sky 7
     public float getCoolDown(ItemStack stack) {
         float skyModifier = 0.1f;
-        float result =  cool_down - GetGuaEnhance(stack, 7) * skyModifier;
+        float result =  cool_down - IDLSkillNBT.GetGuaEnhance(stack, 7) * skyModifier;
         return result > 0.1f ? result : 0.1f;
     }
 
@@ -91,7 +90,7 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
                     ItemSkillGuaPalm palm = (ItemSkillGuaPalm) stack.getItem();
                     float dmg = evt.getAmount();
                     //IdlFramework.Log("Damage reduct: %f -> %f", dmg, (1f - GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
-                    evt.setAmount((1f - GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
+                    evt.setAmount((1f - IDLSkillNBT.GetGuaEnhance(stack,0) * palm.earthModifier) * dmg);
                 }
             }
         }
@@ -101,15 +100,15 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
     //6 wind
     public float getKBPower(ItemStack stack)
     {
-        return  0.4f + windModifier * GetGuaEnhance(stack, 6);
+        return  0.4f + windModifier * IDLSkillNBT.GetGuaEnhance(stack, 6);
     }
 
     public void OnHitBasic(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand handIn)
     {
         if (!playerIn.world.isRemote) {
             float dmg = 0;
-            int fire = GetGuaEnhance(stack, 5);
-            int thunder = GetGuaEnhance(stack, 1);
+            int fire = IDLSkillNBT.GetGuaEnhance(stack, 5);
+            int thunder = IDLSkillNBT.GetGuaEnhance(stack, 1);
             dmg = fire + (target.isWet() ? thunder * 2 : thunder);
 
             if (target.attackEntityFrom(GetDamageSource(stack, playerIn, target, handIn), dmg))
@@ -145,18 +144,18 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
 
     public void OnHitExtra(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand handIn)
     {
-        int mountain = GetGuaEnhance(stack, 4);
-        int water = GetGuaEnhance(stack, 2);
-        int lake = GetGuaEnhance(stack, 3);
+        int mountain = IDLSkillNBT.GetGuaEnhance(stack, 4);
+        int water = IDLSkillNBT.GetGuaEnhance(stack, 2);
+        int lake = IDLSkillNBT.GetGuaEnhance(stack, 3);
 
         if (mountain > 0)
         {
-            target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, TICK_PER_SECOND * mountain * 2, mountain / 4));
+            target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, CommonDef.TICK_PER_SECOND * mountain * 2, mountain / 4));
         }
 
         if (water > 0)
         {
-            target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, TICK_PER_SECOND * water * 2, water / 4));
+            target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, CommonDef.TICK_PER_SECOND * water * 2, water / 4));
             target.extinguish();
         }
 
@@ -174,14 +173,14 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
 
     public BuffTuple GetWaterBuff(ItemStack stack)
     {
-        int water = GetGuaEnhance(stack, 2);
-        return new BuffTuple(water / 4, TICK_PER_SECOND * water * 2);
+        int water = IDLSkillNBT.GetGuaEnhance(stack, 2);
+        return new BuffTuple(water / 4, CommonDef.TICK_PER_SECOND * water * 2);
     }
 
     public BuffTuple GetMountainBuff(ItemStack stack)
     {
-        int gua = GetGuaEnhance(stack, 4);
-        return new BuffTuple(gua / 4, TICK_PER_SECOND * gua * 2);
+        int gua = IDLSkillNBT.GetGuaEnhance(stack, 4);
+        return new BuffTuple(gua / 4, CommonDef.TICK_PER_SECOND * gua * 2);
     }
 
     @SideOnly(Side.CLIENT)
@@ -193,17 +192,17 @@ public class ItemSkillGuaPalm extends ItemSkillMartialAttack implements IGuaEnha
         {
             BuffTuple mountain = GetMountainBuff(stack);
             BuffTuple water = GetWaterBuff(stack);
-            int fire = GetGuaEnhance(stack, 5);
+            int fire = IDLSkillNBT.GetGuaEnhance(stack, 5);
 
 
             return I18n.format(stack.getUnlocalizedName() + ".desc",
-                    (GetGuaEnhance(stack, 0) * earthModifier * 100f),
-                    GetGuaEnhance(stack, 1),
-                    water.power + 1, (water.tick / TICK_PER_SECOND),
-                    GetGuaEnhance(stack, 3),
-                    mountain.power + 1, (mountain.tick / TICK_PER_SECOND),
+                    (IDLSkillNBT.GetGuaEnhance(stack, 0) * earthModifier * 100f),
+                    IDLSkillNBT.GetGuaEnhance(stack, 1),
+                    water.power + 1, (water.tick / CommonDef.TICK_PER_SECOND),
+                    IDLSkillNBT.GetGuaEnhance(stack, 3),
+                    mountain.power + 1, (mountain.tick / CommonDef.TICK_PER_SECOND),
                     fire, fire,
-                    GetGuaEnhance(stack, 6)
+                    IDLSkillNBT.GetGuaEnhance(stack, 6)
                     //GetGuaEnhance(stack, 7)
             );
         }

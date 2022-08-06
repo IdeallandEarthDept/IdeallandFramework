@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.misc;
 
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.item.ItemBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -11,8 +13,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import javax.annotation.Nonnull;
 
 public class ItemPackage extends ItemBase {
     public Item[] validItems = new Item[]{};

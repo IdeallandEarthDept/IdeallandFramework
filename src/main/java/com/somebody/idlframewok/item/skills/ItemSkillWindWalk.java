@@ -1,5 +1,9 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
+import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -10,11 +14,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillWindWalk extends ItemSkillBase {
     public ItemSkillWindWalk(String name) {
@@ -32,7 +31,7 @@ public class ItemSkillWindWalk extends ItemSkillBase {
         {
             if (!worldIn.isRemote)
             {
-                playerIn.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int)(getVal(stack) * TICK_PER_SECOND), getLevel(stack) - 1));
+                playerIn.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int)(getVal(stack) * CommonDef.TICK_PER_SECOND), IDLSkillNBT.getLevel(stack) - 1));
                 playerIn.playSound(SoundEvents.BLOCK_NOTE_HARP, 1f, 3f);
                 activateCoolDown(playerIn, stack);
             }

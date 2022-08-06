@@ -1,8 +1,6 @@
-
 package com.somebody.idlframewok.item.misc;
 
 import com.somebody.idlframewok.item.ItemBase;
-
 
 public class ItemBasicBinary extends ItemBase {
 

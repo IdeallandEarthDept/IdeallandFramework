@@ -1,8 +1,12 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.IDLGeneral;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -21,11 +25,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.STATE;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil.*;
 
 public class ItemCreatureRadar extends ItemSkillBase {
 
@@ -50,13 +49,13 @@ public class ItemCreatureRadar extends ItemSkillBase {
                 if (name != null && EntityList.ENTITY_EGGS.containsKey(name))
                 {
                     //SetString(stack, "creature_id", name.toString());
-                    NBTTagCompound tagCompound = getNBT(stack);
+                    NBTTagCompound tagCompound = IDLNBTUtil.getNBT(stack);
                     tagCompound.setString("creature_id", name.toString());
 
                     //stack.writeToNBT(tagCompound);
                     //net.minecraft.item.ItemMonsterPlacer.applyEntityIdToItemStack(stack, name);
                     CommonFunctions.SafeSendMsgToPlayer(playerIn, getUnlocalizedName() + ".msg.success");
-                    IdlFramework.LogWarning(getNBT(stack).toString());
+                    IdlFramework.LogWarning(IDLNBTUtil.getNBT(stack).toString());
                     activateCoolDown(playerIn, stack);
                 }
 
@@ -97,7 +96,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
 
     public Class getCreatureFromStack(ItemStack stack)
     {
-        NBTTagCompound nbttagcompound = getNBT(stack);
+        NBTTagCompound nbttagcompound = IDLNBTUtil.getNBT(stack);
         //NBTTagCompound nbttagcompound1 = nbttagcompound.getCompoundTag("EntityTag");
 
 
@@ -129,7 +128,7 @@ public class ItemCreatureRadar extends ItemSkillBase {
 
             Vec3d pos = entityIn.getPositionEyes(1.0F);
 
-            IdlFramework.Log("update:",getNBT(stack).toString());
+            IdlFramework.Log("update:", IDLNBTUtil.getNBT(stack).toString());
 
             Class s = getCreatureFromStack(stack);
             if (s == null)
@@ -149,12 +148,12 @@ public class ItemCreatureRadar extends ItemSkillBase {
                 }
             }
 
-            SetInt(stack, STATE, detection);
-            int detectionPre = GetInt(stack, STATE);
+            IDLNBTUtil.SetInt(stack, IDLNBTDef.STATE, detection);
+            int detectionPre = IDLNBTUtil.GetInt(stack, IDLNBTDef.STATE);
             if (detectionPre != detection)//optimize
             {
                 IdlFramework.LogWarning("Changed to " + detection);
-                SetInt(stack, STATE, detection);
+                IDLNBTUtil.SetInt(stack, IDLNBTDef.STATE, detection);
                 CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) entityIn, msgKey, TextFormatting.YELLOW, detection);
                 //worldIn.playSound();
                 //entityIn.playSound(alarm, 0.7f, detection * 0.1f);
