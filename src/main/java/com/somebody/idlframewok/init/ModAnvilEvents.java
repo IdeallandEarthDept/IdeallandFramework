@@ -1,6 +1,6 @@
 package com.somebody.idlframewok.init;
 
-import com.somebody.idlframewok.util.*;
+import com.somebody.idlframewok.util.Reference;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

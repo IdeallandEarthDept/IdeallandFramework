@@ -1,11 +1,18 @@
 package com.somebody.idlframewok.util;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+import com.google.common.base.Predicate;
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.meta.MetaUtil;
-import com.google.common.base.Predicate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -25,16 +32,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-
-import javax.annotation.Nullable;
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static net.minecraft.entity.SharedMonsterAttributes.*;
-import static net.minecraftforge.fml.common.gameevent.TickEvent.Type.WORLD;
 
 @Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class EntityUtil {
@@ -75,7 +72,7 @@ public class EntityUtil {
             IdlFramework.LogWarning("Trying to apply illegal potion");
             return false;
         }
-        livingBase.addPotionEffect(new PotionEffect(potion, (int) (seconds * TICK_PER_SECOND) + 1, level));
+        livingBase.addPotionEffect(new PotionEffect(potion, (int) (seconds * CommonDef.TICK_PER_SECOND) + 1, level));
         return true;
     }
 
@@ -238,7 +235,7 @@ public class EntityUtil {
     @SubscribeEvent
     static void onWorldTick(TickEvent.WorldTickEvent event)
     {
-        if (event.type == WORLD )
+        if (event.type == TickEvent.Type.WORLD )
         {
             angle += 1.0f;//ModConfig.DEBUG_CONF.HALO_OMEGA;
             angle %= 6.282f;
@@ -427,7 +424,7 @@ public class EntityUtil {
             return 0;
         }
 
-        IAttributeInstance attribute = creature.getEntityAttribute(ATTACK_DAMAGE);
+        IAttributeInstance attribute = creature.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
         if (attribute == null)
         {
             return 0;
@@ -442,7 +439,7 @@ public class EntityUtil {
             return 0;
         }
 
-        IAttributeInstance attribute = creature.getEntityAttribute(FOLLOW_RANGE);
+        IAttributeInstance attribute = creature.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE);
         return attribute.getAttributeValue();
     }
 
@@ -453,7 +450,7 @@ public class EntityUtil {
             return 0;
         }
 
-        IAttributeInstance attribute = creature.getEntityAttribute(ATTACK_SPEED);
+        IAttributeInstance attribute = creature.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED);
         return attribute.getAttributeValue();
     }
 

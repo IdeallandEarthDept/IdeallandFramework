@@ -1,8 +1,11 @@
 package com.somebody.idlframewok.enchantments;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Enchantments;
@@ -15,11 +18,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 @Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class ModEnchantmentInit {
@@ -107,7 +105,7 @@ public class ModEnchantmentInit {
         ItemStack stack = living.getItemStackFromSlot(slot);
         if (!stack.isEmpty())
         {
-            if (world.getWorldTime() % TICK_PER_SECOND == 0)
+            if (world.getWorldTime() % CommonDef.TICK_PER_SECOND == 0)
             {
 
             }

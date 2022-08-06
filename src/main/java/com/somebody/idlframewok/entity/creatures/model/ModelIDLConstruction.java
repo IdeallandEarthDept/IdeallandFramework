@@ -1,13 +1,12 @@
 package com.somebody.idlframewok.entity.creatures.model;
 
 import com.somebody.idlframewok.entity.creatures.buildings.EntityIdlBuildingBase;
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.math.Vec3d;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 /**
  * ModelIDLConstruction - TaoismDeepLake
@@ -121,7 +120,7 @@ public class ModelIDLConstruction extends ModelBase {
         modelRenderer.rotateAngleZ = z;
     }
 
-    int timeToReady = TICK_PER_SECOND;
+    int timeToReady = CommonDef.TICK_PER_SECOND;
     float maxAngle = 3.14159f/2f;
 
     @Override

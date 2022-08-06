@@ -2,7 +2,8 @@ package com.somebody.idlframewok.entity;
 
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.entity.creatures.moroon.EntityMoroonUnitBase;
-import com.somebody.idlframewok.entity.creatures.render.*;
+import com.somebody.idlframewok.entity.creatures.render.RenderBullet;
+import com.somebody.idlframewok.entity.creatures.render.RenderMoroonHumanoid;
 import com.somebody.idlframewok.entity.projectiles.EntityIdlProjectile;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;

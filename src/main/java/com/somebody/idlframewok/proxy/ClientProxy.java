@@ -1,16 +1,12 @@
 package com.somebody.idlframewok.proxy;
 
-import com.somebody.idlframewok.keys.ModKeyBinding;
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.client.settings.KeyConflictContext;
-import net.minecraftforge.client.settings.KeyModifier;
-import org.lwjgl.input.Keyboard;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ClientProxy extends ProxyBase {
     public static final List<KeyBinding> KEY_BINDINGS = new ArrayList<KeyBinding>();

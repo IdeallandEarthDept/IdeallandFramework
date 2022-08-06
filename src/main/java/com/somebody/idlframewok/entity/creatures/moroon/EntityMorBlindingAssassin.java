@@ -1,10 +1,18 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.EntityUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
@@ -16,10 +24,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-
 public class EntityMorBlindingAssassin extends EntityMoroonUnitBase {
-    int stealthNeedTick = TICK_PER_SECOND * 10;
+    int stealthNeedTick = CommonDef.TICK_PER_SECOND * 10;
     int stealthCounter = 0;
     //A creatures that teleports whenever its hit
     public EntityMorBlindingAssassin(World worldIn) {
@@ -69,8 +75,8 @@ public class EntityMorBlindingAssassin extends EntityMoroonUnitBase {
         {
             if (stealthCounter >= stealthNeedTick || this.world.isRainingAt(getPosition()))
             {
-                if (world.getWorldTime() % TICK_PER_SECOND == 3) {
-                    addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, TICK_PER_SECOND * 2, 0));
+                if (world.getWorldTime() % CommonDef.TICK_PER_SECOND == 3) {
+                    addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, CommonDef.TICK_PER_SECOND * 2, 0));
 
                 }
                 stealthCounter++;
@@ -100,7 +106,7 @@ public class EntityMorBlindingAssassin extends EntityMoroonUnitBase {
             {
                 EntityLivingBase target = (EntityLivingBase) entityIn;
                 target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS,
-                        (int) (TICK_PER_SECOND * this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()),
+                        (int) (CommonDef.TICK_PER_SECOND * this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()),
                         0));
                 fiveRandomTeleport();
             }

@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.item;
 
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,8 +10,6 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class ItemAdaptingBase extends ItemBase {
     public ItemAdaptingBase(String name) {
@@ -48,7 +47,7 @@ public class ItemAdaptingBase extends ItemBase {
 
     public int getCoolDownTicks(ItemStack stack)
     {
-        return (int) (base_cd * TICK_PER_SECOND);
+        return (int) (base_cd * CommonDef.TICK_PER_SECOND);
     }
 
     @Override

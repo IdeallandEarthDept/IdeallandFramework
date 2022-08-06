@@ -1,7 +1,5 @@
 package com.somebody.idlframewok.entity.creatures.ai;
 
-;
-
 public class RangedAttackArguments {
     public float range = 100f;
     public int cool_down = 20;//ticks

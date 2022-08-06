@@ -1,12 +1,12 @@
 package com.somebody.idlframewok.entity.creatures.ideallandTeam;
 
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class EntityIdeallandUnitBase extends EntityModUnit {
     public EntityIdeallandUnitBase(World worldIn) {

@@ -1,11 +1,14 @@
 package com.somebody.idlframewok.item.misc;
 
+import java.util.List;
+
+import com.google.common.collect.Multimap;
 import com.somebody.idlframewok.item.IGuaEnhance;
 import com.somebody.idlframewok.item.ItemSwordBase;
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.IDLGeneral;
 import com.somebody.idlframewok.util.IDLSkillNBT;
 import com.somebody.idlframewok.util.Reference;
-import com.google.common.collect.Multimap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -20,11 +23,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLSkillNBT.GetGuaEnhance;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemKinshipSword extends ItemSwordBase implements IGuaEnhance {
@@ -114,7 +112,7 @@ public class ItemKinshipSword extends ItemSwordBase implements IGuaEnhance {
     //6 wind
     public float getKBPower(ItemStack stack)
     {
-        return  0.4f + windModifier * GetGuaEnhance(stack, 6);
+        return  0.4f + windModifier * IDLSkillNBT.GetGuaEnhance(stack, 6);
     }
 
     public void OnHitBasic(ItemStack stack, EntityLivingBase playerIn, EntityLivingBase target, EnumHand handIn)
@@ -128,27 +126,27 @@ public class ItemKinshipSword extends ItemSwordBase implements IGuaEnhance {
 
     float getExtraDamage(ItemStack stack, boolean targetWet)
     {
-        int fire = GetGuaEnhance(stack, 5);
-        int thunder = GetGuaEnhance(stack, 1);
+        int fire = IDLSkillNBT.GetGuaEnhance(stack, 5);
+        int thunder = IDLSkillNBT.GetGuaEnhance(stack, 1);
         return  fire + (targetWet ? thunder * 2 : thunder);
     }
 
     public void OnHitExtra(ItemStack stack, EntityLivingBase playerIn, EntityLivingBase target, EnumHand handIn)
     {
-        int mountain = GetGuaEnhance(stack, 4);
-        int water = GetGuaEnhance(stack, 2);
-        int lake = GetGuaEnhance(stack, 3);
-        int fire = GetGuaEnhance(stack, 5);
-        int thunder = GetGuaEnhance(stack, 1);
+        int mountain = IDLSkillNBT.GetGuaEnhance(stack, 4);
+        int water = IDLSkillNBT.GetGuaEnhance(stack, 2);
+        int lake = IDLSkillNBT.GetGuaEnhance(stack, 3);
+        int fire = IDLSkillNBT.GetGuaEnhance(stack, 5);
+        int thunder = IDLSkillNBT.GetGuaEnhance(stack, 1);
 
         if (mountain > 0)
         {
-            target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, TICK_PER_SECOND * mountain * 2, mountain / 4));
+            target.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, CommonDef.TICK_PER_SECOND * mountain * 2, mountain / 4));
         }
 
         if (water > 0)
         {
-            target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, TICK_PER_SECOND * water * 2, water / 4));
+            target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, CommonDef.TICK_PER_SECOND * water * 2, water / 4));
             target.extinguish();
         }
 
@@ -214,7 +212,7 @@ public class ItemKinshipSword extends ItemSwordBase implements IGuaEnhance {
 
         if (slot == EntityEquipmentSlot.MAINHAND)
         {
-            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier",  getBaseAttackDamage() + GetGuaEnhance(stack, 7), 0));
+            multimap.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier",  getBaseAttackDamage() + IDLSkillNBT.GetGuaEnhance(stack, 7), 0));
             multimap.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", -2.4000000953674316D, 0));
         }
 

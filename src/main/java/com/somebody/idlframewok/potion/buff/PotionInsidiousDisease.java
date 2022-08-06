@@ -1,12 +1,12 @@
 package com.somebody.idlframewok.potion.buff;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.potion.EffectTuple;
 import net.minecraft.entity.EntityLivingBase;
-
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PotionInsidiousDisease extends BasePotion {
 

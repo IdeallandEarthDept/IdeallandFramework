@@ -2,16 +2,19 @@ package com.somebody.idlframewok.item.misc;
 
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.item.ItemBase;
+import com.somebody.idlframewok.util.Reference;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import static com.somebody.idlframewok.util.Reference.MOD_ID;
-import static net.minecraft.entity.EntityList.createEntityByIDFromName;
 
 public class ItemSummon extends ItemBase {
 
@@ -26,7 +29,7 @@ public class ItemSummon extends ItemBase {
     public ItemSummon setEntity(String id)
     {
         useable = true;
-        this.entityLocation = new ResourceLocation(MOD_ID,id);
+        this.entityLocation = new ResourceLocation(Reference.MOD_ID,id);
 
         //this.entityLocation = new ResourceLocation(layer);
         return this;
@@ -40,7 +43,7 @@ public class ItemSummon extends ItemBase {
         if (!worldIn.isRemote)
         {
             stack.shrink(1);
-            Entity entity = createEntityByIDFromName(entityLocation, worldIn);
+            Entity entity = EntityList.createEntityByIDFromName(entityLocation, worldIn);
             if (entity instanceof EntityLivingBase)
             {
                 EntityLivingBase entityLivingBase = (EntityLivingBase) entity;

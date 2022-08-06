@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.goblet;
 
+import java.util.List;
+
 import com.somebody.idlframewok.util.IDLGeneral;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,8 +15,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 import static net.minecraft.util.DamageSource.causePlayerDamage;

@@ -1,12 +1,12 @@
 package com.somebody.idlframewok.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.util.sound.ModSoundEvent;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ModSoundHandler {
     //To add a sound, remember assets.idlframewok.sounds.json

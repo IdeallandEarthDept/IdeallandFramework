@@ -1,16 +1,14 @@
 package com.somebody.idlframewok.recipe.special;
 
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import javax.annotation.Nonnull;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.SetLevel;
-import static com.somebody.idlframewok.util.IDLSkillNBT.getLevel;
 
 public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -40,7 +38,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					{
 						stack1 = stack;
 						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
-						lv1 = getLevel(stack);
+						lv1 = IDLSkillNBT.getLevel(stack);
 						if (lv1 >= itemSkillBase.maxLevel)
 						{
 							return false;
@@ -48,7 +46,7 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					}
 					else {
 						stack2 = stack;
-						lv2 = getLevel(stack);
+						lv2 = IDLSkillNBT.getLevel(stack);
 					}
 				}
 				else
@@ -85,9 +83,9 @@ public class SkillUpgrade extends IForgeRegistryEntry.Impl<IRecipe> implements I
 					{
 						ItemSkillBase itemSkillBase = (ItemSkillBase)(stack.getItem());
 						stack1 = stack;
-						lv1 = getLevel(stack);
+						lv1 = IDLSkillNBT.getLevel(stack);
 						stackResult = stack1.copy();
-						SetLevel(stackResult, lv1 + 1);
+						IDLSkillNBT.SetLevel(stackResult, lv1 + 1);
 					}
 				}
 				else

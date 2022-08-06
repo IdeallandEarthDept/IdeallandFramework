@@ -1,8 +1,16 @@
 package com.somebody.idlframewok.entity.creatures.moroon;
 
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.*;
+import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMoveThroughVillage;
+import net.minecraft.entity.ai.EntityAIMoveTowardsRestriction;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -14,8 +22,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityMoroonFlickFighter extends EntityMoroonUnitBase {
     //A creatures that teleports whenever its hit
@@ -74,7 +80,7 @@ public class EntityMoroonFlickFighter extends EntityMoroonUnitBase {
         //IdlFramework.Log("Tick");
         if (!this.world.isRemote)
         {
-            if (world.getWorldTime() % TICK_PER_SECOND == 0) {
+            if (world.getWorldTime() % CommonDef.TICK_PER_SECOND == 0) {
 
             }
         }

@@ -1,5 +1,8 @@
 package com.somebody.idlframewok.command;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.util.CommonFunctions;
 import com.somebody.idlframewok.util.Teleport;
@@ -9,12 +12,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
-
-import  com.google.common.collect.Lists;
 import net.minecraft.util.text.TextFormatting;
-
-import java.util.List;
-
 
 public class CommandDimTeleport extends CommandBase {
 

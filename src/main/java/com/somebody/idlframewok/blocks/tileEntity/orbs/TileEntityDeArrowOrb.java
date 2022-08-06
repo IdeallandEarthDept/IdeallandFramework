@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.blocks.tileEntity.orbs;
 
+import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.item.EntityTNTPrimed;
@@ -10,8 +12,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ITickable;
-
-import java.util.List;
 
 //"Tonation Orb" de-detonation orb
 public class TileEntityDeArrowOrb extends TileEntityOrbBase implements ITickable {

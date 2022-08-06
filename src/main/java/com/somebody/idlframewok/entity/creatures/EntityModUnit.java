@@ -1,13 +1,21 @@
 package com.somebody.idlframewok.entity.creatures;
 
+import java.util.UUID;
+import javax.annotation.Nullable;
+
+import com.google.common.base.Predicate;
 import com.somebody.idlframewok.blocks.blockMoroon.BlockMoroonBase;
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
-import com.google.common.base.Predicate;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,12 +33,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-
-import java.util.UUID;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityModUnit extends EntityCreature {
 
@@ -53,7 +55,7 @@ public class EntityModUnit extends EntityCreature {
 
     public float MP = 0;
     public float MPMax = 0;
-    public float MPRegen = 1 / TICK_PER_SECOND;
+    public float MPRegen = 1 / CommonDef.TICK_PER_SECOND;
 
     protected static final DataParameter<Boolean> SWINGING_ARMS = EntityDataManager.<Boolean>createKey(EntityModUnit.class, DataSerializers.BOOLEAN);
 

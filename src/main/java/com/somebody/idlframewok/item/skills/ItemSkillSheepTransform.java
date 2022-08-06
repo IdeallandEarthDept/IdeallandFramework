@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.item.skills;
 
+import com.somebody.idlframewok.util.CommonFunctions;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntitySheep;
@@ -10,8 +11,6 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-
-import static com.somebody.idlframewok.util.CommonFunctions.CopyNormalAttr;
 
 public class ItemSkillSheepTransform extends ItemSkillBase {
     public ItemSkillSheepTransform(String name) {
@@ -32,7 +31,7 @@ public class ItemSkillSheepTransform extends ItemSkillBase {
                     EntitySheep elk = new EntitySheep(world);
                     elk.setPosition(target.posX,target.posY,target.posZ);
 
-                    CopyNormalAttr(target, elk);
+                    CommonFunctions.CopyNormalAttr(target, elk);
 
                     target.setDead();
 

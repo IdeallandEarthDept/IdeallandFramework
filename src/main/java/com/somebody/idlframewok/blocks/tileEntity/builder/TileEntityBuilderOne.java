@@ -1,10 +1,10 @@
 package com.somebody.idlframewok.blocks.tileEntity.builder;
 
+import java.util.Vector;
+
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBlock;
 import net.minecraft.init.Blocks;
-
-import java.util.Vector;
 
 public class TileEntityBuilderOne extends TileEntityBuilderBase {
 

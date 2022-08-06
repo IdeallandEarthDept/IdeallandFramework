@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
 import com.somebody.idlframewok.util.IDLGeneral;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.entity.EntityLivingBase;
@@ -15,10 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.List;
-
-import static net.minecraft.util.DamageSource.FALL;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class ItemSkillThunderFall extends ItemSkillBase {
@@ -36,7 +34,7 @@ public class ItemSkillThunderFall extends ItemSkillBase {
         World world = evt.getEntity().getEntityWorld();
         EntityLivingBase hurtOne = evt.getEntityLiving();
         //CrowFlight.Log(String.format("DMG:%s=%f",evt.getEntityLiving(), evt.getAmount()));
-        if (evt.getSource() == FALL && hurtOne instanceof EntityPlayer)
+        if (evt.getSource() == DamageSource.FALL && hurtOne instanceof EntityPlayer)
         {
             //IdlFramework.Log("player Falling");
             EntityPlayer player = (EntityPlayer)hurtOne;

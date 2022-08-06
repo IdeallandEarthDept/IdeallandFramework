@@ -1,13 +1,13 @@
 package com.somebody.idlframewok.world.biome;
 
+import java.util.Random;
+
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-
-import java.util.Random;
 
 public class BiomeOne extends Biome {
 

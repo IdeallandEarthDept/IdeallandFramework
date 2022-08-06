@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.recipe.special;
 
+import javax.annotation.Nonnull;
+
 import com.somebody.idlframewok.item.goblet.ItemDigGoblet;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemBlock;
@@ -7,8 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-
-import javax.annotation.Nonnull;
 
 public class GobletDigBlockAssign extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 	@Override

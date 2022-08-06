@@ -1,5 +1,6 @@
 package com.somebody.idlframewok.entity.creatures.ai;
 
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.CommonFunctions;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,8 +8,6 @@ import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.EnumHand;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMob> extends EntityAIBase
 {
@@ -29,7 +28,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
     int curAimingCooldownThreshold = 0;
     void randomAimingCooldown()
     {
-        curAimingCooldownThreshold = (int) (TICK_PER_SECOND *( aimingCooldownTimeMin + this.entity.getRNG().nextFloat() * aimingCooldownTimeDelta));
+        curAimingCooldownThreshold = (int) (CommonDef.TICK_PER_SECOND *( aimingCooldownTimeMin + this.entity.getRNG().nextFloat() * aimingCooldownTimeDelta));
     }
 
     public EntityAIStrafeRangedAttack(T self, double moveSpeedAmp, int attackCd, float maxAttackDistance)
@@ -123,7 +122,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
                 --this.seeTime;
             }
 
-            if (d0 <= (double)this.maxAttackDistanceSq && this.seeTime >= TICK_PER_SECOND)
+            if (d0 <= (double)this.maxAttackDistanceSq && this.seeTime >= CommonDef.TICK_PER_SECOND)
             {
                 this.entity.getNavigator().clearPath();
                 ++this.strafingTime;
@@ -134,7 +133,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
                 this.strafingTime = -1;
             }
 
-            if (this.strafingTime >= TICK_PER_SECOND)
+            if (this.strafingTime >= CommonDef.TICK_PER_SECOND)
             {
                 if ((double)this.entity.getRNG().nextFloat() < 0.3D)
                 {
@@ -171,7 +170,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
             //IdlFramework.Log("isHandActive = %s, uuid=%s", this.entity.isHandActive(), this.entity.getUniqueID());
             if (this.entity.isHandActive())
             {
-                if (!canSee && this.seeTime < -targetLostThreshold * TICK_PER_SECOND)
+                if (!canSee && this.seeTime < -targetLostThreshold * CommonDef.TICK_PER_SECOND)
                 {
                     this.entity.resetActiveHand();
                 }
@@ -189,7 +188,7 @@ public class EntityAIStrafeRangedAttack<T extends EntityLiving & IRangedAttackMo
                     }
                 }
             }
-            else if (--this.attackTime <= 0 && this.seeTime >= -targetLostThreshold * TICK_PER_SECOND)
+            else if (--this.attackTime <= 0 && this.seeTime >= -targetLostThreshold * CommonDef.TICK_PER_SECOND)
             {
                 this.entity.setActiveHand(EnumHand.MAIN_HAND);
             }

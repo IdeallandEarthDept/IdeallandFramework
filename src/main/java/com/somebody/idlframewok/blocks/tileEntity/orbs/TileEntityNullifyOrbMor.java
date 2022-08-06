@@ -8,7 +8,6 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-
 public class TileEntityNullifyOrbMor extends TileEntityNullifyOrb implements ITickable {
 
 	protected int range = 15;

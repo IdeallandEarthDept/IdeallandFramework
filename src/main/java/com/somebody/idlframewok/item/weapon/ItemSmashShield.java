@@ -1,8 +1,10 @@
 package com.somebody.idlframewok.item.weapon;
 
-import com.somebody.idlframewok.item.ItemAdaptingBase;
+import javax.annotation.Nullable;
+
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.somebody.idlframewok.item.ItemAdaptingBase;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,8 +22,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class ItemSmashShield extends ItemAdaptingBase {
     public ItemSmashShield(String name) {

@@ -1,6 +1,11 @@
 package com.somebody.idlframewok.item.goblet;
 
+import java.util.List;
+
 import com.somebody.idlframewok.item.ItemBase;
+import com.somebody.idlframewok.util.CommonDef;
+import com.somebody.idlframewok.util.IDLNBT;
+import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,13 +18,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-import static com.somebody.idlframewok.util.IDLNBT.getTagSafe;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.*;
-import static com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef.P2W_EXP;
-
 public class ItemGobletBase extends ItemBase {
 
     public float cool_down = 1f;
@@ -31,38 +29,38 @@ public class ItemGobletBase extends ItemBase {
 
     public void SetPayingEXP(ItemStack stack, int val)
     {
-        IDLNBTUtil.SetInt(stack, P2W_PAYING_EXP, val);
+        IDLNBTUtil.SetInt(stack, IDLNBTDef.P2W_PAYING_EXP, val);
     }
 
     public int GetPayingEXP(ItemStack stack)
     {
-        return IDLNBTUtil.GetInt(stack, P2W_PAYING_EXP);
+        return IDLNBTUtil.GetInt(stack, IDLNBTDef.P2W_PAYING_EXP);
     }
 
     public void SetCacheEXP(ItemStack stack, int val)
     {
-        IDLNBTUtil.SetInt(stack, P2W_CACHE_EXP, val);
+        IDLNBTUtil.SetInt(stack, IDLNBTDef.P2W_CACHE_EXP, val);
     }
 
     public static int GetCacheEXP(ItemStack stack)
     {
-        return IDLNBTUtil.GetInt(stack, P2W_CACHE_EXP);
+        return IDLNBTUtil.GetInt(stack, IDLNBTDef.P2W_CACHE_EXP);
     }
 
     public static int GetP2WExpForPlayer(EntityPlayer player)
     {
         NBTTagCompound playerData = player.getEntityData();
-        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound data = IDLNBT.getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
 
-        return data.getInteger(P2W_EXP);
+        return data.getInteger(IDLNBTDef.P2W_EXP);
     }
 
     public static void SetP2WExpForPlayer(EntityPlayer player, int val)
     {
         NBTTagCompound playerData = player.getEntityData();
-        NBTTagCompound data = getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
+        NBTTagCompound data = IDLNBT.getTagSafe(playerData, EntityPlayer.PERSISTED_NBT_TAG);
 
-        data.setInteger(P2W_EXP, val);
+        data.setInteger(IDLNBTDef.P2W_EXP, val);
         playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
     }
 
@@ -90,7 +88,7 @@ public class ItemGobletBase extends ItemBase {
     }
 
     private int GetMaxTick(ItemStack stack) {
-        return (int) (getCoolDown(stack) * TICK_PER_SECOND);
+        return (int) (getCoolDown(stack) * CommonDef.TICK_PER_SECOND);
     }
 
     public float getCoolDown(ItemStack stack) {

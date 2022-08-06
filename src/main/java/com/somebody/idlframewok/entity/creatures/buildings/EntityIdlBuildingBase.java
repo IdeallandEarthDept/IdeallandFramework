@@ -1,9 +1,10 @@
 package com.somebody.idlframewok.entity.creatures.buildings;
 
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.blocks.tileEntity.builder.builderAction.BuilderActionBase;
 import com.somebody.idlframewok.entity.BuildingCore;
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -14,8 +15,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class EntityIdlBuildingBase extends EntityModUnit {
     BuildingCore buildingCore;

@@ -1,12 +1,11 @@
 package com.somebody.idlframewok.entity.creatures.buildings;
 
 import com.somebody.idlframewok.IdlFramework;
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
 
@@ -18,7 +17,7 @@ public class EntityIdlBuildingRoom extends EntityIdlBuildingBase {
         size = 3;//ModConfig.DEBUG_CONF.ROOM_SIZE;
         buildingCore.ResetTasks();
         InitTaskQueue();
-        buildingCore.setSpeed(40f / TICK_PER_SECOND);
+        buildingCore.setSpeed(40f / CommonDef.TICK_PER_SECOND);
         IdlFramework.LogWarning("Summon. Size = " + size);
     }
 

@@ -1,5 +1,8 @@
 package com.somebody.idlframewok.item.goblet;
 
+import java.util.List;
+
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
@@ -7,10 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class ItemWaterGoblet extends ItemGobletBase {
     public ItemWaterGoblet(String name) {
@@ -27,7 +26,7 @@ public class ItemWaterGoblet extends ItemGobletBase {
         {
             int level = GetLevelFromEXP(GetCacheEXP(stack));
 
-            if (level > 0 && worldIn.getWorldTime() % TICK_PER_SECOND == 0)
+            if (level > 0 && worldIn.getWorldTime() % CommonDef.TICK_PER_SECOND == 0)
             {
 //                EntityPlayer playerIn = (EntityPlayer) entityIn;
 //                Vec3d basePos = playerIn.getPositionVector();

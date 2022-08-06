@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
 import com.somebody.idlframewok.meta.MetaUtil;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,8 +15,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemSkillModListStrike extends ItemSkillBase {
     public ItemSkillModListStrike(String name) {

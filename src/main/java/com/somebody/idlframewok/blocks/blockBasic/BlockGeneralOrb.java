@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.blocks.blockBasic;
 
+import java.util.Random;
+
 import com.somebody.idlframewok.blocks.BlockBase;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import net.minecraft.block.ITileEntityProvider;
@@ -9,8 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class BlockGeneralOrb extends BlockBase implements ITileEntityProvider {
 

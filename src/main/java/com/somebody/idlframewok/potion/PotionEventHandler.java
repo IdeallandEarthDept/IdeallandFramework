@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.potion;
 
+import java.util.Collection;
+
 import com.somebody.idlframewok.potion.buff.BasePotion;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.entity.Entity;
@@ -11,12 +13,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingKnockBackEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-
-import java.util.Collection;
-
-import static net.minecraftforge.fml.common.eventhandler.Event.Result.*;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class PotionEventHandler {
@@ -213,16 +212,16 @@ public class PotionEventHandler {
         {
             if (critRate < 0 && player.getRNG().nextFloat() < (1 + critRate))
             {
-                evt.setResult(DENY);
+                evt.setResult(Event.Result.DENY);
             }
         }else {
             if (critRate > 0 && player.getRNG().nextFloat() < (critRate))
             {
-                evt.setResult(ALLOW);
+                evt.setResult(Event.Result.ALLOW);
             }
         }
 
-        boolean isCrit = evt.getResult() == ALLOW || (evt.getResult() == DEFAULT && evt.isVanillaCritical());
+        boolean isCrit = evt.getResult() == Event.Result.ALLOW || (evt.getResult() == Event.Result.DEFAULT && evt.isVanillaCritical());
         //is critical
         if (isCrit)
         {

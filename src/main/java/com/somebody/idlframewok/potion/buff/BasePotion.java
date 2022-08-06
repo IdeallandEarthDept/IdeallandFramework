@@ -1,8 +1,8 @@
 package com.somebody.idlframewok.potion.buff;
 
-import net.minecraft.entity.EntityLivingBase;
-
 import javax.annotation.Nonnull;
+
+import net.minecraft.entity.EntityLivingBase;
 
 public class BasePotion extends BaseSimplePotion {
 //    private static final ResourceLocation resource = new ResourceLocation("idlframewok","textures/misc/potions.png");

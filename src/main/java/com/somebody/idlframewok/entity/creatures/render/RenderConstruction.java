@@ -1,13 +1,13 @@
 package com.somebody.idlframewok.entity.creatures.render;
 
+import javax.annotation.Nullable;
+
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.entity.creatures.model.ModelIDLConstruction;
 import com.somebody.idlframewok.util.Reference;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
-
-import javax.annotation.Nullable;
 
 public class RenderConstruction extends RenderLiving<EntityModUnit> {
     public static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/entity/idl_construction.png");

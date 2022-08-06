@@ -1,5 +1,8 @@
 package com.somebody.idlframewok.util;
 
+import java.util.Calendar;
+import java.util.Random;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.item.ItemBase;
 import net.minecraft.block.state.IBlockState;
@@ -30,12 +33,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
-import java.util.Calendar;
-import java.util.Random;
-
-import static com.somebody.idlframewok.util.AchvDef.GetAchvName;
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
-
 public class CommonFunctions {
 
     public static double flunctate(double ori, double radius, Random random)
@@ -45,7 +42,7 @@ public class CommonFunctions {
 
     public static boolean isSecondTick(World world)
     {
-        return world.getWorldTime() % TICK_PER_SECOND == 0;
+        return world.getWorldTime() % CommonDef.TICK_PER_SECOND == 0;
     }
 
     public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z)
@@ -81,16 +78,16 @@ public class CommonFunctions {
     }
 
     public static int SecondToTicks(int ticks) {
-        return ticks * TICK_PER_SECOND;
+        return ticks * CommonDef.TICK_PER_SECOND;
     }
 
     public static int SecondToTicks(float ticks) {
-        return (int)(ticks * TICK_PER_SECOND);
+        return (int)(ticks * CommonDef.TICK_PER_SECOND);
     }
 
     public static void TryGrantAchv(EntityPlayer player, String key)
     {
-        String achvName = GetAchvName(key);
+        String achvName = AchvDef.GetAchvName(key);
         //todo
     }
 

@@ -1,5 +1,8 @@
 package com.somebody.idlframewok.item.skills;
 
+import java.util.List;
+
+import com.somebody.idlframewok.util.CommonDef;
 import com.somebody.idlframewok.util.EntityUtil;
 import com.somebody.idlframewok.util.IDLGeneral;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,10 +14,6 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
-
-import static com.somebody.idlframewok.util.CommonDef.TICK_PER_SECOND;
 
 public class ItemSkillSacrifce2020 extends ItemSkillBase {
     public ItemSkillSacrifce2020(String name) {
@@ -41,12 +40,12 @@ public class ItemSkillSacrifce2020 extends ItemSkillBase {
                     if (living != playerIn)
                     {
                         EntityUtil.TryRemoveDebuff(living);
-                        living.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, TICK_PER_SECOND * 5, 0));
+                        living.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, CommonDef.TICK_PER_SECOND * 5, 0));
                         living.heal(living.getMaxHealth());
                     }
                 }
 
-                playerIn.addPotionEffect(new PotionEffect(MobEffects.POISON, TICK_PER_SECOND * 60, 0));
+                playerIn.addPotionEffect(new PotionEffect(MobEffects.POISON, CommonDef.TICK_PER_SECOND * 60, 0));
                 playerIn.setHealth(1f);
                 activateCoolDown(playerIn, stack);
             }

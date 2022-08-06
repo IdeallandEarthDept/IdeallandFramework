@@ -1,5 +1,7 @@
 package com.somebody.idlframewok.item.food;
 
+import java.util.List;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.item.ModItems;
@@ -18,8 +20,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
 
 public class ItemFoodBase extends ItemFood implements IHasModel {
 

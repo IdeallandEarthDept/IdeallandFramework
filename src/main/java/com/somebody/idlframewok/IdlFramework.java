@@ -21,8 +21,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
-import static com.somebody.idlframewok.init.RegistryHandler.initRegistries;
-
 //To let the player be a traveling god who plays yin-yang magic.
 
 @Mod(modid = IdlFramework.MODID, name = IdlFramework.NAME, version = IdlFramework.VERSION)//dependencies = "required-after:Forge@[14.23.5.2705,)"
@@ -65,7 +63,7 @@ public class IdlFramework {
     public static void Init(FMLInitializationEvent event) {
         ModRecipes.Init();
         RegisterTileEntity();
-        initRegistries(event);
+        RegistryHandler.initRegistries(event);
         new ModGuiElementLoader();
         if (!proxy.isServer())
         {

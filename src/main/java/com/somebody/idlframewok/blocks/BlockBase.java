@@ -1,17 +1,16 @@
 package com.somebody.idlframewok.blocks;
 
+import java.util.Random;
+
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.init.ModCreativeTab;
 import com.somebody.idlframewok.item.ModItems;
 import com.somebody.idlframewok.util.IHasModel;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-
-import java.util.Random;
 
 public class BlockBase extends Block implements IHasModel
 {

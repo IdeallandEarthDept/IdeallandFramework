@@ -1,6 +1,7 @@
 package com.somebody.idlframewok.item.skills.martial;
 
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
+import com.somebody.idlframewok.util.IDLSkillNBT;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -8,8 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
 import net.minecraft.util.EnumHand;
-
-import static com.somebody.idlframewok.util.IDLSkillNBT.getLevel;
 
 public class ItemSkillMartialAttack extends ItemSkillBase {
     public float KBPowerBase = 0.1f;
@@ -20,7 +19,7 @@ public class ItemSkillMartialAttack extends ItemSkillBase {
 
     public float getKBPower(ItemStack stack)
     {
-        return  (getLevel(stack) - 1) * KBPowerPerLevel + KBPowerBase;
+        return  (IDLSkillNBT.getLevel(stack) - 1) * KBPowerPerLevel + KBPowerBase;
     }
 
     public ItemSkillMartialAttack setKB(float val, float val_per_level)

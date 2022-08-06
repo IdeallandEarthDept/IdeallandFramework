@@ -1,3 +1,19 @@
+println """
+Java 版本：${System.getProperty 'java.version'} ${System.getProperty 'os.arch'} VM ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'})
+JAVA_HOME：${System.getenv 'JAVA_HOME'}
+Java 路径: ${System.getProperty 'java.home'}
+"""
+def javaEdition = "DK"
+if (System.getProperty('os.name').toLowerCase(Locale.ENGLISH).contains("windows") && !file(System.getProperty('java.home') + "\\..\\bin\\javac.exe").exists()) {
+    javaEdition = "RE"
+}
+if (!System.getProperty('java.version').startsWith("1.8.") || javaEdition == "RE") {
+    "你使用了 J${javaEdition} ${System.getProperty('java.version')}，请确保安装了 JDK 8 且不是 JRE 8，并且 JAVA_HOME 环境变量指向 JDK 8 的路径之后再构建".with {
+        println it
+        throw new RuntimeException(it)
+    }
+}
+
 buildscript {
     repositories {
         if (use_mirror_url == "true") {

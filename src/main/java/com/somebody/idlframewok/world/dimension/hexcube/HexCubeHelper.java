@@ -1,9 +1,8 @@
 package com.somebody.idlframewok.world.dimension.hexcube;
 
+import com.somebody.idlframewok.util.CommonDef;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.chunk.ChunkPrimer;
-
-import static com.somebody.idlframewok.util.CommonDef.CHUNK_SIZE;
 
 public class HexCubeHelper {
 
@@ -25,11 +24,11 @@ public class HexCubeHelper {
 
     public static void genGrass(ChunkPrimer primer, int x, int y, int z)
     {
-        for (int dx = 1; dx < CHUNK_SIZE; dx++)
+        for (int dx = 1; dx < CommonDef.CHUNK_SIZE; dx++)
         {
             //for (int dy = 0; dy < CHUNK_SIZE; dy++)
             //{
-                for (int dz = 1; dz < CHUNK_SIZE; dz++)
+                for (int dz = 1; dz < CommonDef.CHUNK_SIZE; dz++)
                 {
                     //BlockPos curPos = new BlockPos(x+dx, y+dy, z+dz);
 
