@@ -5,7 +5,23 @@ buildscript {
         maven { url "https://${mirror_maven_url}" }
     }
     dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.3.4"
+        classpath "net.minecraftforge.gradle:ForgeGradle:${forge_gradle_version}"
+    }
+}
+
+repositories {
+    if (use_mirror_url == "true") {
+        // remove minecraft and forge maven repositories to avoid interference
+        removeIf {
+            it instanceof MavenArtifactRepository &&
+                    (it.url.toString() == "https://repo.maven.apache.org/maven2/" ||
+                            it.url.toString() == "https://maven.minecraftforge.net" ||
+                            it.url.toString() == "https://libraries.minecraft.net/")
+        }
+        // add mirror repositories
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+        maven { url "file://${projectDir}/.gradle/local-repo" }
+        maven { url "https://${mirror_maven_url}" }
     }
 }
 
