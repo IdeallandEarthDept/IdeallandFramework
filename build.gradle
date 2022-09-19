@@ -1,18 +1,3 @@
-println """
-Java 版本：${System.getProperty 'java.version'} ${System.getProperty 'os.arch'} VM ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'})
-JAVA_HOME：${System.getenv 'JAVA_HOME'}
-Java 路径: ${System.getProperty 'java.home'}
-"""
-def javaEdition = "DK"
-if (System.getProperty('os.name').toLowerCase(Locale.ENGLISH).contains("windows") && !file(System.getProperty('java.home') + "\\..\\bin\\javac.exe").exists()) {
-    javaEdition = "RE"
-}
-if (!System.getProperty('java.version').startsWith("1.8.") || javaEdition == "RE") {
-    "你使用了 J${javaEdition} ${System.getProperty('java.version')}，请确保安装了 JDK 8 且不是 JRE 8，并且 JAVA_HOME 环境变量指向 JDK 8 的路径之后再构建".with {
-        println it
-        throw new RuntimeException(it)
-    }
-}
 
 buildscript {
     repositories {
@@ -34,13 +19,14 @@ buildscript {
         }
     }
     dependencies {
-        classpath "net.minecraftforge.gradle:ForgeGradle:2.3.4"
+        classpath "net.minecraftforge.gradle:ForgeGradle:${forge_gradle_version}"
     }
 }
 
 boolean useMirror = use_mirror_url == "true"
 if (useMirror) apply from: "mirror.gradle"
 apply plugin: "net.minecraftforge.gradle.forge"
+apply from: "runmanager.gradle"
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 version = "1.0"
@@ -66,19 +52,7 @@ minecraft {
 }
 
 repositories {
-    if (useMirror) {
-        // remove minecraft and forge maven repositories to avoid interference
-        removeIf {
-            it instanceof MavenArtifactRepository &&
-                (it.url.toString() == "https://repo.maven.apache.org/maven2/" ||
-                it.url.toString() == "https://maven.minecraftforge.net" ||
-                it.url.toString() == "https://libraries.minecraft.net/")
-        }
-        // add mirror repositories
-        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
-        maven { url "file://${projectDir}/.gradle/local-repo" }
-        maven { url "https://${mirror_maven_url}" }
-    }
+
 }
 
 dependencies {
@@ -103,17 +77,6 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
-}
-
-sourceSets {
-    main {
-        output.resourcesDir = file('build/combined')
-        java.outputDir = file('build/combined')
-    }
-}
-
-jar {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 processResources {
