@@ -1,4 +1,4 @@
-//package com.somebody.idlframewok.item.armorMaterials;
+package com.somebody.idlframewok.item.armorMaterials;//package com.somebody.idlframewok.item.armorMaterials;
 //
 //import net.minecraft.item.ItemArmor;
 //import net.minecraft.item.ItemArmor.ArmorMaterial;

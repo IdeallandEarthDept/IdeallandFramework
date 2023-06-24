@@ -1,10 +1,9 @@
 package com.somebody.idlframewok.command;
 
-import java.util.List;
-
 import com.google.common.collect.Lists;
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.util.CommonFunctions;
+import com.somebody.idlframewok.util.Reference;
 import com.somebody.idlframewok.util.Teleport;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -13,6 +12,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.text.TextFormatting;
+
+import java.util.List;
 
 public class CommandDimTeleport extends CommandBase {
 
@@ -54,7 +55,7 @@ public class CommandDimTeleport extends CommandBase {
         {
             if (sender instanceof EntityPlayerMP)
             {
-                CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) sender, "idlframewok.msg.dim_id_invalid", TextFormatting.RED, s);
+                CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) sender, Reference.MOD_ID+".msg.dim_id_invalid", TextFormatting.RED, s);
             }
             return;
         }
@@ -66,7 +67,7 @@ public class CommandDimTeleport extends CommandBase {
             }
             catch (IllegalArgumentException e)
             {
-                CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) sender, "idlframewok.msg.dim_id_invalid", TextFormatting.RED, s);
+                CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP) sender, Reference.MOD_ID+".msg.dim_id_invalid", TextFormatting.RED, s);
             }
         }
     }

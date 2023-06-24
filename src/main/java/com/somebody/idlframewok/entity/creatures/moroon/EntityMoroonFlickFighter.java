@@ -147,7 +147,7 @@ public class EntityMoroonFlickFighter extends EntityMoroonUnitBase {
     private boolean teleportTo(double x, double y, double z)
     {
         net.minecraftforge.event.entity.living.EnderTeleportEvent event = new net.minecraftforge.event.entity.living.EnderTeleportEvent(this, x, y, z, 0);
-        if (net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event)) return false;
+        if (MinecraftForge.EVENT_BUS.post(event)) return false;
         boolean flag = this.attemptTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ());
 
         if (flag)

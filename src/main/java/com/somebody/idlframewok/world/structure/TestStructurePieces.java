@@ -36,48 +36,48 @@ public class TestStructurePieces {
 
     public static void registerStructurePieces()
     {
-        MapGenStructureIO.registerStructureComponent(TestStructurePieces.Corridor.class, "MSCorridor");
-        MapGenStructureIO.registerStructureComponent(TestStructurePieces.Cross.class, "MSCrossing");
-        MapGenStructureIO.registerStructureComponent(TestStructurePieces.Room.class, "MSRoom");
-        MapGenStructureIO.registerStructureComponent(TestStructurePieces.Stairs.class, "MSStairs");
+        MapGenStructureIO.registerStructureComponent(Corridor.class, "MSCorridor");
+        MapGenStructureIO.registerStructureComponent(Cross.class, "MSCrossing");
+        MapGenStructureIO.registerStructureComponent(Room.class, "MSRoom");
+        MapGenStructureIO.registerStructureComponent(Stairs.class, "MSStairs");
     }
 
-    private static TestStructurePieces.Peice createRandomShaftPiece(List<StructureComponent> p_189940_0_, Random p_189940_1_, int p_189940_2_, int p_189940_3_, int p_189940_4_, @Nullable EnumFacing p_189940_5_, int p_189940_6_, MapGenMineshaft.Type p_189940_7_)
+    private static Peice createRandomShaftPiece(List<StructureComponent> p_189940_0_, Random p_189940_1_, int p_189940_2_, int p_189940_3_, int p_189940_4_, @Nullable EnumFacing p_189940_5_, int p_189940_6_, MapGenMineshaft.Type p_189940_7_)
     {
         int i = p_189940_1_.nextInt(100);
 
         if (i >= 80)
         {
-            StructureBoundingBox structureboundingbox = TestStructurePieces.Cross.findCrossing(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
+            StructureBoundingBox structureboundingbox = Cross.findCrossing(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
 
             if (structureboundingbox != null)
             {
-                return new TestStructurePieces.Cross(p_189940_6_, p_189940_1_, structureboundingbox, p_189940_5_, p_189940_7_);
+                return new Cross(p_189940_6_, p_189940_1_, structureboundingbox, p_189940_5_, p_189940_7_);
             }
         }
         else if (i >= 70)
         {
-            StructureBoundingBox structureboundingbox1 = TestStructurePieces.Stairs.findStairs(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
+            StructureBoundingBox structureboundingbox1 = Stairs.findStairs(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
 
             if (structureboundingbox1 != null)
             {
-                return new TestStructurePieces.Stairs(p_189940_6_, p_189940_1_, structureboundingbox1, p_189940_5_, p_189940_7_);
+                return new Stairs(p_189940_6_, p_189940_1_, structureboundingbox1, p_189940_5_, p_189940_7_);
             }
         }
         else
         {
-            StructureBoundingBox structureboundingbox2 = TestStructurePieces.Corridor.findCorridorSize(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
+            StructureBoundingBox structureboundingbox2 = Corridor.findCorridorSize(p_189940_0_, p_189940_1_, p_189940_2_, p_189940_3_, p_189940_4_, p_189940_5_);
 
             if (structureboundingbox2 != null)
             {
-                return new TestStructurePieces.Corridor(p_189940_6_, p_189940_1_, structureboundingbox2, p_189940_5_, p_189940_7_);
+                return new Corridor(p_189940_6_, p_189940_1_, structureboundingbox2, p_189940_5_, p_189940_7_);
             }
         }
 
         return null;
     }
 
-    private static TestStructurePieces.Peice generateAndAddPiece(StructureComponent p_189938_0_, List<StructureComponent> p_189938_1_, Random p_189938_2_, int p_189938_3_, int p_189938_4_, int p_189938_5_, EnumFacing p_189938_6_, int p_189938_7_)
+    private static Peice generateAndAddPiece(StructureComponent p_189938_0_, List<StructureComponent> p_189938_1_, Random p_189938_2_, int p_189938_3_, int p_189938_4_, int p_189938_5_, EnumFacing p_189938_6_, int p_189938_7_)
     {
         if (p_189938_7_ > 8)
         {
@@ -85,8 +85,8 @@ public class TestStructurePieces {
         }
         else if (Math.abs(p_189938_3_ - p_189938_0_.getBoundingBox().minX) <= 80 && Math.abs(p_189938_5_ - p_189938_0_.getBoundingBox().minZ) <= 80)
         {
-            MapGenMineshaft.Type mapgenmineshaft$type = ((TestStructurePieces.Peice)p_189938_0_).mineShaftType;
-            TestStructurePieces.Peice TestStructurePieces$peice = createRandomShaftPiece(p_189938_1_, p_189938_2_, p_189938_3_, p_189938_4_, p_189938_5_, p_189938_6_, p_189938_7_ + 1, mapgenmineshaft$type);
+            MapGenMineshaft.Type mapgenmineshaft$type = ((Peice)p_189938_0_).mineShaftType;
+            Peice TestStructurePieces$peice = createRandomShaftPiece(p_189938_1_, p_189938_2_, p_189938_3_, p_189938_4_, p_189938_5_, p_189938_6_, p_189938_7_ + 1, mapgenmineshaft$type);
 
             if (TestStructurePieces$peice != null)
             {
@@ -102,7 +102,7 @@ public class TestStructurePieces {
         }
     }
 
-    public static class Corridor extends TestStructurePieces.Peice
+    public static class Corridor extends Peice
     {
         private boolean hasRails;
         private boolean hasSpiders;
@@ -471,7 +471,7 @@ public class TestStructurePieces {
         }
     }
 
-    public static class Cross extends TestStructurePieces.Peice
+    public static class Cross extends Peice
     {
         private EnumFacing corridorDirection;
         private boolean isMultipleFloors;
@@ -724,7 +724,7 @@ public class TestStructurePieces {
         }
     }
 
-    public static class Room extends TestStructurePieces.Peice
+    public static class Room extends Peice
     {
         /** List of other Mineshaft components linked to this room. */
         private final List<StructureBoundingBox> connectedRooms = Lists.<StructureBoundingBox>newLinkedList();
@@ -764,7 +764,7 @@ public class TestStructurePieces {
                     break;
                 }
 
-                TestStructurePieces.Peice TestStructurePieces$peice = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX + k, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.minZ - 1, EnumFacing.NORTH, i);
+                Peice TestStructurePieces$peice = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX + k, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.minZ - 1, EnumFacing.NORTH, i);
 
                 if (TestStructurePieces$peice != null)
                 {
@@ -782,7 +782,7 @@ public class TestStructurePieces {
                     break;
                 }
 
-                TestStructurePieces.Peice TestStructurePieces$peice1 = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX + k, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, i);
+                Peice TestStructurePieces$peice1 = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX + k, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.maxZ + 1, EnumFacing.SOUTH, i);
 
                 if (TestStructurePieces$peice1 != null)
                 {
@@ -800,7 +800,7 @@ public class TestStructurePieces {
                     break;
                 }
 
-                TestStructurePieces.Peice TestStructurePieces$peice2 = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX - 1, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.minZ + k, EnumFacing.WEST, i);
+                Peice TestStructurePieces$peice2 = TestStructurePieces.generateAndAddPiece(componentIn, listIn, rand, this.boundingBox.minX - 1, this.boundingBox.minY + rand.nextInt(j) + 1, this.boundingBox.minZ + k, EnumFacing.WEST, i);
 
                 if (TestStructurePieces$peice2 != null)
                 {
@@ -894,7 +894,7 @@ public class TestStructurePieces {
         }
     }
 
-    public static class Stairs extends TestStructurePieces.Peice
+    public static class Stairs extends Peice
     {
         public Stairs()
         {

@@ -22,7 +22,7 @@ public class ModStarterEvents {
 //			  player.addItemStackToInventory(scry);
 //
 //			  if (player instanceof EntityPlayerMP) {
-//				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idlframework.msg.starter_kit_given", TextFormatting.AQUA);
+//				  CommonFunctions.SendMsgToPlayerStyled((EntityPlayerMP)player, "idlframewok.msg.starter_kit_given", TextFormatting.AQUA);
 //			  }
 //			  IdlFramework.Log(String.format("Given starter items to player %s, ver %d", player.getDisplayNameString(), CUR_STARTER_KIT_VERSION));
 		  }

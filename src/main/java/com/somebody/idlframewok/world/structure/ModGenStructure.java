@@ -172,12 +172,12 @@ public class ModGenStructure extends MapGenStructure
 
     protected StructureStart getStructureStart(int chunkX, int chunkZ)
     {
-        ModGenStructure.Start ModGenStructure$start;
+        Start ModGenStructure$start;
 
-        for (ModGenStructure$start = new ModGenStructure.Start(this.world, this.rand, chunkX, chunkZ);
+        for (ModGenStructure$start = new Start(this.world, this.rand, chunkX, chunkZ);
              ModGenStructure$start.getComponents().isEmpty() ||
                 ((StructureStrongholdPieces.Stairs2)ModGenStructure$start.getComponents().get(0)).strongholdPortalRoom == null;
-             ModGenStructure$start = new ModGenStructure.Start(this.world, this.rand, chunkX, chunkZ))
+             ModGenStructure$start = new Start(this.world, this.rand, chunkX, chunkZ))
         {
             ;
         }

@@ -31,6 +31,7 @@ public class IdlFramework {
 
     public static Logger logger;
 
+    public static final ProxySelfCheck deleteMe=new ProxySelfCheck();
     public static final boolean SHOW_WARN = true;
 
     @Mod.Instance

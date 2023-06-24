@@ -26,7 +26,7 @@ public class EntityTurretPrototype extends EntityGhast {
     protected void initEntityAI() {
         //super.initEntityAI();
         //this.tasks.addTask(7, new EntityTurretPrototype.AILookAround(this));
-        this.tasks.addTask(7, new EntityTurretPrototype.AIFireballAttack(this));
+        this.tasks.addTask(7, new AIFireballAttack(this));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
 

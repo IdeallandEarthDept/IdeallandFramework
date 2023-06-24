@@ -36,11 +36,11 @@ public class BlockExtractionDoorTest extends BlockBase {
         setResistance(35.0F);
         setLightOpacity(1);
 
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.NORTH).withProperty(POWERED, Boolean.valueOf(false)));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumOrientation.NORTH).withProperty(POWERED, Boolean.valueOf(false)));
         this.setCreativeTab(ModCreativeTab.IDL_MISC);
     }
 
-    public static final PropertyEnum<BlockExtractionDoorTest.EnumOrientation> FACING = PropertyEnum.create("facing", BlockExtractionDoorTest.EnumOrientation.class);
+    public static final PropertyEnum<EnumOrientation> FACING = PropertyEnum.create("facing", EnumOrientation.class);
     public static final PropertyBool POWERED = PropertyBool.create("powered");
     protected static final AxisAlignedBB LEVER_NORTH_AABB = new AxisAlignedBB(0D,0D,0D,1D,1D,1D);
     protected static final AxisAlignedBB LEVER_SOUTH_AABB = new AxisAlignedBB(0D,0D,0D,1D,1D,1D);
@@ -127,7 +127,7 @@ public class BlockExtractionDoorTest extends BlockBase {
 
         if (canAttachTo(worldIn, pos, facing))
         {
-            return iblockstate.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.forFacings(facing, placer.getHorizontalFacing()));
+            return iblockstate.withProperty(FACING, EnumOrientation.forFacings(facing, placer.getHorizontalFacing()));
         }
         else
         {
@@ -135,13 +135,13 @@ public class BlockExtractionDoorTest extends BlockBase {
             {
                 if (enumfacing != facing && canAttachTo(worldIn, pos, enumfacing))
                 {
-                    return iblockstate.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.forFacings(enumfacing, placer.getHorizontalFacing()));
+                    return iblockstate.withProperty(FACING, EnumOrientation.forFacings(enumfacing, placer.getHorizontalFacing()));
                 }
             }
 
             if (worldIn.getBlockState(pos.down()).isTopSolid())
             {
-                return iblockstate.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.forFacings(EnumFacing.UP, placer.getHorizontalFacing()));
+                return iblockstate.withProperty(FACING, EnumOrientation.forFacings(EnumFacing.UP, placer.getHorizontalFacing()));
             }
             else
             {
@@ -287,7 +287,7 @@ public class BlockExtractionDoorTest extends BlockBase {
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.byMetadata(meta & 7)).withProperty(POWERED, Boolean.valueOf((meta & 8) > 0));
+        return this.getDefaultState().withProperty(FACING, EnumOrientation.byMetadata(meta & 7)).withProperty(POWERED, Boolean.valueOf((meta & 8) > 0));
     }
 
     /**
@@ -319,13 +319,13 @@ public class BlockExtractionDoorTest extends BlockBase {
                 switch (state.getValue(FACING))
                 {
                     case EAST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.WEST);
+                        return state.withProperty(FACING, EnumOrientation.WEST);
                     case WEST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.EAST);
+                        return state.withProperty(FACING, EnumOrientation.EAST);
                     case SOUTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.NORTH);
+                        return state.withProperty(FACING, EnumOrientation.NORTH);
                     case NORTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.SOUTH);
+                        return state.withProperty(FACING, EnumOrientation.SOUTH);
                     default:
                         return state;
                 }
@@ -335,21 +335,21 @@ public class BlockExtractionDoorTest extends BlockBase {
                 switch (state.getValue(FACING))
                 {
                     case EAST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.NORTH);
+                        return state.withProperty(FACING, EnumOrientation.NORTH);
                     case WEST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.SOUTH);
+                        return state.withProperty(FACING, EnumOrientation.SOUTH);
                     case SOUTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.EAST);
+                        return state.withProperty(FACING, EnumOrientation.EAST);
                     case NORTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.WEST);
+                        return state.withProperty(FACING, EnumOrientation.WEST);
                     case UP_Z:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.UP_X);
+                        return state.withProperty(FACING, EnumOrientation.UP_X);
                     case UP_X:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.UP_Z);
+                        return state.withProperty(FACING, EnumOrientation.UP_Z);
                     case DOWN_X:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.DOWN_Z);
+                        return state.withProperty(FACING, EnumOrientation.DOWN_Z);
                     case DOWN_Z:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.DOWN_X);
+                        return state.withProperty(FACING, EnumOrientation.DOWN_X);
                 }
 
             case CLOCKWISE_90:
@@ -357,21 +357,21 @@ public class BlockExtractionDoorTest extends BlockBase {
                 switch (state.getValue(FACING))
                 {
                     case EAST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.SOUTH);
+                        return state.withProperty(FACING, EnumOrientation.SOUTH);
                     case WEST:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.NORTH);
+                        return state.withProperty(FACING, EnumOrientation.NORTH);
                     case SOUTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.WEST);
+                        return state.withProperty(FACING, EnumOrientation.WEST);
                     case NORTH:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.EAST);
+                        return state.withProperty(FACING, EnumOrientation.EAST);
                     case UP_Z:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.UP_X);
+                        return state.withProperty(FACING, EnumOrientation.UP_X);
                     case UP_X:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.UP_Z);
+                        return state.withProperty(FACING, EnumOrientation.UP_Z);
                     case DOWN_X:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.DOWN_Z);
+                        return state.withProperty(FACING, EnumOrientation.DOWN_Z);
                     case DOWN_Z:
-                        return state.withProperty(FACING, BlockExtractionDoorTest.EnumOrientation.DOWN_X);
+                        return state.withProperty(FACING, EnumOrientation.DOWN_X);
                 }
 
             default:
@@ -419,7 +419,7 @@ public class BlockExtractionDoorTest extends BlockBase {
         UP_X(6, "up_x", EnumFacing.UP),
         DOWN_Z(7, "down_z", EnumFacing.DOWN);
 
-        private static final BlockExtractionDoorTest.EnumOrientation[] META_LOOKUP = new BlockExtractionDoorTest.EnumOrientation[values().length];
+        private static final EnumOrientation[] META_LOOKUP = new EnumOrientation[values().length];
         private final int meta;
         private final String name;
         private final EnumFacing facing;
@@ -446,7 +446,7 @@ public class BlockExtractionDoorTest extends BlockBase {
             return this.name;
         }
 
-        public static BlockExtractionDoorTest.EnumOrientation byMetadata(int meta)
+        public static EnumOrientation byMetadata(int meta)
         {
             if (meta < 0 || meta >= META_LOOKUP.length)
             {
@@ -456,7 +456,7 @@ public class BlockExtractionDoorTest extends BlockBase {
             return META_LOOKUP[meta];
         }
 
-        public static BlockExtractionDoorTest.EnumOrientation forFacings(EnumFacing clickedSide, EnumFacing entityFacing)
+        public static EnumOrientation forFacings(EnumFacing clickedSide, EnumFacing entityFacing)
         {
             switch (clickedSide)
             {
@@ -504,7 +504,7 @@ public class BlockExtractionDoorTest extends BlockBase {
 
         static
         {
-            for (BlockExtractionDoorTest.EnumOrientation blocklever$enumorientation : values())
+            for (EnumOrientation blocklever$enumorientation : values())
             {
                 META_LOOKUP[blocklever$enumorientation.getMetadata()] = blocklever$enumorientation;
             }

@@ -13,7 +13,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
@@ -32,9 +31,9 @@ public class ItemSwordBase extends ItemSword implements IHasModel {
 	protected boolean glitters = false;
 
 	//for accessing the private value
-	protected Item.ToolMaterial toolMaterial;
+	protected ToolMaterial toolMaterial;
 
-	public ItemSwordBase(String name, Item.ToolMaterial material)
+	public ItemSwordBase(String name, ToolMaterial material)
 	{
 		super(material);
 		setUnlocalizedName(name);

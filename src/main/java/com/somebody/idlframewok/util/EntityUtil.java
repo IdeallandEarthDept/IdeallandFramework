@@ -1,28 +1,28 @@
 package com.somebody.idlframewok.util;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Random;
-import java.util.UUID;
-import javax.annotation.Nullable;
-
 import com.google.common.base.Predicate;
 import com.somebody.idlframewok.IdlFramework;
 import com.somebody.idlframewok.entity.creatures.EntityModUnit;
 import com.somebody.idlframewok.meta.MetaUtil;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -32,6 +32,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
+
+import javax.annotation.Nullable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
 @Mod.EventBusSubscriber(modid = IdlFramework.MODID)
 public class EntityUtil {
@@ -587,5 +592,80 @@ public class EntityUtil {
             return false;
         }
         return entity.world.canSeeSky(new BlockPos(entity.posX, entity.posY + (double)entity.getEyeHeight(), entity.posZ));
+    }
+    public static NonNullList<ItemStack> getLootTable(EntityLivingBase living, DamageSource source){
+        //保持原有设置:
+        ArrayList<EntityItem> primerItemList=(ArrayList<EntityItem>)(living.capturedDrops.clone());
+        boolean primerCaptureDrops=living.captureDrops?true:false;
+
+        //
+        int i = net.minecraftforge.common.ForgeHooks.getLootingLevel(living,source.getTrueSource(), source);
+
+        living.captureDrops = true;
+        living.capturedDrops.clear();
+
+
+
+        NonNullList<ItemStack> stacks=NonNullList.create();
+        try {
+            try {
+                try {
+                    Class clazz = living.getClass();
+                    boolean flag = source.getTrueSource() instanceof EntityPlayer || source.getTrueSource() instanceof EntityWolf;
+
+                    List<String> methodName=new ArrayList<>();
+                    methodName.add("func_184610_a");
+                    methodName.add("dropLoot");
+                    Method methodLoot=null;
+                    while(clazz!= EntityLiving.class){
+                        for(Method method:clazz.getDeclaredMethods()){
+                            if (methodName.contains(method.getName())){
+                                methodLoot=method;
+                                break;
+                            }
+                        }
+                        clazz=clazz.getSuperclass();
+                    }
+                    if (methodLoot==null){
+                        for(Method method:clazz.getDeclaredMethods()){
+                            if (method.getParameterTypes().equals((new Class[]{boolean.class, int.class , DamageSource.class}))){
+                                methodLoot=method;
+                            }
+                        }
+                    }
+
+                    if (methodLoot!=null){
+                        methodLoot.setAccessible(true);
+                        methodLoot.invoke(living, flag, i, source);
+
+                        if (!net.minecraftforge.common.ForgeHooks.onLivingDrops(living, source, living.capturedDrops, i, flag)) {
+                            for (EntityItem item : living.capturedDrops) {
+                                stacks.add(item.getItem());
+                            }
+                        }
+                    }
+                } catch (NullPointerException e) {
+                    IdlFramework.LogWarning(e.getLocalizedMessage());
+                    //reset
+                    living.capturedDrops=primerItemList;
+                    living.captureDrops=primerCaptureDrops;
+                }
+
+            } catch (IllegalAccessException e) {
+                IdlFramework.logger.error(e.getLocalizedMessage());
+                //reset
+                living.capturedDrops=primerItemList;
+                living.captureDrops=primerCaptureDrops;
+            }
+        } catch (InvocationTargetException e) {
+            IdlFramework.logger.error(e.getLocalizedMessage());
+            //reset
+            living.capturedDrops=primerItemList;
+            living.captureDrops=primerCaptureDrops;
+        }
+        //reset
+        living.capturedDrops=primerItemList;
+        living.captureDrops=primerCaptureDrops;
+        return stacks;
     }
 }

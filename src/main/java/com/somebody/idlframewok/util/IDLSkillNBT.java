@@ -1,11 +1,10 @@
 package com.somebody.idlframewok.util;
 
-import java.util.List;
-
 import com.somebody.idlframewok.item.IGuaEnhance;
 import com.somebody.idlframewok.item.skills.ItemSkillBase;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTDef;
 import com.somebody.idlframewok.util.NBTStrDef.IDLNBTUtil;
+import com.somebody.idlframewok.util.helper.TooltipHelper;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -15,6 +14,8 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class IDLSkillNBT {
     public static final String SUCCESS_DESC_KEY = ".on_sucess";
@@ -179,7 +180,7 @@ public class IDLSkillNBT {
         {
             if (!mainDescOrFlavor.isEmpty())
             {
-                tooltip.add(mainDescOrFlavor);
+                tooltip.addAll(TooltipHelper.strline(mainDescOrFlavor));
             }
 
             if (showGuaSocketDesc)
@@ -212,7 +213,9 @@ public class IDLSkillNBT {
             tooltip.add(TextFormatting.AQUA +  I18n.format("idlframewok.shared.press_shift"));
             if (use_flavor)
             {
-                tooltip.add(TextFormatting.ITALIC +  mainDescOrFlavor);
+                for(String s:TooltipHelper.strline(mainDescOrFlavor)){
+                    tooltip.add(TextFormatting.ITALIC +  s);
+                }
             }
         }
     }

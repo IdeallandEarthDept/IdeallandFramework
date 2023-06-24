@@ -13,7 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BaseSimplePotion extends Potion {
-    protected static final ResourceLocation resource = new ResourceLocation("idlframewok","textures/misc/potions.png");
+    protected static final ResourceLocation resource = new ResourceLocation(Reference.MOD_ID,"textures/misc/potions.png");
     protected final int iconIndex;
 
 //    if (!this.world.isRemote)

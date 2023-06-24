@@ -1,0 +1,7 @@
+com.pirmer.idlframework.IdlFramework::RegisterTileEntity() 注册TE
+com.pirmer.idlframework.init.RegistryHandler               物品，方块及模型注册（一般不需要手动操作）
+com.pirmer.idlframework.init.InitBiome                     注册群系
+com.pirmer.idlframework.init.InitDimension                 注册维度
+com.pirmer.idlframework.entity;.ModEntityInit              注册生物
+com.pirmer.idlframework.init.ModRecipes                    注册配方
+com.pirmer.idlframework.init.RegistryHandler::preInitRegistries()  注释部分注册结构

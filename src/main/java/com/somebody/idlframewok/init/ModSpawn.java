@@ -41,8 +41,8 @@ public class ModSpawn {
         Map<Type, Set<Biome>> biomesAndTypes = new HashMap<>();
 
         for (Biome biome : Biome.REGISTRY) {
-            Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
-            for (BiomeDictionary.Type type : types) {
+            Set<Type> types = BiomeDictionary.getTypes(biome);
+            for (Type type : types) {
                 if (!biomesAndTypes.containsKey(type)) {
                     biomesAndTypes.put(type, new HashSet<>());
                 }
