@@ -1,8 +1,14 @@
 
 buildscript {
     repositories {
-        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
-        maven { url "https://${mirror_maven_url}" }
+        if (use_mirror_url == "true") {
+            // clear all proxy settings, this is available for global
+            maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+            maven { url "https://${mirror_maven_url}" }
+        } else {
+            mavenCentral()
+            maven { url "https://maven.minecraftforge.net" }
+        }
     }
     dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:${forge_gradle_version}"
